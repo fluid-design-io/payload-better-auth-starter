@@ -1,0 +1,28 @@
+{
+  "workbench.editor.customLabels.patterns": {
+    "**/page.tsx": "${dirname} - page.tsx",
+    "**/index.ts": "${dirname} - index.ts",
+    "**/route.ts": "${dirname} - route.ts",
+    "**/index.tsx": "${dirname} - index.tsx",
+    "**/layout.tsx": "${dirname} - layout.tsx",
+    "**/_layout.tsx": "${dirname} - _layout.tsx"
+  },
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "quickfix.biome": "always",
+    "source.removeUnusedImports": "explicit",
+    "source.organizeImports.biome": "explicit"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#2087e1",
+    "titleBar.activeForeground": "#0c1824",
+    "titleBar.inactiveBackground": "#6fafdc",
+    "titleBar.inactiveForeground": "#3c5367"
+  },
+  "material-icon-theme.folders.associations": {
+    "(payload)": "Next",
+    "(frontend)": "Next",
+    "(frontend)/(public)": "Review"
+  }
+}

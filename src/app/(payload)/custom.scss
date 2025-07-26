@@ -1,0 +1,45 @@
+[data-theme="dark"] {
+  .admin-logo {
+    fill: #fff;
+  }
+  .admin-icon {
+    stroke: #fff;
+  }
+}
+
+[data-theme="light"] {
+  .admin-logo {
+    fill: #000;
+  }
+  .admin-icon {
+    stroke: #000;
+  }
+}
+
+.admin-icon-container {
+    height: 18px;
+    width: 18px;
+    .admin-icon {
+      width: 18px;
+      height: 18px;
+    }
+}
+
+.admin-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  .admin-logo-icon {
+    width: 4rem;
+    height: 4rem;
+  }
+  .admin-logo-text {
+    font-size: 14px;
+    font-weight: medium;
+    opacity: 0.5;
+    margin-top: 0.5rem;
+  }
+}

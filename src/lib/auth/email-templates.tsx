@@ -1,5 +1,7 @@
-import payloadConfig from "@/payload.config";
+import { Section, Text } from "@react-email/components";
+import { render } from "@react-email/render";
 import { getPayload } from "payload";
+import payloadConfig from "@/payload.config";
 import AcmeTemplate from "../email/email-template";
 
 type User = {
@@ -11,8 +13,6 @@ type User = {
   updatedAt: Date;
   image?: string | null | undefined;
 };
-
-const fromEmail = "bot@acme.com";
 
 const otpStyles = {
   container: {
@@ -44,27 +44,21 @@ export async function sendVerificationEmail({
   const name = user.name || user.email.split("@")[0];
 
   await payload.sendEmail({
-    from: fromEmail,
     to: user.email,
     subject: "Verify your email address",
-    react: AcmeTemplate({
-      action: "Verify Email",
-      content: (
-        <>
-          <p>{`Hello ${name},`}</p>
-          <p>Click the button below to verify your email address.</p>
-          {token && (
-            <div style={otpStyles.container}>
-              <p>Or use this verification code:</p>
-              <div style={otpStyles.code}>{token}</div>
-            </div>
-          )}
-        </>
-      ),
-      heading: "Verify Email",
-      baseUrl: "https://acme.com",
-      url,
-    }),
+    html: await render(
+      <AcmeTemplate
+        heading='Verify your email address'
+        subtitle='Click the button below to verify your email address.'
+        content={
+          <>
+            <Text>Hi {name},</Text>
+            <Text>Click the button below to verify your email address.</Text>
+          </>
+        }
+        url={url}
+      />
+    ),
   });
 }
 
@@ -83,29 +77,28 @@ export async function sendChangeEmailVerification({
   const payload = await getPayload({ config });
 
   await payload.sendEmail({
-    from: fromEmail,
     to: user.email,
     subject: "Email verified successfully",
-    react: AcmeTemplate({
-      action: "Email verified",
-      content: (
-        <>
-          <p>{`Hello ${user?.name || user?.email || "there"},`}</p>
-          <p>
-            Your email has been verified. You can now login to your account.
-          </p>
-          {token && (
-            <div style={otpStyles.container}>
-              <p>Or use this verification code:</p>
-              <div style={otpStyles.code}>{token}</div>
-            </div>
-          )}
-        </>
-      ),
-      heading: "Email verified",
-      baseUrl: "https://acme.com",
-      url,
-    }),
+    html: await render(
+      <AcmeTemplate
+        action='Email verified'
+        content={
+          <>
+            <Text>{`Hello ${user?.name || user?.email || "there"},`}</Text>
+            <Text>
+              Your email has been verified. You can now login to your account.
+            </Text>
+            {token && (
+              <div style={otpStyles.container}>
+                <Text>Or use this verification code:</Text>
+                <div style={otpStyles.code}>{token}</div>
+              </div>
+            )}
+          </>
+        }
+        heading='Email verified'
+      />
+    ),
   });
 }
 
@@ -122,27 +115,27 @@ export async function sendResetPasswordEmail({
   const payload = await getPayload({ config });
 
   await payload.sendEmail({
-    from: fromEmail,
     to: user.email,
     subject: "Reset your password",
-    react: AcmeTemplate({
-      action: "Reset Password",
-      content: (
-        <>
-          <p>{`Hello ${user?.name || user?.email || "there"},`}</p>
-          <p>Click the button below to reset your password.</p>
-          {token && (
-            <div style={otpStyles.container}>
-              <p>Or use this reset code:</p>
-              <div style={otpStyles.code}>{token}</div>
-            </div>
-          )}
-        </>
-      ),
-      heading: "Reset Password",
-      baseUrl: "https://acme.com",
-      url,
-    }),
+    html: await render(
+      <AcmeTemplate
+        action='Reset Password'
+        content={
+          <>
+            <Text>{`Hello ${user?.name || user?.email || "there"},`}</Text>
+            <Text>Click the button below to reset your password.</Text>
+            {token && (
+              <div style={otpStyles.container}>
+                <Text>Or use this reset code:</Text>
+                <div style={otpStyles.code}>{token}</div>
+              </div>
+            )}
+          </>
+        }
+        heading='Reset Password'
+        url={url}
+      />
+    ),
   });
 }
 
@@ -159,30 +152,30 @@ export async function sendDeleteAccountVerification({
   const payload = await getPayload({ config });
 
   await payload.sendEmail({
-    from: fromEmail,
     to: user.email,
     subject: "Delete your account",
-    react: AcmeTemplate({
-      action: "Delete Account",
-      content: (
-        <>
-          <p>{`Hello ${user?.name || user?.email || "there"},`}</p>
-          <p>
-            Click the button below to delete your account. This action cannot be
-            undone.
-          </p>
-          {token && (
-            <div style={otpStyles.container}>
-              <p>Or use this verification code:</p>
-              <div style={otpStyles.code}>{token}</div>
-            </div>
-          )}
-        </>
-      ),
-      heading: "Delete Account",
-      baseUrl: "https://acme.com",
-      url,
-    }),
+    html: await render(
+      <AcmeTemplate
+        action='Delete Account'
+        content={
+          <>
+            <Text>{`Hello ${user?.name || user?.email || "there"},`}</Text>
+            <Text>
+              Click the button below to delete your account. This action cannot
+              be undone.
+            </Text>
+            {token && (
+              <div style={otpStyles.container}>
+                <Text>Or use this verification code:</Text>
+                <div style={otpStyles.code}>{token}</div>
+              </div>
+            )}
+          </>
+        }
+        heading='Delete Account'
+        url={url}
+      />
+    ),
   });
 }
 
@@ -198,22 +191,22 @@ export async function sendVerificationOTP({
   const config = await payloadConfig;
   const payload = await getPayload({ config });
   await payload.sendEmail({
-    from: fromEmail,
     to: email,
     subject: `Verify your ${type}`,
-    react: AcmeTemplate({
-      action: `Verify ${type}`,
-      content: (
-        <>
-          <p>Hello,</p>
-          <p>Use the code below to verify your {type}.</p>
-          <div style={otpStyles.container}>
-            <div style={otpStyles.code}>{otp}</div>
-          </div>
-        </>
-      ),
-      heading: `Verify ${type}`,
-      baseUrl: "https://acme.com",
-    }),
+    html: await render(
+      <AcmeTemplate
+        heading={`Verify ${type}`}
+        action={`OTP Verification`}
+        content={
+          <>
+            <Text>Hello,</Text>
+            <Text>Use the code below to verify your {type}.</Text>
+            <Section style={otpStyles.container}>
+              <Text style={otpStyles.code}>{otp}</Text>
+            </Section>
+          </>
+        }
+      />
+    ),
   });
 }

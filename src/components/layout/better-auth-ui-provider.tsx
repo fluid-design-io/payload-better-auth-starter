@@ -1,10 +1,10 @@
 "use client";
 
-import { authClient } from "@/lib/auth/client";
 import { AuthUIProvider } from "@daveyplate/better-auth-ui";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Suspense } from "react";
+import { authClient } from "@/lib/auth/client";
 import { AccountDialog } from "../dashboard/account-dialog";
 
 export function BetterAuthUIProvider({

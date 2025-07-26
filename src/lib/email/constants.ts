@@ -1,1 +1,3 @@
-export const LOGO_URL = "https://acme.com/images/logos/acme-dark.png";
+import { getClientSideURL } from "@/lib/payload";
+
+export const LOGO_URL = `${getClientSideURL()}/favicon.ico`;

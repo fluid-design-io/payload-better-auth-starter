@@ -120,9 +120,9 @@ function Layout({
             <Section className='mt-[32px]'>
               <Img
                 src={LOGO_URL}
-                width={140}
+                width={36}
                 height={36}
-                alt='Acme'
+                alt='Acme Logo'
                 className={cn("mx-auto my-0", classNames?.image)}
               />
             </Section>

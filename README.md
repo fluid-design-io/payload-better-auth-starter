@@ -15,6 +15,16 @@ This template comes configured with barebones Payload and BetterAuth.
 - 📝 Optional Shadcn Payload Form Plugin Renderer
 - 🚢 Full-suite docker local development: S3, inbucket, postgres. (one command to start/stop)
 
+## Screenshots
+
+<img width="1600" height="2535" alt="Home Page" src="https://github.com/user-attachments/assets/cfd73d94-2c3f-4062-8585-df3fb0e61d4a" />
+
+<img width="2974" height="1852" alt="Blog Page" src="https://github.com/user-attachments/assets/83e767a4-84de-4250-93a6-bcc18d0afc61" />
+
+<img width="2966" height="1124" alt="Admin Panel" src="https://github.com/user-attachments/assets/0a47b26c-6772-4865-82e5-0ac8bb25b5d0" />
+
+<img width="300" height="auto" alt="Email OTP SignIn" src="https://github.com/user-attachments/assets/f19599f5-c1b1-48d1-8c8d-d1f5b320a4e6" />
+
 ## Quick start
 
 Replace `Acme` with your company name.

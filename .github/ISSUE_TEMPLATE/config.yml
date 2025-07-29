@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 Documentation
+    url: https://payloadcms.com/docs
+    about: Check the official PayloadCMS documentation
+  - name: 🔐 Better Auth Docs
+    url: https://better-auth.com/docs
+    about: Check the Better Auth documentation
+  - name: 💬 Discussions
+    url: https://github.com/your-username/payload-better-auth-starter/discussions
+    about: Ask questions and share ideas in Discussions 

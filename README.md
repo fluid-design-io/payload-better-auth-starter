@@ -1,66 +1,189 @@
-# Payload BetterAuth Starter
+# PayloadCMS Better Auth Starter
 
-This template comes configured with barebones Payload and BetterAuth.
+A production-ready PayloadCMS starter with Better Auth, modern UI components, and full-stack development tools.
 
-## Features
+## ✨ Features
 
-- 👮 PayloadAuth = Better Auth + Better Auth UI
-- 🔒 Pre-configured collections, access control, public & private uploads
-- 👤 Tuned account management UI
-- 💌 Built-in email templates
-- 🎨 Refined Shadcn UI components
-- 💅 Prettified Payload Admin UI
-- 💨 Motion Primitives
-- 🐍 Snake-cased Payload components
-- 📝 Optional Shadcn Payload Form Plugin Renderer
-- 🚢 Full-suite docker local development: S3, inbucket, postgres. (one command to start/stop)
+- 🔐 **Better Auth** - Modern authentication with email OTP
+- 🎨 **Shadcn UI** - Beautiful, accessible components
+- 📝 **Blog System** - SEO-optimized with rich text editor
+- 📧 **Email Templates** - Custom React Email templates
+- 🗄️ **PostgreSQL** - Production-ready database
+- ☁️ **S3 Storage** - Public & private file uploads
+- 🐳 **Docker Compose** - One-command local development
+- 📱 **Responsive Design** - Mobile-first approach
+- 🎭 **Motion Primitives** - Smooth animations
+- 🔍 **SEO Plugin** - Built-in SEO management
 
-## Screenshots
+## 🚀 Quick Start
 
-<img width="1600" height="2535" alt="Home Page" src="https://github.com/user-attachments/assets/cfd73d94-2c3f-4062-8585-df3fb0e61d4a" />
+### 1. Clone & Install
 
-<img width="2974" height="1852" alt="Blog Page" src="https://github.com/user-attachments/assets/83e767a4-84de-4250-93a6-bcc18d0afc61" />
+```bash
+git clone <your-repo-url>
+cd payload-better-auth-starter
+bun install
+```
 
-<img width="2966" height="1124" alt="Admin Panel" src="https://github.com/user-attachments/assets/0a47b26c-6772-4865-82e5-0ac8bb25b5d0" />
+### 2. Environment Setup
 
-<img width="300" height="auto" alt="Email OTP SignIn" src="https://github.com/user-attachments/assets/f19599f5-c1b1-48d1-8c8d-d1f5b320a4e6" />
+```bash
+# Create environment file
+cp .env.example .env
 
-## Quick start
+# Edit with your values
+nano .env
+```
 
-Replace `Acme` with your company name.
+### 3. Start Development
 
-## Quick Start - local setup
+```bash
+# Start all services (PostgreSQL, S3, Email)
+bun run dev
+```
 
-To spin up this template locally, follow these steps:
+Visit `http://localhost:3000` for your site and `http://localhost:3000/admin` for the CMS.
 
-1. `cp .env.example .env` to copy the example environment variables.
-2. `bun install` to install dependencies.
-3. `bun run dev` to start the dev server and start the services (Inbucket - email, Minio - S3, etc.)
-4. Login to the admin panel at `http://localhost:3000/admin`
-5. Create your first admin user
+## 🏢 Branding Your Company
 
-## Extra Features
+### Replace "Acme" with Your Brand
 
-### Form Plugin
+1. **Logo & Icons**
 
-The form plugin is disabled by default. To enable it, move the `form` directory from `extra` to `src/plugins`. And uncomment all places with comment `//* [Extra] Form Plugin *//`
+   ```bash
+   # Replace these files:
+   src/components/icons.tsx          # Main logo
+   src/components/payload/admin-icon.tsx  # Admin panel icon
+   public/favicon.ico               # Browser favicon
+   ```
 
-It also includes a custom "UserInfo" block that can infer the logged in user's information as part of the form input. You can even make it readonly so the user can't change it.
+2. **Company Name**
 
-## How it works
+   ```bash
+   # Search and replace "Acme" in:
+   src/lib/constants.ts
+   src/plugins/seo-plugin.ts
+   src/lib/email/email-template.tsx
+   ```
 
-The Payload config is tailored specifically to the needs of most websites. It is pre-configured in the following ways:
+3. **Open Graph Images**
+
+   ```bash
+   # Replace default OG image:
+   public/website-template-OG.png
+   ```
+
+4. **Email Templates**
+   ```bash
+   # Customize email branding:
+   src/lib/email/email-template.tsx
+   src/plugins/form-plugin/before-email.tsx
+   ```
+
+### Environment Variables
+
+```bash
+# Required for production
+PAYLOAD_SECRET=your-secret-key
+DATABASE_URI=postgresql://user:pass@host:port/db
+
+# Optional - S3 Storage
+S3_BUCKET=your-bucket
+S3_ACCESS_KEY_ID=your-key
+S3_SECRET_ACCESS_KEY=your-secret
+S3_REGION=us-east-1
+
+# Optional - Email (Resend)
+RESEND_API_KEY=your-resend-key
+```
+
+## 🧩 Core Components
 
 ### Collections
 
-See the [Collections](https://payloadcms.com/docs/configuration/collections) docs for details on how to extend this functionality.
+- **Users** - Authentication & user management
+- **Blog** - SEO-optimized blog posts with authors
+- **Media** - Image/video uploads with S3 storage
+- **Globals** - Site-wide content (footer, etc.)
 
-- #### Users (Authentication)
+### Plugins
 
-  Users are auth-enabled collections that have access to the admin panel.
+- **Better Auth** - Modern authentication system
+- **SEO Plugin** - Meta tags, Open Graph, structured data
+- **Import/Export** - Data migration tools
+- **S3 Storage** - Cloud file storage
+- **Form Builder** - Contact forms (optional)
 
-  For additional help, see the official [Auth Example](https://github.com/payloadcms/payload/tree/main/examples/auth) or the [Authentication](https://payloadcms.com/docs/authentication/overview#authentication-overview) docs.
+### UI Components
 
-- #### Media
+- **Shadcn UI** - 30+ accessible components
+- **Motion Primitives** - Framer Motion utilities
+- **Theme System** - Dark/light mode support
+- **Responsive Layout** - Mobile-first design
 
-  This is the uploads enabled collection. It features pre-configured sizes, focal point and manual resizing to help you manage your pictures.
+## 🛠️ Development
+
+### Available Scripts
+
+```bash
+bun run dev          # Start development server
+bun run build        # Build for production
+bun run start        # Start production server
+
+# Docker Services
+bun run services:start    # Start PostgreSQL, S3, Email
+bun run services:stop     # Stop all services
+bun run services:logs     # View service logs
+
+# Database
+bun run db:reset         # Reset database
+bun run db:connect       # Connect to PostgreSQL
+
+# Email Testing
+bun run email:test       # Test email functionality
+```
+
+### Form Plugin (Optional)
+
+Enable the form plugin for contact forms:
+
+1. Move `extra/form/` to `src/plugins/form/`
+2. Uncomment form plugin in `src/plugins/index.ts`
+3. Restart development server
+
+## 📁 Project Structure
+
+```
+src/
+├── app/                 # Next.js app router
+├── collections/         # PayloadCMS collections
+├── components/          # React components
+│   ├── ui/             # Shadcn UI components
+│   ├── layout/         # Layout components
+│   └── payload/        # CMS-specific components
+├── lib/                 # Utilities & configurations
+├── plugins/             # PayloadCMS plugins
+└── blocks/              # Content blocks
+```
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+1. Connect your GitHub repository
+2. Set environment variables
+3. Deploy automatically
+
+### Docker
+
+```bash
+docker-compose -f docker-compose.prod.yml up -d
+```
+
+## 📄 License
+
+MIT License - see [LICENSE.md](LICENSE.md) for details.
+
+---
+
+**Need help?** Check out the [PayloadCMS docs](https://payloadcms.com/docs) or [Better Auth docs](https://better-auth.com/docs).

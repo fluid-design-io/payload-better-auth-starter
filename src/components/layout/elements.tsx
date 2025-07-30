@@ -124,12 +124,13 @@ const SectionHorizontal = ({
       )}
     >
       <div className='py-6 md:col-span-6 md:pt-0 md:pr-6 lg:col-span-5 lg:pr-14 lg:pb-14'>
-        <Badge variant='outline' className='-mt-px flex'>
-          {props.badge}
-        </Badge>
+        {props.badge && (
+          <Badge variant='outline' className='-mt-px flex'>
+            {props.badge}
+          </Badge>
+        )}
         <H3 className={CLASSNAMES.sectionHeadingClassName} id={slug}>
           {props.title}
-          <sup>+</sup>
         </H3>
         <P className='mt-4 max-w-md'>{props.description}</P>
       </div>

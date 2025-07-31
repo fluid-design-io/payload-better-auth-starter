@@ -1,10 +1,10 @@
 <img width="1200" height="630" alt="og" src="https://github.com/user-attachments/assets/8cff9ffa-f8ef-482e-bb00-02d253f5e079" />
 
-A production-ready PayloadCMS starter with Better Auth, modern UI components, and full-stack development tools.
+A production-ready PayloadCMS starter with [PayloadAuth](https://github.com/payload-auth/payload-auth) (Better Auth), modern UI components, and full-stack development tools.
 
 ## ✨ Features
 
-- 🔐 **Better Auth** - Modern authentication with email OTP
+- 🔐 **Better Auth** - Modern authentication with email OTP via [PayloadAuth](https://github.com/payload-auth/payload-auth) (Better Auth)
 - 🎨 **Shadcn UI** - Beautiful, accessible components
 - 📝 **Blog System** - SEO-optimized with rich text editor
 - 📧 **Email Templates** - Custom React Email templates

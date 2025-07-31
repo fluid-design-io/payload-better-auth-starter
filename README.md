@@ -31,7 +31,7 @@ A production-ready PayloadCMS starter with Better Auth, modern UI components, an
 ### 1. Clone & Install
 
 ```bash
-git clone <your-repo-url>
+git clone fluid-design-io/payload-better-auth-starter
 cd payload-better-auth-starter
 bun install
 ```

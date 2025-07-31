@@ -1,7 +1,6 @@
 import type { Plugin } from "payload";
-
-import { betterAuthPluginOptions } from "@/lib/auth/options";
 import { betterAuthPlugin } from "payload-auth/better-auth";
+import { betterAuthPluginOptions } from "@/lib/auth/options";
 import {
   s3StoragePluginPrivate,
   s3StoragePluginPublic,

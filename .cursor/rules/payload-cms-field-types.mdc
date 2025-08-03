@@ -1,0 +1,136 @@
+---
+description: Payload CMS Field Types
+globs:
+  # Anything with "payload" in the path
+  - "**/src/**/*payload*/**"
+  # Collections
+  - "**/src/collections/**"
+  # Blocks
+  - "**/src/blocks/**"
+  # Fields
+  - "**/src/fields/**"
+  # Access Control
+  - "**/src/access/**"
+  # Plugins
+  - "**/src/plugins/**"
+  # Payload config
+  - "**/src/payload-config.ts"
+alwaysApply: false
+applyTo: "**/src/**/*.ts, **/src/**/*.tsx"
+---
+
+<!-- Credits: @nickvbn -->
+
+# Payload CMS Field Types
+
+**IMPORTANT:** Before implementing or modifying any field, always visit https://payloadcms.com/docs/fields/overview to ensure you are using the most current field definitions and that your implementation will pass validation. This helps keep field usage up-to-date and compliant with Payload's latest standards.
+
+**TIP**: Always avoid visiting a link unless the description directly matches your implementation need. Most fields are very purpose-specific.
+
+If unsure between two similar fields (e.g., `Select` vs `Radio`, or `Text` vs `Textarea`), this guide prioritizes general-use recommendations and links to documentation that provide usage examples and configuration tips.
+
+---
+
+### DATA FIELDS
+
+**Array**  
+URL: https://payloadcms.com/docs/fields/array  
+**Use When**: You need a repeatable list of similar field groups, such as FAQs, list items, or images. Great for nesting complex structures.
+
+**Blocks**  
+URL: https://payloadcms.com/docs/fields/blocks  
+**Use When**: You require flexible, composable content like layout builders, page sections, or reusable content chunks with their own structures.
+
+**Checkbox**  
+URL: https://payloadcms.com/docs/fields/checkbox  
+**Use When**: You need a simple boolean toggle (true/false). Ideal for flags like "Published" or "Featured".
+
+**Code**  
+URL: https://payloadcms.com/docs/fields/code  
+**Use When**: You want to store or edit code snippets. Supports syntax highlighting. Use for templates, JSON blobs, or configuration blocks.
+
+**Date**  
+URL: https://payloadcms.com/docs/fields/date  
+**Use When**: You need date/time storage, e.g., for event scheduling, publication timing, or tracking updates.
+
+**Email**  
+URL: https://payloadcms.com/docs/fields/email  
+**Use When**: You need to store validated email addresses, typically for contact forms or user profiles.
+
+**Group**  
+URL: https://payloadcms.com/docs/fields/group  
+**Use When**: You want to logically group several related fields together (like address fields: street, city, zip).
+
+**JSON**  
+URL: https://payloadcms.com/docs/fields/json  
+**Use When**: You need to store free-form structured data. Ideal for external API configurations or advanced schema setups.
+
+**Number**  
+URL: https://payloadcms.com/docs/fields/number  
+**Use When**: You need to store numeric values (integers, floats, etc.) such as price, quantity, or ratings.
+
+**Point**  
+URL: https://payloadcms.com/docs/fields/point  
+**Use When**: You need to store geolocation data (latitude, longitude). Useful for mapping or location-based filtering.
+
+**Radio**  
+URL: https://payloadcms.com/docs/fields/radio  
+**Use When**: You want users to select one option from a short predefined list. Good for categories or statuses.
+
+**Relationship**  
+URL: https://payloadcms.com/docs/fields/relationship  
+**Use When**: You need to link one document to another (e.g., post to author, product to category). Supports single or multiple relations.
+
+**Rich Text**  
+URL: https://payloadcms.com/docs/fields/rich-text
+**Use When**: You need advanced content editing, like WYSIWYG support for articles, blogs, or marketing pages.
+
+**Select**  
+URL: https://payloadcms.com/docs/fields/select  
+**Use When**: You want a dropdown field with one or multiple selectable options. Useful for status, role, or tag selection.
+
+**Tabs (Named)**  
+URL: https://payloadcms.com/docs/fields/tabs  
+**Use When**: You want to organize complex admin forms into clearly labeled sections.
+
+**Text**  
+URL: https://payloadcms.com/docs/fields/text  
+**Use When**: You need short string input (title, slug, username). Limited to a single line.
+
+**Textarea**  
+URL: https://payloadcms.com/docs/fields/textarea  
+**Use When**: You need longer, multi-line text input such as summaries, bios, or descriptions.
+
+**Upload**  
+URL: https://payloadcms.com/docs/fields/upload  
+**Use When**: You need file or image uploads linked to a document. Useful for profile pictures, attachments, media libraries.
+
+---
+
+### PRESENTATIONAL FIELDS
+
+**Collapsible**  
+URL: https://payloadcms.com/docs/fields/collapsible  
+**Use When**: You want to hide or reveal field groups in the admin panel to improve visual clarity.
+
+**Row**  
+URL: https://payloadcms.com/docs/fields/row  
+**Use When**: You want fields to appear side-by-side in the admin interface. Enhances UI readability for related inputs.
+
+**Tabs**  
+URL: https://payloadcms.com/docs/fields/tabs  
+**Use When**: You want to split the admin UI into unnamed tabbed sections. Similar to named tabs but used without labels.
+
+**UI**  
+URL: https://payloadcms.com/docs/fields/ui  
+**Use When**: You want to inject custom UI components (like dividers, instructions, or custom widgets) without storing any data.
+
+---
+
+### VIRTUAL FIELDS
+
+**Join**  
+URL: https://payloadcms.com/docs/fields/join  
+**Use When**: You need to populate a field using resolved data from a different collection (similar to GraphQL joins). Useful for denormalized or computed field structures.
+
+---

@@ -104,7 +104,11 @@ const SectionHorizontal = ({
           <H3 className={CLASSNAMES.sectionHeadingClassName} id={slug}>
             {props.title}
           </H3>
-          <P className='mt-4 max-w-md'>{props.description}</P>
+          {typeof props.description === "string" ? (
+            <P className='mt-4 max-w-md'>{props.description}</P>
+          ) : (
+            props.description
+          )}
         </div>
         <div className='order-first md:col-span-6 lg:col-span-7'>
           {props.media}
@@ -132,7 +136,11 @@ const SectionHorizontal = ({
         <H3 className={CLASSNAMES.sectionHeadingClassName} id={slug}>
           {props.title}
         </H3>
-        <P className='mt-4 max-w-md'>{props.description}</P>
+        {typeof props.description === "string" ? (
+          <P className='mt-4 max-w-md'>{props.description}</P>
+        ) : (
+          props.description
+        )}
       </div>
       <div className='row-start-1 flex items-center justify-center md:col-span-6 md:row-start-auto md:pt-0 lg:col-span-7'>
         {props.media}

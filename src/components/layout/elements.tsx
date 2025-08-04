@@ -153,7 +153,7 @@ type SectionGridChildProps = {
   badge?: string;
   title: string;
   description: string | ReactNode;
-  media: ReactNode;
+  media?: ReactNode;
 };
 
 /**
@@ -219,7 +219,7 @@ const SectionGridItem = ({
         </H3>
         <P>{description}</P>
       </div>
-      {media}
+      {media ? media : null}
       {badge && (
         <Badge variant='outline' className='-mt-px flex'>
           {badge}

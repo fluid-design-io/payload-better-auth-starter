@@ -217,7 +217,7 @@ const SectionGridItem = ({
         >
           {title}
         </H3>
-        <P>{description}</P>
+        {typeof description === "string" ? <P>{description}</P> : description}
       </div>
       {media ? media : null}
       {badge && (

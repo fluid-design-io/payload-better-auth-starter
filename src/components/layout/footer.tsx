@@ -1,16 +1,14 @@
-import { getCachedGlobal } from "@/lib/payload/get-globals";
-
-import type { GlobalFooter } from "@/payload-types";
-
+import Link from "next/link";
 import { AcmeLogoIcon } from "@/components/icons";
 import { ThemeSelector } from "@/components/layout/theme-switch";
 import { CMSLink } from "@/components/payload/cms-link";
 import { CLASSNAMES } from "@/lib/constants";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
+import { getCachedGlobal } from "@/lib/payload/get-globals";
+import type { GlobalFooter } from "@/payload-types";
 import RichText from "../payload/rich-text";
 import Highlightborder from "../ui/highlight-border";
 import { P } from "../ui/typography";
+import { Container } from "./elements";
 
 export default async function Footer() {
   const footerData = (await getCachedGlobal(
@@ -21,16 +19,13 @@ export default async function Footer() {
   const navItems = footerData?.navItems || [];
   const footerText = footerData.footerText;
   return (
-    <footer
-      className='bg-background relative border-t'
-      aria-labelledby='footer-heading'
-    >
+    <footer className='bg-background relative border-t'>
       <Highlightborder position='top' />
       <h2 id='footer-heading' className='sr-only'>
         Footer
       </h2>
-      <div className='px-4 md:px-8'>
-        <div className={cn("py-16 sm:pt-24", CLASSNAMES.containerClassName)}>
+      <div className={CLASSNAMES.layoutPadding}>
+        <Container className='py-16 sm:pt-24'>
           <div className='flex items-center justify-between gap-8'>
             <AcmeLogoIcon className='h-7 w-auto text-muted-foreground' />
             <ThemeSelector />
@@ -61,7 +56,7 @@ export default async function Footer() {
             data={footerText}
             className='mt-6 text-center leading-5 text-xs text-muted-foreground/60 md:text-left [&_a]:underline'
           />
-        </div>
+        </Container>
       </div>
     </footer>
   );

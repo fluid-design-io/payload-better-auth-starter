@@ -1,15 +1,14 @@
-import { cn } from "@/lib/utils";
-
 export const CLASSNAMES = {
-  sectionSpacing: "space-y-12 sm:space-y-16 lg:space-y-28",
-  containerClassName: "container mx-auto",
-  sectionHeadingClassName: cn(
-    "text-foreground font-semibold mt-4 tracking-wide",
-    "[&>sup]:text-primary [&>sup]:text-xl [&>sup]:align-bottom",
-    "[&>sup]:text-shadow-lg [&>sup]:text-shadow-primary/15"
-  ),
+  /** Padding for <Main> or layout components */
+  layoutPadding: "px-4 md:px-8 2xl:px-0",
   /** Force content to have full width in <Main> */
   fullMainWidth: "-mx-4 md:-mx-8 px-4 md:px-8 lg:px-0",
+  /** Spacing for sections */
+  sectionSpacing: "space-y-12 sm:space-y-16 lg:space-y-28",
+  /** Centered container */
+  containerClassName: "container mx-auto",
+  /** Heading styles for sections */
+  sectionHeadingClassName: "text-foreground font-semibold mt-4 tracking-wide",
 } as const;
 
 /**

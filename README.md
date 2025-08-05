@@ -15,6 +15,11 @@ A production-ready PayloadCMS starter with [payload-auth](https://github.com/pay
 - 🎭 **Motion Primitives** - Smooth animations
 - 🔍 **SEO Plugin** - Built-in SEO management
 
+## Video Demo
+
+https://github.com/user-attachments/assets/04009ca4-a212-44da-b6c8-bd26d5dc713e
+
+
 ## Screenshots
 
 <img width="2932" height="4753" alt="Home Page" src="https://github.com/user-attachments/assets/56da510d-0549-4adf-97c1-9b9577399182" />

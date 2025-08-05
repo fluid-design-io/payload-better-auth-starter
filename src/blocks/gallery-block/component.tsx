@@ -1,28 +1,11 @@
 "use client";
 
 import type { StaticImageData } from "next/image";
-
-import RichText from "@/components/payload/rich-text";
-import { cn } from "@/lib/utils";
-
-import type { GalleryBlock as GalleryBlockProps } from "@/payload-types";
-
 import { Media } from "@/components/payload/media";
+import RichText from "@/components/payload/rich-text";
 import { useMediaQuery } from "@/hooks/use-media-query";
-
-type GridCols =
-  | "1"
-  | "2"
-  | "3"
-  | "4"
-  | "5"
-  | "6"
-  | "7"
-  | "8"
-  | "9"
-  | "10"
-  | "11"
-  | "12";
+import { cn } from "@/lib/utils";
+import type { GalleryBlock as GalleryBlockProps } from "@/payload-types";
 
 type Props = Omit<
   GalleryBlockProps,
@@ -35,9 +18,9 @@ type Props = Omit<
   imgClassName?: string;
   staticImage?: StaticImageData;
   disableInnerContainer?: boolean;
-  perRowMobile: GridCols;
-  perRowTablet: GridCols;
-  perRowDesktop: GridCols;
+  perRowMobile?: number | null;
+  perRowTablet?: number | null;
+  perRowDesktop?: number | null;
 };
 
 export const GalleryBlock: React.FC<Props> = (props) => {
@@ -49,9 +32,9 @@ export const GalleryBlock: React.FC<Props> = (props) => {
     images,
     staticImage,
     disableInnerContainer,
-    perRowMobile,
-    perRowTablet,
-    perRowDesktop,
+    perRowMobile = 1,
+    perRowTablet = 2,
+    perRowDesktop = 3,
   } = props;
 
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -73,9 +56,9 @@ export const GalleryBlock: React.FC<Props> = (props) => {
   };
 
   const columsClassName = {
-    mobile: gridCols[perRowMobile],
-    tablet: gridCols[perRowTablet],
-    desktop: gridCols[perRowDesktop],
+    mobile: gridCols[perRowMobile as keyof typeof gridCols],
+    tablet: gridCols[perRowTablet as keyof typeof gridCols],
+    desktop: gridCols[perRowDesktop as keyof typeof gridCols],
   };
   if (!images) return null;
 
@@ -91,7 +74,7 @@ export const GalleryBlock: React.FC<Props> = (props) => {
       )}
     >
       {images.map((image) => {
-        let caption;
+        let caption: any;
         if (image && typeof image === "object") caption = image.caption;
         if (typeof image === "number") return null;
         return (

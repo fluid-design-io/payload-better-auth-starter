@@ -19,6 +19,7 @@ export type PresetType =
 export type AnimatedGroupProps = {
   children: ReactNode;
   className?: string;
+  childrenClassName?: string;
   variants?: {
     container?: Variants;
     item?: Variants;
@@ -104,6 +105,7 @@ const addDefaultVariants = (variants: Variants) => ({
 function AnimatedGroup({
   children,
   className,
+  childrenClassName,
   variants,
   preset,
   as = "div",
@@ -133,7 +135,11 @@ function AnimatedGroup({
       className={className}
     >
       {React.Children.map(children, (child, index) => (
-        <MotionChild key={index} variants={itemVariants}>
+        <MotionChild
+          key={index}
+          variants={itemVariants}
+          className={childrenClassName}
+        >
           {child}
         </MotionChild>
       ))}

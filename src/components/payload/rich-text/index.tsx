@@ -1,20 +1,25 @@
-import { MediaBlock } from "@/blocks/media-block/component";
 import type {
   DefaultNodeTypes,
+  DefaultTypedEditorState,
   SerializedBlockNode,
   SerializedLinkNode,
-  DefaultTypedEditorState,
 } from "@payloadcms/richtext-lexical";
 import {
   RichText as ConvertRichText,
   type JSXConvertersFunction,
   LinkJSXConverter,
 } from "@payloadcms/richtext-lexical/react";
-
+import { GalleryBlock } from "@/blocks/gallery-block/component";
+import { MediaBlock } from "@/blocks/media-block/component";
 import { cn } from "@/lib/utils";
-import type { MediaBlock as MediaBlockProps } from "@/payload-types";
+import type {
+  GalleryBlock as GalleryBlockProps,
+  MediaBlock as MediaBlockProps,
+} from "@/payload-types";
 
-type NodeTypes = DefaultNodeTypes | SerializedBlockNode<MediaBlockProps>;
+type NodeTypes =
+  | DefaultNodeTypes
+  | SerializedBlockNode<MediaBlockProps | GalleryBlockProps>;
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { value, relationTo } = linkNode.fields.doc!;
@@ -40,6 +45,9 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
         enableGutter={false}
         disableInnerContainer={true}
       />
+    ),
+    galleryBlock: ({ node }) => (
+      <GalleryBlock className='col-start-1 col-span-3' {...node.fields} />
     ),
   },
 });

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Container } from "@/components/layout/elements";
 import { InView } from "@/components/motion-primitives/in-view";
 import { H2, Muted } from "@/components/ui/typography";
@@ -29,7 +30,19 @@ export const ThemeColors = () => {
   return (
     <Container asChild>
       <InView {...inViewOptions()} as='section'>
-        <H2 className='mb-8'>Theme Colors</H2>
+        <H2>Theme Colors</H2>
+        <Muted className='mt-4 mb-8'>
+          Visit{" "}
+          <Link
+            href='https://tweakcn.com/editor/theme'
+            className='underline'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            TweakCN
+          </Link>{" "}
+          to edit the theme colors.
+        </Muted>
         <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4'>
           {colors.map((color) => (
             <ColorPalette key={color} color={color} />

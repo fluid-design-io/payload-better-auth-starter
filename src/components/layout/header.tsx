@@ -1,3 +1,6 @@
+import { UserButton } from "@daveyplate/better-auth-ui";
+import { AppWindowMac } from "lucide-react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -12,17 +15,14 @@ import {
 } from "@/components/ui/popover";
 import { CLASSNAMES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import { UserButton } from "@daveyplate/better-auth-ui";
-import { AppWindowMac } from "lucide-react";
-import Link from "next/link";
 import { AcmeLogoIcon } from "../icons";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
   { href: "/", label: "Home", active: true },
-  { href: "#", label: "Features" },
-  { href: "#", label: "Pricing" },
-  { href: "#", label: "About" },
+  { href: "/features", label: "Features" },
+  { href: "#pricing", label: "Pricing" },
+  { href: "#about", label: "About" },
   { href: "/blog", label: "Blog" },
 ];
 
@@ -57,6 +57,7 @@ export default function Header() {
                   strokeLinejoin='round'
                   xmlns='http://www.w3.org/2000/svg'
                 >
+                  <title>Menu</title>
                   <path
                     d='M4 12L20 12'
                     className='origin-center -translate-y-[7px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-x-0 group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[315deg]'
@@ -76,7 +77,10 @@ export default function Header() {
               <NavigationMenu className='max-w-none *:w-full'>
                 <NavigationMenuList className='flex-col items-start gap-0 md:gap-2'>
                   {navigationLinks.map((link, index) => (
-                    <NavigationMenuItem key={index} className='w-full'>
+                    <NavigationMenuItem
+                      key={`mobile-nav-${link.href}`}
+                      className='w-full'
+                    >
                       <NavigationMenuLink
                         className='py-1.5'
                         active={link.active}
@@ -98,8 +102,8 @@ export default function Header() {
             {/* Navigation menu */}
             <NavigationMenu className='max-md:hidden'>
               <NavigationMenuList className='gap-2'>
-                {navigationLinks.map((link, index) => (
-                  <NavigationMenuItem key={index}>
+                {navigationLinks.map((link) => (
+                  <NavigationMenuItem key={`desktop-nav-${link.href}`}>
                     <NavigationMenuLink
                       active={link.active}
                       className='text-muted-foreground hover:text-primary py-1.5 font-medium'

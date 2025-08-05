@@ -1,6 +1,9 @@
 import type { Metadata } from "next/types";
 
 import { BlogHeader } from "@/app/(frontend)/(public)/blog/blog-header";
+import { Container } from "@/components/layout/elements";
+import { Main } from "@/components/layout/main";
+import { AnimatedGroup } from "@/components/motion-primitives/animated-group";
 import { CollectionCard } from "@/components/payload/collection-card";
 import { PageRange } from "@/components/payload/page-range";
 import { Muted } from "@/components/ui/typography";
@@ -36,24 +39,28 @@ export default async function Page() {
           totalDocs={blogPosts.totalDocs}
         />
       </BlogHeader>
-      <div className='my-24 container mx-auto'>
-        <div className='grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-12 gap-y-4 gap-x-4 lg:gap-y-8 lg:gap-x-8 xl:gap-x-8'>
-          {blogPosts.docs.map((result, index) => (
-            <div className='col-span-4' key={`${result.slug}-${index}`}>
+      <Main className='my-24'>
+        <Container className='w-full' asChild>
+          <AnimatedGroup
+            className='grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-12 gap-y-4 gap-x-4 lg:gap-y-8 lg:gap-x-8 xl:gap-x-8'
+            childrenClassName='col-span-4'
+          >
+            {blogPosts.docs.map((result, index) => (
               <CollectionCard
+                key={`${result.slug}-${index}`}
                 className='h-full'
                 doc={result}
                 relationTo='blog'
               />
-            </div>
-          ))}
-          {blogPosts.docs.length === 0 && (
-            <div className='col-span-full'>
-              <Muted>No blog posts found</Muted>
-            </div>
-          )}
-        </div>
-      </div>
+            ))}
+            {blogPosts.docs.length === 0 && (
+              <div className='col-span-full'>
+                <Muted>No blog posts found</Muted>
+              </div>
+            )}
+          </AnimatedGroup>
+        </Container>
+      </Main>
 
       <div className='container mx-auto'>
         {blogPosts.totalPages > 1 && blogPosts.page && (

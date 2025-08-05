@@ -302,7 +302,7 @@ const FullWidthImage = ({
   showCaption = false,
 }: FullWidthImageProps) => {
   return (
-    <Container variant='muted' className='px-0 md:px-8 lg:px-12'>
+    <Container variant='muted' className='px-0 md:px-8 lg:px-0'>
       <InView
         {...inViewOptions("0px 0px -35% 0px")}
         className='max-w-[120rem] mx-auto'

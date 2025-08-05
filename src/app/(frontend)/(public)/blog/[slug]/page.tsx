@@ -1,6 +1,6 @@
-import { RelatedBlogPosts } from "@/blocks/related-blog-posts";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { RelatedBlogPosts } from "@/blocks/related-blog-posts";
 
 import { BlogHero } from "@/components/payload/blog-hero";
 import { LivePreviewListener } from "@/components/payload/live-preview-listener";

@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { Container } from "@/components/layout/elements";
-
+import { InView } from "@/components/motion-primitives/in-view";
 import { Button } from "@/components/ui/button";
 import Highlightborder from "@/components/ui/highlight-border";
 import { H1 } from "@/components/ui/typography";
+import { inViewOptions } from "@/lib/animation";
 import { CLASSNAMES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
@@ -22,7 +23,8 @@ export const BlogHeader = ({
   children?: React.ReactNode;
 }) => {
   return (
-    <div
+    <InView
+      {...inViewOptions()}
       className={cn(
         "-mt-16 border-b pb-8 text-lg text-foreground sm:pb-12 sm:text-2xl md:text-3xl",
         "relative bg-background",
@@ -46,6 +48,6 @@ export const BlogHeader = ({
         </Container>
       </div>
       <Highlightborder position='bottom' />
-    </div>
+    </InView>
   );
 };

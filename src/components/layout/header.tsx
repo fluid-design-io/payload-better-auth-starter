@@ -13,9 +13,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { CLASSNAMES } from "@/lib/constants";
-import { cn } from "@/lib/utils";
 import { AcmeLogoIcon } from "../icons";
+import { Container } from "./elements";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
@@ -29,12 +28,7 @@ const navigationLinks = [
 export default function Header() {
   return (
     <header className='border-b px-4 md:px-6 sticky top-0 z-50 bg-background/90 backdrop-blur-sm'>
-      <div
-        className={cn(
-          "flex h-16 items-center justify-between gap-4",
-          CLASSNAMES.containerClassName
-        )}
-      >
+      <Container className='flex h-16 items-center justify-between gap-4'>
         {/* Left side */}
         <div className='flex items-center gap-2'>
           {/* Mobile menu trigger */}
@@ -129,7 +123,7 @@ export default function Header() {
             },
           ]}
         />
-      </div>
+      </Container>
     </header>
   );
 }

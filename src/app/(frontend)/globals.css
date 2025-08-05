@@ -7,6 +7,8 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* START TWEAKCN THEME */
+
 :root {
   --background: oklch(0.9383 0.0042 236.4993);
   --foreground: oklch(0.3211 0 0);
@@ -165,6 +167,8 @@
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
 }
+
+/* END TWEAKCN THEME */
 
 @layer base {
   * {

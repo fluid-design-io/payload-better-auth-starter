@@ -1,5 +1,5 @@
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import type { GlobalConfig } from "payload";
+import { defaultLexical } from "@/fields/default-lexical";
 import { revalidateGlobal } from "../hooks/revalidate-global";
 
 export const GlobalPrivacy: GlobalConfig<"global-privacy"> = {
@@ -12,12 +12,7 @@ export const GlobalPrivacy: GlobalConfig<"global-privacy"> = {
       name: "content",
       type: "richText",
       required: true,
-      editor: lexicalEditor({
-        features: ({ rootFeatures, defaultFeatures }) => [
-          ...rootFeatures,
-          ...defaultFeatures,
-        ],
-      }),
+      editor: defaultLexical,
     },
   ],
   hooks: {

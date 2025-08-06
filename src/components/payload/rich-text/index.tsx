@@ -2,6 +2,7 @@ import type {
   DefaultNodeTypes,
   DefaultTypedEditorState,
   SerializedBlockNode,
+  SerializedInlineBlockNode,
   SerializedLinkNode,
 } from "@payloadcms/richtext-lexical";
 import {
@@ -9,17 +10,18 @@ import {
   type JSXConvertersFunction,
   LinkJSXConverter,
 } from "@payloadcms/richtext-lexical/react";
-import { GalleryBlock } from "@/blocks/gallery-block/component";
+import { CopyRightInlineBlock } from "@/blocks/copyright-inline-block/component";
 import { MediaBlock } from "@/blocks/media-block/component";
 import { cn } from "@/lib/utils";
 import type {
-  GalleryBlock as GalleryBlockProps,
+  CopyRightInlineBlock as CopyRightInlineBlockProps,
   MediaBlock as MediaBlockProps,
 } from "@/payload-types";
 
 type NodeTypes =
   | DefaultNodeTypes
-  | SerializedBlockNode<MediaBlockProps | GalleryBlockProps>;
+  | SerializedBlockNode<MediaBlockProps>
+  | SerializedInlineBlockNode<CopyRightInlineBlockProps>;
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { value, relationTo } = linkNode.fields.doc!;
@@ -46,8 +48,10 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
         disableInnerContainer={true}
       />
     ),
-    galleryBlock: ({ node }) => (
-      <GalleryBlock className='col-start-1 col-span-3' {...node.fields} />
+  },
+  inlineBlocks: {
+    copyRightInlineBlock: ({ node }) => (
+      <CopyRightInlineBlock {...node.fields} />
     ),
   },
 });

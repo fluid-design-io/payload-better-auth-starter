@@ -1,7 +1,6 @@
 import type { GlobalConfig } from "payload";
-
+import { defaultLexical } from "@/fields/default-lexical";
 import { link } from "@/fields/link";
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { revalidateGlobal } from "../hooks/revalidate-global";
 
 export const GlobalFooter: GlobalConfig<"global-footer"> = {
@@ -48,12 +47,7 @@ export const GlobalFooter: GlobalConfig<"global-footer"> = {
       name: "footerText",
       type: "richText",
       required: true,
-      editor: lexicalEditor({
-        features: ({ defaultFeatures, rootFeatures }) => [
-          ...defaultFeatures,
-          ...rootFeatures,
-        ],
-      }),
+      editor: defaultLexical,
       admin: {
         position: "sidebar",
         description:

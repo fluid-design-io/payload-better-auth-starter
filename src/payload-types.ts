@@ -1249,6 +1249,28 @@ export interface MediaBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CopyRightInlineBlock".
+ */
+export interface CopyRightInlineBlock {
+  /**
+   * The year to start the copyright from. e.g. 2021
+   */
+  fromYear?: number | null;
+  /**
+   * Whether to use the current year or a fixed year
+   */
+  toYearType?: ('current' | 'fixed') | null;
+  toYearFixed?: number | null;
+  /**
+   * Text to display after the years. e.g. 'CardWare. All rights reserved.'
+   */
+  text?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'copyRightInlineBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "GalleryBlock".
  */
 export interface GalleryBlock {

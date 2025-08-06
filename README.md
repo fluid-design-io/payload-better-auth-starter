@@ -19,6 +19,12 @@ A production-ready PayloadCMS starter with [payload-auth](https://github.com/pay
 
 https://github.com/user-attachments/assets/04009ca4-a212-44da-b6c8-bd26d5dc713e
 
+## Custom Blocks
+
+- **Content Block**: Allows you to create a content section with multiple columns that are mobile responsive.
+- **Media Block**: Payload's default media block.
+- **Gallery Block**: A grid of images that utilizes react-medium-image-zoom.
+- **CopyRight Inline Block**: An inline block that adds `© Copyright ${fromYear}~${currentYear}...` so you don't have to manually change it every year.
 
 ## Screenshots
 
@@ -29,7 +35,6 @@ https://github.com/user-attachments/assets/04009ca4-a212-44da-b6c8-bd26d5dc713e
 <img width="2966" height="1124" alt="Admin Panel" src="https://github.com/user-attachments/assets/0a47b26c-6772-4865-82e5-0ac8bb25b5d0" />
 
 <img width="300" height="auto" alt="Email OTP SignIn" src="https://github.com/user-attachments/assets/f19599f5-c1b1-48d1-8c8d-d1f5b320a4e6" />
-
 
 ## 🚀 Quick Start
 

@@ -28,13 +28,16 @@ https://github.com/user-attachments/assets/04009ca4-a212-44da-b6c8-bd26d5dc713e
 
 ## Screenshots
 
-<img width="2932" height="4753" alt="Home Page" src="https://github.com/user-attachments/assets/56da510d-0549-4adf-97c1-9b9577399182" />
+**Main Pages**
 
-<img width="2934" height="2031" alt="Blog Page" src="https://github.com/user-attachments/assets/9c48f342-10d3-4727-b08a-97b0cef45b0d" />
+<img width="1907" height="2120" alt="Main Pages" src="https://github.com/user-attachments/assets/90f32416-607d-4db1-bbde-f7af7f12ad3a" />
 
-<img width="2966" height="1124" alt="Admin Panel" src="https://github.com/user-attachments/assets/0a47b26c-6772-4865-82e5-0ac8bb25b5d0" />
+**Account Settings**
 
-<img width="300" height="auto" alt="Email OTP SignIn" src="https://github.com/user-attachments/assets/f19599f5-c1b1-48d1-8c8d-d1f5b320a4e6" />
+<img width="1445" height="2283" alt="Account Settings" src="https://github.com/user-attachments/assets/b1a4f138-c6b7-4914-b6e0-95ca8df4bf8b" />
+
+**Email UI**
+<img width="1303" height="1513" alt="Email UIs" src="https://github.com/user-attachments/assets/29219ab1-d76f-4792-9af7-6196f6930a76" />
 
 ## 🚀 Quick Start
 

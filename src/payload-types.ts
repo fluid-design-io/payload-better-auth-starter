@@ -13,53 +13,53 @@
  * via the `definition` "supportedTimezones".
  */
 export type SupportedTimezones =
-  | "Pacific/Midway"
-  | "Pacific/Niue"
-  | "Pacific/Honolulu"
-  | "Pacific/Rarotonga"
-  | "America/Anchorage"
-  | "Pacific/Gambier"
-  | "America/Los_Angeles"
-  | "America/Tijuana"
-  | "America/Denver"
-  | "America/Phoenix"
-  | "America/Chicago"
-  | "America/Guatemala"
-  | "America/New_York"
-  | "America/Bogota"
-  | "America/Caracas"
-  | "America/Santiago"
-  | "America/Buenos_Aires"
-  | "America/Sao_Paulo"
-  | "Atlantic/South_Georgia"
-  | "Atlantic/Azores"
-  | "Atlantic/Cape_Verde"
-  | "Europe/London"
-  | "Europe/Berlin"
-  | "Africa/Lagos"
-  | "Europe/Athens"
-  | "Africa/Cairo"
-  | "Europe/Moscow"
-  | "Asia/Riyadh"
-  | "Asia/Dubai"
-  | "Asia/Baku"
-  | "Asia/Karachi"
-  | "Asia/Tashkent"
-  | "Asia/Calcutta"
-  | "Asia/Dhaka"
-  | "Asia/Almaty"
-  | "Asia/Jakarta"
-  | "Asia/Bangkok"
-  | "Asia/Shanghai"
-  | "Asia/Singapore"
-  | "Asia/Tokyo"
-  | "Asia/Seoul"
-  | "Australia/Brisbane"
-  | "Australia/Sydney"
-  | "Pacific/Guam"
-  | "Pacific/Noumea"
-  | "Pacific/Auckland"
-  | "Pacific/Fiji";
+  | 'Pacific/Midway'
+  | 'Pacific/Niue'
+  | 'Pacific/Honolulu'
+  | 'Pacific/Rarotonga'
+  | 'America/Anchorage'
+  | 'Pacific/Gambier'
+  | 'America/Los_Angeles'
+  | 'America/Tijuana'
+  | 'America/Denver'
+  | 'America/Phoenix'
+  | 'America/Chicago'
+  | 'America/Guatemala'
+  | 'America/New_York'
+  | 'America/Bogota'
+  | 'America/Caracas'
+  | 'America/Santiago'
+  | 'America/Buenos_Aires'
+  | 'America/Sao_Paulo'
+  | 'Atlantic/South_Georgia'
+  | 'Atlantic/Azores'
+  | 'Atlantic/Cape_Verde'
+  | 'Europe/London'
+  | 'Europe/Berlin'
+  | 'Africa/Lagos'
+  | 'Europe/Athens'
+  | 'Africa/Cairo'
+  | 'Europe/Moscow'
+  | 'Asia/Riyadh'
+  | 'Asia/Dubai'
+  | 'Asia/Baku'
+  | 'Asia/Karachi'
+  | 'Asia/Tashkent'
+  | 'Asia/Calcutta'
+  | 'Asia/Dhaka'
+  | 'Asia/Almaty'
+  | 'Asia/Jakarta'
+  | 'Asia/Bangkok'
+  | 'Asia/Shanghai'
+  | 'Asia/Singapore'
+  | 'Asia/Tokyo'
+  | 'Asia/Seoul'
+  | 'Australia/Brisbane'
+  | 'Australia/Sydney'
+  | 'Pacific/Guam'
+  | 'Pacific/Noumea'
+  | 'Pacific/Auckland'
+  | 'Pacific/Fiji';
 
 export interface Config {
   auth: {
@@ -72,22 +72,19 @@ export interface Config {
     accounts: Account;
     verifications: Verification;
     passkeys: Passkey;
-    "admin-invitations": AdminInvitation;
+    'admin-invitations': AdminInvitation;
     blog: Blog;
-    "payload-uploads": PayloadUpload;
-    "private-uploads": PrivateUpload;
-    "payload-jobs": PayloadJob;
-    "payload-folders": FolderInterface;
-    "payload-locked-documents": PayloadLockedDocument;
-    "payload-preferences": PayloadPreference;
-    "payload-migrations": PayloadMigration;
+    'payload-uploads': PayloadUpload;
+    'private-uploads': PrivateUpload;
+    'payload-jobs': PayloadJob;
+    'payload-folders': FolderInterface;
+    'payload-locked-documents': PayloadLockedDocument;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
   };
   collectionsJoins: {
-    "payload-folders": {
-      documentsAndFolders:
-        | "payload-folders"
-        | "payload-uploads"
-        | "private-uploads";
+    'payload-folders': {
+      documentsAndFolders: 'payload-folders' | 'payload-uploads' | 'private-uploads';
     };
   };
   collectionsSelect: {
@@ -96,40 +93,32 @@ export interface Config {
     accounts: AccountsSelect<false> | AccountsSelect<true>;
     verifications: VerificationsSelect<false> | VerificationsSelect<true>;
     passkeys: PasskeysSelect<false> | PasskeysSelect<true>;
-    "admin-invitations":
-      | AdminInvitationsSelect<false>
-      | AdminInvitationsSelect<true>;
+    'admin-invitations': AdminInvitationsSelect<false> | AdminInvitationsSelect<true>;
     blog: BlogSelect<false> | BlogSelect<true>;
-    "payload-uploads": PayloadUploadsSelect<false> | PayloadUploadsSelect<true>;
-    "private-uploads": PrivateUploadsSelect<false> | PrivateUploadsSelect<true>;
-    "payload-jobs": PayloadJobsSelect<false> | PayloadJobsSelect<true>;
-    "payload-folders": PayloadFoldersSelect<false> | PayloadFoldersSelect<true>;
-    "payload-locked-documents":
-      | PayloadLockedDocumentsSelect<false>
-      | PayloadLockedDocumentsSelect<true>;
-    "payload-preferences":
-      | PayloadPreferencesSelect<false>
-      | PayloadPreferencesSelect<true>;
-    "payload-migrations":
-      | PayloadMigrationsSelect<false>
-      | PayloadMigrationsSelect<true>;
+    'payload-uploads': PayloadUploadsSelect<false> | PayloadUploadsSelect<true>;
+    'private-uploads': PrivateUploadsSelect<false> | PrivateUploadsSelect<true>;
+    'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
+    'payload-folders': PayloadFoldersSelect<false> | PayloadFoldersSelect<true>;
+    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
+    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
+    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
     defaultIDType: string;
   };
   globals: {
-    "global-footer": GlobalFooter;
-    "global-terms": GlobalTerm;
-    "global-privacy": GlobalPrivacy;
+    'global-footer': GlobalFooter;
+    'global-terms': GlobalTerm;
+    'global-privacy': GlobalPrivacy;
   };
   globalsSelect: {
-    "global-footer": GlobalFooterSelect<false> | GlobalFooterSelect<true>;
-    "global-terms": GlobalTermsSelect<false> | GlobalTermsSelect<true>;
-    "global-privacy": GlobalPrivacySelect<false> | GlobalPrivacySelect<true>;
+    'global-footer': GlobalFooterSelect<false> | GlobalFooterSelect<true>;
+    'global-terms': GlobalTermsSelect<false> | GlobalTermsSelect<true>;
+    'global-privacy': GlobalPrivacySelect<false> | GlobalPrivacySelect<true>;
   };
   locale: null;
   user: User & {
-    collection: "users";
+    collection: 'users';
   };
   jobs: {
     tasks: {
@@ -219,7 +208,7 @@ export interface User {
   /**
    * The role of the user
    */
-  role?: ("admin" | "user") | null;
+  role?: ('admin' | 'user') | null;
   /**
    * Whether the user is banned from the platform
    */
@@ -393,7 +382,7 @@ export interface Passkey {
  */
 export interface AdminInvitation {
   id: string;
-  role: "admin" | "user";
+  role: 'admin' | 'user';
   token: string;
   url?: string | null;
   updatedAt: string;
@@ -415,8 +404,8 @@ export interface Blog {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -443,7 +432,7 @@ export interface Blog {
   slugLock?: boolean | null;
   updatedAt: string;
   createdAt: string;
-  _status?: ("draft" | "published") | null;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * All media uploaded from Payload Admin
@@ -462,8 +451,8 @@ export interface PayloadUpload {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -552,22 +541,22 @@ export interface FolderInterface {
   documentsAndFolders?: {
     docs?: (
       | {
-          relationTo?: "payload-folders";
+          relationTo?: 'payload-folders';
           value: string | FolderInterface;
         }
       | {
-          relationTo?: "payload-uploads";
+          relationTo?: 'payload-uploads';
           value: string | PayloadUpload;
         }
       | {
-          relationTo?: "private-uploads";
+          relationTo?: 'private-uploads';
           value: string | PrivateUpload;
         }
     )[];
     hasNextPage?: boolean;
     totalDocs?: number;
   };
-  folderType?: ("payload-uploads" | "private-uploads")[] | null;
+  folderType?: ('payload-uploads' | 'private-uploads')[] | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -650,7 +639,7 @@ export interface PayloadJob {
     | {
         executedAt: string;
         completedAt: string;
-        taskSlug: "inline" | "schedulePublish";
+        taskSlug: 'inline' | 'schedulePublish';
         taskID: string;
         input?:
           | {
@@ -670,7 +659,7 @@ export interface PayloadJob {
           | number
           | boolean
           | null;
-        state: "failed" | "succeeded";
+        state: 'failed' | 'succeeded';
         error?:
           | {
               [k: string]: unknown;
@@ -683,7 +672,7 @@ export interface PayloadJob {
         id?: string | null;
       }[]
     | null;
-  taskSlug?: ("inline" | "schedulePublish") | null;
+  taskSlug?: ('inline' | 'schedulePublish') | null;
   queue?: string | null;
   waitUntil?: string | null;
   processing?: boolean | null;
@@ -698,52 +687,52 @@ export interface PayloadLockedDocument {
   id: string;
   document?:
     | ({
-        relationTo: "users";
+        relationTo: 'users';
         value: string | User;
       } | null)
     | ({
-        relationTo: "sessions";
+        relationTo: 'sessions';
         value: string | Session;
       } | null)
     | ({
-        relationTo: "accounts";
+        relationTo: 'accounts';
         value: string | Account;
       } | null)
     | ({
-        relationTo: "verifications";
+        relationTo: 'verifications';
         value: string | Verification;
       } | null)
     | ({
-        relationTo: "passkeys";
+        relationTo: 'passkeys';
         value: string | Passkey;
       } | null)
     | ({
-        relationTo: "admin-invitations";
+        relationTo: 'admin-invitations';
         value: string | AdminInvitation;
       } | null)
     | ({
-        relationTo: "blog";
+        relationTo: 'blog';
         value: string | Blog;
       } | null)
     | ({
-        relationTo: "payload-uploads";
+        relationTo: 'payload-uploads';
         value: string | PayloadUpload;
       } | null)
     | ({
-        relationTo: "private-uploads";
+        relationTo: 'private-uploads';
         value: string | PrivateUpload;
       } | null)
     | ({
-        relationTo: "payload-jobs";
+        relationTo: 'payload-jobs';
         value: string | PayloadJob;
       } | null)
     | ({
-        relationTo: "payload-folders";
+        relationTo: 'payload-folders';
         value: string | FolderInterface;
       } | null);
   globalSlug?: string | null;
   user: {
-    relationTo: "users";
+    relationTo: 'users';
     value: string | User;
   };
   updatedAt: string;
@@ -756,7 +745,7 @@ export interface PayloadLockedDocument {
 export interface PayloadPreference {
   id: string;
   user: {
-    relationTo: "users";
+    relationTo: 'users';
     value: string | User;
   };
   key?: string | null;
@@ -1106,10 +1095,10 @@ export interface GlobalFooter {
   navItems?:
     | {
         link: {
-          type?: ("custom" | "reference") | null;
+          type?: ('custom' | 'reference') | null;
           newTab?: boolean | null;
           reference?: {
-            relationTo: "blog";
+            relationTo: 'blog';
             value: string | Blog;
           } | null;
           url?: string | null;
@@ -1129,8 +1118,8 @@ export interface GlobalFooter {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -1153,8 +1142,8 @@ export interface GlobalTerm {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -1177,8 +1166,8 @@ export interface GlobalPrivacy {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -1237,10 +1226,10 @@ export interface GlobalPrivacySelect<T extends boolean = true> {
  */
 export interface TaskSchedulePublish {
   input: {
-    type?: ("publish" | "unpublish") | null;
+    type?: ('publish' | 'unpublish') | null;
     locale?: string | null;
     doc?: {
-      relationTo: "blog";
+      relationTo: 'blog';
       value: string | Blog;
     } | null;
     global?: string | null;
@@ -1254,9 +1243,13 @@ export interface TaskSchedulePublish {
  */
 export interface MediaBlock {
   media: string | PayloadUpload;
+  /**
+   * When enabled, the image will be zoomed to full screen when clicked.
+   */
+  zoom?: boolean | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: "mediaBlock";
+  blockType: 'mediaBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1270,7 +1263,7 @@ export interface CopyRightInlineBlock {
   /**
    * Whether to use the current year or a fixed year
    */
-  toYearType?: ("current" | "fixed") | null;
+  toYearType?: ('current' | 'fixed') | null;
   toYearFixed?: number | null;
   /**
    * Text to display after the years. e.g. 'Acme. All rights reserved.'
@@ -1278,7 +1271,7 @@ export interface CopyRightInlineBlock {
   text?: string | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: "copyRightInlineBlock";
+  blockType: 'copyRightInlineBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1291,7 +1284,7 @@ export interface GalleryBlock {
   images: (string | PayloadUpload)[];
   id?: string | null;
   blockName?: string | null;
-  blockType: "galleryBlock";
+  blockType: 'galleryBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1300,7 +1293,7 @@ export interface GalleryBlock {
 export interface ContentBlock {
   columns?:
     | {
-        size?: ("oneThird" | "half" | "twoThirds" | "full") | null;
+        size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
         richText?: {
           root: {
             type: string;
@@ -1309,15 +1302,8 @@ export interface ContentBlock {
               version: number;
               [k: string]: unknown;
             }[];
-            direction: ("ltr" | "rtl") | null;
-            format:
-              | "left"
-              | "start"
-              | "center"
-              | "right"
-              | "end"
-              | "justify"
-              | "";
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
             indent: number;
             version: number;
           };
@@ -1328,7 +1314,7 @@ export interface ContentBlock {
     | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: "contentBlock";
+  blockType: 'contentBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1338,6 +1324,7 @@ export interface Auth {
   [k: string]: unknown;
 }
 
-declare module "payload" {
+
+declare module 'payload' {
   export interface GeneratedTypes extends Config {}
 }

@@ -11,16 +11,18 @@ import {
   LinkJSXConverter,
 } from "@payloadcms/richtext-lexical/react";
 import { CopyRightInlineBlock } from "@/blocks/copyright-inline-block/component";
+import { GalleryBlock } from "@/blocks/gallery-block/component";
 import { MediaBlock } from "@/blocks/media-block/component";
 import { cn } from "@/lib/utils";
 import type {
   CopyRightInlineBlock as CopyRightInlineBlockProps,
+  GalleryBlock as GalleryBlockProps,
   MediaBlock as MediaBlockProps,
 } from "@/payload-types";
 
 type NodeTypes =
   | DefaultNodeTypes
-  | SerializedBlockNode<MediaBlockProps>
+  | SerializedBlockNode<MediaBlockProps | GalleryBlockProps>
   | SerializedInlineBlockNode<CopyRightInlineBlockProps>;
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
@@ -48,6 +50,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({
         disableInnerContainer={true}
       />
     ),
+    galleryBlock: ({ node }) => <GalleryBlock {...node.fields} />,
   },
   inlineBlocks: {
     copyRightInlineBlock: ({ node }) => (

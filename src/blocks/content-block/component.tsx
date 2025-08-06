@@ -1,4 +1,4 @@
-import React from "react";
+import type React from "react";
 
 import RichText from "@/components/payload/rich-text";
 import { cn } from "@/lib/utils";
@@ -30,7 +30,7 @@ export const ContentBlock: React.FC<ContentBlockProps> = (props) => {
                     "md:col-span-2": size !== "full",
                   }
                 )}
-                key={index}
+                key={col.id}
               >
                 {richText && <RichText data={richText} enableGutter={false} />}
               </div>

@@ -37,6 +37,7 @@ const columnFields: Field[] = [
 export const ContentBlock: Block = {
   slug: "contentBlock",
   interfaceName: "ContentBlock",
+  imageURL: "/images/blocks/content-block.png",
   fields: [
     {
       name: "columns",

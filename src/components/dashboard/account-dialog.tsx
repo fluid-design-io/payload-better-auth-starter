@@ -1,10 +1,9 @@
 "use client";
 
-import { useHash } from "@/hooks/use-hash";
-import { useEffect, useState } from "react";
-
 import { Loader2 } from "lucide-react";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
+import { useHash } from "@/hooks/use-hash";
 import Modal from "../ui/modal";
 
 const AccountSettings = dynamic(
@@ -19,6 +18,11 @@ const AccountSettings = dynamic(
   }
 );
 
+/**
+ * A custom account dialog similar to ChatGPT's account settings.
+ *
+ * Uses hash navigation to control the open state.
+ */
 export function AccountDialog() {
   const [open, setOpen] = useState(false);
   const { hash, removeHash } = useHash();

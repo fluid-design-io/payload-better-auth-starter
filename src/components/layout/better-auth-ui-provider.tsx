@@ -19,9 +19,7 @@ export function BetterAuthUIProvider({
       authClient={authClient}
       navigate={router.push}
       replace={router.replace}
-      onSessionChange={() => {
-        router.refresh();
-      }}
+      onSessionChange={router.refresh}
       viewPaths={{
         SETTINGS: `#account/Account`,
       }}
@@ -32,12 +30,14 @@ export function BetterAuthUIProvider({
       settingsURL={`${pathname}#account/Account`}
       passkey
       emailOTP
-      apiKey={false}
       basePath='/'
       signUp={{
         fields: ["name"],
       }}
       Link={Link}
+      deleteUser={{
+        verification: true,
+      }}
     >
       {children}
       <Suspense fallback={null}>

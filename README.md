@@ -21,10 +21,10 @@ https://github.com/user-attachments/assets/04009ca4-a212-44da-b6c8-bd26d5dc713e
 
 ## Custom Blocks
 
-- **Content Block**: Allows you to create a content section with multiple columns that are mobile responsive.
-- **Media Block**: Payload's default media block.
-- **Gallery Block**: A grid of images that utilizes react-medium-image-zoom.
-- **CopyRight Inline Block**: An inline block that adds `© Copyright ${fromYear}~${currentYear}...` so you don't have to manually change it every year.
+- **[Content Block](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/blocks/content-block/config.ts)**: Allows you to create a content section with multiple columns that are mobile responsive.
+- **[Media Block](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/blocks/media-block/config.ts)**: Refined version of Payload's default media block (added zoom functionality).
+- **[Gallery Block](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/blocks/gallery-block/config.ts)**: A grid of zoomable images.
+- **[CopyRight Inline Block](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/blocks/copyright-inline-block/config.ts)**: An inline block that adds `© Copyright ${fromYear}~${currentYear}...` so you don't have to manually change it every year.
 
 ## Screenshots
 

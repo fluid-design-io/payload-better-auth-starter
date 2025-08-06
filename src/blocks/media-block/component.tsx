@@ -1,12 +1,9 @@
 import type { StaticImageData } from "next/image";
-
+import type React from "react";
+import { Media } from "@/components/payload/media";
 import RichText from "@/components/payload/rich-text";
 import { cn } from "@/lib/utils";
-import type React from "react";
-
 import type { MediaBlock as MediaBlockProps } from "@/payload-types";
-
-import { Media } from "../../components/payload/media";
 
 type Props = MediaBlockProps & {
   breakout?: boolean;
@@ -16,6 +13,7 @@ type Props = MediaBlockProps & {
   imgClassName?: string;
   staticImage?: StaticImageData;
   disableInnerContainer?: boolean;
+  zoom?: boolean;
 };
 
 export const MediaBlock: React.FC<Props> = (props) => {
@@ -27,9 +25,10 @@ export const MediaBlock: React.FC<Props> = (props) => {
     media,
     staticImage,
     disableInnerContainer,
+    zoom = true,
   } = props;
 
-  let caption;
+  let caption: any;
   if (media && typeof media === "object") caption = media.caption;
 
   return (
@@ -50,6 +49,7 @@ export const MediaBlock: React.FC<Props> = (props) => {
           )}
           resource={media}
           src={staticImage}
+          zoom={zoom}
         />
       )}
       {caption && (

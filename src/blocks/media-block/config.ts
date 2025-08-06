@@ -11,5 +11,15 @@ export const MediaBlock: Block = {
       relationTo: "payload-uploads",
       required: true,
     },
+    {
+      name: "zoom",
+      type: "checkbox",
+      label: "Enable Zoom",
+      defaultValue: false,
+      admin: {
+        description:
+          "When enabled, the image will be zoomed to full screen when clicked.",
+      },
+    },
   ],
 };

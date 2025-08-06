@@ -55,10 +55,10 @@ export const CopyRightInlineBlock: Block = {
       name: "text",
       type: "text",
       label: "Text",
-      defaultValue: "CardWare. All rights reserved.",
+      defaultValue: "Acme. All rights reserved.",
       admin: {
         description:
-          "Text to display after the years. e.g. 'CardWare. All rights reserved.'",
+          "Text to display after the years. e.g. 'Acme. All rights reserved.'",
       },
     },
   ],

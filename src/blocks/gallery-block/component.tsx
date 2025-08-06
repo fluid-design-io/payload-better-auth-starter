@@ -4,6 +4,7 @@ import type { StaticImageData } from "next/image";
 import { Media } from "@/components/payload/media";
 import RichText from "@/components/payload/rich-text";
 import { useMediaQuery } from "@/hooks/use-media-query";
+import { IMAGE_SIZES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import type { GalleryBlock as GalleryBlockProps } from "@/payload-types";
 
@@ -81,13 +82,21 @@ export const GalleryBlock: React.FC<Props> = (props) => {
           <div key={`image-${typeof image === "object" ? image.id : image}`}>
             <Media
               imgClassName={cn(
-                "border border-border rounded-[0.8rem] aspect-square object-cover",
+                "border border-border rounded-md",
+                // You can make the gallery block aspect-square
+                // "aspect-square object-cover",
                 imgClassName
               )}
               resource={image}
               src={staticImage}
               alt={typeof image === "object" ? image.alt || "" : ""}
-              size={isMobile ? "100vw" : isTablet ? "50vw" : "33vw"}
+              size={
+                perRowDesktop === 1
+                  ? IMAGE_SIZES.full
+                  : perRowDesktop === 2 || perRowTablet === 2
+                    ? IMAGE_SIZES.mobileFullDesktopHalf
+                    : IMAGE_SIZES.mobileFullDesktopThird
+              }
               zoom={true}
             />
             {caption && (

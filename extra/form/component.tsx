@@ -3,14 +3,13 @@ import type {
   Form,
   FormFieldBlock,
 } from "@payloadcms/plugin-form-builder/types";
-
-import RichText from "@/components/payload/rich-text";
-import { Button } from "@/components/ui/button";
 import type { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 import { useRouter } from "next/navigation";
 import type React from "react";
 import { useCallback, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import RichText from "@/components/payload/rich-text";
+import { Button } from "@/components/ui/button";
 
 import { getClientSideURL } from "@/lib/payload";
 import { cn } from "@/lib/utils";
@@ -172,10 +171,7 @@ export const FormBlock: React.FC<
         />
       )}
       <div
-        className={cn(
-          "p-4 lg:p-6 border border-border rounded-[0.8rem]",
-          className
-        )}
+        className={cn("p-4 lg:p-6 border border-border rounded-md", className)}
       >
         <FormProvider {...formMethods}>
           {!isLoading && hasSubmitted && confirmationType === "message" && (

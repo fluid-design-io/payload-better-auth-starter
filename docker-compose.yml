@@ -25,8 +25,8 @@ services:
       - "9001:9000" # MinIO API
       - "9002:9001" # MinIO Console
     environment:
-      - MINIO_ROOT_USER=minioadmin
-      - MINIO_ROOT_PASSWORD=minioadmin
+      - MINIO_ROOT_USER=${S3_ACCESS_KEY_ID}
+      - MINIO_ROOT_PASSWORD=${S3_SECRET_ACCESS_KEY}
     volumes:
       - minio_data:/data
     command: server /data --console-address ":9001"
@@ -38,16 +38,16 @@ services:
     depends_on:
       - minio
     environment:
-      - MC_HOST_minio=http://minioadmin:minioadmin@minio:9000
+      - MC_HOST_minio=http://${S3_ACCESS_KEY_ID}:${S3_SECRET_ACCESS_KEY}@minio:9000
     command: >
       sh -c "
         apk add --no-cache curl &&
         curl -o /tmp/mc https://dl.min.io/client/mc/release/linux-amd64/mc &&
         chmod +x /tmp/mc &&
-        /tmp/mc alias set minio http://minio:9000 minioadmin minioadmin &&
-        /tmp/mc mb minio/acme-public || true &&
-        /tmp/mc mb minio/acme-private || true &&
-        /tmp/mc policy set public minio/acme-public &&
+        /tmp/mc alias set minio http://minio:9000 ${S3_ACCESS_KEY_ID} ${S3_SECRET_ACCESS_KEY} &&
+        /tmp/mc mb minio/${S3_BUCKET} || true &&
+        /tmp/mc mb minio/${S3_PRIVATE_BUCKET} || true &&
+        /tmp/mc policy set public minio/${S3_BUCKET} &&
         echo 'Buckets created successfully'
       "
     restart: "no"

@@ -174,10 +174,14 @@ export const FormBlock: React.FC<
         className={cn("p-4 lg:p-6 border border-border rounded-md", className)}
       >
         <FormProvider {...formMethods}>
-          {!isLoading && hasSubmitted && confirmationType === "message" && (
-            <RichText data={confirmationMessage} />
+          {!isLoading && hasSubmitted && (
+            <RichText data={confirmationMessage} enableProse={false} />
           )}
-          {isLoading && !hasSubmitted && <p>Loading, please wait...</p>}
+          {isLoading && !hasSubmitted && (
+            <div className='flex items-center justify-center gap-2'>
+              <p>Loading, please wait...</p>
+            </div>
+          )}
           {error && (
             <div>{`${error.status || "500"}: ${error.message || ""}`}</div>
           )}

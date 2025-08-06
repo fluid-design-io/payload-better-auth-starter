@@ -1,4 +1,4 @@
-<img width="1200" height="630" alt="og" src="https://github.com/user-attachments/assets/8cff9ffa-f8ef-482e-bb00-02d253f5e079" />
+![header](https://github.com/user-attachments/assets/8cff9ffa-f8ef-482e-bb00-02d253f5e079)
 
 > A production-ready PayloadCMS starter with [payload-auth](https://github.com/payload-auth/payload-auth), modern UI components, and full-stack development tools.
 

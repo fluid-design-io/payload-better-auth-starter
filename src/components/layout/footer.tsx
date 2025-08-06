@@ -54,7 +54,8 @@ export default async function Footer() {
           )}
           <RichText
             data={footerText}
-            className='mt-6 text-center leading-5 text-xs text-muted-foreground/60 md:text-left [&_a]:underline'
+            className='text-muted-foreground/60 mt-6 text-center text-xs leading-5 md:text-left [&_a]:underline'
+            enableProse={false}
           />
         </Container>
       </div>

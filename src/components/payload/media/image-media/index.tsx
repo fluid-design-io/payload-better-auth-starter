@@ -3,7 +3,6 @@ import NextImage from "next/image";
 import type React from "react";
 import { ImageZoom } from "@/components/core/image-zoom";
 import { getMediaUrl } from "@/lib/payload/get-media-url";
-import { cn } from "@/lib/utils";
 import type { Props as MediaProps } from "../types";
 
 const breakpoints = {
@@ -67,10 +66,10 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         .join(", ");
 
   const image = (
-    <picture className={cn(pictureClassName)}>
+    <picture className={pictureClassName}>
       <ImageComponent
         alt={alt || ""}
-        className={cn(imgClassName)}
+        className={imgClassName}
         fill={fill}
         height={!fill ? height : undefined}
         placeholder='blur'
@@ -86,7 +85,15 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
   );
 
   if (zoom) {
-    return <ImageZoom src={src} alt={alt || ""} sizes={sizes} />;
+    return (
+      <ImageZoom
+        src={src}
+        alt={alt || ""}
+        sizes={sizes}
+        width={!fill ? width : undefined}
+        height={!fill ? height : undefined}
+      />
+    );
   }
 
   return image;

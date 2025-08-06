@@ -1,4 +1,4 @@
-/* credits: https://github.com/fuma-nama/fumadocs/blob/dev/packages/ui/src/components/image-zoom.css */
+/* Thanks Fuma!!: https://github.com/fuma-nama/fumadocs/blob/dev/packages/ui/src/components/image-zoom.css */
 
 [data-rmiz] {
   display: block;
@@ -43,6 +43,7 @@
   transition: background-color 0.3s;
   position: absolute;
   inset: 0;
+  background-color: var(--background);
 }
 
 [data-rmiz-modal-overlay="hidden"] {

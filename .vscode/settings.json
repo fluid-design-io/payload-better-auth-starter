@@ -23,6 +23,11 @@
   "material-icon-theme.folders.associations": {
     "(payload)": "Next",
     "(frontend)": "Next",
-    "(frontend)/(public)": "Review"
+    "(frontend)/(public)": "Review",
+    "access": "Bloc",
+    "blocks": "Bloc",
+    "collections": "Bloc",
+    "fields": "Bloc",
+    "payload": "Bloc"
   }
 }

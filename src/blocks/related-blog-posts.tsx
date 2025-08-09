@@ -1,14 +1,15 @@
-import RichText from "@/components/payload/rich-text";
+import type { DefaultTypedEditorState } from "@payloadcms/richtext-lexical";
 import clsx from "clsx";
 import type React from "react";
 
 import { CollectionCard } from "@/components/payload/collection-card";
+import RichText from "@/components/payload/rich-text";
 import type { Blog } from "@/payload-types";
 
 export type RelatedBlogPostsProps = {
   className?: string;
   docs?: Blog[];
-  introContent?: any;
+  introContent?: DefaultTypedEditorState;
 };
 
 export const RelatedBlogPosts: React.FC<RelatedBlogPostsProps> = (props) => {
@@ -19,10 +20,10 @@ export const RelatedBlogPosts: React.FC<RelatedBlogPostsProps> = (props) => {
       {introContent && <RichText data={introContent} enableGutter={false} />}
 
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-stretch'>
-        {docs?.map((doc, index) => {
+        {docs?.map((doc) => {
           if (typeof doc === "string") return null;
 
-          return <CollectionCard key={index} doc={doc} relationTo='blog' />;
+          return <CollectionCard key={doc.id} doc={doc} relationTo='blog' />;
         })}
       </div>
     </div>

@@ -2,7 +2,8 @@ export const CLASSNAMES = {
   /** Padding for <Main> or layout components */
   layoutPadding: "px-4 md:px-8 min-[100rem]:px-0",
   /** Force content to have full width in <Main> */
-  fullMainWidth: "-mx-4 md:-mx-8 px-4 md:px-8 min-[100rem]:px-0",
+  fullMainWidth:
+    "-mx-4 md:-mx-8 px-4 md:px-8 min-[100rem]:px-0 min-[100rem]:mx-0",
   /** Spacing for sections */
   sectionSpacing: "space-y-12 sm:space-y-16 lg:space-y-28",
   /** Centered container */

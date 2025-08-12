@@ -362,32 +362,43 @@ type VideoMediaProps = {
 
 /**
  * Vimeo video media element with configurable playback options.
+ *
+ * @example
+ * <VideoMedia
+ *   src='https://player.vimeo.com/video/1057687318?h=<hash>&amp;app_id=<app_id>'
+ *   title='Video Title'
+ *   autoplay={false}
+ *   background={false}
+ * />
  */
 const VideoMedia = ({
   src,
   autoplay = true,
   loop = true,
   muted = true,
-  controls = false,
   background = true,
   autopause = true,
   title = "Video content",
 }: VideoMediaProps) => {
-  // Build query parameters based on props
-  const queryParams = new URLSearchParams();
-  if (autoplay) queryParams.append("autoplay", "1");
-  if (loop) queryParams.append("loop", "1");
-  if (muted) queryParams.append("muted", "1");
-  if (!controls) queryParams.append("controls", "0");
-  if (background) queryParams.append("background", "1");
-  if (autopause) queryParams.append("autopause", "1");
-
   // throw if is not a valid url
   if (!src.startsWith("https://")) {
     throw new Error("Invalid video URL");
   }
 
-  const videoUrl = `${src}?${queryParams.toString()}`;
+  // Parse the existing URL to preserve existing query parameters
+  const url = new URL(src);
+  const existingParams = new URLSearchParams(url.search);
+
+  // Add our playback options, but don't override existing critical params like 'h' and 'app_id'
+  existingParams.set("autoplay", autoplay ? "1" : "0");
+  if (loop) existingParams.set("loop", "1");
+  if (muted) existingParams.set("muted", "1");
+  if (background) existingParams.set("background", "1");
+  if (autopause) existingParams.set("autopause", "1");
+
+  // Reconstruct the URL with all parameters
+  url.search = existingParams.toString();
+  const videoUrl = url.toString();
 
   return (
     <div

@@ -23,7 +23,7 @@ export const UserCard = async () => {
       </CardHeader>
       <CardFooter className='flex justify-between'>
         <Button variant='outline' asChild>
-          <Link href='#account'>Account</Link>
+          <Link href='/account/settings'>Account</Link>
         </Button>
 
         {user.role === "admin" && (

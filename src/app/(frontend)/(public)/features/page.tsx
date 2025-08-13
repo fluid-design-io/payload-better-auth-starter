@@ -2,6 +2,7 @@ import image from "public/website-template-OG.png";
 import {
   FullWidthImage,
   ImageMedia,
+  LayoutHeader,
   SectionGrid,
   SectionGridItem,
   SectionHeader,
@@ -13,7 +14,7 @@ import { Main } from "@/components/layout/main";
 export default function FeaturesPage() {
   return (
     <Main>
-      <SectionHeader
+      <LayoutHeader
         title='Features'
         badge='Acme'
         description='Vix cu falli fabulas feugait, mel ea aliquip mentitum elaboraret, ius id audire salutatus. Cum dicat praesent dignissim ne. Novum labitur blandit no mea. Quas omittantur te sit, ei his praesent electram eloquentiam.'
@@ -32,6 +33,11 @@ export default function FeaturesPage() {
           />
         </SectionGrid>
         <FullWidthImage image={image} caption='Image Caption' alt='Title 1' />
+        <SectionHeader
+          title='Section Header'
+          badge='Section'
+          description='Cum dicat praesent dignissim ne. Novum labitur blandit no mea. Quas omittantur te sit, ei his praesent electram eloquentiam. Apeirian suavitate vim ut, has tota mundi efficiantur id. Dicunt imperdiet his ex. Pri veri zril ex, ea qualisque efficiendi nec.'
+        />
         <SectionHorizontal
           variant='left'
           title='Title 3'

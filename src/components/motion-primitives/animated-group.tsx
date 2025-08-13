@@ -1,8 +1,13 @@
 // @ts-nocheck
 
 "use client";
-import { motion, type Variants } from "motion/react";
-import React, { type ReactNode } from "react";
+import {
+  motion,
+  type UseInViewOptions,
+  useInView,
+  type Variants,
+} from "motion/react";
+import React, { type ReactNode, useId, useRef, useState } from "react";
 
 export type PresetType =
   | "fade"
@@ -27,6 +32,8 @@ export type AnimatedGroupProps = {
   preset?: PresetType;
   as?: React.ElementType;
   asChild?: React.ElementType;
+  once?: boolean;
+  viewOptions?: UseInViewOptions;
 };
 
 const defaultContainerVariants: Variants = {
@@ -108,9 +115,21 @@ function AnimatedGroup({
   childrenClassName,
   variants,
   preset,
+  viewOptions,
+  once = true,
   as = "div",
   asChild = "div",
 }: AnimatedGroupProps) {
+  const ref = useRef(null);
+  const id = useId();
+  const isInView = useInView(
+    ref,
+    viewOptions ?? {
+      once: true,
+      margin: "0px 0px -300px 0px",
+    }
+  );
+  const [isViewed, setIsViewed] = useState(false);
   const selectedVariants = {
     item: addDefaultVariants(preset ? presetVariants[preset] : {}),
     container: addDefaultVariants(defaultContainerVariants),
@@ -130,13 +149,18 @@ function AnimatedGroup({
   return (
     <MotionComponent
       initial='hidden'
-      animate='visible'
+      animate={isInView || isViewed ? "visible" : "hidden"}
       variants={containerVariants}
       className={className}
+      ref={ref}
+      onAnimationComplete={() => {
+        if (once) setIsViewed(true);
+      }}
     >
       {React.Children.map(children, (child, index) => (
         <MotionChild
-          key={index}
+          // biome-ignore lint/suspicious/noArrayIndexKey: <index is fine>
+          key={`${id}-${index}`}
           variants={itemVariants}
           className={childrenClassName}
         >

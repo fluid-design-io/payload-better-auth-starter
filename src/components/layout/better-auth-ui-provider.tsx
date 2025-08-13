@@ -2,10 +2,8 @@
 
 import { AuthUIProvider } from "@daveyplate/better-auth-ui";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { Suspense } from "react";
+import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth/client";
-import { AccountDialog } from "../dashboard/account-dialog";
 
 export function BetterAuthUIProvider({
   children,
@@ -13,21 +11,16 @@ export function BetterAuthUIProvider({
   children: React.ReactNode;
 }) {
   const router = useRouter();
-  const pathname = usePathname();
   return (
     <AuthUIProvider
       authClient={authClient}
       navigate={router.push}
       replace={router.replace}
       onSessionChange={router.refresh}
-      viewPaths={{
-        SETTINGS: `#account/Account`,
-      }}
       credentials={{
         forgotPassword: true,
       }}
-      //! use `basePath` to chagne it from `/` rootview
-      settingsURL={`${pathname}#account/Account`}
+      account={{}}
       passkey
       emailOTP
       basePath='/'
@@ -40,9 +33,6 @@ export function BetterAuthUIProvider({
       }}
     >
       {children}
-      <Suspense fallback={null}>
-        <AccountDialog />
-      </Suspense>
     </AuthUIProvider>
   );
 }

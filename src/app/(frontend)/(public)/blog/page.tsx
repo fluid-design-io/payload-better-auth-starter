@@ -1,6 +1,5 @@
 import type { Metadata } from "next/types";
 
-import { BlogHeader } from "@/app/(frontend)/(public)/blog/blog-header";
 import { Container } from "@/components/layout/elements";
 import { Main } from "@/components/layout/main";
 import { AnimatedGroup } from "@/components/motion-primitives/animated-group";
@@ -8,6 +7,7 @@ import { CollectionCard } from "@/components/payload/collection-card";
 import { PageRange } from "@/components/payload/page-range";
 import { Muted } from "@/components/ui/typography";
 import { getPayload } from "@/lib/payload/get-payload";
+import { BlogHeader } from "./blog-header";
 import { Pagination } from "./pagination";
 
 // export const dynamic = 'force-static'

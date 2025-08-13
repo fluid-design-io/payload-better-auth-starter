@@ -32,7 +32,7 @@ export function InView({
   transition,
   viewOptions,
   as = "div",
-  once,
+  once = true,
   className,
 }: InViewProps) {
   const ref = useRef(null);

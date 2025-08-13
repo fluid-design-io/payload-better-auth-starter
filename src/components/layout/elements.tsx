@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 import { GlowEffect } from "@/components/motion-primitives/glow-effect";
 import { InView } from "@/components/motion-primitives/in-view";
 import { Badge } from "@/components/ui/badge";
-import { H1, H3, P } from "@/components/ui/typography";
+import { H1, H2, H3, P } from "@/components/ui/typography";
 import { inViewOptions } from "@/lib/animation";
 import { CLASSNAMES, IMAGE_SIZES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
@@ -17,29 +17,34 @@ const slugify = (text: string) => {
     .replace(/[^a-z0-9-]/g, "");
 };
 
-type SectionHeaderProps = {
+type HeaderPrimitiveProps = {
   icon?: ReactNode;
   badge?: string;
   title: string;
   description?: string | ReactNode;
+  align?: "left" | "center";
+  variant?: "layout" | "section";
 };
 
-/**
- * A section header with a badge, title, and description.
- */
-const SectionHeader = ({
+const HeaderPrimitive = ({
   icon,
   badge,
   title,
   description,
-}: SectionHeaderProps) => {
+  align = "left",
+  variant = "section",
+}: HeaderPrimitiveProps) => {
   const slug = slugify(title);
+  const Heading = variant === "layout" ? H1 : H2;
   return (
     <InView
       {...inViewOptions()}
       as='section'
       aria-labelledby={slug}
-      className={CLASSNAMES.containerClassName}
+      className={cn(
+        CLASSNAMES.containerClassName,
+        align === "center" && "text-center"
+      )}
     >
       {badge && (
         <span className='text-primary' aria-hidden>
@@ -47,19 +52,47 @@ const SectionHeader = ({
         </span>
       )}
       {icon && (
-        <div className={cn("mb-4")} aria-hidden='true'>
+        <div className='mb-4' aria-hidden='true'>
           {icon}
         </div>
       )}
-      <H1 className={cn(!!badge && "mt-4", !description && "mb-6")} id={slug}>
+      <Heading
+        className={cn(!!badge && "mt-4", !description && "mb-6")}
+        id={slug}
+      >
         {title}
-      </H1>
+      </Heading>
       {description && typeof description === "string" && (
-        <P className='mt-4 mb-6 max-w-2xl text-lg lg:mb-14'>{description}</P>
+        <P
+          className={cn(
+            "mt-4 mb-6 max-w-2xl text-lg lg:mb-14",
+            align === "center" && "mx-auto"
+          )}
+        >
+          {description}
+        </P>
       )}
       {description && typeof description !== "string" && description}
     </InView>
   );
+};
+
+type LayoutHeaderProps = Omit<HeaderPrimitiveProps, "variant">;
+
+/**
+ * A layout header with a badge, h1 title, and description.
+ */
+const LayoutHeader = (props: LayoutHeaderProps) => {
+  return <HeaderPrimitive {...props} variant='layout' />;
+};
+
+type SectionHeaderProps = Omit<HeaderPrimitiveProps, "variant">;
+
+/**
+ * A section header with a badge, h2 title, and description.
+ */
+const SectionHeader = (props: SectionHeaderProps) => {
+  return <HeaderPrimitive {...props} variant='section' />;
 };
 
 type SectionHorizontalProps = {
@@ -302,7 +335,7 @@ const FullWidthImage = ({
   showCaption = false,
 }: FullWidthImageProps) => {
   return (
-    <Container variant='muted' className='px-0 md:px-8 lg:px-0'>
+    <Container variant='muted' className='px-0 md:px-8 lg:px-12'>
       <InView
         {...inViewOptions("0px 0px -35% 0px")}
         className='max-w-[120rem] mx-auto'
@@ -362,43 +395,32 @@ type VideoMediaProps = {
 
 /**
  * Vimeo video media element with configurable playback options.
- *
- * @example
- * <VideoMedia
- *   src='https://player.vimeo.com/video/1057687318?h=<hash>&amp;app_id=<app_id>'
- *   title='Video Title'
- *   autoplay={false}
- *   background={false}
- * />
  */
 const VideoMedia = ({
   src,
   autoplay = true,
   loop = true,
   muted = true,
+  controls = false,
   background = true,
   autopause = true,
   title = "Video content",
 }: VideoMediaProps) => {
+  // Build query parameters based on props
+  const queryParams = new URLSearchParams();
+  if (autoplay) queryParams.append("autoplay", "1");
+  if (loop) queryParams.append("loop", "1");
+  if (muted) queryParams.append("muted", "1");
+  if (!controls) queryParams.append("controls", "0");
+  if (background) queryParams.append("background", "1");
+  if (autopause) queryParams.append("autopause", "1");
+
   // throw if is not a valid url
   if (!src.startsWith("https://")) {
     throw new Error("Invalid video URL");
   }
 
-  // Parse the existing URL to preserve existing query parameters
-  const url = new URL(src);
-  const existingParams = new URLSearchParams(url.search);
-
-  // Add our playback options, but don't override existing critical params like 'h' and 'app_id'
-  existingParams.set("autoplay", autoplay ? "1" : "0");
-  if (loop) existingParams.set("loop", "1");
-  if (muted) existingParams.set("muted", "1");
-  if (background) existingParams.set("background", "1");
-  if (autopause) existingParams.set("autopause", "1");
-
-  // Reconstruct the URL with all parameters
-  url.search = existingParams.toString();
-  const videoUrl = url.toString();
+  const videoUrl = `${src}?${queryParams.toString()}`;
 
   return (
     <div
@@ -475,6 +497,7 @@ const ImageMedia = ({
 };
 
 export {
+  LayoutHeader,
   Container,
   FullWidthImage,
   ImageMedia,

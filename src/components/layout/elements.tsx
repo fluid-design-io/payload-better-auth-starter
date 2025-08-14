@@ -323,6 +323,7 @@ type FullWidthImageProps = {
    * If false, the caption is only visible in Reader Mode.
    */
   showCaption?: boolean;
+  zoom?: boolean;
 };
 
 /**
@@ -334,7 +335,9 @@ const FullWidthImage = ({
   alt = "",
   caption = alt,
   showCaption = false,
+  zoom = false,
 }: FullWidthImageProps) => {
+  const Comp = zoom ? ImageZoom : Image;
   return (
     <Container variant='muted' className='px-0 md:px-8 lg:px-12'>
       <InView
@@ -352,7 +355,7 @@ const FullWidthImage = ({
           <div className='bg-background dark:bg-muted relative rounded-4xl p-4 shadow-2xl'>
             {image ? (
               <figure className='relative overflow-hidden'>
-                <Image
+                <Comp
                   src={image}
                   alt={alt ?? ""}
                   className='h-full w-full overflow-hidden rounded-2xl object-cover'
@@ -479,22 +482,7 @@ const ImageMedia = ({
   zoom = false,
   ...imageProps
 }: ImageMediaProps) => {
-  const image = zoom ? (
-    <ImageZoom
-      src={src}
-      alt={alt || ""}
-      className={imgClassName}
-      sizes={sizes}
-    />
-  ) : (
-    <Image
-      src={src}
-      alt={alt}
-      className={cn("size-full object-cover", imgClassName)}
-      sizes={sizes}
-      {...imageProps}
-    />
-  );
+  const Comp = zoom ? ImageZoom : Image;
   return (
     <div
       className={cn(
@@ -507,7 +495,13 @@ const ImageMedia = ({
       role='img'
       aria-label={alt}
     >
-      {image}
+      <Comp
+        src={src}
+        alt={alt}
+        className={cn("size-full object-cover", imgClassName)}
+        sizes={sizes}
+        {...imageProps}
+      />
       {children}
     </div>
   );

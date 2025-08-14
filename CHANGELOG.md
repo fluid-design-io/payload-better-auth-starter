@@ -1,5 +1,11 @@
 # acme-website
 
+## 1.1.1
+
+### Patch Changes
+
+- Add zoom functionality to ImageMedia component
+
 ## 1.1.0
 
 ### Minor Changes

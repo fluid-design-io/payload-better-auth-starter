@@ -2,6 +2,7 @@ import { ImageIcon } from "lucide-react";
 import Image, { type StaticImageData } from "next/image";
 import { Slot as SlotPrimitive } from "radix-ui";
 import type { ReactNode } from "react";
+import { ImageZoom } from "@/components/core/image-zoom";
 import { GlowEffect } from "@/components/motion-primitives/glow-effect";
 import { InView } from "@/components/motion-primitives/in-view";
 import { Badge } from "@/components/ui/badge";
@@ -456,10 +457,15 @@ type ImageMediaProps = {
     | [`from-${string}`, `via-${string}`, `to-${string}`]
     | [`from-${string}`, `to-${string}`];
   children?: ReactNode;
+  /** Whether to show a zoomable image via `react-medium-image-zoom` */
+  zoom?: boolean;
 };
 
 /**
  * A reusable image media component with customizable gradients and styling.
+ *
+ * @example
+ * <ImageMedia src={image} alt={title} zoom />
  */
 const ImageMedia = ({
   src,
@@ -470,8 +476,25 @@ const ImageMedia = ({
   aspectRatio = "aspect-video",
   gradientColors = ["from-muted-200/20", "via-muted-300/20", "to-muted-500/20"],
   children,
+  zoom = false,
   ...imageProps
 }: ImageMediaProps) => {
+  const image = zoom ? (
+    <ImageZoom
+      src={src}
+      alt={alt || ""}
+      className={imgClassName}
+      sizes={sizes}
+    />
+  ) : (
+    <Image
+      src={src}
+      alt={alt}
+      className={cn("size-full object-cover", imgClassName)}
+      sizes={sizes}
+      {...imageProps}
+    />
+  );
   return (
     <div
       className={cn(
@@ -484,13 +507,7 @@ const ImageMedia = ({
       role='img'
       aria-label={alt}
     >
-      <Image
-        src={src}
-        alt={alt}
-        className={cn("size-full object-cover", imgClassName)}
-        sizes={sizes}
-        {...imageProps}
-      />
+      {image}
       {children}
     </div>
   );

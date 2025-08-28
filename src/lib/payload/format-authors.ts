@@ -11,7 +11,7 @@ import type { Blog } from '@/payload-types'
  *
  */
 export const formatAuthors = (
-  authors: NonNullable<NonNullable<Blog['populatedAuthors']>[number]>[],
+  authors: NonNullable<NonNullable<Blog['populatedAuthors']>[number]>[]
 ) => {
   // Ensure we don't have any authors without a name
   const authorNames = authors.map((author) => author.name).filter(Boolean)

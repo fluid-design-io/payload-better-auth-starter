@@ -1,8 +1,9 @@
 'use client'
 
-import canUseDOM from '@/lib/payload/can-use-dom'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
+
+import canUseDOM from '@/lib/payload/can-use-dom'
 
 const ScrollProgress = () => {
   const [progressPercentage, setProgressPercentage] = useState(0)
@@ -38,7 +39,7 @@ const ScrollProgress = () => {
         className="absolute bottom-0 right-0 top-0 h-full w-screen bg-primary transition-opacity duration-700 will-change-transform"
         style={{
           display: isActive ? 'absolute' : 'relative',
-          transform: `translate3d(${isActive ? progressPercentage - 100 + '%' : '0'},0,0)`,
+          transform: `translate3d(${isActive ? `${progressPercentage - 100}%` : '0'},0,0)`,
           opacity: isActive ? 1 : 0,
         }}
       />

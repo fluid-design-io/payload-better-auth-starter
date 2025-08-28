@@ -1,7 +1,8 @@
-import { Button } from '@/components/ui/button'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { Check, Copy } from 'lucide-react'
 import { useEffect, useState } from 'react'
+
+import { Button } from '@/components/ui/button'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 
 interface CopyButtonProps {
   textToCopy: string

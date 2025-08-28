@@ -1,10 +1,9 @@
 'use client'
 import type React from 'react'
 import { useCallback, useEffect } from 'react'
+
+import { Button, FieldLabel, TextInput, useField, useForm, useFormFields } from '@payloadcms/ui'
 import type { TextFieldClientProps } from 'payload'
-
-import { useField, Button, TextInput, FieldLabel, useFormFields, useForm } from '@payloadcms/ui'
-
 import { formatSlug } from './format-slug'
 import './index.scss'
 
@@ -63,7 +62,7 @@ export const SlugComponent: React.FC<SlugComponentProps> = ({
         value: !checkboxValue,
       })
     },
-    [checkboxValue, checkboxFieldPath, dispatchFields],
+    [checkboxValue, checkboxFieldPath, dispatchFields]
   )
 
   const readOnly = readOnlyFromProps || checkboxValue

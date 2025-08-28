@@ -1,10 +1,10 @@
-import type { Config } from "@/payload-types";
+import { unstable_cache } from 'next/cache'
 
-import configPromise from "@payload-config";
-import { unstable_cache } from "next/cache";
-import { getPayload } from "payload";
+import configPromise from '@payload-config'
+import { getPayload } from 'payload'
+import type { Config } from '@/payload-types'
 
-type Collection = keyof Config["collections"];
+type Collection = keyof Config['collections']
 
 /**
  * Fetches a document from a Payload CMS collection by slug.
@@ -20,7 +20,7 @@ export async function getDocument<T extends Collection>(
   depth = 0,
   draft = false
 ) {
-  const payload = await getPayload({ config: configPromise });
+  const payload = await getPayload({ config: configPromise })
 
   const page = await payload.find({
     collection,
@@ -31,9 +31,9 @@ export async function getDocument<T extends Collection>(
         equals: slug,
       },
     },
-  });
+  })
 
-  return page.docs[0];
+  return page.docs[0]
 }
 
 /**
@@ -84,14 +84,7 @@ export async function getDocument<T extends Collection>(
  * }
  * ```
  */
-export const getCachedDocument = <T extends Collection>(
-  collection: T,
-  slug: string
-) =>
-  unstable_cache(
-    async () => getDocument<T>(collection, slug),
-    [collection, slug],
-    {
-      tags: [`${collection}_${slug}`],
-    }
-  );
+export const getCachedDocument = <T extends Collection>(collection: T, slug: string) =>
+  unstable_cache(async () => getDocument<T>(collection, slug), [collection, slug], {
+    tags: [`${collection}_${slug}`],
+  })

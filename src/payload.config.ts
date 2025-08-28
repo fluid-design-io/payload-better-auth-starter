@@ -1,22 +1,20 @@
-import { postgresAdapter } from "@payloadcms/db-postgres";
-import path from "path";
-import { buildConfig } from "payload";
-import { fileURLToPath } from "url";
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { postgresAdapter } from '@payloadcms/db-postgres'
+import { buildConfig } from 'payload'
+import sharp from 'sharp'
+import { Blog } from './collections/blog'
+import { GlobalFooter, GlobalPrivacy, GlobalTerms } from './collections/global'
+import { PayloadUploads } from './collections/uploads/payload-uploads'
+import { PrivateUploads } from './collections/uploads/private-uploads'
+import { Users } from './collections/users'
+import { defaultLexical } from './fields/default-lexical'
+import { getEmailAdapter } from './lib/email-adapter'
+import { getServerSideURL } from './lib/payload'
+import { plugins } from './plugins'
 
-import sharp from "sharp";
-
-import { Blog } from "./collections/blog";
-import { GlobalFooter, GlobalPrivacy, GlobalTerms } from "./collections/global";
-import { PayloadUploads } from "./collections/uploads/payload-uploads";
-import { PrivateUploads } from "./collections/uploads/private-uploads";
-import { Users } from "./collections/users";
-import { defaultLexical } from "./fields/default-lexical";
-import { getEmailAdapter } from "./lib/email-adapter";
-import { getServerSideURL } from "./lib/payload";
-import { plugins } from "./plugins";
-
-const filename = fileURLToPath(import.meta.url);
-const dirname = path.dirname(filename);
+const filename = fileURLToPath(import.meta.url)
+const dirname = path.dirname(filename)
 
 export default buildConfig({
   admin: {
@@ -27,20 +25,20 @@ export default buildConfig({
     livePreview: {
       breakpoints: [
         {
-          label: "Mobile",
-          name: "mobile",
+          label: 'Mobile',
+          name: 'mobile',
           width: 375,
           height: 667,
         },
         {
-          label: "Tablet",
-          name: "tablet",
+          label: 'Tablet',
+          name: 'tablet',
           width: 768,
           height: 1024,
         },
         {
-          label: "Desktop",
-          name: "desktop",
+          label: 'Desktop',
+          name: 'desktop',
           width: 1440,
           height: 900,
         },
@@ -49,10 +47,10 @@ export default buildConfig({
     components: {
       graphics: {
         Icon: {
-          path: "@/components/payload/admin-icon.tsx",
+          path: '@/components/payload/admin-icon.tsx',
         },
         Logo: {
-          path: "@/components/payload/admin-logo.tsx",
+          path: '@/components/payload/admin-logo.tsx',
         },
       },
     },
@@ -62,17 +60,17 @@ export default buildConfig({
   editor: defaultLexical,
   secret: process.env.PAYLOAD_SECRET,
   typescript: {
-    outputFile: path.resolve(dirname, "payload-types.ts"),
+    outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URI || "",
+      connectionString: process.env.DATABASE_URI || '',
     },
-    idType: "uuid",
+    idType: 'uuid',
   }),
   cors: [getServerSideURL()].filter(Boolean),
   sharp,
   plugins,
   globals: [GlobalFooter, GlobalTerms, GlobalPrivacy],
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL,
-});
+})

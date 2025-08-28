@@ -1,60 +1,51 @@
-import payloadConfig from "@/payload.config";
-import { emailHarmony, phoneHarmony } from "better-auth-harmony";
-import { nextCookies } from "better-auth/next-js";
-import {
-  admin,
-  emailOTP,
-  multiSession,
-  phoneNumber,
-  username,
-} from "better-auth/plugins";
-import { passkey } from "better-auth/plugins/passkey";
-import { getPayload } from "payload";
-import type {
-  BetterAuthOptions,
-  BetterAuthPluginOptions,
-} from "payload-auth/better-auth";
+import { nextCookies } from 'better-auth/next-js'
+import { admin, emailOTP, multiSession, phoneNumber, username } from 'better-auth/plugins'
+import { passkey } from 'better-auth/plugins/passkey'
+import { emailHarmony, phoneHarmony } from 'better-auth-harmony'
+import { getPayload } from 'payload'
+import type { BetterAuthOptions, BetterAuthPluginOptions } from 'payload-auth/better-auth'
+import payloadConfig from '@/payload.config'
 import {
   sendChangeEmailVerification,
   sendDeleteAccountVerification,
   sendResetPasswordEmail,
   sendVerificationEmail,
   sendVerificationOTP,
-} from "./email-templates";
+} from './email-templates'
 
-const isDev = process.env.NODE_ENV === "development";
+const isDev = process.env.NODE_ENV === 'development'
 
 export const betterAuthPlugins = [
   username(),
   emailHarmony(),
   phoneHarmony({
-    defaultCountry: "US",
+    defaultCountry: 'US',
   }),
   phoneNumber({
-    sendOTP: async ({ phoneNumber, code }, req) => {
+    sendOTP: async ({ phoneNumber, code }, _req) => {
       //TODO: Use Twilio to send OTP
-      console.log("Send OTP for user: ", phoneNumber, code);
+      console.log('Send OTP for user: ', phoneNumber, code)
     },
   }),
   emailOTP({
     async sendVerificationOTP({ email, otp, type }) {
-      await sendVerificationOTP({ email, otp, type });
+      await sendVerificationOTP({ email, otp, type })
     },
   }),
   passkey({
-    rpID: isDev ? "localhost" : "acme.com",
-    rpName: isDev ? "Acme Local" : "Acme",
+    rpID: isDev ? 'localhost' : 'acme.com',
+    rpName: isDev ? 'Acme Local' : 'Acme',
     origin: process.env.NEXT_PUBLIC_SERVER_URL,
   }),
   admin(),
   multiSession(),
   nextCookies(), // needs to be last
-];
+]
 
-export type BetterAuthPlugins = typeof betterAuthPlugins;
+export type BetterAuthPlugins = typeof betterAuthPlugins
 
 export const betterAuthOptions: BetterAuthOptions = {
-  appName: "Acme",
+  appName: 'Acme',
   baseURL: process.env.NEXT_PUBLIC_BETTER_AUTH_URL,
   trustedOrigins: [process.env.NEXT_PUBLIC_BETTER_AUTH_URL],
   emailAndPassword: {
@@ -62,26 +53,26 @@ export const betterAuthOptions: BetterAuthOptions = {
     requireEmailVerification: true,
     // autoSignIn: true,
     async sendResetPassword({ user, url, token }) {
-      console.log("Send reset password email: ", user, url, token);
-      await sendResetPasswordEmail({ user, url, token });
+      console.log('Send reset password email: ', user, url, token)
+      await sendResetPasswordEmail({ user, url, token })
     },
   },
   emailVerification: {
     sendOnSignUp: true,
     autoSignInAfterVerification: true,
     sendVerificationEmail: async ({ user, url, token }) => {
-      await sendVerificationEmail({ user, url, token });
+      await sendVerificationEmail({ user, url, token })
     },
     onEmailVerification: async (user) => {
       // update user.verified to true
-      const config = await payloadConfig;
-      const payload = await getPayload({ config });
-      if (isDev) console.log("✅ Update user verified to true: ", user.id);
+      const config = await payloadConfig
+      const payload = await getPayload({ config })
+      if (isDev) console.log('✅ Update user verified to true: ', user.id)
       await payload.update({
-        collection: "users",
+        collection: 'users',
         id: user.id,
         data: { verified: true },
-      });
+      })
     },
   },
   plugins: betterAuthPlugins,
@@ -89,20 +80,20 @@ export const betterAuthOptions: BetterAuthOptions = {
     changeEmail: {
       enabled: true,
       sendChangeEmailVerification: async ({ user, newEmail, url, token }) => {
-        await sendChangeEmailVerification({ user, newEmail, url, token });
+        await sendChangeEmailVerification({ user, newEmail, url, token })
       },
     },
     deleteUser: {
       enabled: true,
       sendDeleteAccountVerification: async ({ user, url, token }) => {
-        await sendDeleteAccountVerification({ user, url, token });
+        await sendDeleteAccountVerification({ user, url, token })
       },
-      beforeDelete: async (user) => {
+      beforeDelete: async (_user) => {
         // Perform actions before user deletion
       },
       afterDelete: async (user) => {
         // Perform cleanup after user deletion
-        console.log("[afterDelete] user: ", user);
+        console.log('[afterDelete] user: ', user)
       },
     },
     additionalFields: {
@@ -110,15 +101,15 @@ export const betterAuthOptions: BetterAuthOptions = {
       name: {
         required: false,
         input: true,
-        type: "string",
+        type: 'string',
       },
       role: {
-        type: "string",
-        defaultValue: "user",
+        type: 'string',
+        defaultValue: 'user',
         input: false,
       },
       verified: {
-        type: "boolean",
+        type: 'boolean',
         defaultValue: false,
         input: false,
       },
@@ -135,10 +126,10 @@ export const betterAuthOptions: BetterAuthOptions = {
   account: {
     accountLinking: {
       enabled: true,
-      trustedProviders: ["email-password"],
+      trustedProviders: ['email-password'],
     },
   },
-};
+}
 
 export const betterAuthPluginOptions: BetterAuthPluginOptions = {
   // debug: {
@@ -148,28 +139,28 @@ export const betterAuthPluginOptions: BetterAuthPluginOptions = {
   disableDefaultPayloadAuth: true,
   hidePluginCollections: true,
   users: {
-    slug: "users", // not required, this is the default anyways
+    slug: 'users', // not required, this is the default anyways
     hidden: false,
-    adminRoles: ["admin"],
-    allowedFields: ["name"],
-    roles: ["admin", "user"],
+    adminRoles: ['admin'],
+    allowedFields: ['name'],
+    roles: ['admin', 'user'],
   },
   accounts: {
-    slug: "accounts",
+    slug: 'accounts',
   },
   sessions: {
-    slug: "sessions",
+    slug: 'sessions',
   },
   verifications: {
-    slug: "verifications",
+    slug: 'verifications',
   },
   adminInvitations: {
     sendInviteEmail: async ({ payload, email, url }) => {
-      console.log("Send admin invite: ", email, url);
+      console.log('Send admin invite: ', email, url)
       return {
         success: true,
-      };
+      }
     },
   },
   betterAuthOptions: betterAuthOptions,
-};
+}

@@ -1,8 +1,10 @@
 'use client'
 
-import type { Account, DeviceSession, Session } from '@/lib/auth/types'
-import type { TypedUser } from 'payload'
 import { createContext, type ReactNode, useContext } from 'react'
+
+import type { Account, DeviceSession, Session } from '@/lib/auth/types'
+
+import type { TypedUser } from 'payload'
 
 type UserContextType = {
   sessionPromise: Promise<Session | null>
@@ -26,7 +28,7 @@ export function BetterAuthProvider({
   sessionPromise,
   userAccountsPromise,
   deviceSessionsPromise,
-  currentUserPromise
+  currentUserPromise,
 }: {
   children: ReactNode
   sessionPromise: Promise<Session | null>
@@ -35,7 +37,9 @@ export function BetterAuthProvider({
   currentUserPromise: Promise<TypedUser | null>
 }) {
   return (
-    <BetterAuthContext.Provider value={{ sessionPromise, userAccountsPromise, deviceSessionsPromise, currentUserPromise }}>
+    <BetterAuthContext.Provider
+      value={{ sessionPromise, userAccountsPromise, deviceSessionsPromise, currentUserPromise }}
+    >
       {children}
     </BetterAuthContext.Provider>
   )

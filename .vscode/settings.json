@@ -9,9 +9,9 @@
   },
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "quickfix.biome": "always",
+    "source.organizeImports.biome": "explicit",
     "source.removeUnusedImports": "explicit",
-    "source.organizeImports.biome": "explicit"
+    "source.fixAll.biome": "always"
   },
   "typescript.tsdk": "node_modules/typescript/lib",
   "workbench.colorCustomizations": {

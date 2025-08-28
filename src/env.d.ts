@@ -1,4 +1,4 @@
-import z from "zod";
+import z from 'zod'
 
 export const envSchema = z.object({
   DATABASE_URI: z.string(),
@@ -15,7 +15,7 @@ export const envSchema = z.object({
   S3_ENDPOINT: z.string(),
   RESEND_API_KEY: z.string(),
   NEXT_PUBLIC_HCAPTCHA_SITE_KEY: z.string(),
-});
+})
 
 declare global {
   namespace NodeJS {

@@ -1,20 +1,23 @@
-import type { StaticImageData } from "next/image";
-import type React from "react";
-import { Media } from "@/components/payload/media";
-import RichText from "@/components/payload/rich-text";
-import { cn } from "@/lib/utils";
-import type { MediaBlock as MediaBlockProps } from "@/payload-types";
+import type { StaticImageData } from 'next/image'
+import type React from 'react'
+
+import { Media } from '@/components/payload/media'
+import RichText from '@/components/payload/rich-text'
+
+import { cn } from '@/lib/utils'
+
+import type { MediaBlock as MediaBlockProps } from '@/payload-types'
 
 type Props = MediaBlockProps & {
-  breakout?: boolean;
-  captionClassName?: string;
-  className?: string;
-  enableGutter?: boolean;
-  imgClassName?: string;
-  staticImage?: StaticImageData;
-  disableInnerContainer?: boolean;
-  zoom?: boolean;
-};
+  breakout?: boolean
+  captionClassName?: string
+  className?: string
+  enableGutter?: boolean
+  imgClassName?: string
+  staticImage?: StaticImageData
+  disableInnerContainer?: boolean
+  zoom?: boolean
+}
 
 export const MediaBlock: React.FC<Props> = (props) => {
   const {
@@ -26,15 +29,15 @@ export const MediaBlock: React.FC<Props> = (props) => {
     staticImage,
     disableInnerContainer,
     zoom = true,
-  } = props;
+  } = props
 
-  let caption: any;
-  if (media && typeof media === "object") caption = media.caption;
+  let caption: any
+  if (media && typeof media === 'object') caption = media.caption
 
   return (
     <div
       className={cn(
-        "",
+        '',
         {
           container: enableGutter,
         },
@@ -43,7 +46,7 @@ export const MediaBlock: React.FC<Props> = (props) => {
     >
       {(media || staticImage) && (
         <Media
-          imgClassName={cn("border border-border rounded-md", imgClassName)}
+          imgClassName={cn('border border-border rounded-md', imgClassName)}
           resource={media}
           src={staticImage}
           zoom={zoom}
@@ -52,7 +55,7 @@ export const MediaBlock: React.FC<Props> = (props) => {
       {caption && (
         <div
           className={cn(
-            "mt-6",
+            'mt-6',
             {
               container: !disableInnerContainer,
             },
@@ -63,5 +66,5 @@ export const MediaBlock: React.FC<Props> = (props) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}

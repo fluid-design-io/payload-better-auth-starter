@@ -1,39 +1,34 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next'
 
-import type { Blog, Config, PayloadUpload } from "@/payload-types";
+import type { Blog, Config, PayloadUpload } from '@/payload-types'
+import { getServerSideURL } from '.'
+import { mergeOpenGraph } from './merge-open-graph'
 
-import { getServerSideURL } from ".";
-import { mergeOpenGraph } from "./merge-open-graph";
+const getImageURL = (image?: PayloadUpload | Config['db']['defaultIDType'] | null) => {
+  const serverUrl = getServerSideURL()
 
-const getImageURL = (
-  image?: PayloadUpload | Config["db"]["defaultIDType"] | null
-) => {
-  const serverUrl = getServerSideURL();
+  let url = `${serverUrl}/website-template-OG.png`
 
-  let url = serverUrl + "/website-template-OG.png";
+  if (image && typeof image === 'object' && 'url' in image) {
+    const ogUrl = image.sizes?.og?.url
 
-  if (image && typeof image === "object" && "url" in image) {
-    const ogUrl = image.sizes?.og?.url;
-
-    url = ogUrl ? serverUrl + ogUrl : serverUrl + image.url;
+    url = ogUrl ? serverUrl + ogUrl : serverUrl + image.url
   }
 
-  return url;
-};
+  return url
+}
 
-export const generateMeta = async (args: {
-  doc: Partial<Blog>;
-}): Promise<Metadata> => {
-  const { doc } = args || {};
+export const generateMeta = async (args: { doc: Partial<Blog> }): Promise<Metadata> => {
+  const { doc } = args || {}
 
-  const ogImage = getImageURL(doc?.meta?.image);
+  const ogImage = getImageURL(doc?.meta?.image)
 
-  const title = doc?.meta?.title ? doc?.meta?.title + " | Acme" : "Acme";
+  const title = doc?.meta?.title ? `${doc?.meta?.title} | Acme` : 'Acme'
 
   return {
     description: doc?.meta?.description,
     openGraph: mergeOpenGraph({
-      description: doc?.meta?.description || "",
+      description: doc?.meta?.description || '',
       images: ogImage
         ? [
             {
@@ -42,8 +37,8 @@ export const generateMeta = async (args: {
           ]
         : undefined,
       title,
-      url: Array.isArray(doc?.slug) ? doc?.slug.join("/") : "/",
+      url: Array.isArray(doc?.slug) ? doc?.slug.join('/') : '/',
     }),
     title,
-  };
-};
+  }
+}

@@ -20,10 +20,8 @@
 }
 
 [data-rmiz-modal][open] {
-  width: 100vw /* fallback */;
   width: 100dvw;
 
-  height: 100vh /* fallback */;
   height: 100dvh;
 
   background-color: transparent;

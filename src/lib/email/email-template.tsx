@@ -1,24 +1,25 @@
 // import parse from "html-react-parser";
 
-import React, { type ReactNode } from "react";
-import type { LayoutClassNames } from "./components/layout";
-import Layout from "./components/layout";
+import type { ReactNode } from 'react'
+
+import type { LayoutClassNames } from './components/layout'
+import Layout from './components/layout'
 
 export interface AcmeTemplateProps {
-  heading: string;
-  subtitle?: string;
-  content: ReactNode;
-  classNames?: LayoutClassNames;
-  action?: string;
-  url?: string;
-  baseUrl?: string;
-  preview?: string;
+  heading: string
+  subtitle?: string
+  content: ReactNode
+  classNames?: LayoutClassNames
+  action?: string
+  url?: string
+  baseUrl?: string
+  preview?: string
 }
 
 export const AcmeTemplate = ({
   heading,
   subtitle = undefined,
-  content = "",
+  content = '',
   classNames,
   action,
   url,
@@ -37,7 +38,7 @@ export const AcmeTemplate = ({
     >
       {content}
     </Layout>
-  );
-};
+  )
+}
 
-export default AcmeTemplate;
+export default AcmeTemplate

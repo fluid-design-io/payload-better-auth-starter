@@ -1,4 +1,5 @@
 import type { getPayload } from '@/lib/payload/get-payload'
+
 import type { betterAuthPlugins } from './options'
 
 type PayloadWithBetterAuth = Awaited<ReturnType<typeof getPayload>>

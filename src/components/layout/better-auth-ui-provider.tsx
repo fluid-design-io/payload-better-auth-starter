@@ -1,16 +1,14 @@
-"use client";
+'use client'
 
-import { AuthUIProvider } from "@daveyplate/better-auth-ui";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { authClient } from "@/lib/auth/client";
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
-export function BetterAuthUIProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const router = useRouter();
+import { authClient } from '@/lib/auth/client'
+
+import { AuthUIProvider } from '@daveyplate/better-auth-ui'
+
+export function BetterAuthUIProvider({ children }: { children: React.ReactNode }) {
+  const router = useRouter()
   return (
     <AuthUIProvider
       authClient={authClient}
@@ -23,9 +21,9 @@ export function BetterAuthUIProvider({
       account={{}}
       passkey
       emailOTP
-      basePath='/'
+      basePath="/"
       signUp={{
-        fields: ["name"],
+        fields: ['name'],
       }}
       Link={Link}
       deleteUser={{
@@ -34,5 +32,5 @@ export function BetterAuthUIProvider({
     >
       {children}
     </AuthUIProvider>
-  );
+  )
 }

@@ -1,3 +1,5 @@
+import type * as React from 'react'
+
 import {
   Body,
   Button,
@@ -12,33 +14,31 @@ import {
   Section,
   Tailwind,
   Text,
-} from "@react-email/components";
-import type * as React from "react";
-
-import { cn } from "../../../lib/utils";
-import { LOGO_URL } from "../constants";
+} from '@react-email/components'
+import { cn } from '../../../lib/utils'
+import { LOGO_URL } from '../constants'
 
 export interface LayoutClassNames {
-  body?: string;
-  button?: string;
-  container?: string;
-  image?: string;
-  content?: string;
-  footer?: string;
-  heading?: string;
-  hr?: string;
-  link?: string;
+  body?: string
+  button?: string
+  container?: string
+  image?: string
+  content?: string
+  footer?: string
+  heading?: string
+  hr?: string
+  link?: string
 }
 
 interface LayoutProps {
-  children: React.ReactNode;
-  heading: string;
-  subTitle?: string;
-  preview?: string;
-  classNames?: LayoutClassNames;
-  action?: string;
-  url?: string;
-  baseUrl?: string;
+  children: React.ReactNode
+  heading: string
+  subTitle?: string
+  preview?: string
+  classNames?: LayoutClassNames
+  action?: string
+  url?: string
+  baseUrl?: string
 }
 
 function Layout({
@@ -54,11 +54,11 @@ function Layout({
   return (
     <Html>
       <Head>
-        <meta name='x-apple-disable-message-reformatting' />
-        <meta content='light dark' name='color-scheme' />
-        <meta content='light dark' name='supported-color-schemes' />
+        <meta name="x-apple-disable-message-reformatting" />
+        <meta content="light dark" name="color-scheme" />
+        <meta content="light dark" name="supported-color-schemes" />
 
-        <style type='text/css'>
+        <style type="text/css">
           {`
             :root {
               color-scheme: light dark;
@@ -67,7 +67,7 @@ function Layout({
           `}
         </style>
 
-        <style type='text/css'>
+        <style type="text/css">
           {`      
             html, body {
               background-color: #ffffff;
@@ -113,24 +113,22 @@ function Layout({
       <Preview>{preview}</Preview>
 
       <Tailwind>
-        <Body
-          className={cn("mx-auto my-auto px-2 font-sans", classNames?.body)}
-        >
-          <Container className='mx-auto my-[40px] max-w-[465px] rounded border border-color border-solid p-[20px]'>
-            <Section className='mt-[32px]'>
+        <Body className={cn('mx-auto my-auto px-2 font-sans', classNames?.body)}>
+          <Container className="mx-auto my-[40px] max-w-[465px] rounded border border-color border-solid p-[20px]">
+            <Section className="mt-[32px]">
               <Img
                 src={LOGO_URL}
                 width={36}
                 height={36}
-                alt='Acme Logo'
-                className={cn("mx-auto my-0", classNames?.image)}
+                alt="Acme Logo"
+                className={cn('mx-auto my-0', classNames?.image)}
               />
             </Section>
 
             {subTitle && (
               <Text
                 className={cn(
-                  "text-[#0a85ea] text-[11px] font-semibold mt-[48px] mb-0",
+                  'text-[#0a85ea] text-[11px] font-semibold mt-[48px] mb-0',
                   classNames?.content
                 )}
               >
@@ -140,7 +138,7 @@ function Layout({
 
             <Heading
               className={cn(
-                "mx-0 my-[30px] p-0 text-center font-bold text-[24px]",
+                'mx-0 my-[30px] p-0 text-center font-bold text-[24px]',
                 classNames?.heading
               )}
             >
@@ -149,7 +147,7 @@ function Layout({
 
             <Section
               className={cn(
-                "mt-[24px] mb-[24px] p-[16px] rounded-[8px] border border-color border-solid",
+                'mt-[24px] mb-[24px] p-[16px] rounded-[8px] border border-color border-solid',
                 classNames?.content
               )}
             >
@@ -157,10 +155,10 @@ function Layout({
             </Section>
 
             {action && url && (
-              <Section className='mt-[32px] mb-[32px] text-center'>
+              <Section className="mt-[32px] mb-[32px] text-center">
                 <Button
                   className={cn(
-                    "action-button rounded px-5 py-3 text-center font-semibold text-[12px] no-underline",
+                    'action-button rounded px-5 py-3 text-center font-semibold text-[12px] no-underline',
                     classNames?.button
                   )}
                   href={url}
@@ -172,28 +170,20 @@ function Layout({
 
             <Hr
               className={cn(
-                "mx-0 my-[26px] w-full border border-color border-solid",
+                'mx-0 my-[26px] w-full border border-color border-solid',
                 classNames?.hr
               )}
             />
 
-            <Text
-              className={cn(
-                "text-[#666666] text-[12px] leading-[24px]",
-                classNames?.footer
-              )}
-            >
+            <Text className={cn('text-[#666666] text-[12px] leading-[24px]', classNames?.footer)}>
               Acme, Inc.
               <br />
               100 Main St, Anytown, USA
               {baseUrl && (
                 <>
                   <br />
-                  <Link
-                    className={cn("no-underline", classNames?.link)}
-                    href={baseUrl}
-                  >
-                    {baseUrl?.replace("https://", "").replace("http://", "")}
+                  <Link className={cn('no-underline', classNames?.link)} href={baseUrl}>
+                    {baseUrl?.replace('https://', '').replace('http://', '')}
                   </Link>
                 </>
               )}
@@ -202,7 +192,7 @@ function Layout({
         </Body>
       </Tailwind>
     </Html>
-  );
+  )
 }
 
-export default Layout;
+export default Layout

@@ -2,6 +2,7 @@
 /* DO NOT MODIFY IT BECAUSE IT COULD BE REWRITTEN AT ANY TIME. */
 import config from '@payload-config'
 import '@payloadcms/next/css'
+
 import {
   REST_DELETE,
   REST_GET,

@@ -1,16 +1,18 @@
 'use client'
-import {
-    Pagination as PaginationComponent,
-    PaginationContent,
-    PaginationEllipsis,
-    PaginationItem,
-    PaginationLink,
-    PaginationNext,
-    PaginationPrevious,
-} from '@/components/ui/pagination'
-import { cn } from '@/lib/utils'
 import { useRouter } from 'next/navigation'
 import type React from 'react'
+
+import {
+  Pagination as PaginationComponent,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from '@/components/ui/pagination'
+
+import { cn } from '@/lib/utils'
 
 export const Pagination: React.FC<{
   className?: string
@@ -30,13 +32,15 @@ export const Pagination: React.FC<{
     <div className={cn('my-12', className)}>
       <PaginationComponent>
         <PaginationContent>
-          {hasPrevPage && <PaginationItem>
-            <PaginationPrevious
-              onClick={() => {
-                router.push(`/blog/page/${page - 1}`)
-              }}
-            />
-          </PaginationItem>}
+          {hasPrevPage && (
+            <PaginationItem>
+              <PaginationPrevious
+                onClick={() => {
+                  router.push(`/blog/page/${page - 1}`)
+                }}
+              />
+            </PaginationItem>
+          )}
 
           {hasExtraPrevPages && (
             <PaginationItem>
@@ -85,13 +89,15 @@ export const Pagination: React.FC<{
             </PaginationItem>
           )}
 
-          {hasNextPage && <PaginationItem>
-            <PaginationNext
-              onClick={() => {
-                router.push(`/blog/page/${page + 1}`)
-              }}
-            />
-          </PaginationItem>}
+          {hasNextPage && (
+            <PaginationItem>
+              <PaginationNext
+                onClick={() => {
+                  router.push(`/blog/page/${page + 1}`)
+                }}
+              />
+            </PaginationItem>
+          )}
         </PaginationContent>
       </PaginationComponent>
     </div>

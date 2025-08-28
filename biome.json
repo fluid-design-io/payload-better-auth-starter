@@ -1,0 +1,82 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.2.2/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "ignoreUnknown": false
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 100
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "correctness": {
+        "noUnusedVariables": "warn",
+        "useExhaustiveDependencies": "off"
+      },
+      "suspicious": {
+        "noExplicitAny": "off",
+        "noShadowRestrictedNames": "off",
+        "noArrayIndexKey": "off"
+      },
+      "style": {
+        "noNonNullAssertion": "warn"
+      },
+      "complexity": {
+        "noExcessiveCognitiveComplexity": "warn"
+      },
+      "performance": {
+        "noDelete": "warn"
+      },
+      "a11y": {
+        "useSemanticElements": "off",
+        "noSvgWithoutTitle": "off"
+      }
+    },
+    "domains": {
+      "next": "recommended",
+      "project": "recommended"
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "semicolons": "asNeeded",
+      "trailingCommas": "es5"
+    }
+  },
+  "json": {
+    "formatter": {
+      "enabled": true
+    }
+  },
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "groups": [
+              ["next", "next/**", "react", "react-dom", "lucide-react"],
+              ":BLANK_LINE:",
+              ["@/components", "@/components/**"],
+              ":BLANK_LINE:",
+              ["@/lib", "@/lib/**"],
+              ":BLANK_LINE:",
+              ["@/hooks", "@/hooks/**"]
+            ]
+          }
+        }
+      }
+    }
+  }
+}

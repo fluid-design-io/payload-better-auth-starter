@@ -1,7 +1,7 @@
-import type { UseInViewOptions } from "motion/react";
+import type { UseInViewOptions } from 'motion/react'
 
 export const inViewOptions = (
-  margin: UseInViewOptions["margin"] = "0px 0px -300px 0px",
+  margin: UseInViewOptions['margin'] = '0px 0px -300px 0px',
   delay?: number
 ) =>
   ({
@@ -14,7 +14,7 @@ export const inViewOptions = (
       },
     },
     transition: {
-      type: "spring",
+      type: 'spring',
       bounce: 0.3,
       duration: 1.5,
       delay,
@@ -23,4 +23,4 @@ export const inViewOptions = (
       once: true,
       margin,
     },
-  }) as const;
+  }) as const

@@ -1,93 +1,84 @@
-import type { Field } from "payload";
+import type { Field } from 'payload'
 
 const name: Field = {
-  name: "name",
-  type: "text",
-  label: "Name (lowercase, no special characters)",
+  name: 'name',
+  type: 'text',
+  label: 'Name (lowercase, no special characters)',
   required: true,
   admin: {
-    width: "50%",
+    width: '50%',
   },
-};
+}
 
 const label: Field = {
-  name: "label",
-  type: "text",
-  label: "Label",
+  name: 'label',
+  type: 'text',
+  label: 'Label',
   admin: {
-    width: "50%",
+    width: '50%',
   },
-};
+}
 
 const description: Field = {
-  name: "description",
-  type: "text",
-  label: "Description",
+  name: 'description',
+  type: 'text',
+  label: 'Description',
   admin: {
-    width: "100%",
+    width: '100%',
   },
-};
+}
 
 const required: Field = {
-  name: "required",
-  type: "checkbox",
-  label: "Required",
+  name: 'required',
+  type: 'checkbox',
+  label: 'Required',
   admin: {
-    width: "50%",
+    width: '50%',
   },
-};
+}
 
 const placeholder: Field = {
-  name: "placeholder",
-  type: "text",
-  label: "Placeholder",
+  name: 'placeholder',
+  type: 'text',
+  label: 'Placeholder',
   admin: {
-    width: "50%",
+    width: '50%',
   },
-};
+}
 
 const defaultValue: Field = {
-  name: "defaultValue",
-  type: "text",
+  name: 'defaultValue',
+  type: 'text',
   admin: {
-    width: "25%",
+    width: '25%',
   },
-  label: "Default Value",
-};
+  label: 'Default Value',
+}
 
 const width: Field = {
-  name: "width",
-  type: "select",
-  defaultValue: "full",
+  name: 'width',
+  type: 'select',
+  defaultValue: 'full',
   options: [
-    { value: "full", label: "100%" },
-    { value: "3/4", label: "75%" },
-    { value: "2/3", label: "66%" },
-    { value: "1/2", label: "50%" },
-    { value: "1/3", label: "33%" },
-    { value: "1/4", label: "25%" },
+    { value: 'full', label: '100%' },
+    { value: '3/4', label: '75%' },
+    { value: '2/3', label: '66%' },
+    { value: '1/2', label: '50%' },
+    { value: '1/3', label: '33%' },
+    { value: '1/4', label: '25%' },
   ],
   admin: {
-    width: "25%",
+    width: '25%',
   },
-};
+}
 
 const hidden: Field = {
-  name: "hidden",
-  type: "checkbox",
+  name: 'hidden',
+  type: 'checkbox',
   admin: {
-    width: "50%",
+    width: '50%',
   },
-  label: "Hidden Field?",
-};
+  label: 'Hidden Field?',
+}
 
-export {
-  defaultValue,
-  description,
-  hidden,
-  label,
-  name,
-  placeholder,
-  required,
-  width,
-};
+export { defaultValue, description, hidden, label, name, placeholder, required, width }

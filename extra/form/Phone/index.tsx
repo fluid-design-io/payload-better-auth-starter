@@ -1,27 +1,22 @@
-import type { TextField } from "@payloadcms/plugin-form-builder/types";
-import type {
-  FieldErrorsImpl,
-  FieldValues,
-  UseFormRegister,
-} from "react-hook-form";
-
-import { FormInput } from "../FormInput";
-import { Width } from "../Width";
+import type { TextField } from '@payloadcms/plugin-form-builder/types'
+import type { FieldErrorsImpl, FieldValues, UseFormRegister } from 'react-hook-form'
+import { FormInput } from '../FormInput'
+import { Width } from '../Width'
 
 export const Phone: React.FC<
   {
     errors: Partial<
       FieldErrorsImpl<{
-        [x: string]: any;
+        [x: string]: any
       }>
-    >;
-    register: UseFormRegister<any & FieldValues>;
+    >
+    register: UseFormRegister<any & FieldValues>
   } & TextField & {
-      width: string;
-      placeholder?: string;
-      label: string;
-      description?: string;
-      hidden?: boolean;
+      width: string
+      placeholder?: string
+      label: string
+      description?: string
+      hidden?: boolean
     }
 > = ({
   name,
@@ -30,7 +25,7 @@ export const Phone: React.FC<
   label,
   register,
   required,
-  width = "full",
+  width = 'full',
   description,
   placeholder,
   hidden,
@@ -38,7 +33,7 @@ export const Phone: React.FC<
   return (
     <Width width={width}>
       <FormInput
-        type='tel'
+        type="tel"
         {...{
           errors,
           label,
@@ -52,5 +47,5 @@ export const Phone: React.FC<
         }}
       />
     </Width>
-  );
-};
+  )
+}

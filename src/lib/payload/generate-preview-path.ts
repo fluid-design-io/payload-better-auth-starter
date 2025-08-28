@@ -1,16 +1,16 @@
-import type { CollectionSlug, PayloadRequest } from "payload";
+import type { CollectionSlug, PayloadRequest } from 'payload'
 
 /**
  * Maps collection slugs to their corresponding URL prefixes.
  * This determines the URL structure for different content types.
  */
-const collectionPrefixMap: Partial<Record<CollectionSlug, string>> = {};
+const collectionPrefixMap: Partial<Record<CollectionSlug, string>> = {}
 
 type Props = {
-  collection: keyof typeof collectionPrefixMap;
-  slug: string;
-  req: PayloadRequest;
-};
+  collection: keyof typeof collectionPrefixMap
+  slug: string
+  req: PayloadRequest
+}
 
 /**
  * Generates a preview URL for Payload CMS content.
@@ -62,27 +62,26 @@ type Props = {
  * ```
  */
 export const generatePreviewPath = ({ collection, slug, req }: Props) => {
-  const path = `${collectionPrefixMap[collection]}/${slug}`;
+  const path = `${collectionPrefixMap[collection]}/${slug}`
 
   const params = {
     slug,
     collection,
     path,
-  };
+  }
 
-  const encodedParams = new URLSearchParams();
+  const encodedParams = new URLSearchParams()
 
   Object.entries(params).forEach(([key, value]) => {
-    encodedParams.append(key, value);
-  });
+    encodedParams.append(key, value)
+  })
 
   const isProduction =
-    process.env.NODE_ENV === "production" ||
-    Boolean(process.env.VERCEL_PROJECT_PRODUCTION_URL);
-  const protocol = isProduction ? "https:" : req.protocol;
+    process.env.NODE_ENV === 'production' || Boolean(process.env.VERCEL_PROJECT_PRODUCTION_URL)
+  const protocol = isProduction ? 'https:' : req.protocol
 
-  const url = `${protocol}//${req.host}/next/preview?${encodedParams.toString()}`;
-  console.log("🔥PREVIEW URL", url);
+  const url = `${protocol}//${req.host}/next/preview?${encodedParams.toString()}`
+  console.log('🔥PREVIEW URL', url)
 
-  return url;
-};
+  return url
+}

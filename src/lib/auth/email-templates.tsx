@@ -239,3 +239,28 @@ export async function sendVerificationOTP({
     ),
   })
 }
+
+export async function sendAdminInviteEmail({ email, url }: { email: string; url: string }) {
+  const config = await payloadConfig
+  const payload = await getPayload({ config })
+  await payload.sendEmail({
+    to: email,
+    subject: 'Admin Invitation',
+    html: await render(
+      <AcmeTemplate
+        heading="Admin Invitation"
+        action="Accept Invitation"
+        content={
+          <>
+            <Text>Hello,</Text>
+            <Text>
+              You are receiving this email because you have been invited to join the admin panel.
+            </Text>
+            <Text>Click the button below to accept the invitation.</Text>
+          </>
+        }
+        url={url}
+      />
+    ),
+  })
+}

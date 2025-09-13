@@ -6,6 +6,7 @@ import { getPayload } from 'payload'
 import type { BetterAuthOptions, BetterAuthPluginOptions } from 'payload-auth/better-auth'
 import payloadConfig from '@/payload.config'
 import {
+  sendAdminInviteEmail,
   sendChangeEmailVerification,
   sendDeleteAccountVerification,
   sendResetPasswordEmail,
@@ -156,7 +157,7 @@ export const betterAuthPluginOptions: BetterAuthPluginOptions = {
   },
   adminInvitations: {
     sendInviteEmail: async ({ payload, email, url }) => {
-      console.log('Send admin invite: ', email, url)
+      await sendAdminInviteEmail({ email, url })
       return {
         success: true,
       }

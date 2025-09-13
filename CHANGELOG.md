@@ -1,5 +1,12 @@
 # acme-website
 
+## 1.2.1
+
+### Patch Changes
+
+- Fix Admin panel Event handlers cannot be passed to Client Component props
+- Add `sendAdminInviteEmail` handler to `better-auth` options
+
 ## 1.2.0
 
 ### Minor Changes

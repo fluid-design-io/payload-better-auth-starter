@@ -1,0 +1,48 @@
+diff --git a/dist/better-auth/plugin/lib/build-collections/accounts/index.js b/dist/better-auth/plugin/lib/build-collections/accounts/index.js
+index ceddb8349861fea306db1efbebc45e3cfd290739..1b66b5885673ca4cdf917bc8b94918375719a929 100644
+--- a/dist/better-auth/plugin/lib/build-collections/accounts/index.js
++++ b/dist/better-auth/plugin/lib/build-collections/accounts/index.js
+@@ -16,6 +16,7 @@ export function buildAccountsCollection({ incomingCollections, pluginOptions, re
+             condition: (field)=>field.type === 'date',
+             transform: (field)=>({
+                     ...field,
++                    onUpdate: undefined,
+                     saveToJWT: false,
+                     admin: {
+                         disableBulkEdit: true,
+diff --git a/dist/better-auth/plugin/lib/build-collections/sessions.js b/dist/better-auth/plugin/lib/build-collections/sessions.js
+index f9818cceffaadc304b02ef8be3a4b6d56851d0f5..611b8db33237f2e1a578eb68d808113098bb1bdb 100644
+--- a/dist/better-auth/plugin/lib/build-collections/sessions.js
++++ b/dist/better-auth/plugin/lib/build-collections/sessions.js
+@@ -77,6 +77,7 @@ export function buildSessionsCollection({ incomingCollections, pluginOptions, re
+             condition: (field)=>field.fieldName === 'updatedAt' || field.fieldName === 'createdAt',
+             transform: (field)=>({
+                     ...field,
++                    onUpdate: undefined,
+                     saveToJWT: false,
+                     admin: {
+                         disableBulkEdit: true,
+diff --git a/dist/better-auth/plugin/lib/build-collections/users/index.js b/dist/better-auth/plugin/lib/build-collections/users/index.js
+index 52573c7016226b41ac23322f46fa84ea606d08ae..1bc445cd1e47b61dba8d6fd46437c806c46e2c02 100644
+--- a/dist/better-auth/plugin/lib/build-collections/users/index.js
++++ b/dist/better-auth/plugin/lib/build-collections/users/index.js
+@@ -27,6 +27,7 @@ export function buildUsersCollection({ incomingCollections, pluginOptions, resol
+             condition: (field)=>field.fieldName === 'createdAt' || field.fieldName === 'updatedAt',
+             transform: (field)=>({
+                     ...field,
++                    onUpdate: undefined,
+                     saveToJWT: false,
+                     admin: {
+                         disableBulkEdit: true,
+diff --git a/dist/better-auth/plugin/lib/build-collections/verifications.js b/dist/better-auth/plugin/lib/build-collections/verifications.js
+index f921589ff8b18f95a50f0933875cc4c918791c28..b7e85e9b9e606b7786c64632f321c2ad1035bd7b 100644
+--- a/dist/better-auth/plugin/lib/build-collections/verifications.js
++++ b/dist/better-auth/plugin/lib/build-collections/verifications.js
+@@ -32,6 +32,7 @@ export function buildVerificationsCollection({ incomingCollections, pluginOption
+             condition: (field)=>field.type === 'date',
+             transform: (field)=>({
+                     ...field,
++                    onUpdate: undefined,
+                     saveToJWT: false,
+                     admin: {
+                         disableBulkEdit: true,

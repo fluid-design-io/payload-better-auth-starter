@@ -2,9 +2,6 @@
 
 > A production-ready PayloadCMS starter with [payload-auth](https://github.com/payload-auth/payload-auth), modern UI components, and full-stack development tools.
 
-> [!IMPORTANT]
-> A recent `better-auth` update caused an issue in the **Admin UI**. The fix is to stay on `1.3.7` for now.
-
 ## Table of Contents
 
 - [Features](#-features)

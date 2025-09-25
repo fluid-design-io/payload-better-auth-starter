@@ -16,7 +16,6 @@ type Args = {
 const serverFunction: ServerFunctionClient = async (args) => {
   'use server'
 
-  console.log('🔥 serverFunction', args)
   return handleServerFunctions({
     ...args,
     config,

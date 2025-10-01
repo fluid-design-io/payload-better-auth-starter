@@ -25,12 +25,12 @@ export default function FeaturesPage() {
           <SectionGridItem
             title="Title 1"
             description="Apeirian suavitate vim ut, has tota mundi efficiantur id. Dicunt imperdiet his ex. Pri veri zril ex, ea qualisque efficiendi nec. Libris omittam suscipit id duo, ei natum animal scriptorem vim."
-            media={<ImageMedia src={image} alt="Title 1" zoom />}
+            media={<ImageMedia aspectRatio="aspect-none" src={image} alt="Title 1" zoom />}
           />
           <SectionGridItem
             title="Title 2"
             description="Denique interpretaris eos ei. Illud ignota dissentiet no sed, movet semper volumus ne vis. Eum cu interesset temporibus, ne impedit explicari usu, vocent gubergren his no. Eum nulla error abhorreant ne, mucius platonem dissentiunt eu est."
-            media={<ImageMedia src={image} alt="Title 2" zoom />}
+            media={<ImageMedia aspectRatio="aspect-none" src={image} alt="Title 2" zoom />}
           />
         </SectionGrid>
         <FullWidthImage image={image} caption="Image Caption" alt="Title 1" zoom />

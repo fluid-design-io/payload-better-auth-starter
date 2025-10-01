@@ -225,7 +225,7 @@ const SectionGrid = ({
 const SectionGridItem = ({ badge, title, description, media }: SectionGridChildProps) => {
   const slug = slugify(title)
   return (
-    <section aria-labelledby={slug} className="grid">
+    <section aria-labelledby={slug} className="grid grid-rows-[auto_1fr]">
       <div className="order-last">
         <H3 id={slug} className={cn(CLASSNAMES.sectionHeadingClassName, { 'mt-8': !badge })}>
           {title}
@@ -453,6 +453,7 @@ const ImageMedia = ({
       className={cn(
         'relative w-full overflow-hidden rounded-4xl',
         'bg-gradient-to-br',
+        // zoom && '[&>span]:h-full',
         aspectRatio,
         gradientColors,
         className

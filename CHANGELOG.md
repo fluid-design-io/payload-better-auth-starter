@@ -1,5 +1,15 @@
 # acme-website
 
+## 1.3.0
+
+### Minor Changes
+
+- ## 🚀 Features
+  - New modern header style. The new header shrinks on scroll on desktop, providing a modern look and feel.
+
+  ## 🔧 Chores
+  - Bump package versions
+
 ## 1.2.1
 
 ### Patch Changes

@@ -5,7 +5,7 @@
     "**/route.ts": "${dirname} - route.ts",
     "**/index.tsx": "${dirname} - index.tsx",
     "**/layout.tsx": "${dirname} - layout.tsx",
-    "**/_layout.tsx": "${dirname} - _layout.tsx"
+    "**/actions.ts": "${dirname} - actions.ts"
   },
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {

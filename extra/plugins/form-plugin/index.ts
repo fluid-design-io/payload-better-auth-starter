@@ -13,11 +13,9 @@ import {
 import { userInfo } from 'extra/form/UserInfo/config'
 import type { Field, Plugin } from 'payload'
 import { authenticated } from '@/access/authenticated'
-import { slugField } from '@/fields/slug'
 import beforeEmail from './before-email'
 
 const fieldsTransformer = ({ defaultFields }: { defaultFields: Field[] }) => {
-  const [formSlugFieldText, formSlugFieldCheckbox] = slugField()
   const transformedFields = defaultFields.map((field) => {
     if (field.type === 'radio' && field.name === 'confirmationType') {
       return {
@@ -27,7 +25,7 @@ const fieldsTransformer = ({ defaultFields }: { defaultFields: Field[] }) => {
     }
     return field
   })
-  return [...transformedFields, formSlugFieldText, formSlugFieldCheckbox]
+  return [...transformedFields]
 }
 
 const adminConfig = {
@@ -82,7 +80,6 @@ const rowConfig: Record<
 /** Add a phone number field */
 const phoneField: Field = {
   ...fields.text,
-  // @ts-expect-error - Slug is valid
   slug: 'phone',
   labels: {
     singular: 'Phone Number',

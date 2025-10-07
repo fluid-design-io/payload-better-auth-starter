@@ -395,7 +395,6 @@ export interface AdminInvitation {
 export interface Blog {
   id: string;
   title: string;
-  heroImage?: (string | null) | PayloadUpload;
   content: {
     root: {
       type: string;
@@ -411,7 +410,6 @@ export interface Blog {
     };
     [k: string]: unknown;
   };
-  relatedBlogPosts?: (string | Blog)[] | null;
   meta?: {
     title?: string | null;
     /**
@@ -420,6 +418,10 @@ export interface Blog {
     image?: (string | null) | PayloadUpload;
     description?: string | null;
   };
+  /**
+   * Category of the blog post
+   */
+  category?: ('company' | 'marketing' | 'newsroom' | 'partners' | 'engineering' | 'press') | null;
   publishedAt?: string | null;
   authors?: (string | User)[] | null;
   populatedAuthors?:
@@ -432,6 +434,7 @@ export interface Blog {
   slugLock?: boolean | null;
   updatedAt: string;
   createdAt: string;
+  deletedAt?: string | null;
   _status?: ('draft' | 'published') | null;
 }
 /**
@@ -871,9 +874,7 @@ export interface AdminInvitationsSelect<T extends boolean = true> {
  */
 export interface BlogSelect<T extends boolean = true> {
   title?: T;
-  heroImage?: T;
   content?: T;
-  relatedBlogPosts?: T;
   meta?:
     | T
     | {
@@ -881,6 +882,7 @@ export interface BlogSelect<T extends boolean = true> {
         image?: T;
         description?: T;
       };
+  category?: T;
   publishedAt?: T;
   authors?: T;
   populatedAuthors?:
@@ -893,6 +895,7 @@ export interface BlogSelect<T extends boolean = true> {
   slugLock?: T;
   updatedAt?: T;
   createdAt?: T;
+  deletedAt?: T;
   _status?: T;
 }
 /**

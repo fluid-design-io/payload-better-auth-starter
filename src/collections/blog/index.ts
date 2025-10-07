@@ -37,6 +37,7 @@ export const Blog: CollectionConfig<'blog'> = {
     singular: 'Blog Post',
     plural: 'Blog Posts',
   },
+  trash: true,
   access: {
     create: authenticated,
     delete: authenticated,
@@ -76,11 +77,6 @@ export const Blog: CollectionConfig<'blog'> = {
         {
           fields: [
             {
-              name: 'heroImage',
-              type: 'upload',
-              relationTo: 'payload-uploads',
-            },
-            {
               name: 'content',
               type: 'richText',
               editor: lexicalEditor({
@@ -112,27 +108,6 @@ export const Blog: CollectionConfig<'blog'> = {
           label: 'Content',
         },
         {
-          fields: [
-            {
-              name: 'relatedBlogPosts',
-              type: 'relationship',
-              admin: {
-                position: 'sidebar',
-              },
-              filterOptions: ({ id }) => {
-                return {
-                  id: {
-                    not_in: [id],
-                  },
-                }
-              },
-              hasMany: true,
-              relationTo: 'blog',
-            },
-          ],
-          label: 'Meta',
-        },
-        {
           name: 'meta',
           label: 'SEO',
           fields: [
@@ -160,6 +135,24 @@ export const Blog: CollectionConfig<'blog'> = {
           ],
         },
       ],
+    },
+    {
+      name: 'category',
+      type: 'select',
+      options: [
+        { label: 'Company', value: 'company' },
+        { label: 'Marketing', value: 'marketing' },
+        { label: 'Newsroom', value: 'newsroom' },
+        { label: 'Partners', value: 'partners' },
+        { label: 'Engineering', value: 'engineering' },
+        { label: 'Press', value: 'press' },
+      ],
+      admin: {
+        position: 'sidebar',
+        description: 'Category of the blog post',
+      },
+      defaultValue: 'company',
+      hasMany: false,
     },
     {
       name: 'publishedAt',

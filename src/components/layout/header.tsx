@@ -49,7 +49,7 @@ export default function Header() {
       {...(isScrolled && { 'data-scrolled': true })}
       data-state={isMobileMenuOpen ? 'active' : 'inactive'}
       className={cn(
-        'bg-background [--color-popover:color-mix(in_oklch,var(--color-muted)_25%,var(--color-background))]',
+        'bg-background [--color-popover:color-mix(in_oklch,var(--color-muted)_25%,var(--color-background))] px-4 md:px-8',
         !isLarge && 'sticky top-0 h-16 z-50'
       )}
     >
@@ -58,7 +58,7 @@ export default function Header() {
           'relative',
           'not-in-data-scrolled:has-data-[state=open]:[--viewport-translate:-4rem]',
           !isLarge &&
-            'in-data-scrolled:border-b in-data-scrolled:border-foreground/5 in-data-scrolled:backdrop-blur in-data-scrolled:bg-card/50 absolute inset-x-0 px-6 top-0 z-50 h-16 overflow-hidden',
+            'in-data-scrolled:border-b in-data-scrolled:border-foreground/5 in-data-scrolled:backdrop-blur in-data-scrolled:bg-card/50 absolute inset-x-0 px-4 md:px-8 top-0 z-50 h-16 overflow-hidden',
           'max-lg:in-data-[state=active]:bg-card/50 max-lg:in-data-[state=active]:h-screen max-lg:in-data-[state=active]:backdrop-blur'
         )}
       >
@@ -83,7 +83,7 @@ export default function Header() {
             {isLarge && (
               <motion.div
                 animate={{ width: 'fit-content', gap: 8 }}
-                className="bg-popover/50 ring-background inset-shadow-sm inset-shadow-white/[0.02] border-foreground/5 fixed inset-x-0 z-50 mx-auto size-fit max-w-xl rounded-xl border p-1.5 shadow-xl shadow-black/25 ring-1 backdrop-blur-xl"
+                className="bg-popover/50 ring-background/75 inset-shadow-sm inset-shadow-white/[0.02] border-foreground/5 fixed inset-x-0 z-50 mx-auto size-fit max-w-xl rounded-xl border p-1.5 shadow-xl shadow-black/25 ring-1 backdrop-blur-xl"
               >
                 <div className="flex items-center">
                   <AnimatePresence>

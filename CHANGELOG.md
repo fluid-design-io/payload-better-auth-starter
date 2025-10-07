@@ -1,5 +1,22 @@
 # acme-website
 
+## 1.4.0
+
+### Minor Changes
+
+- ## 💥 Breaking Changes
+  - Blog Collection: Remove `relatedBlogPosts` field, `heroImage` field.
+  - Blog Components: Remove related blog posts, Hero image, and scroll progress components.
+
+  ## 🚀 Features
+  - Add category filters to the blog post layout.
+
+  ## 🎨 UI Updates
+  - Improves the blog post layout by adding category filters, pagination, author information, and a more modern design.
+
+  ## 🔧 Dependencies
+  - Bump dependencies
+
 ## 1.3.0
 
 ### Minor Changes

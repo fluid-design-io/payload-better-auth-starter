@@ -1,17 +1,19 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { BlogHero } from '@/components/payload/blog-hero'
+import { Container } from '@/components/layout/elements'
+import { Main } from '@/components/layout/main'
 import { LivePreviewListener } from '@/components/payload/live-preview-listener'
 import RichText from '@/components/payload/rich-text'
+import { Muted } from '@/components/ui/typography'
 
+import { formatAuthors } from '@/lib/payload'
 import { generateMeta } from '@/lib/payload/generate-meta'
 import { getDocument } from '@/lib/payload/get-cached-document'
 import { getPayload } from '@/lib/payload/get-payload'
 
-import { RelatedBlogPosts } from '@/blocks/related-blog-posts'
-import { queryPostsBySlug } from './data'
-import ScrollProgress from './scroll-progress'
+import { BlogHeader } from './blog-header'
 
 export async function generateStaticParams() {
   const payload = await getPayload()
@@ -48,32 +50,47 @@ export default async function Post({ params: paramsPromise, searchParams }: Args
   if (!post) notFound()
 
   return (
-    <>
-      <ScrollProgress />
-      <article className="pt-16 pb-16">
-        {draft && <LivePreviewListener />}
-
-        <BlogHero blog={post} />
-
-        <div className="flex flex-col items-center gap-4 pt-8">
-          <div className="container mx-auto">
-            <RichText className="max-w-[48rem] mx-auto" data={post.content} enableGutter={false} />
-            {post.relatedBlogPosts && post.relatedBlogPosts.length > 0 && (
-              <RelatedBlogPosts
-                className="mt-12 max-w-[52rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
-                docs={post.relatedBlogPosts.filter((post) => typeof post === 'object')}
-              />
-            )}
+    <Main className="md:pt-16 pb-16">
+      <Container className="w-full lg:grid lg:grid-cols-[1fr_44rem_1fr]">
+        <div className="hidden lg:block">
+          <div className="sticky top-8 z-10">
+            <Link
+              href="/blog"
+              className="text-muted-foreground hover:text-primary transition duration-200"
+            >
+              Blog
+            </Link>
+            &nbsp;
+            <span className="text-muted-foreground">/</span>
+            &nbsp;
+            <Link
+              href={`/blog?category=${post.category}`}
+              className="text-muted-foreground hover:text-primary transition duration-200 capitalize"
+            >
+              {post.category}
+            </Link>
           </div>
         </div>
-      </article>
-    </>
+        <article className="col-start-1 col-span-1 md:col-start-2">
+          {draft && <LivePreviewListener />}
+          <BlogHeader blog={post} />
+          <div className="flex flex-col items-center gap-4">
+            <RichText data={post.content} enableGutter={false} />
+            <div className="w-full my-16">
+              <Muted className="text-left">
+                Author: {formatAuthors(post.populatedAuthors || [])}
+              </Muted>
+            </div>
+          </div>
+        </article>
+      </Container>
+    </Main>
   )
 }
 
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { slug = '' } = await paramsPromise
-  const post = await queryPostsBySlug({ slug })
+  const post = await getDocument('blog', slug, 1, false)
   if (!post) return {}
 
   return generateMeta({ doc: post })

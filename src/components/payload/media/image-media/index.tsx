@@ -90,6 +90,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         sizes={sizes}
         width={!fill ? width : undefined}
         height={!fill ? height : undefined}
+        className="rounded-md"
       />
     )
   }

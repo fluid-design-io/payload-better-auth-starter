@@ -157,6 +157,7 @@ export const betterAuthPluginOptions: BetterAuthPluginOptions = {
     hidden: process.env.NODE_ENV !== 'development',
   },
   adminInvitations: {
+    hidden: process.env.NODE_ENV !== 'development',
     sendInviteEmail: async ({ payload, email, url }) => {
       await sendAdminInviteEmail({ email, url })
       return {

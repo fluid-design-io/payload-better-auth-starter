@@ -117,12 +117,10 @@ export const betterAuthOptions: BetterAuthOptions = {
     },
   },
   session: {
-    //! Caching causes payload ui to break: session.createdAt is required but
-    //! this is not available right after user logs in.
-    // cookieCache: {
-    //   enabled: true,
-    //   maxAge: 5 * 60, // Cache duration in seconds
-    // },
+    cookieCache: {
+      enabled: true,
+      maxAge: 5 * 60, // Cache duration in seconds
+    },
   },
   account: {
     accountLinking: {

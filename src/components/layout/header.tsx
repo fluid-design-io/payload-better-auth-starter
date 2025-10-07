@@ -1,7 +1,8 @@
 'use client'
 import { AppWindowMac, Menu, X } from 'lucide-react'
 import Link from 'next/link'
-import React from 'react'
+import { usePathname } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 import {
   NavigationMenu,
@@ -30,10 +31,11 @@ const navigationLinks = [
 
 export default function Header() {
   const isLarge = useMediaQuery('(min-width: 64rem)')
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
-  const [isScrolled, setIsScrolled] = React.useState(false)
+  const pathname = usePathname()
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 75)
     }
@@ -142,7 +144,7 @@ export default function Header() {
                             variant="outline"
                             className="border-foreground/10 ml-4 h-7 ring-0"
                           >
-                            <Link href={`/sign-in?redirectTo=${window.location.pathname}`}>
+                            <Link href={`/sign-in?redirectTo=${pathname}`}>
                               <span>Sign In</span>
                             </Link>
                           </Button>
@@ -161,7 +163,7 @@ export default function Header() {
               <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
                 <SignedOut>
                   <Button asChild variant="ghost" size="sm">
-                    <Link href="#">
+                    <Link href={`/sign-in?redirectTo=${pathname}`}>
                       <span>Sign In</span>
                     </Link>
                   </Button>

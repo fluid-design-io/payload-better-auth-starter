@@ -50,6 +50,7 @@ export const betterAuthOptions: BetterAuthOptions = {
   baseURL: process.env.NEXT_PUBLIC_BETTER_AUTH_URL,
   trustedOrigins: [process.env.NEXT_PUBLIC_BETTER_AUTH_URL, 'https://*.vercel.app'],
   emailAndPassword: {
+    disableSignUp: process.env.NODE_ENV !== 'development',
     enabled: true,
     requireEmailVerification: true,
     async sendResetPassword({ user, url, token }) {
@@ -138,19 +139,22 @@ export const betterAuthPluginOptions: BetterAuthPluginOptions = {
   hidePluginCollections: true,
   users: {
     slug: 'users', // not required, this is the default anyways
-    hidden: false,
+    hidden: process.env.NODE_ENV !== 'development',
     adminRoles: ['admin'],
     allowedFields: ['name'],
     roles: ['admin', 'user'],
   },
   accounts: {
     slug: 'accounts',
+    hidden: process.env.NODE_ENV !== 'development',
   },
   sessions: {
     slug: 'sessions',
+    hidden: process.env.NODE_ENV !== 'development',
   },
   verifications: {
     slug: 'verifications',
+    hidden: process.env.NODE_ENV !== 'development',
   },
   adminInvitations: {
     sendInviteEmail: async ({ payload, email, url }) => {

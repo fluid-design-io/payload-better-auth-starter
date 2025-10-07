@@ -1,4 +1,10 @@
+import { ArrowRight, User2 } from 'lucide-react'
+import Link from 'next/link'
+
 import { Main } from '@/components/layout/main'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { Button } from '@/components/ui/button'
+import { P } from '@/components/ui/typography'
 
 import { AuthView } from '@daveyplate/better-auth-ui'
 import { authViewPaths } from '@daveyplate/better-auth-ui/server'
@@ -30,6 +36,25 @@ export default async function AuthPage({ params }: { params: Promise<{ authView:
   const { authView } = await params
   return (
     <Main className="container mx-auto flex grow flex-col items-center justify-center gap-3 self-center p-4 md:p-6">
+      {(authView === 'sign-up' || authView === 'sign-in') && (
+        <Alert className="max-w-sm" variant="accent">
+          <User2 />
+          <AlertTitle>Demo Mode</AlertTitle>
+          <AlertDescription>
+            <P>
+              You can use <strong>john_doe@uing.dev</strong> as the email and{' '}
+              <strong>Password123!</strong> as the password to sign in.
+            </P>
+            {authView === 'sign-up' && (
+              <Button asChild>
+                <Link href="/sign-in">
+                  Go to sign in <ArrowRight />
+                </Link>
+              </Button>
+            )}
+          </AlertDescription>
+        </Alert>
+      )}
       <AuthView pathname={authView} />
     </Main>
   )

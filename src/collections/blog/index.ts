@@ -179,6 +179,7 @@ export const Blog: CollectionConfig<'blog'> = {
       type: 'relationship',
       admin: {
         position: 'sidebar',
+        hidden: process.env.NODE_ENV !== 'development',
       },
       hasMany: true,
       relationTo: 'users',

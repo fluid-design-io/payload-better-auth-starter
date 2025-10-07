@@ -21,12 +21,11 @@ import {
   UnderlineFeature,
   UnorderedListFeature,
 } from '@payloadcms/richtext-lexical'
-import type { CollectionConfig } from 'payload'
+import { type CollectionConfig, slugField } from 'payload'
 import { authenticatedOrPublished } from '@/access/authenticated-or-published'
 import { ContentBlock } from '@/blocks/content-block/config'
 import { GalleryBlock } from '@/blocks/gallery-block/config'
 import { MediaBlock } from '@/blocks/media-block/config'
-import { slugField } from '@/fields/slug'
 import { populateAuthors } from './hooks/populate-authors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidate-post'
 
@@ -208,7 +207,7 @@ export const Blog: CollectionConfig<'blog'> = {
         },
       ],
     },
-    ...slugField(),
+    slugField(),
   ],
   hooks: {
     afterChange: [revalidatePost],
@@ -217,9 +216,7 @@ export const Blog: CollectionConfig<'blog'> = {
   },
   versions: {
     drafts: {
-      autosave: {
-        interval: 100, // We set this interval for optimal live preview
-      },
+      autosave: true,
       schedulePublish: true,
     },
     maxPerDoc: 50,

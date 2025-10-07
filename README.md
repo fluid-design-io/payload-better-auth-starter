@@ -25,7 +25,7 @@
 
 ## Video Demo
 
-https://github.com/user-attachments/assets/04009ca4-a212-44da-b6c8-bd26d5dc713e
+https://github.com/user-attachments/assets/da930987-5331-45c4-a668-35ff3b96c61d
 
 ## Custom Blocks
 
@@ -114,17 +114,29 @@ export default function FeaturesPage() {
 
 ## Screenshots
 
-**Main Pages**
+| Home | Home |
+| ------------- | ------------- |
+| <img width="100%" height="auto" alt="Screen 1-1" src="https://github.com/user-attachments/assets/919d3dc7-ef6c-4aef-8987-dd45e41572e0" /> | <img width="100%" height="auto" alt="Screen 1-2" src="https://github.com/user-attachments/assets/ba8c5f4b-cd73-46ad-b751-7446fa034e6d" /> |
 
-<img width="1739" height="2014" alt="Main Pages" src="https://github.com/user-attachments/assets/54b8bbb0-4064-4204-adf2-cdf88eb85f14" />
+| Features | Features |
+| ------------- | ------------- |
+| <img width="100%" height="auto" alt="Screen 2" src="https://github.com/user-attachments/assets/f125eacf-ed44-4670-affe-171b742d9ce7" /> | <img width="100%" height="auto" alt="Screen 4" src="https://github.com/user-attachments/assets/1c6a8b24-bef9-495f-bf7b-963c82748252" /> |
 
-**Account Settings**
+| Blog | Blog Post |
+| ------------- | ------------- |
+| <img width="100%" height="auto" alt="Screen 5" src="https://github.com/user-attachments/assets/c689b044-fec0-42ea-97da-c8e79abb119d" /> | <img width="100%" height="auto" alt="Screen 6" src="https://github.com/user-attachments/assets/0f7b6c3e-49cf-4b1e-a633-b76aeb41038f" /> |
 
-<img width="1301" height="2046" alt="Screenshot 2" src="https://github.com/user-attachments/assets/d86f420b-e786-4735-a93b-901c7b93dc87" />
+| Account | Account |
+| ------------- | ------------- |
+| <img width="1153" height="982" alt="Screen 7" src="https://github.com/user-attachments/assets/dc205cf8-1bae-4157-bb49-4f9332151441" /> | <img width="1153" height="982" alt="Screen 8" src="https://github.com/user-attachments/assets/6f18e1bb-5d55-4655-8213-d1c1655fc037" /> |
+
+| Admin | Admin |
+| ------------- | ------------- |
+| <img width="1153" height="982" alt="Screen 10" src="https://github.com/user-attachments/assets/b0727b3e-144b-4132-958d-b10688da08c8" /> | <img width="1153" height="982" alt="Screen 11" src="https://github.com/user-attachments/assets/61b4ebdc-fa65-4d40-b968-b6aa96dc237e" /> |
 
 **Email UI**
 
-<img width="1303" height="1513" alt="Email UIs" src="https://github.com/user-attachments/assets/29219ab1-d76f-4792-9af7-6196f6930a76" />
+<img width="100%" height="auto" alt="Email UIs" src="https://github.com/user-attachments/assets/29219ab1-d76f-4792-9af7-6196f6930a76" />
 
 ## 🚀 Quick Start
 

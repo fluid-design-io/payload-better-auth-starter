@@ -7,6 +7,7 @@ export const GlobalFooter: GlobalConfig<'global-footer'> = {
   slug: 'global-footer',
   access: {
     read: () => true,
+    update: () => process.env.NODE_ENV === 'development',
   },
   fields: [
     {

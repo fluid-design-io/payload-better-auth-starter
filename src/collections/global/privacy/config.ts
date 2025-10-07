@@ -6,6 +6,7 @@ export const GlobalPrivacy: GlobalConfig<'global-privacy'> = {
   slug: 'global-privacy',
   access: {
     read: () => true,
+    update: () => process.env.NODE_ENV === 'development',
   },
   fields: [
     {

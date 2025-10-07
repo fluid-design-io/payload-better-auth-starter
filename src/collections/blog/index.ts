@@ -22,7 +22,6 @@ import {
   UnorderedListFeature,
 } from '@payloadcms/richtext-lexical'
 import type { CollectionConfig } from 'payload'
-import { authenticated } from '@/access/authenticated'
 import { authenticatedOrPublished } from '@/access/authenticated-or-published'
 import { ContentBlock } from '@/blocks/content-block/config'
 import { GalleryBlock } from '@/blocks/gallery-block/config'
@@ -39,10 +38,10 @@ export const Blog: CollectionConfig<'blog'> = {
   },
   trash: true,
   access: {
-    create: authenticated,
-    delete: authenticated,
     read: authenticatedOrPublished,
-    update: authenticated,
+    create: () => process.env.NODE_ENV === 'development',
+    delete: () => process.env.NODE_ENV === 'development',
+    update: () => process.env.NODE_ENV === 'development',
   },
   // This config controls what's populated by default when a post is referenced
   // https://payloadcms.com/docs/queries/select#defaultpopulate-collection-config-property
@@ -56,6 +55,7 @@ export const Blog: CollectionConfig<'blog'> = {
     },
   },
   admin: {
+    hideAPIURL: true,
     group: 'Acme',
     defaultColumns: ['title', 'slug', 'updatedAt'],
     livePreview: {

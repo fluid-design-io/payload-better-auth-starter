@@ -8,6 +8,12 @@ export const PrivateUploads: CollectionConfig = {
     singular: 'Private Uploads',
     plural: 'Private Uploads',
   },
+  access: {
+    read: () => true,
+    create: () => process.env.NODE_ENV === 'development',
+    delete: () => process.env.NODE_ENV === 'development',
+    update: () => process.env.NODE_ENV === 'development',
+  },
   admin: {
     group: 'Acme',
     description: 'Private uploads that require authentication to access',

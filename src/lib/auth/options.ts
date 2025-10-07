@@ -48,11 +48,10 @@ export type BetterAuthPlugins = typeof betterAuthPlugins
 export const betterAuthOptions: BetterAuthOptions = {
   appName: 'Acme',
   baseURL: process.env.NEXT_PUBLIC_BETTER_AUTH_URL,
-  trustedOrigins: [process.env.NEXT_PUBLIC_BETTER_AUTH_URL],
+  trustedOrigins: [process.env.NEXT_PUBLIC_BETTER_AUTH_URL, 'https://*.vercel.app'],
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: true,
-    // autoSignIn: true,
     async sendResetPassword({ user, url, token }) {
       console.log('Send reset password email: ', user, url, token)
       await sendResetPasswordEmail({ user, url, token })

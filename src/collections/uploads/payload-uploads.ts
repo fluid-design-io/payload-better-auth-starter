@@ -11,6 +11,9 @@ export const PayloadUploads: CollectionConfig = {
   },
   access: {
     read: () => true,
+    create: () => process.env.NODE_ENV === 'development',
+    delete: () => process.env.NODE_ENV === 'development',
+    update: () => process.env.NODE_ENV === 'development',
   },
   admin: {
     group: 'Acme',

@@ -8,7 +8,9 @@ import type {
   SerializedLinkNode,
 } from '@payloadcms/richtext-lexical'
 import {
+  BlockquoteJSXConverter,
   RichText as ConvertRichText,
+  defaultJSXConverters,
   type JSXConvertersFunction,
   LinkJSXConverter,
 } from '@payloadcms/richtext-lexical/react'
@@ -37,13 +39,16 @@ const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
 
 const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) => ({
   ...defaultConverters,
+  ...defaultJSXConverters,
   ...LinkJSXConverter({ internalDocToHref }),
+  ...BlockquoteJSXConverter,
   blocks: {
     mediaBlock: ({ node }) => (
       <MediaBlock
         className="col-start-1 col-span-3"
         imgClassName="m-0"
         {...node.fields}
+        zoom={node.fields.zoom ?? false}
         captionClassName="mx-auto max-w-[48rem]"
         enableGutter={false}
         disableInnerContainer={true}

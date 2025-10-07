@@ -2,13 +2,11 @@
 
 > A production-ready PayloadCMS starter with [payload-auth](https://github.com/payload-auth/payload-auth), modern UI components, and full-stack development tools.
 
-## Table of Contents
-
-- [Features](#-features)
-- [Branding Your Company](#-branding-your-company)
-- [Custom UI Components](#custom-ui-components)
-- [Custom Blocks](#custom-blocks)
-- [Screenshots](#screenshots)
+<hr />
+<h4>
+<a href="#-features" rel="dofollow"><strong>Features</strong></a>&nbsp;·&nbsp;<a href="#-branding-your-company" rel="dofollow"><strong>Branding Your Company</strong></a>&nbsp;·&nbsp;<a href="#custom-ui-components" rel="dofollow"><strong>Custom UI Components</strong></a>&nbsp;·&nbsp;<a href="#custom-blocks" rel="dofollow"><strong>Custom Blocks</strong></a>&nbsp;·&nbsp;<a href="#screenshots" rel="dofollow"><strong>Screenshots</strong></a>
+</h4>
+<hr />
 
 ## ✨ Features
 
@@ -29,22 +27,27 @@ https://github.com/user-attachments/assets/da930987-5331-45c4-a668-35ff3b96c61d
 
 ## Custom Blocks
 
-- **[Content Block](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/blocks/content-block/config.ts)**: Allows you to create a content section with multiple columns that are mobile responsive.
-- **[Media Block](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/blocks/media-block/config.ts)**: Refined version of Payload's default media block (added zoom functionality).
-- **[Gallery Block](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/blocks/gallery-block/config.ts)**: A grid of zoomable images.
-- **[CopyRight Inline Block](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/blocks/copyright-inline-block/config.ts)**: An inline block that adds `© Copyright ${fromYear}~${currentYear}...` so you don't have to manually change it every year.
+| Block | Description |
+| ------------- | ------------- |
+| [Content Block](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/blocks/content-block/config.ts) | Allows you to create a content section with multiple columns that are mobile responsive. |
+| [Media Block](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/blocks/media-block/config.ts) | Refined version of Payload's default media block (added zoom functionality). |
+| [Gallery Block](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/blocks/gallery-block/config.ts) | A grid of zoomable images. |
+| [CopyRight Inline Block](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/blocks/copyright-inline-block/config.ts) | An inline block that adds `© Copyright ${fromYear}~${currentYear}...` so you don't have to manually change it every year. |
 
 ## Custom UI Components
 
-- **[LayoutHeader](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/components/layout/elements.tsx#L100)**: A header component with a badge, h1 title, and description.
-- **[SectionSpacing](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/components/layout/elements.tsx#L340)**: A spacing component for vertical spacing between sections.
-- **[SectionGrid](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/components/layout/elements.tsx#L300)**: A grid layout with multiple content items.
-- **[SectionGridItem](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/components/layout/elements.tsx#L310)**: An individual content item for vertical row layout.
-- **[SectionHeader](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/components/layout/elements.tsx#L320)**: A section header with a badge, h2 title, and description.
-- **[SectionHorizontal](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/components/layout/elements.tsx#L330)**: A horizontal section with a title, description, and media.
-- **[ImageMedia](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/components/layout/elements.tsx#L200)**: A reusable image media component with customizable gradients and styling.
-- **[VideoMedia](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/components/layout/elements.tsx#L250)**: A reusable Vimeo video media component with configurable playback options.
-- **[FullWidthImage](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/components/layout/elements.tsx#L270)**: A large full-width image section with a glow effect.
+| Component | Description |
+| ------------- | ------------- |
+| [LayoutHeader](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/components/layout/elements.tsx#L100) | A header component with a badge, h1 title, and description. |
+| [SectionSpacing](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/components/layout/elements.tsx#L340) | A spacing component for vertical spacing between sections. |
+| [SectionGrid](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/components/layout/elements.tsx#L300) | A grid layout with multiple content items. |
+| [SectionGridItem](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/components/layout/elements.tsx#L310) | An individual content item for vertical row layout. |
+| [SectionHeader](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/components/layout/elements.tsx#L320) | A section header with a badge, h2 title, and description. |
+| [SectionHorizontal](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/components/layout/elements.tsx#L330) | A horizontal section with a title, description, and media. |
+| [ImageMedia](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/components/layout/elements.tsx#L200) | A reusable image media component with customizable gradients and styling. |
+| [VideoMedia](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/components/layout/elements.tsx#L250) | A reusable Vimeo video media component with configurable playback options. |
+| [FullWidthImage](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/components/layout/elements.tsx#L270) | A large full-width image section with a glow effect. |
+
 
 <details>
 <summary>Example usage 👀</summary>

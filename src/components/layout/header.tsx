@@ -113,7 +113,7 @@ export default function Header() {
                         initial={{ opacity: 0, width: 0 }}
                         animate={{ opacity: 1, width: 'auto' }}
                         exit={{ opacity: 0, width: 0 }}
-                        className="overflow-hidden"
+                        className="overflow-hidden h-7"
                       >
                         <SignedIn>
                           <UserButton
@@ -123,7 +123,7 @@ export default function Header() {
                               trigger: {
                                 base: 'ml-4',
                                 avatar: {
-                                  base: 'border-foreground/10 border w-7 h-7 ring-0',
+                                  base: 'border-foreground/10 border size-7 ring-0',
                                 },
                               },
                             }}
@@ -142,7 +142,7 @@ export default function Header() {
                             asChild
                             size="sm"
                             variant="outline"
-                            className="border-foreground/10 ml-4 h-7 ring-0"
+                            className="border-foreground/10 ml-2 h-7 ring-0"
                           >
                             <Link href={`/sign-in?redirectTo=${pathname}`}>
                               <span>Sign In</span>

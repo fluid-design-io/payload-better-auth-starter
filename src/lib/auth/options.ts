@@ -16,6 +16,9 @@ import {
 
 const isDev = process.env.NODE_ENV === 'development'
 
+console.log('🔥 process.env.NEXT_PUBLIC_BETTER_AUTH_URL', process.env.NEXT_PUBLIC_BETTER_AUTH_URL)
+console.log('🔥 process.env.NEXT_PUBLIC_SERVER_URL', process.env.NEXT_PUBLIC_SERVER_URL)
+
 export const betterAuthPlugins = [
   username(),
   emailHarmony(),

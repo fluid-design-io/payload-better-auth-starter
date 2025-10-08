@@ -4,6 +4,10 @@
   "description": "A blank template to get started with Payload 3.0",
   "license": "MIT",
   "type": "module",
+  "author": {
+    "name": "Oliver",
+    "url": "https://oliverpan.vercel.app"
+  },
   "scripts": {
     "build": "next build",
     "dev": "dotenv -e .env -- bun run dev:services && next dev --turbopack",
@@ -94,7 +98,7 @@
     "zod": "^4.1.12"
   },
   "engines": {
-    "node": "^18.20.2 || >=20.9.0"
+    "node": ">=22"
   },
   "patchedDependencies": {
     "payload-auth@1.6.4": "patches/payload-auth@1.6.4.patch"

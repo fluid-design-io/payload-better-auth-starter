@@ -34,7 +34,7 @@ export const betterAuthPlugins = [
     },
   }),
   passkey({
-    rpID: isDev ? 'localhost' : 'acme.com',
+    rpID: isDev ? 'localhost' : new URL(process.env.NEXT_PUBLIC_BETTER_AUTH_URL).hostname,
     rpName: isDev ? 'Acme Local' : 'Acme',
     origin: [
       process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',

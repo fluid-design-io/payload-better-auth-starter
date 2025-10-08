@@ -4,6 +4,10 @@
   "description": "A blank template to get started with Payload 3.0",
   "license": "MIT",
   "type": "module",
+  "author": {
+    "name": "Oliver",
+    "url": "https://oliverpan.vercel.app"
+  },
   "scripts": {
     "build": "next build",
     "dev": "dotenv -e .env -- bun run dev:services && next dev --turbopack",

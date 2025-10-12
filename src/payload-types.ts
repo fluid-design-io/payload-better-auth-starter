@@ -208,7 +208,7 @@ export interface User {
   /**
    * The role of the user
    */
-  role?: ('admin' | 'user') | null;
+  role?: string | null;
   /**
    * Whether the user is banned from the platform
    */
@@ -256,7 +256,7 @@ export interface Session {
   /**
    * The admin who is impersonating this session
    */
-  impersonatedBy?: (string | null) | User;
+  impersonatedBy?: string | null;
 }
 /**
  * Accounts are used to store user accounts for authentication providers

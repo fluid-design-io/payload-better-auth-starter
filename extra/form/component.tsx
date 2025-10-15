@@ -1,5 +1,6 @@
 'use client'
-import { useRouter } from 'next/navigation'
+
+import { useRouter, useSearchParams } from 'next/navigation'
 import type React from 'react'
 import { useCallback, useState } from 'react'
 
@@ -9,9 +10,9 @@ import { Button } from '@/components/ui/button'
 import { getClientSideURL } from '@/lib/payload'
 import { cn } from '@/lib/utils'
 
-import type { Form, FormFieldBlock } from '@payloadcms/plugin-form-builder/types'
 import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
 import { FormProvider, useForm } from 'react-hook-form'
+import type { Form } from '@/payload-types'
 import { fields } from './fields'
 
 export type Value = unknown
@@ -66,9 +67,21 @@ export const FormBlock: React.FC<
     form: formFromProps,
     form: { id: formID, confirmationMessage, confirmationType, redirect, submitButtonLabel } = {},
   } = props
+  const searchParams = useSearchParams()
+  const allParams = Object.fromEntries(searchParams.entries())
 
-  const formMethods = useForm({
-    defaultValues: formFromProps.fields,
+  // Add default values from search params
+  const defaultValues = formFromProps.fields?.reduce((acc: Record<string, string>, field) => {
+    if ('name' in field) {
+      if (allParams[field.name]) {
+        acc[field.name] = allParams[field.name]
+      }
+    }
+    return acc
+  }, {})
+
+  const formMethods = useForm<NonNullable<Form>>({
+    defaultValues,
   })
   const {
     control,
@@ -83,7 +96,7 @@ export const FormBlock: React.FC<
   const router = useRouter()
 
   const onSubmit = useCallback(
-    (data: FormFieldBlock[]) => {
+    (data: Form) => {
       let loadingTimerID: ReturnType<typeof setTimeout>
       const submitForm = async () => {
         setError(undefined)
@@ -154,7 +167,7 @@ export const FormBlock: React.FC<
       {enableIntro && introContent && !hasSubmitted && (
         <RichText className="mb-8 lg:mb-12" data={introContent} enableGutter={false} />
       )}
-      <div className={cn('p-4 lg:p-6 border border-border rounded-md', className)}>
+      <div className={cn('rounded-md border border-border p-4 lg:p-6', className)}>
         <FormProvider {...formMethods}>
           {!isLoading && hasSubmitted && (
             <RichText data={confirmationMessage} enableProse={false} />
@@ -167,7 +180,7 @@ export const FormBlock: React.FC<
           {error && <div>{`${error.status || '500'}: ${error.message || ''}`}</div>}
           {!hasSubmitted && (
             <form id={formID} onSubmit={handleSubmit(onSubmit)}>
-              <div className={cn('mb-4 last:mb-0 gap-6 flex flex-col', formClassName)}>
+              <div className={cn('mb-4 flex flex-col gap-6 last:mb-0', formClassName)}>
                 {formFromProps?.fields?.map((field, index) => {
                   const Field: React.FC<any> = fields?.[field.blockType as keyof typeof fields]
                   if (Field) {

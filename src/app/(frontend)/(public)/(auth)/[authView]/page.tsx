@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Main } from '@/components/layout/main'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
+import CopyButton from '@/components/ui/copy-button'
 import { P } from '@/components/ui/typography'
 
 import { AuthView } from '@daveyplate/better-auth-ui'
@@ -42,8 +43,18 @@ export default async function AuthPage({ params }: { params: Promise<{ authView:
           <AlertTitle>Demo Mode</AlertTitle>
           <AlertDescription>
             <P>
-              You can use <strong>john_doe@uing.dev</strong> as the email and{' '}
-              <strong>Password123!</strong> as the password to sign in.
+              You can use these credentials to sign in: <br />
+              <CopyButton
+                textToCopy="john_doe@uing.dev"
+                className="[&_svg:not([class*='size-'])]:size-3.5"
+              />
+              <strong>john_doe@uing.dev</strong>
+              <br />
+              <CopyButton
+                textToCopy="Password123!"
+                className="[&_svg:not([class*='size-'])]:size-3.5"
+              />
+              <strong>Password123!</strong>
             </P>
             {authView === 'sign-up' && (
               <Button asChild>

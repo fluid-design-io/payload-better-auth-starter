@@ -16,6 +16,7 @@ export const UserInfo: React.FC<UserInfoFieldProps> = ({
   required,
   width = 'full',
   options,
+  editable,
 }) => {
   const { setValue } = useFormContext()
   const { currentUserPromise } = useBetterAuth()
@@ -44,6 +45,7 @@ export const UserInfo: React.FC<UserInfoFieldProps> = ({
           hidden: false,
           defaultValue,
           description: undefined,
+          disabled: !editable,
         }}
       />
     </Width>

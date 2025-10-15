@@ -20,6 +20,7 @@ type Props = {
   defaultValue?: string
   hidden?: boolean
   register: UseFormRegister<any & FieldValues>
+  disabled?: boolean
 }
 
 export const FormInput = (props: Props) => {
@@ -50,7 +51,7 @@ export const FormInput = (props: Props) => {
   }
 
   return (
-    <div className={props.hidden ? 'hidden' : `flex flex-col gap-2 mb-2`}>
+    <div className={props.hidden ? 'hidden' : `mb-2 flex flex-col gap-2`}>
       <Label htmlFor={props.name}>{props.label}</Label>
       <Input
         required={props.required}
@@ -61,6 +62,7 @@ export const FormInput = (props: Props) => {
         type={props.type}
         hidden={props.hidden}
         defaultValue={props.defaultValue ? props.defaultValue : ''}
+        disabled={props.disabled}
         {...props.register(props.name, pattern)}
       />
       {props.description && <FormDescription>{props.description}</FormDescription>}

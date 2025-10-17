@@ -20,7 +20,7 @@ export const BlogHeader: React.FC<{
           <Media
             priority
             imgClassName="relative w-full overflow-auto rounded-lg border object-cover object-center"
-            resource={{ ...heroImage, width: 1200, height: 630 }}
+            resource={heroImage}
           />
         </div>
       )}

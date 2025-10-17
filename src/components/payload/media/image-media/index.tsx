@@ -39,6 +39,10 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
   let height: number | undefined
   let alt = altFromProps
   let src: StaticImageData | string = srcFromProps || ''
+  const blurDataURL =
+    resource && typeof resource === 'object'
+      ? resource?.blurDataURL || placeholderBlur
+      : placeholderBlur
 
   const ImageComponent = NextImage
 
@@ -71,7 +75,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
         fill={fill}
         height={!fill ? height : undefined}
         placeholder="blur"
-        blurDataURL={placeholderBlur}
+        blurDataURL={blurDataURL}
         priority={priority}
         quality={100}
         loading={loading}
@@ -87,6 +91,7 @@ export const ImageMedia: React.FC<MediaProps> = (props) => {
       <ImageZoom
         src={src}
         alt={alt || ''}
+        blurDataURL={blurDataURL}
         sizes={sizes}
         width={!fill ? width : undefined}
         height={!fill ? height : undefined}

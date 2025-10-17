@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { defaultLexical } from '@/fields/default-lexical'
+import { generateBlurDataURL } from './hooks/generate-blur-data-url'
 
 /** All media uploaded from Payload Admin*/
 export const PayloadUploads: CollectionConfig = {
@@ -30,6 +31,14 @@ export const PayloadUploads: CollectionConfig = {
       type: 'richText',
       editor: defaultLexical,
     },
+    {
+      name: 'blurDataURL',
+      type: 'text',
+      admin: {
+        hidden: true,
+        description: 'Blur data URL for the image',
+      },
+    },
   ],
   upload: {
     adminThumbnail: 'thumbnail',
@@ -38,11 +47,6 @@ export const PayloadUploads: CollectionConfig = {
       {
         name: 'thumbnail',
         width: 300,
-      },
-      {
-        name: 'square',
-        width: 500,
-        height: 500,
       },
       {
         name: 'small',
@@ -57,15 +61,14 @@ export const PayloadUploads: CollectionConfig = {
         width: 1400,
       },
       {
-        name: 'xlarge',
-        width: 1920,
-      },
-      {
         name: 'og',
         width: 1200,
         height: 630,
         crop: 'center',
       },
     ],
+  },
+  hooks: {
+    beforeChange: [generateBlurDataURL],
   },
 }

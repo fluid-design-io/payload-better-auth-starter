@@ -159,14 +159,20 @@ export default function Header() {
               <MobileMenu closeMenu={() => setIsMobileMenuOpen(false)} />
             )}
 
-            <div className="max-lg:in-data-[state=active]:mt-6 in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent">
-              <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
+            <div className="in-data-[state=active]:flex mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent">
+              <div className="flex w-full flex-col sm:flex-row sm:gap-3 md:w-fit">
                 <SignedOut>
-                  <Button asChild variant="ghost" size="sm">
-                    <Link href={`/sign-in?redirectTo=${pathname}`}>
-                      <span>Sign In</span>
+                  <div className="w-full">
+                    <Link
+                      href={`/sign-in?redirectTo=${pathname}`}
+                      className={cn(
+                        'relative block border-0 border-b py-4 md:py-0 text-lg',
+                        'md:hover:bg-accent md:hover:text-accent-foreground dark:md:hover:bg-accent/50 md:text-sm md:border-b-0 md:px-3 md:rounded-md md:h-8 md:inline-flex md:items-center md:justify-center md:duration-100'
+                      )}
+                    >
+                      Sign In
                     </Link>
-                  </Button>
+                  </div>
                 </SignedOut>
                 <SignedIn>
                   <UserButton

@@ -73,7 +73,7 @@ export default function RichText(props: Props) {
     <ConvertRichText
       converters={jsxConverters}
       className={cn(
-        'payload-richtext',
+        'payload-richtext w-full',
         {
           container: enableGutter,
           'max-w-none': !enableGutter,

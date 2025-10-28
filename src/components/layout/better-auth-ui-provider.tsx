@@ -18,7 +18,6 @@ export function BetterAuthUIProvider({ children }: { children: React.ReactNode }
       credentials={{
         forgotPassword: true,
       }}
-      account={{}}
       passkey
       emailOTP
       basePath="/"

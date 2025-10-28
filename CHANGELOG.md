@@ -1,5 +1,14 @@
 # acme-website
 
+## 1.4.2
+
+### Patch Changes
+
+- - Update blog components,
+  - Bump packages, update to Next 16
+  - Moving towards to Cache Components
+  - Update image remote patterns to include local image server
+
 ## 1.4.1
 
 ### Patch Changes

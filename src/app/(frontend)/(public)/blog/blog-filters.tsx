@@ -1,6 +1,7 @@
 'use client'
 
 import { InView } from '@/components/motion-primitives/in-view'
+import { Skeleton } from '@/components/ui/skeleton'
 
 import { inViewOptions } from '@/lib/animation'
 import { cn } from '@/lib/utils'
@@ -77,4 +78,8 @@ export function BlogFilters() {
       </div>
     </InView>
   )
+}
+
+export function BlogFiltersSkeleton() {
+  return <Skeleton className="h-10 w-full rounded-md" />
 }

@@ -19,9 +19,9 @@ const nextConfig = {
     ],
   },
   reactCompiler: true,
-  typescript: {
-    ignoreBuildErrors: true, // handled by linting, in the future, use CI to check
-  },
+  // typescript: {
+  //   ignoreBuildErrors: true, // handled by linting, in the future, use CI to check
+  // },
 }
 
 export default withPayload(nextConfig, { devBundleServerPackages: false })

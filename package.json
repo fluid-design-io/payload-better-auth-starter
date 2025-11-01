@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@daveyplate/better-auth-ui": "^3.2.6",
-    "@payloadcms/db-postgres": "3.61.1",
+    "@payloadcms/db-mongodb": "3.61.1",
     "@payloadcms/email-nodemailer": "^3.61.1",
     "@payloadcms/email-resend": "^3.61.1",
     "@payloadcms/live-preview-react": "^3.61.1",

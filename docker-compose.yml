@@ -3,10 +3,10 @@ services:
     image: inbucket/inbucket:latest
     container_name: acme-inbucket
     ports:
-      - "9000:9000" # Web UI
-      - "2500:2500" # SMTP
-      - "1100:1100" # POP3
-      - "1430:1430" # IMAP
+      - "18080:9000" # Web UI
+      - "12500:2500" # SMTP
+      - "11100:1100" # POP3
+      - "11430:1430" # IMAP
     environment:
       - INBUCKET_SMTP_DISABLED=false
       - INBUCKET_POP3_DISABLED=false
@@ -22,8 +22,8 @@ services:
     image: minio/minio:latest
     container_name: acme-minio
     ports:
-      - "9001:9000" # MinIO API
-      - "9002:9001" # MinIO Console
+      - "19100:9000" # MinIO API
+      - "19101:9001" # MinIO Console
     environment:
       - MINIO_ROOT_USER=${S3_ACCESS_KEY_ID}
       - MINIO_ROOT_PASSWORD=${S3_SECRET_ACCESS_KEY}
@@ -56,7 +56,7 @@ services:
     image: postgres:17-alpine
     container_name: acme-postgres
     ports:
-      - "5432:5432"
+      - "15432:5432"
     environment:
       - POSTGRES_DB=acme-website
       - POSTGRES_USER=postgres
@@ -65,7 +65,21 @@ services:
       - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
 
+  mongodb:
+    image: mongo:latest
+    container_name: acme-mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: acme-website
+    volumes:
+      - mongodb_data:/data/db
+    restart: unless-stopped
+
 volumes:
   inbucket_data:
   minio_data:
   postgres_data:
+  mongodb_data:

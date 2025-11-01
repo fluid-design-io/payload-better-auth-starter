@@ -22,7 +22,7 @@ export const revalidateGlobal = (
   if (!context.disableRevalidate) {
     payload.logger.info(`✨ Revalidating ${tag}`)
 
-    revalidateTag(tag)
+    revalidateTag(tag, "max")
   }
 
   return doc

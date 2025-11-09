@@ -10,7 +10,7 @@ export function getEmailAdapter() {
       defaultFromName: 'Acme',
       transportOptions: {
         host: 'localhost',
-        port: 12500,
+        port: 2500,
         secure: false, // Inbucket doesn't use SSL in local dev
         auth: {
           user: 'test', // Inbucket doesn't require real auth

@@ -9,7 +9,7 @@
     "url": "https://oliverpan.vercel.app"
   },
   "scripts": {
-    "build": "next build --turbopack",
+    "build": "next build --webpack",
     "dev": "dotenv -e .env -- bun run dev:services && next dev --turbopack",
     "dev:next": "next dev --turbopack",
     "dev:services": "docker compose up -d",

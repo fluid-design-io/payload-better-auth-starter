@@ -28,7 +28,7 @@ export const UserCard = async () => {
           <Link href="/account/settings">Account</Link>
         </Button>
 
-        {user.role === 'admin' && (
+        {user.role?.includes('admin') && (
           <Button asChild>
             <Link href="/admin">Admin Panel</Link>
           </Button>

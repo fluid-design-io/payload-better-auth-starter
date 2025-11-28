@@ -4,7 +4,7 @@ type isAdmin = (args: AccessArgs) => boolean
 type isAdminOrSelf = Access
 
 const checkIsAdmin = (user: TypedUser | null) => {
-  if (!user || !user.role || !['admin'].includes(user.role)) return false
+  if (!user || !user.role || !user.role.includes('admin')) return false
   return true
 }
 

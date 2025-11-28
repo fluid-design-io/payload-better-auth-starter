@@ -108,6 +108,7 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
+  fallbackLocale: null;
   globals: {
     'global-footer': GlobalFooter;
     'global-terms': GlobalTerm;
@@ -208,9 +209,9 @@ export interface User {
    */
   phoneNumberVerified?: boolean | null;
   /**
-   * The role of the user
+   * The role/ roles of the user
    */
-  role?: string | null;
+  role?: ('admin' | 'user')[] | null;
   /**
    * Whether the user is banned from the platform
    */
@@ -258,7 +259,7 @@ export interface Session {
   /**
    * The admin who is impersonating this session
    */
-  impersonatedBy?: string | null;
+  impersonatedBy?: (string | null) | User;
 }
 /**
  * Accounts are used to store user accounts for authentication providers
@@ -357,7 +358,7 @@ export interface Passkey {
   /**
    * The unique identifier of the registered credential
    */
-  credentialID: string;
+  credentialId: string;
   /**
    * The counter of the passkey
    */
@@ -854,7 +855,7 @@ export interface PasskeysSelect<T extends boolean = true> {
   name?: T;
   publicKey?: T;
   user?: T;
-  credentialID?: T;
+  credentialId?: T;
   counter?: T;
   deviceType?: T;
   backedUp?: T;

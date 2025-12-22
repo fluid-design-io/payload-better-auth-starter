@@ -23,7 +23,7 @@ export const generateMeta = async (args: { doc: Partial<Blog> }): Promise<Metada
 
   const ogImage = getImageURL(doc?.meta?.image)
 
-  const title = doc?.meta?.title ? `${doc?.meta?.title} | Acme` : 'Acme'
+  const title = doc?.meta?.title || 'Acme'
 
   return {
     description: doc?.meta?.description,

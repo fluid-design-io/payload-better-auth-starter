@@ -72,5 +72,5 @@ export default buildConfig({
   sharp,
   plugins,
   globals: [GlobalFooter, GlobalTerms, GlobalPrivacy],
-  serverURL: process.env.NEXT_PUBLIC_SERVER_URL,
+  serverURL: getServerSideURL(),
 })

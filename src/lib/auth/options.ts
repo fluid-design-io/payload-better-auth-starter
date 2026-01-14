@@ -1,9 +1,9 @@
+import { passkey } from '@better-auth/passkey'
 import { nextCookies } from 'better-auth/next-js'
 import { admin, emailOTP, multiSession, phoneNumber, username } from 'better-auth/plugins'
-import { passkey } from 'better-auth/plugins/passkey'
 import { emailHarmony, phoneHarmony } from 'better-auth-harmony'
 import { getPayload } from 'payload'
-import type { BetterAuthOptions, BetterAuthPluginOptions } from 'payload-auth/better-auth'
+import type { BetterAuthOptions, PayloadAuthOptions } from 'payload-auth/better-auth'
 import payloadConfig from '@/payload.config'
 import {
   sendAdminInviteEmail,
@@ -133,7 +133,7 @@ export const betterAuthOptions: BetterAuthOptions = {
   },
 }
 
-export const betterAuthPluginOptions: BetterAuthPluginOptions = {
+export const betterAuthPluginOptions = {
   // debug: {
   //   logTables: false,
   //   enableDebugLogs: true,
@@ -157,7 +157,7 @@ export const betterAuthPluginOptions: BetterAuthPluginOptions = {
     slug: 'verifications',
   },
   adminInvitations: {
-    sendInviteEmail: async ({ payload, email, url }) => {
+    sendInviteEmail: async ({ email, url }) => {
       await sendAdminInviteEmail({ email, url })
       return {
         success: true,
@@ -165,4 +165,4 @@ export const betterAuthPluginOptions: BetterAuthPluginOptions = {
     },
   },
   betterAuthOptions: betterAuthOptions,
-}
+} satisfies PayloadAuthOptions

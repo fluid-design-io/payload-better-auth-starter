@@ -1,9 +1,9 @@
+import { passkey } from '@better-auth/passkey'
 import { nextCookies } from 'better-auth/next-js'
 import { admin, emailOTP, multiSession, phoneNumber, username } from 'better-auth/plugins'
-import { passkey } from 'better-auth/plugins/passkey'
 import { emailHarmony, phoneHarmony } from 'better-auth-harmony'
 import { getPayload } from 'payload'
-import type { BetterAuthOptions, BetterAuthPluginOptions } from 'payload-auth/better-auth'
+import type { BetterAuthOptions, PayloadAuthOptions } from 'payload-auth/better-auth'
 import payloadConfig from '@/payload.config'
 import {
   sendAdminInviteEmail,
@@ -15,9 +15,6 @@ import {
 } from './email-templates'
 
 const isDev = process.env.NODE_ENV === 'development'
-
-console.log('🔥 process.env.NEXT_PUBLIC_BETTER_AUTH_URL', process.env.NEXT_PUBLIC_BETTER_AUTH_URL)
-console.log('🔥 process.env.NEXT_PUBLIC_SERVER_URL', process.env.NEXT_PUBLIC_SERVER_URL)
 
 export const betterAuthPlugins = [
   username(),
@@ -136,7 +133,7 @@ export const betterAuthOptions: BetterAuthOptions = {
   },
 }
 
-export const betterAuthPluginOptions: BetterAuthPluginOptions = {
+export const betterAuthPluginOptions = {
   // debug: {
   //   logTables: false,
   //   enableDebugLogs: true,
@@ -164,7 +161,7 @@ export const betterAuthPluginOptions: BetterAuthPluginOptions = {
   },
   adminInvitations: {
     hidden: process.env.NODE_ENV !== 'development',
-    sendInviteEmail: async ({ payload, email, url }) => {
+    sendInviteEmail: async ({ email, url }) => {
       await sendAdminInviteEmail({ email, url })
       return {
         success: true,
@@ -172,4 +169,4 @@ export const betterAuthPluginOptions: BetterAuthPluginOptions = {
     },
   },
   betterAuthOptions: betterAuthOptions,
-}
+} satisfies PayloadAuthOptions

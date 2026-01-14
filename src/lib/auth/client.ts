@@ -1,14 +1,15 @@
+import { passkeyClient } from '@better-auth/passkey/client'
 import {
   adminClient,
   emailOTPClient,
   inferAdditionalFields,
   multiSessionClient,
-  passkeyClient,
   phoneNumberClient,
   usernameClient,
 } from 'better-auth/client/plugins'
 import { createAuthClient } from 'better-auth/react'
 import { toast } from 'sonner'
+import { betterAuthOptions } from './options'
 
 export const authClient = createAuthClient({
   baseURL: process.env.NEXT_PUBLIC_BETTER_AUTH_URL,
@@ -35,6 +36,7 @@ export const authClient = createAuthClient({
       }
     },
   },
+  $InferAuth: betterAuthOptions,
 })
 
 export const { signUp, signIn, signOut, useSession } = authClient

@@ -170,3 +170,5 @@ export const betterAuthPluginOptions = {
   },
   betterAuthOptions: betterAuthOptions,
 } satisfies PayloadAuthOptions
+
+export type ConstructedBetterAuthPluginOptions = typeof betterAuthPluginOptions

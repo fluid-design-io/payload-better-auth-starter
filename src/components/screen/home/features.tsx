@@ -58,16 +58,16 @@ const features = [
 
 export const Features = () => {
   return (
-    <Container asChild>
-      <AnimatedGroup className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {features.map((feature) => (
-          <Card variant="muted" className="overflow-hidden p-6 h-full" key={feature.title}>
-            <feature.icon className="text-primary size-5" />
-            <H3 className="font-medium">{feature.title}</H3>
-            <Muted className="text-balance">{feature.description}</Muted>
-          </Card>
-        ))}
-      </AnimatedGroup>
+    <Container
+      render={<AnimatedGroup className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3" />}
+    >
+      {features.map((feature) => (
+        <Card variant="muted" className="overflow-hidden p-6 h-full" key={feature.title}>
+          <feature.icon className="text-primary size-5" />
+          <H3 className="font-medium">{feature.title}</H3>
+          <Muted className="text-balance">{feature.description}</Muted>
+        </Card>
+      ))}
     </Container>
   )
 }

@@ -5,12 +5,12 @@ import RichText from '@/components/payload/rich-text'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Muted } from '@/components/ui/typography'
 
-import { getCachedGlobal } from '@/lib/payload/get-globals'
+import { getGlobal } from '@/lib/payload/get-globals'
 
 import type { GlobalPrivacy } from '@/payload-types'
 
 export default async function TermsOfUsePage() {
-  const privacy = (await getCachedGlobal('global-privacy', 1)()) as GlobalPrivacy
+  const privacy = (await getGlobal('global-privacy', 1)) as GlobalPrivacy
 
   if (!privacy.content) {
     return (

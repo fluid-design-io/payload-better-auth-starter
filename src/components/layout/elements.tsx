@@ -12,7 +12,7 @@ import { inViewOptions } from '@/lib/animation'
 import { CLASSNAMES, IMAGE_SIZES } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 
-import { Slot as SlotPrimitive } from 'radix-ui'
+import { mergeProps, useRender } from '@base-ui/react'
 
 const slugify = (text: string) => {
   return text
@@ -242,9 +242,8 @@ const SectionGridItem = ({ badge, title, description, media }: SectionGridChildP
   )
 }
 
-interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ContainerProps extends useRender.ComponentProps<'div'> {
   variant?: 'default' | 'muted'
-  asChild?: boolean
   /** Only applied if variant is "muted" */
   rootClassName?: string
 }
@@ -252,11 +251,21 @@ interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
 const Container = ({
   className,
   variant = 'default',
-  asChild,
+  render,
   rootClassName,
   ...props
 }: ContainerProps) => {
-  const Comp = asChild ? SlotPrimitive.Slot : 'div'
+  const containerProps = mergeProps<'div'>(
+    {
+      className: cn(CLASSNAMES.containerClassName, className),
+    },
+    props
+  )
+  const innerElement = useRender({
+    defaultTagName: 'div',
+    render,
+    props: containerProps,
+  })
 
   if (variant === 'muted') {
     return (
@@ -267,12 +276,12 @@ const Container = ({
           rootClassName
         )}
       >
-        <Comp className={cn(CLASSNAMES.containerClassName, className)} {...props} />
+        {innerElement}
       </div>
     )
   }
 
-  return <Comp className={cn(CLASSNAMES.containerClassName, className)} {...props} />
+  return innerElement
 }
 
 type SectionSpacingProps = {

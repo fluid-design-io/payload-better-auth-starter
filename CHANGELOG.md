@@ -1,5 +1,19 @@
 # acme-website
 
+## 1.5.0
+
+### Minor Changes
+
+- ## 🚀 Features
+  - Add about page showcasing changelog and package dependencies
+
+  ## 🔧 Refactors
+  - Refactor from react-hook-form to tanstack form
+  - Refactor radix-ui to base-ui
+
+  ## 🎨 UI Updates
+  - Minor UI updates and improvements
+
 ## 1.4.2
 
 ### Patch Changes

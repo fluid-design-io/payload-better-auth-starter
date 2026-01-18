@@ -1,7 +1,6 @@
 import { fields } from '@payloadcms/plugin-form-builder'
 import type { Block } from 'payload'
-import type { FieldErrorsImpl, FieldValues, UseFormRegister } from 'react-hook-form'
-import type { User } from '@/payload-types'
+
 import { width } from '../fields-config'
 
 export const userInfoOptions = {
@@ -12,13 +11,6 @@ export const userInfoOptions = {
 } as const
 
 export type UserInfoOptions = typeof userInfoOptions
-
-export type UserInfoFieldProps = UserInfoField & {
-  errors: Partial<FieldErrorsImpl<{ [x: string]: any }>>
-  register: UseFormRegister<any & FieldValues>
-  fieldName: string
-  userField: keyof User
-}
 
 export const userInfo: Block = {
   slug: 'userInfo',

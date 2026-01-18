@@ -29,7 +29,7 @@ const colors = [
 
 export const ThemeColors = () => {
   return (
-    <Container asChild>
+    <Container>
       <InView {...inViewOptions()} as="section" className="mb-16">
         <H2>Theme Colors</H2>
         <Muted className="mt-4 mb-8">

@@ -18,7 +18,7 @@ export type PresetType =
   | 'swing'
 
 export type AnimatedGroupProps = {
-  children: ReactNode
+  children?: ReactNode
   className?: string
   childrenClassName?: string
   variants?: {

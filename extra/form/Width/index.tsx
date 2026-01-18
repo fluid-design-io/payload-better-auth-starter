@@ -1,6 +1,5 @@
-import type React from 'react'
-
 import { cn } from '@/lib/utils'
+import type React from 'react'
 
 export const Width = ({
   children,
@@ -21,7 +20,7 @@ export const Width = ({
       break
   }
   return (
-    <div style={{ flexBasis: calcWidth }} className={cn('gap-2 flex flex-col', className)}>
+    <div style={{ flexBasis: calcWidth }} className={cn('flex flex-col gap-2', className)}>
       {children}
     </div>
   )

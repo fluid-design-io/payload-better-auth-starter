@@ -24,8 +24,7 @@ import { Container } from './elements'
 const navigationLinks = [
   { href: '/', label: 'Home', active: true },
   { href: '/features', label: 'Features' },
-  { href: '#pricing', label: 'Pricing' },
-  { href: '#about', label: 'About' },
+  { href: '/about', label: 'About' },
   { href: '/blog', label: 'Blog' },
 ]
 
@@ -139,14 +138,12 @@ export default function Header() {
                         </SignedIn>
                         <SignedOut>
                           <Button
-                            asChild
                             size="sm"
                             variant="outline"
                             className="border-foreground/10 ml-2 h-7 ring-0"
+                            render={<Link href={`/sign-in?redirectTo=${pathname}`} />}
                           >
-                            <Link href={`/sign-in?redirectTo=${pathname}`}>
-                              <span>Sign In</span>
-                            </Link>
+                            <span>Sign In</span>
                           </Button>
                         </SignedOut>
                       </motion.div>
@@ -223,12 +220,12 @@ const NavMenu = () => {
         {navigationLinks.map((link, index) => (
           <NavigationMenuItem key={index}>
             <NavigationMenuLink
-              asChild
+              render={<Link href={link.href} />}
               className={navigationMenuTriggerStyle({
                 className: 'text-foreground/75 h-7 px-3 text-sm',
               })}
             >
-              <Link href={link.href}>{link.label}</Link>
+              {link.label}
             </NavigationMenuLink>
           </NavigationMenuItem>
         ))}

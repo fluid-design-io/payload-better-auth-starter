@@ -13,9 +13,7 @@ export const SignedOutContent = () => {
         <Card variant="mixed" className="max-w-md backdrop-blur-xs">
           <CardContent className="flex justify-between items-center">
             <P>Authentication</P>
-            <Button asChild>
-              <Link href="/sign-in?redirectTo=/">Sign in</Link>
-            </Button>
+            <Button render={<Link href="/sign-in?redirectTo=/" />}>Sign in</Button>
           </CardContent>
         </Card>
       </AnimatedGroup>

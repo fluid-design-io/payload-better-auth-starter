@@ -1,48 +1,50 @@
+'use client'
+
 import type React from 'react'
 
-import { Checkbox as CheckboxUi } from '@/components/ui/checkbox'
-import { FormDescription } from '@/components/ui/form'
-import { Label } from '@/components/ui/label'
+import { useFieldContext } from '@/components/form/hooks/form-context'
+import { Checkbox as CheckboxUI } from '@/components/ui/checkbox'
+import {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldError,
+  FieldLabel,
+} from '@/components/ui/field'
 
 import type { CheckboxField } from '@payloadcms/plugin-form-builder/types'
-import type { FieldErrorsImpl, FieldValues, UseFormRegister } from 'react-hook-form'
-import { useFormContext } from 'react-hook-form'
-import { Error } from '../Error'
 import { Width } from '../Width'
 
-export const Checkbox: React.FC<
-  CheckboxField & {
-    errors: Partial<FieldErrorsImpl>
-    register: UseFormRegister<FieldValues>
-  } & { width: string; description?: string }
-> = ({
-  name,
-  defaultValue,
-  errors,
+export const Checkbox: React.FC<CheckboxField & { width: string; description?: string }> = ({
   label,
-  register,
   required: requiredFromProps,
   width,
   description,
 }) => {
-  const props = register(name, { required: requiredFromProps })
-  const { setValue } = useFormContext()
+  const field = useFieldContext<boolean | undefined>()
 
+  const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
   return (
     <Width width={width}>
-      <div className="flex items-center gap-2">
-        <CheckboxUi
-          defaultChecked={defaultValue}
-          id={name}
-          {...props}
-          onCheckedChange={(checked) => {
-            setValue(props.name, checked)
-          }}
-        />
-        <Label htmlFor={name}>{label}</Label>
-      </div>
-      {description && <FormDescription>{description}</FormDescription>}
-      {requiredFromProps && errors[name] && <Error name={name} />}
+      <Field data-invalid={isInvalid}>
+        <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
+        <FieldContent>
+          <CheckboxUI
+            id={field.name}
+            name={field.name}
+            checked={field.state.value}
+            onCheckedChange={(checked) =>
+              field.handleChange(checked === 'indeterminate' ? undefined : checked)
+            }
+            aria-invalid={isInvalid}
+            required={requiredFromProps}
+          />
+          {field.state.meta.isTouched && !field.state.meta.isValid && (
+            <FieldError errors={field.state.meta.errors} />
+          )}
+          {description && <FieldDescription>{description}</FieldDescription>}
+        </FieldContent>
+      </Field>
     </Width>
   )
 }

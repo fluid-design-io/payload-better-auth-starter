@@ -1,4 +1,3 @@
-import { LivePreviewListener } from '@/components/payload/live-preview-listener'
 import RichText from '@/components/payload/rich-text'
 import { Muted } from '@/components/ui/typography'
 
@@ -7,10 +6,9 @@ import { formatAuthors } from '@/lib/payload'
 import type { Blog } from '@/payload-types'
 import { BlogHeader } from './blog-header'
 
-export const BlogContent = ({ post, draft }: { post: Blog; draft: boolean }) => {
+export const BlogContent = ({ post }: { post: Blog }) => {
   return (
     <article className="col-start-1 col-span-1 md:col-start-2">
-      {draft && <LivePreviewListener />}
       <BlogHeader blog={post} />
       <div className="flex flex-col items-center gap-4">
         <RichText data={post.content} enableGutter={false} />

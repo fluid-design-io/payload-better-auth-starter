@@ -8,7 +8,7 @@ type Global = keyof Config['globals']
 
 export async function getGlobal(slug: Global, depth = 0) {
   'use cache'
-  cacheTag(`global-${slug}`)
+  cacheTag(slug)
 
   const payload = await getPayload({ config: configPromise })
 

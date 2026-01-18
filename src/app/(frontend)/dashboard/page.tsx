@@ -27,8 +27,8 @@ export default function DashboardPage() {
         </EmptyHeader>
         <SignedIn>
           <EmptyContent>
-            <Button variant="outline" size="sm" asChild>
-              <Link href="/admin">Admin Dashboard</Link>
+            <Button variant="outline" size="sm" render={<Link href="/admin" />}>
+              Admin Dashboard
             </Button>
           </EmptyContent>
         </SignedIn>

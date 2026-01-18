@@ -1,6 +1,7 @@
 import '../globals.css'
 
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 
 import { currentUser } from '@/lib/auth/context/get-context-props'
 import { getServerSideURL } from '@/lib/payload'
@@ -30,6 +31,14 @@ export const metadata: Metadata = {
 }
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <Suspense>
+      <Layout>{children}</Layout>
+    </Suspense>
+  )
+}
+
+const Layout = async ({ children }: { children: React.ReactNode }) => {
   const user = await currentUser()
   if (!user) {
     return <RedirectToSignIn />

@@ -24,14 +24,12 @@ export const UserCard = async () => {
         </div>
       </CardHeader>
       <CardFooter className="flex justify-between">
-        <Button variant="outline" asChild>
-          <Link href="/account/settings">Account</Link>
+        <Button variant="outline" render={<Link href="/account/settings" />}>
+          Account
         </Button>
 
         {user.role?.includes('admin') && (
-          <Button asChild>
-            <Link href="/admin">Admin Panel</Link>
-          </Button>
+          <Button render={<Link href="/admin" />}>Admin Panel</Button>
         )}
       </CardFooter>
     </Card>

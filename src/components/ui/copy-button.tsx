@@ -6,8 +6,6 @@ import { useEffect, useState } from 'react'
 import { Button, type ButtonProps } from '@/components/ui/button'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 
-import { cn } from '@/lib/utils'
-
 interface CopyButtonProps extends ButtonProps {
   textToCopy: string
 }
@@ -34,17 +32,11 @@ export default function CopyButton({ textToCopy, className, ...props }: CopyButt
   return (
     <TooltipProvider>
       <Tooltip>
-        <TooltipTrigger asChild>
-          <Button
-            variant="link"
-            size="icon"
-            onClick={handleCopy}
-            className={cn('h-8 w-8', className)}
-            {...props}
-          >
-            {isCopied ? <Check /> : <Copy />}
-            <span className="sr-only">Copy to clipboard</span>
-          </Button>
+        <TooltipTrigger
+          render={<Button variant="link" size="icon" onClick={handleCopy} className="h-8 w-8" />}
+        >
+          {isCopied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+          <span className="sr-only">Copy to clipboard</span>
         </TooltipTrigger>
         <TooltipContent>
           <p>{isCopied ? 'Copied!' : 'Copy to clipboard'}</p>

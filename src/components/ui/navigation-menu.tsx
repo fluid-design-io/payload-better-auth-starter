@@ -3,8 +3,8 @@ import type * as React from 'react'
 
 import { cn } from '@/lib/utils'
 
+import { NavigationMenu as NavigationMenuPrimitive } from '@base-ui/react/navigation-menu'
 import { cva } from 'class-variance-authority'
-import { NavigationMenu as NavigationMenuPrimitive } from 'radix-ui'
 
 function NavigationMenu({
   className,
@@ -25,7 +25,7 @@ function NavigationMenu({
       {...props}
     >
       {children}
-      {viewport && <NavigationMenuViewport />}
+      {viewport && <NavigationMenuPositioner />}
     </NavigationMenuPrimitive.Root>
   )
 }
@@ -97,24 +97,34 @@ function NavigationMenuContent({
   )
 }
 
-function NavigationMenuViewport({
+function NavigationMenuPositioner({
   className,
+  side = 'bottom',
+  sideOffset = 8,
+  align = 'start',
+  alignOffset = 0,
   ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Viewport>) {
+}: NavigationMenuPrimitive.Positioner.Props) {
   return (
-    <div className={cn('absolute top-full left-0 isolate z-50 flex justify-center')}>
-      <NavigationMenuPrimitive.Viewport
-        data-slot="navigation-menu-viewport"
+    <NavigationMenuPrimitive.Portal>
+      <NavigationMenuPrimitive.Positioner
+        side={side}
+        sideOffset={sideOffset}
+        align={align}
+        alignOffset={alignOffset}
         className={cn(
-          'origin-top-center bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border shadow md:w-[var(--radix-navigation-menu-viewport-width)]',
+          'isolate z-50 h-[var(--positioner-height)] w-[var(--positioner-width)] max-w-[var(--available-width)] transition-[top,left,right,bottom] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] data-[instant]:transition-none data-[side=bottom]:before:top-[-10px] data-[side=bottom]:before:right-0 data-[side=bottom]:before:left-0',
           className
         )}
         {...props}
-      />
-    </div>
+      >
+        <NavigationMenuPrimitive.Popup className="relative h-(--popup-height) w-(--popup-width) xs:w-(--popup-width) origin-(--transform-origin) rounded-2xl bg-popover text-popover-foreground shadow outline-none ring-1 ring-foreground/5 transition-all ease-[cubic-bezier(0.22,1,0.36,1)] data-[ending-style]:scale-90 data-[starting-style]:scale-90 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 data-[ending-style]:duration-150">
+          <NavigationMenuPrimitive.Viewport className="relative size-full overflow-hidden" />
+        </NavigationMenuPrimitive.Popup>
+      </NavigationMenuPrimitive.Positioner>
+    </NavigationMenuPrimitive.Portal>
   )
 }
-
 function NavigationMenuLink({
   className,
   ...props
@@ -134,9 +144,9 @@ function NavigationMenuLink({
 function NavigationMenuIndicator({
   className,
   ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Indicator>) {
+}: React.ComponentProps<typeof NavigationMenuPrimitive.Icon>) {
   return (
-    <NavigationMenuPrimitive.Indicator
+    <NavigationMenuPrimitive.Icon
       data-slot="navigation-menu-indicator"
       className={cn(
         'data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden',
@@ -145,7 +155,7 @@ function NavigationMenuIndicator({
       {...props}
     >
       <div className="bg-border relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm shadow-md" />
-    </NavigationMenuPrimitive.Indicator>
+    </NavigationMenuPrimitive.Icon>
   )
 }
 
@@ -157,6 +167,6 @@ export {
   NavigationMenuTrigger,
   NavigationMenuLink,
   NavigationMenuIndicator,
-  NavigationMenuViewport,
   navigationMenuTriggerStyle,
+  NavigationMenuPositioner,
 }

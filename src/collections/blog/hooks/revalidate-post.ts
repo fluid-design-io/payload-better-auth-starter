@@ -17,6 +17,7 @@ export const revalidatePost: CollectionAfterChangeHook<Blog> = async ({
       payload.logger.info(`Revalidating post at path: ${path}`)
 
       revalidatePath(path)
+      revalidateTag(`blog-${doc.slug}`, 'max')
       revalidateTag('blog-sitemap', 'max')
     }
 
@@ -27,6 +28,7 @@ export const revalidatePost: CollectionAfterChangeHook<Blog> = async ({
       payload.logger.info(`Revalidating old post at path: ${oldPath}`)
 
       revalidatePath(oldPath)
+      revalidateTag(`blog-${previousDoc.slug}`, 'max')
       revalidateTag('blog-sitemap', 'max')
     }
   }
@@ -41,6 +43,7 @@ export const revalidateDelete: CollectionAfterDeleteHook<Blog> = async ({
     const path = `/blog/${doc?.slug}`
 
     revalidatePath(path)
+    revalidateTag(`blog-${doc.slug}`, 'max')
     revalidateTag('blog-sitemap', 'max')
   }
 

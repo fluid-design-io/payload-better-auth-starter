@@ -1,6 +1,15 @@
+'use client'
+
 import type React from 'react'
 
-import { Label } from '@/components/ui/label'
+import { useFieldContext } from '@/components/form/hooks/form-context'
+import {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldError,
+  FieldLabel,
+} from '@/components/ui/field'
 import {
   Select,
   SelectContent,
@@ -10,55 +19,45 @@ import {
 } from '@/components/ui/select'
 
 import type { CountryField } from '@payloadcms/plugin-form-builder/types'
-import type { Control, FieldErrorsImpl, FieldValues } from 'react-hook-form'
-import { Controller } from 'react-hook-form'
-import { Error } from '../Error'
 import { Width } from '../Width'
 import { countryOptions } from './options'
 
 export const Country: React.FC<
   CountryField & {
-    control: Control<FieldValues, any>
-    errors: Partial<
-      FieldErrorsImpl<{
-        [x: string]: any
-      }>
-    >
     width: string
+    description?: string
   }
-> = ({ name, control, errors, label, required, width }) => {
+> = ({ label, width, description }) => {
+  const field = useFieldContext<string>()
+
+  const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+
   return (
     <Width width={width}>
-      <Label className="" htmlFor={name}>
-        {label}
-      </Label>
-      <Controller
-        control={control}
-        defaultValue=""
-        name={name}
-        render={({ field: { onChange, value } }) => {
-          const controlledValue = countryOptions.find((t) => t.value === value)
-
-          return (
-            <Select onValueChange={(val) => onChange(val)} value={controlledValue?.value}>
-              <SelectTrigger className="w-full" id={name}>
-                <SelectValue placeholder={label} />
-              </SelectTrigger>
-              <SelectContent>
-                {countryOptions.map(({ label, value }) => {
-                  return (
-                    <SelectItem key={value} value={value}>
-                      {label}
-                    </SelectItem>
-                  )
-                })}
-              </SelectContent>
-            </Select>
-          )
-        }}
-        rules={{ required }}
-      />
-      {required && errors[name] && <Error name={name} />}
+      <Field data-invalid={isInvalid}>
+        <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
+        <FieldContent>
+          <Select
+            name={field.name}
+            value={field.state.value}
+            onValueChange={(value) => field.handleChange(value as string)}
+            items={countryOptions}
+          >
+            <SelectTrigger className="w-full" id={field.name} aria-invalid={isInvalid}>
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {countryOptions.map(({ label, value }) => (
+                <SelectItem key={value} value={value}>
+                  {label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          {isInvalid && <FieldError errors={field.state.meta.errors} />}
+          {description && <FieldDescription>{description}</FieldDescription>}
+        </FieldContent>
+      </Field>
     </Width>
   )
 }

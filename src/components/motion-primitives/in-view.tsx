@@ -10,7 +10,7 @@ import {
 } from 'motion/react'
 
 export type InViewProps = {
-  children: ReactNode
+  children?: ReactNode
   variants?: {
     hidden: Variant
     visible: Variant

@@ -13,18 +13,22 @@ export const Services = () => {
       </CardHeader>
 
       <CardContent className="flex flex-col gap-3">
-        <Button variant="outline" className="flex justify-start items-center" asChild>
-          <Link href="http://localhost:9000" target="_blank">
-            <Mail />
-            Inbucket Email UI
-          </Link>
+        <Button
+          variant="outline"
+          className="flex justify-start items-center"
+          render={<Link href="http://localhost:9000" target="_blank" />}
+        >
+          <Mail />
+          Inbucket Email UI
         </Button>
 
-        <Button variant="outline" className="flex justify-start items-center" asChild>
-          <Link href="http://localhost:9002" target="_blank">
-            <Database />
-            MinIO S3 Console
-          </Link>
+        <Button
+          variant="outline"
+          className="flex justify-start items-center"
+          render={<Link href="http://localhost:9002" target="_blank" />}
+        >
+          <Database />
+          MinIO S3 Console
         </Button>
         <Button
           variant="outline"

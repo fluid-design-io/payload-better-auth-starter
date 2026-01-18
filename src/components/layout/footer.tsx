@@ -1,3 +1,4 @@
+import { cacheLife } from 'next/cache'
 import Link from 'next/link'
 
 import { AcmeLogoIcon } from '@/components/icons'
@@ -5,7 +6,7 @@ import { ThemeSelector } from '@/components/layout/theme-switch'
 import { CMSLink } from '@/components/payload/cms-link'
 
 import { CLASSNAMES } from '@/lib/constants'
-import { getCachedGlobal } from '@/lib/payload/get-globals'
+import { getGlobal } from '@/lib/payload/get-globals'
 
 import type { GlobalFooter } from '@/payload-types'
 import RichText from '../payload/rich-text'
@@ -14,7 +15,10 @@ import { P } from '../ui/typography'
 import { Container } from './elements'
 
 export default async function Footer() {
-  const footerData = (await getCachedGlobal('global-footer', 1)()) as GlobalFooter
+  'use cache'
+  cacheLife('weeks')
+
+  const footerData = (await getGlobal('global-footer', 1)) as GlobalFooter
 
   const navItems = footerData?.navItems || []
   const footerText = footerData.footerText

@@ -1,4 +1,3 @@
-import { cacheLife } from 'next/cache'
 import Link from 'next/link'
 
 import { AcmeLogoIcon } from '@/components/icons'
@@ -15,9 +14,6 @@ import { P } from '../ui/typography'
 import { Container } from './elements'
 
 export default async function Footer() {
-  'use cache'
-  cacheLife('weeks')
-
   const footerData = (await getGlobal('global-footer', 1)) as GlobalFooter
 
   const navItems = footerData?.navItems || []

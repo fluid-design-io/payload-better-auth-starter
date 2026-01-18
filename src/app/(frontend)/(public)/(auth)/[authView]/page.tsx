@@ -57,10 +57,8 @@ export default async function AuthPage({ params }: { params: Promise<{ authView:
               <strong>Password123!</strong>
             </P>
             {authView === 'sign-up' && (
-              <Button asChild>
-                <Link href="/sign-in">
-                  Go to sign in <ArrowRight />
-                </Link>
+              <Button render={<Link href="/sign-in" />}>
+                Go to sign in <ArrowRight />
               </Button>
             )}
           </AlertDescription>

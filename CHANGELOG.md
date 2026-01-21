@@ -6,10 +6,11 @@
 
 - ## 🚀 Features
   - Add about page showcasing changelog and package dependencies
+  - Added Cache Component support
 
   ## 🔧 Refactors
-  - Refactor from react-hook-form to tanstack form
-  - Refactor radix-ui to base-ui
+  - Refactor from react-hook-form to [tanstack form](https://tanstack.com/form/latest)
+  - Refactor radix-ui to [base-ui](https://base-ui.com/)
 
   ## 🎨 UI Updates
   - Minor UI updates and improvements

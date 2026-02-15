@@ -1,5 +1,7 @@
 import { fields, formBuilderPlugin } from '@payloadcms/plugin-form-builder'
 import type { FieldsConfig } from '@payloadcms/plugin-form-builder/types'
+import type { Field, Plugin } from 'payload'
+import { isAdminOrSelf } from '@/access/admin'
 import {
   defaultValue,
   description,
@@ -9,13 +11,13 @@ import {
   placeholder,
   required,
   width,
-} from 'extra/form/fields-config'
-import { userInfo } from 'extra/form/UserInfo/config'
-import type { Field, Plugin } from 'payload'
-import { authenticated } from '@/access/authenticated'
+} from '@/blocks/form/fields-config'
+import { userInfo } from '@/blocks/form/UserInfo/config'
+import { slugField } from '@/fields/slug'
 import beforeEmail from './before-email'
 
 const fieldsTransformer = ({ defaultFields }: { defaultFields: Field[] }) => {
+  const [formSlugFieldText, formSlugFieldCheckbox] = slugField()
   const transformedFields = defaultFields.map((field) => {
     if (field.type === 'radio' && field.name === 'confirmationType') {
       return {
@@ -25,7 +27,7 @@ const fieldsTransformer = ({ defaultFields }: { defaultFields: Field[] }) => {
     }
     return field
   })
-  return [...transformedFields]
+  return [...transformedFields, formSlugFieldText, formSlugFieldCheckbox]
 }
 
 const adminConfig = {
@@ -33,7 +35,7 @@ const adminConfig = {
     group: 'Forms',
   },
   access: {
-    update: authenticated,
+    update: isAdminOrSelf,
   },
 }
 
@@ -80,6 +82,7 @@ const rowConfig: Record<
 /** Add a phone number field */
 const phoneField: Field = {
   ...fields.text,
+  // @ts-expect-error - Slug is valid
   slug: 'phone',
   labels: {
     singular: 'Phone Number',
@@ -122,9 +125,20 @@ const fieldsOverrides: FieldsConfig = {
       rowConfig.description,
       {
         type: 'row',
-        fields: [placeholder],
+        fields: [
+          placeholder,
+          {
+            ...width,
+            admin: {
+              width: '50%',
+            },
+          } as Field,
+        ],
       },
-      rowConfig.requiredHidden,
+      {
+        type: 'row',
+        fields: [required],
+      },
     ],
   },
 }
@@ -134,7 +148,7 @@ const formPlugin: Plugin = formBuilderPlugin({
     ...fieldsOverrides,
     payment: false,
   },
-  defaultToEmail: 'contact.form@acme.com',
+  defaultToEmail: 'contact.form@cardware.com',
   beforeEmail,
   formOverrides: {
     ...adminConfig,

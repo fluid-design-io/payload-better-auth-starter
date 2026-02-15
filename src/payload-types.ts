@@ -124,9 +124,7 @@ export interface Config {
     'global-privacy': GlobalPrivacySelect<false> | GlobalPrivacySelect<true>;
   };
   locale: null;
-  user: User & {
-    collection: 'users';
-  };
+  user: User;
   jobs: {
     tasks: {
       schedulePublish: TaskSchedulePublish;
@@ -239,6 +237,7 @@ export interface User {
     hasNextPage?: boolean;
     totalDocs?: number;
   };
+  collection: 'users';
 }
 /**
  * Accounts are used to store user accounts for authentication providers

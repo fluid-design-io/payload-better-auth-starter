@@ -33,7 +33,7 @@ export async function generateStaticParams() {
   })
 
   if (params.length === 0) {
-    return ['__placeholder__']
+    return [{ slug: '__placeholder__' }]
   }
 
   return params

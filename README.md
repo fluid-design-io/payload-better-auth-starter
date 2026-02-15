@@ -10,20 +10,9 @@
 
 ## ✨ Features
 
-- 🔐 **Better Auth** - Modern authentication with email OTP via [payload-auth](https://github.com/payload-auth/payload-auth) (Better Auth)
-- 🎨 **Shadcn UI** - Beautiful, accessible components
-- 📝 **Blog System** - SEO-optimized with rich text editor
-- 📧 **Email Templates** - Custom React Email templates
-- 🗄️ **PostgreSQL** - Production-ready database
-- ☁️ **S3 Storage** - Public & private file uploads
-- 🐳 **Docker Compose** - One-command local development
-- 📱 **Responsive Design** - Mobile-first approach
-- 🎭 **Motion Primitives** - Smooth animations
-- 🔍 **SEO Plugin** - Built-in SEO management
-
-## Video Demo
-
-https://github.com/user-attachments/assets/da930987-5331-45c4-a668-35ff3b96c61d
+- 🔐 **Better Auth** - Email OTP via [payload-auth](https://github.com/payload-auth/payload-auth)
+- 🎨 **Shadcn UI** - Accessible components · 📝 **Blog** - SEO-optimized · 📧 **React Email** templates
+- 🗄️ **PostgreSQL** · ☁️ **S3** · 🐳 **Docker Compose** · 🔍 **SEO Plugin** · 📱 **Responsive**
 
 ## Custom Blocks
 
@@ -50,7 +39,7 @@ https://github.com/user-attachments/assets/da930987-5331-45c4-a668-35ff3b96c61d
 
 
 <details>
-<summary>Example usage 👀</summary>
+<summary>Example usage</summary>
 
 ```tsx
 import {
@@ -65,7 +54,7 @@ import {
 } from "@/components/layout/elements";
 import { Main } from "@/components/layout/main";
 
-export default function FeaturesPage() {
+export default function Page() {
   return (
     <Main>
       <LayoutHeader title='Features' badge='Acme' description='...' />
@@ -112,199 +101,55 @@ export default function FeaturesPage() {
   );
 }
 ```
-
 </details>
 
-## Screenshots
-
-| Home | Home |
-| ------------- | ------------- |
-| <img width="100%" height="auto" alt="Screen 1-1" src="https://github.com/user-attachments/assets/919d3dc7-ef6c-4aef-8987-dd45e41572e0" /> | <img width="100%" height="auto" alt="Screen 1-2" src="https://github.com/user-attachments/assets/ba8c5f4b-cd73-46ad-b751-7446fa034e6d" /> |
-
-| Features | Features |
-| ------------- | ------------- |
-| <img width="100%" height="auto" alt="Screen 2" src="https://github.com/user-attachments/assets/f125eacf-ed44-4670-affe-171b742d9ce7" /> | <img width="100%" height="auto" alt="Screen 4" src="https://github.com/user-attachments/assets/1c6a8b24-bef9-495f-bf7b-963c82748252" /> |
-
-| Blog | Blog Post |
-| ------------- | ------------- |
-| <img width="100%" height="auto" alt="Screen 5" src="https://github.com/user-attachments/assets/c689b044-fec0-42ea-97da-c8e79abb119d" /> | <img width="100%" height="auto" alt="Screen 6" src="https://github.com/user-attachments/assets/0f7b6c3e-49cf-4b1e-a633-b76aeb41038f" /> |
-
-| Account | Account |
-| ------------- | ------------- |
-| <img width="1153" height="982" alt="Screen 7" src="https://github.com/user-attachments/assets/dc205cf8-1bae-4157-bb49-4f9332151441" /> | <img width="1153" height="982" alt="Screen 8" src="https://github.com/user-attachments/assets/6f18e1bb-5d55-4655-8213-d1c1655fc037" /> |
-
-| Admin | Admin |
-| ------------- | ------------- |
-| <img width="1153" height="982" alt="Screen 10" src="https://github.com/user-attachments/assets/b0727b3e-144b-4132-958d-b10688da08c8" /> | <img width="1153" height="982" alt="Screen 11" src="https://github.com/user-attachments/assets/61b4ebdc-fa65-4d40-b968-b6aa96dc237e" /> |
-
-**Email UI**
+## Email UI
 
 <img width="100%" height="auto" alt="Email UIs" src="https://github.com/user-attachments/assets/29219ab1-d76f-4792-9af7-6196f6930a76" />
 
 ## 🚀 Quick Start
 
-### 1. Clone & Install
-
 ```bash
 git clone fluid-design-io/payload-better-auth-starter
 cd payload-better-auth-starter
 bun install
-```
-
-### 2. Environment Setup
-
-```bash
-# Create environment file
-cp .env.example .env
-
-# Edit with your values
-nano .env
-```
-
-### 3. Start Development
-
-```bash
-# Start all services (PostgreSQL, S3, Email)
+cp .env.example .env   # edit with your values
 bun run dev
 ```
 
-Visit `http://localhost:3000` for your site and `http://localhost:3000/admin` for the CMS.
+Site: `http://localhost:3000` · Admin: `http://localhost:3000/admin`
 
-## 🏢 Branding Your Company
+## 🏢 Branding
 
-### Replace "Acme" with Your Brand
+Replace **Acme**: logo in `src/components/icons.tsx` and `admin-icon.tsx`, favicon in `public/favicon.ico`, name in `src/lib/constants.ts` and `src/lib/email/email-template.tsx`, OG image `public/website-template-OG.png`.
 
-1. **Logo & Icons**
+**Env (required):** `PAYLOAD_SECRET`, `DATABASE_URI`. **Optional:** S3 vars, `RESEND_API_KEY` for email.
 
-   ```bash
-   # Replace these files:
-   src/components/icons.tsx          # Main logo
-   src/components/payload/admin-icon.tsx  # Admin panel icon
-   public/favicon.ico               # Browser favicon
-   ```
+## 🧩 Stack
 
-2. **Company Name**
+**Collections:** Users, Blog, Media, Globals. **Plugins:** Better Auth, SEO, Import/Export, S3, optional Form Builder. **UI:** Shadcn, Motion, theme, responsive.
 
-   ```bash
-   # Search and replace "Acme" in:
-   src/lib/constants.ts
-   src/plugins/seo-plugin.ts
-   src/lib/email/email-template.tsx
-   ```
+## 🛠️ Scripts
 
-3. **Open Graph Images**
+`bun run dev` \| `build` \| `start` · `services:start` \| `services:stop` \| `services:logs` · `db:reset` \| `db:connect` · `email:test`
 
-   ```bash
-   # Replace default OG image:
-   public/website-template-OG.png
-   ```
+**Form plugin (optional):** 
 
-4. **Email Templates**
-   ```bash
-   # Customize email branding:
-   src/lib/email/email-template.tsx
-   src/plugins/form-plugin/before-email.tsx
-   ```
+1. Move `extra/plugins/form-plugin` to `src/plugins/`
+2. Move `extra/blocks/form` to `src/blocks/form`
+3. Move `extra/fields/slug` to `src/fields/slug`
+4. Install `@payloadcms/plugin-form-builder`
+5. Run `bun run payload generate:importmap`
+6. Uncomment form plugin in `src/plugins/index.ts`
+7. Restart development server 🥳
 
-### Environment Variables
+## 📁 Structure
 
-```bash
-# Required for production
-PAYLOAD_SECRET=your-secret-key
-DATABASE_URI=postgresql://user:pass@host:port/db
+`src/` → `app/`, `collections/`, `components/` (ui, layout, payload), `lib/`, `plugins/`, `blocks/`
 
-# Optional - S3 Storage
-S3_BUCKET=your-bucket
-S3_ACCESS_KEY_ID=your-key
-S3_SECRET_ACCESS_KEY=your-secret
-S3_REGION=us-east-1
+## 🚀 Deploy
 
-# Optional - Email (Resend)
-RESEND_API_KEY=your-resend-key
-```
-
-## 🧩 Core Components
-
-### Collections
-
-- **Users** - Authentication & user management
-- **Blog** - SEO-optimized blog posts with authors
-- **Media** - Image/video uploads with S3 storage
-- **Globals** - Site-wide content (footer, etc.)
-
-### Plugins
-
-- **Better Auth** - Modern authentication system
-- **SEO Plugin** - Meta tags, Open Graph, structured data
-- **Import/Export** - Data migration tools
-- **S3 Storage** - Cloud file storage
-- **Form Builder** - Contact forms (optional)
-
-### UI Components
-
-- **Shadcn UI** - 30+ accessible components
-- **Motion Primitives** - Framer Motion utilities
-- **Theme System** - Dark/light mode support
-- **Responsive Layout** - Mobile-first design
-
-## 🛠️ Development
-
-### Available Scripts
-
-```bash
-bun run dev          # Start development server
-bun run build        # Build for production
-bun run start        # Start production server
-
-# Docker Services
-bun run services:start    # Start PostgreSQL, S3, Email
-bun run services:stop     # Stop all services
-bun run services:logs     # View service logs
-
-# Database
-bun run db:reset         # Reset database
-bun run db:connect       # Connect to PostgreSQL
-
-# Email Testing
-bun run email:test       # Test email functionality
-```
-
-### Form Plugin (Optional)
-
-Enable the form plugin for contact forms:
-
-1. Move `extra/form/` to `src/plugins/form/`
-2. Uncomment form plugin in `src/plugins/index.ts`
-3. Restart development server
-
-## 📁 Project Structure
-
-```
-src/
-├── app/                 # Next.js app router
-├── collections/         # PayloadCMS collections
-├── components/          # React components
-│   ├── ui/             # Shadcn UI components
-│   ├── layout/         # Layout components
-│   └── payload/        # CMS-specific components
-├── lib/                 # Utilities & configurations
-├── plugins/             # PayloadCMS plugins
-└── blocks/              # Content blocks
-```
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-
-1. Connect your GitHub repository
-2. Set environment variables
-3. Deploy automatically
-
-### Docker
-
-```bash
-docker-compose -f docker-compose.prod.yml up -d
-```
+**Vercel:** Connect repo, set env vars, deploy. **Docker:** `docker-compose -f docker-compose.prod.yml up -d`
 
 ## 📄 License
 

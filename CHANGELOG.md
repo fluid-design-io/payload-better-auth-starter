@@ -1,5 +1,12 @@
 # acme-website
 
+## 1.5.1
+
+### Patch Changes
+- Bump packages
+- Fix form plugin & added missing files
+- Fix blog page `generateStaticParams` placeholder return string instead of object
+
 ## 1.5.0
 
 ### Minor Changes

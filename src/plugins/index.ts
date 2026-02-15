@@ -2,6 +2,7 @@ import { betterAuthPluginOptions } from '@/lib/auth/options'
 
 import type { Plugin } from 'payload'
 import { betterAuthPlugin } from 'payload-auth/better-auth'
+// import formPlugin from './form-plugin'
 import { s3StoragePluginPrivate, s3StoragePluginPublic } from './s3-storage-plugin'
 import { seoPlugin } from './seo-plugin'
 

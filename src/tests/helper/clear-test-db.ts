@@ -18,6 +18,13 @@ export async function clearTestDb(payload: PayloadLike): Promise<void> {
   if (process.env.NODE_ENV !== "test") {
     throw new Error("clearTestDb can only be used in test environment");
   }
+
+  const dbUri = process.env.DATABASE_URI;
+  if (!dbUri || !/_test\b/.test(dbUri)) {
+    throw new Error(
+      "clearTestDb can only be used with a _test database (check DATABASE_URI)",
+    );
+  }
   const pool = payload.db.pool;
   if (!pool?.query) {
     await payload.db.migrateFresh({ forceAcceptWarning: true });

@@ -1,11 +1,10 @@
 import { getPayload } from '@/lib/payload/get-payload'
 import { clearTestDb } from './helper/clear-test-db'
-import assert from 'node:assert/strict'
-import { afterEach, before, test } from 'node:test'
+import { afterEach, beforeAll, expect, test } from 'bun:test'
 
 let payload: Awaited<ReturnType<typeof getPayload>>
 
-before(async () => {
+beforeAll(async () => {
   payload = await getPayload()
   await payload.create({
     collection: 'blog',
@@ -20,5 +19,5 @@ afterEach(async () => {
 
 test('Payload DB check', async () => {
   const result = await payload.find({ collection: 'blog', limit: 1 })
-  assert.ok(Array.isArray(result.docs))
+  expect(result.docs).toBeInstanceOf(Array)
 })

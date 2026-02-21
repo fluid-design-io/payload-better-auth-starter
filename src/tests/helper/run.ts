@@ -1,10 +1,10 @@
 /**
  * Test runner: global setup (services, test DB, migrate, dev server) then run test files.
- * - bun test:run: run with node --test; no path → discover all files, run each with tsx.
- * - bun test:run:single <path>: run with tsx so path is in argv; run that one file with node --test.
+ * - bun test:run: discover *.test.ts files, start server, run bun test with all paths.
+ * - bun test:run:single <path>: start server, run bun test with that one file (path with ./ or full).
  * Starts the Next.js dev server on port 3456 and sets TEST_SERVER_URL for auth tests.
  */
-import { execSync, spawn } from "node:child_process";
+import { execSync, spawn, spawnSync } from "node:child_process";
 import { existsSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 import { getTestDatabaseUri } from "./test-db-uri";
@@ -27,15 +27,12 @@ function run(cmd: string, args: string[] = [], env?: NodeJS.ProcessEnv) {
 run("bun run dev:services");
 run("bun run test:db:create");
 run("bun run payload", ["migrate:fresh", "--force-accept-warning"]);
-const serverProcess = spawn(
-  "bun",
-  ["run", "dev:next", "-p", TEST_SERVER_PORT],
-  {
-    env: { ...process.env, PORT: TEST_SERVER_PORT },
-    stdio: "inherit",
-    cwd: process.cwd(),
-  },
-);
+
+const serverProc = spawn("bun", ["run", "dev:next", "-p", TEST_SERVER_PORT], {
+  env: { ...process.env, PORT: TEST_SERVER_PORT },
+  stdio: "inherit",
+  cwd: process.cwd(),
+});
 
 await waitForServer(TEST_SERVER_URL);
 process.env.TEST_SERVER_URL = TEST_SERVER_URL;
@@ -43,11 +40,16 @@ process.env.TEST_SERVER_URL = TEST_SERVER_URL;
 const TESTS_DIR = "src/tests";
 const SUBDIRS = ["requests", "services", "collections"] as const;
 
+const TEST_FILE_PATTERN = /\.(test|spec)\.(ts|tsx)$/;
+
 function discoverTestFiles(): string[] {
   const files: string[] = [];
   const entries = readdirSync(TESTS_DIR, { withFileTypes: true });
   for (const e of entries) {
-    if (e.isFile() && e.name.endsWith(".ts")) {
+    if (
+      e.isFile() &&
+      (TEST_FILE_PATTERN.test(e.name) || /_test\.(ts|tsx)$/.test(e.name))
+    ) {
       files.push(join(TESTS_DIR, e.name));
     }
   }
@@ -55,7 +57,7 @@ function discoverTestFiles(): string[] {
     const dir = join(TESTS_DIR, subdir);
     if (!existsSync(dir)) continue;
     for (const name of readdirSync(dir)) {
-      if (name.endsWith(".ts")) {
+      if (TEST_FILE_PATTERN.test(name) || /_test\.(ts|tsx)$/.test(name)) {
         files.push(join(dir, name));
       }
     }
@@ -65,27 +67,32 @@ function discoverTestFiles(): string[] {
 
 const args = process.argv.slice(2).filter((a) => a !== "--");
 const pathArg = args[0];
-const files = pathArg?.endsWith(".ts") ? [pathArg] : discoverTestFiles();
-const singleFileMode = pathArg != null && files.length === 1;
+const singleFileMode =
+  pathArg != null &&
+  (pathArg.endsWith(".test.ts") ||
+    pathArg.endsWith(".test.tsx") ||
+    pathArg.endsWith(".spec.ts") ||
+    pathArg.endsWith(".spec.tsx") ||
+    pathArg.includes("_test."));
 
-const runTestFile = singleFileMode
-  ? (file: string) => `node --test --import tsx ${file}`
-  : (file: string) => `bun exec tsx ${file}`;
+const testPaths = singleFileMode
+  ? [pathArg.startsWith("./") || pathArg.startsWith("/") ? pathArg : `./${pathArg}`]
+  : discoverTestFiles();
 
 let exitCode = 0;
 try {
-  for (const file of files) {
-    try {
-      execSync(runTestFile(file), {
-        stdio: "inherit",
-        env: process.env,
-      });
-    } catch (err) {
-      exitCode = (err as { status?: number }).status ?? 1;
-      break;
-    }
+  if (testPaths.length === 0) {
+    console.error("No test files found.");
+    exitCode = 1;
+  } else {
+    const result = spawnSync("bun", ["test", ...testPaths], {
+      stdio: "inherit",
+      env: process.env,
+      cwd: process.cwd(),
+    });
+    exitCode = result.status ?? 1;
   }
 } finally {
-  serverProcess.kill("SIGTERM");
+  serverProc.kill("SIGTERM");
 }
 process.exit(exitCode);

@@ -75,7 +75,7 @@ export interface AuthHelperResult {
 }
 
 const TEST_SERVER_REQUIRED =
-  'TEST_SERVER_URL must be set; run tests via pnpm test:run so the dev server is started'
+  'TEST_SERVER_URL must be set; run tests via bun run test:run so the dev server is started'
 
 async function authResultFromSignInResponse(
   payload: PayloadWithAuth,

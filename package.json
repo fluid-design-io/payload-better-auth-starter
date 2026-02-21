@@ -42,7 +42,7 @@
     "test:run": "dotenv -e .env -- node --test --import tsx src/tests/helper/run.ts --",
     "test:run:single": "dotenv -e .env -- tsx src/tests/helper/run.ts",
     "test:db:create": "docker exec acme-postgres psql -U postgres -c 'CREATE DATABASE \"acme-website_test\";' || true",
-    "test:payload-db": "dotenv -e .env -- node --import tsx src/tests/payload-db.ts"
+    "test:payload-db": "dotenv -e .env -- DATABASE_URI=postgres://postgres:postgres@localhost:5432/acme-website_test node --test --import tsx src/tests/payload-db.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.1.0",

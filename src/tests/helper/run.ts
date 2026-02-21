@@ -26,15 +26,13 @@ function run(cmd: string, args: string[] = [], env?: NodeJS.ProcessEnv) {
 
 run("bun run dev:services");
 run("bun run test:db:create");
-run("bun payload migrate:create");
-run("bun payload migrate:fresh --force-accept-warning");
-
+run("bun run payload", ["migrate:fresh", "--force-accept-warning"]);
 const serverProcess = spawn(
   "bun",
   ["run", "dev:next", "-p", TEST_SERVER_PORT],
   {
     env: { ...process.env, PORT: TEST_SERVER_PORT },
-    stdio: "pipe",
+    stdio: "inherit",
     cwd: process.cwd(),
   },
 );

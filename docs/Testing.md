@@ -6,7 +6,7 @@ This doc explains how the test suite is structured and how it runs so you can ad
 
 - **Two commands:** `bun test:run` runs all test files (no path argument). `bun test:run:single <path>` runs one test file.
 - **Two processes:** The **runner** starts the Next.js dev server on port 3456 (using the test DB), then runs each test file in a child process (tsx for full run, `node --test` for single). Tests that need HTTP use `TEST_SERVER_URL`.
-- **One database:** Tests use the same Postgres instance as dev (via `pnpm run dev:services` / [docker-compose.yml](../../docker-compose.yml)) but a **separate** DB, `acme-website_test`, so dev data is never touched. The server and all test files use this DB (via `DATABASE_URI` set by the runner).
+- **One database:** Tests use the same Postgres instance as dev (via `bun run dev:services` / [docker-compose.yml](../../docker-compose.yml)) but a **separate** DB, `acme-website_test`, so dev data is never touched. The server and all test files use this DB (via `DATABASE_URI` set by the runner).
 
 ## Directory structure
 
@@ -15,7 +15,7 @@ src/tests/
 ├── helper/           # Shared runner and utilities (do not put test files here)
 │   ├── run.ts        # Test runner: services, DB, migrate, start server, discover & run .ts files
 │   ├── auth-helper.ts # asUser, signUpAndGetHeaders, loginAs (uses TEST_SERVER_URL when set)
-│   ├── fixtures.ts   # createTestFilm, createTestLanguage, etc. (overrideAccess where needed)
+
 │   ├── clear-test-db.ts
 │   ├── test-db-uri.ts
 │   └── wait-for-server.ts
@@ -64,7 +64,7 @@ Files with more than one scenario should use **one top-level test** and **subtes
 - Each scenario as **`await t.test('description', async () => { ... })`**.
 - Do not call `clearTestDb` inside a subtest; cleanup is done in afterEach and after.
 
-**Minimal example** (see [services/cinema-layer-service.ts](services/cinema-layer-service.ts) for a full file):
+**Minimal example** (use this pattern for multi-scenario service tests):
 
 ```ts
 import { getPayload } from "../../lib/payload/get-payload";

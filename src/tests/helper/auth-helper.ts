@@ -2,7 +2,7 @@
  * Auth helper for tests: create users via Better Auth signUpEmail (so both the user
  * and the accounts row with hashed password exist), then return session headers for
  * payload.auth({ headers }) and request-like usage.
- * Requires TEST_SERVER_URL (run tests via pnpm test:run so the dev server is started).
+ * Requires TEST_SERVER_URL (run tests via bun test:run or bun test:run:single so the dev server is started).
  */
 import type { User } from '@/payload-types'
 import { randomBytes } from 'node:crypto'

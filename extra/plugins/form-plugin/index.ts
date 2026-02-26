@@ -12,7 +12,6 @@ import {
   required,
   width,
 } from '@/blocks/form/fields-config'
-import { userInfo } from '@/blocks/form/UserInfo/config'
 import { slugField } from '@/fields/slug'
 import beforeEmail from './before-email'
 
@@ -98,7 +97,6 @@ const phoneField: Field = {
 
 /** Custom fields overrides */
 const fieldsOverrides: FieldsConfig = {
-  userInfo: userInfo,
   phone: phoneField,
   text: {
     labels: { singular: 'Single-line Text', plural: 'Single-line Text' },

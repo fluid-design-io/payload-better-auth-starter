@@ -1,5 +1,6 @@
-import { cn } from '@/lib/utils'
 import type React from 'react'
+
+import { cn } from '@/lib/utils'
 
 export const Width = ({
   children,
@@ -7,20 +8,29 @@ export const Width = ({
   className,
 }: {
   children: React.ReactNode
-  width: string
+  width: string // full, 3/4, 2/3, 1/2, 1/3, 1/4
   className?: string
 }) => {
-  let calcWidth: string
+  let calSpan: number
   switch (width) {
     case 'full':
-      calcWidth = `100%`
+      calSpan = 12
+      break
+    case '3/4':
+      calSpan = (3 * 12) / 4
+      break
+    case '2/3':
+      calSpan = (2 * 12) / 3
+      break
+    case '1/2':
+      calSpan = 12 / 2
       break
     default:
-      calcWidth = `calc(${width} * 100% - 0.5rem)`
+      calSpan = 12
       break
   }
   return (
-    <div style={{ flexBasis: calcWidth }} className={cn('flex flex-col gap-2', className)}>
+    <div style={{ gridColumn: `span ${calSpan}` }} className={cn('flex flex-col gap-2', className)}>
       {children}
     </div>
   )

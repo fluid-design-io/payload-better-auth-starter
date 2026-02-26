@@ -8,7 +8,6 @@ import { Select } from './Select'
 import { State } from './State'
 import { Text } from './Text'
 import { Textarea } from './Textarea'
-import { UserInfo } from './UserInfo'
 
 export const fields = {
   checkbox: Checkbox,
@@ -21,5 +20,4 @@ export const fields = {
   text: Text,
   textarea: Textarea,
   phone: Phone,
-  userInfo: UserInfo,
 }

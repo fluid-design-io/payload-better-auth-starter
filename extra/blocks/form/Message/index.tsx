@@ -1,6 +1,8 @@
-import RichText from '@/components/payload/rich-text'
 import type React from 'react'
 
+import RichText from '@/components/payload/rich-text'
+
+import type { DefaultTypedEditorState } from '@payloadcms/richtext-lexical'
 import type { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
 import { Width } from '../Width'
 
@@ -8,7 +10,7 @@ import { Width } from '../Width'
 export const Message: React.FC = ({ message }: { message: SerializedEditorState }) => {
   return (
     <Width className="my-12" width="full">
-      {message && <RichText data={message} />}
+      {message && <RichText data={message as DefaultTypedEditorState} />}
     </Width>
   )
 }

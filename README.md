@@ -4,7 +4,7 @@
 
 <hr />
 <h4>
-<a href="#features" rel="dofollow"><strong>Features</strong></a>&nbsp;·&nbsp;<a href="#quick-start" rel="dofollow"><strong>Quick Start</strong></a>&nbsp;·&nbsp;<a href="#branding-your-company" rel="dofollow"><strong>Branding Your Company</strong></a>&nbsp;·&nbsp;<a href="#custom-ui-components" rel="dofollow"><strong>Custom UI Components</strong></a>&nbsp;·&nbsp;<a href="#custom-blocks" rel="dofollow"><strong>Custom Blocks</strong></a>&nbsp;·&nbsp;<a href="#form-plugin" rel="dofollow"><strong>Form Plugin</strong></a>
+<a href="#features" rel="dofollow"><strong>Features</strong></a>&nbsp;·&nbsp;<a href="#quick-start" rel="dofollow"><strong>Quick Start</strong></a>&nbsp;·&nbsp;<a href="#branding-your-company" rel="dofollow"><strong>Branding Your Company</strong></a>&nbsp;·&nbsp;<a href="#custom-ui-components" rel="dofollow"><strong>Custom UI Components</strong></a>&nbsp;·&nbsp;<a href="#custom-blocks" rel="dofollow"><strong>Custom Blocks</strong></a>&nbsp;·&nbsp;<a href="#form-plugin-optional" rel="dofollow"><strong>Form Plugin (Optional)</strong></a>
 </h4>
 <hr />
 
@@ -132,17 +132,18 @@ Replace **Acme**: logo in `src/components/icons.tsx` and `admin-icon.tsx`, favic
 
 **Collections:** Users, Blog, Media, Globals. **Plugins:** Better Auth, SEO, Import/Export, S3, optional Form Builder. **UI:** Shadcn, Motion, theme, responsive.
 
-**Form plugin (optional):** 
+## Form plugin (optional)
 
 Payload form builder plugin with Tanstack form on the frontend
 
 1. Move `extra/plugins/form-plugin` to `src/plugins/`
-2. Move `extra/blocks/form` to `src/blocks/form`
-3. Move `extra/fields/slug` to `src/fields/slug`
-4. Install `@payloadcms/plugin-form-builder`
-5. Run `bun run payload generate:importmap`
-6. Uncomment form plugin in `src/plugins/index.ts`
-7. Restart development server 🥳
+1. Move `extra/blocks/form` to `src/blocks/form`
+1. Move `extra/components/form` to `src/components/form`
+1. Move `extra/fields/slug` to `src/fields/slug`
+1. Install `@payloadcms/plugin-form-builder country-data-list react-circle-flags`
+1. Uncomment form plugin in `src/plugins/index.ts`
+1. Run `bun run payload generate:importmap`
+1. Restart development server 🥳
 
 ## Structure
 

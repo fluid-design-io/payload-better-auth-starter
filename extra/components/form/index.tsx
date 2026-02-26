@@ -10,7 +10,6 @@ const PasswordField = dynamic(() => import('./components/password-field'))
 const PhoneField = dynamic(() => import('./components/phone-field'))
 const SelectField = dynamic(() => import('./components/select-field'))
 const TextareaField = dynamic(() => import('./components/textarea-field'))
-const OTPField = dynamic(() => import('./components/otp-field'))
 
 function SubmitButton({ label }: { label: string }) {
   const form = useFormContext()
@@ -32,7 +31,6 @@ export const { useAppForm, withForm, withFieldGroup } = createFormHook({
     PhoneField,
     SelectField,
     TextareaField,
-    OTPField,
   },
   formComponents: {
     SubmitButton,

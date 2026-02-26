@@ -140,7 +140,7 @@ Payload form builder plugin with Tanstack form on the frontend
 1. Move `extra/blocks/form` to `src/blocks/form`
 1. Move `extra/components/form` to `src/components/form`
 1. Move `extra/fields/slug` to `src/fields/slug`
-1. Install `@payloadcms/plugin-form-builder`
+1. Install `@payloadcms/plugin-form-builder country-data-list react-circle-flags`
 1. Uncomment form plugin in `src/plugins/index.ts`
 1. Run `bun run payload generate:importmap`
 1. Restart development server 🥳

@@ -1,14 +1,15 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 
 import { LayoutHeader } from '@/components/layout/elements'
 import { Main } from '@/components/layout/main'
 import { InView } from '@/components/motion-primitives/in-view'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Skeleton } from '@/components/ui/skeleton'
 
 import { inViewOptions } from '@/lib/animation'
-import { getPayload } from '@/lib/payload/get-payload'
 
-import { FormBlock } from '@/blocks/form/component'
+import ContactForm from './contact-form'
 
 export const metadata: Metadata = {
   title: 'Contact Us',
@@ -16,22 +17,6 @@ export const metadata: Metadata = {
 }
 
 export default async function ContactPage() {
-  const payload = await getPayload()
-
-  const { docs } = await payload.find({
-    collection: 'forms',
-    limit: 1,
-    pagination: false,
-    where: {
-      slug: {
-        equals: 'example-form',
-      },
-    },
-  })
-
-  const form = docs?.[0]
-  if (!form) return <div>notFound</div>
-
   return (
     <Main>
       <LayoutHeader
@@ -49,7 +34,9 @@ export default async function ContactPage() {
             </CardDescription>
           </CardHeader>
           <CardContent className="px-0">
-            <FormBlock form={form} rootClassName="p-0" className="border-none p-0 lg:p-0" />
+            <Suspense fallback={<Skeleton className="w-full h-[400px]" />}>
+              <ContactForm />
+            </Suspense>
           </CardContent>
         </Card>
       </InView>

@@ -29,6 +29,7 @@
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "cmdk": "^1.1.1",
+        "country-data-list": "^1.6.0",
         "date-fns": "^4.1.0",
         "geist": "^1.7.0",
         "graphql": "^16.13.0",
@@ -41,6 +42,7 @@
         "payload": "^3.77.0",
         "payload-auth": "^1.8.4",
         "react": "19.2.1",
+        "react-circle-flags": "^0.0.27",
         "react-day-picker": "^9.13.2",
         "react-dom": "19.2.1",
         "react-medium-image-zoom": "^5.4.1",
@@ -979,6 +981,8 @@
 
     "cosmiconfig": ["cosmiconfig@7.1.0", "", { "dependencies": { "@types/parse-json": "^4.0.0", "import-fresh": "^3.2.1", "parse-json": "^5.0.0", "path-type": "^4.0.0", "yaml": "^1.10.0" } }, "sha512-AdmX6xUzdNASswsFtmwSt7Vj8po9IuqXm0UXz7QKPuEUmPB4XyjGfaAr2PSuELMwkRMVH1EpIkX5bTZGRB3eCA=="],
 
+    "country-data-list": ["country-data-list@1.6.0", "", {}, "sha512-KG1flNkUHtde7q9zw1/NcH5fFgDxU6gRt4f7jhBm2ucNXrSO8UBWv/w8UyueOhJGabzzjHJ7fTyRVLrKruWpUw=="],
+
     "croner": ["croner@9.1.0", "", {}, "sha512-p9nwwR4qyT5W996vBZhdvBCnMhicY5ytZkR4D1Xj0wuTDEiMnjwR57Q3RXYY/s0EpX6Ay3vgIcfaR+ewGHsi+g=="],
 
     "cross-spawn": ["cross-spawn@7.0.6", "", { "dependencies": { "path-key": "^3.1.0", "shebang-command": "^2.0.0", "which": "^2.0.1" } }, "sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA=="],
@@ -1492,6 +1496,8 @@
     "react": ["react@19.2.1", "", {}, "sha512-DGrYcCWK7tvYMnWh79yrPHt+vdx9tY+1gPZa7nJQtO/p8bLTDaHp4dzwEhQB7pZ4Xe3ok4XKuEPrVuc+wlpkmw=="],
 
     "react-async-script": ["react-async-script@1.2.0", "", { "dependencies": { "hoist-non-react-statics": "^3.3.0", "prop-types": "^15.5.0" }, "peerDependencies": { "react": ">=16.4.1" } }, "sha512-bCpkbm9JiAuMGhkqoAiC0lLkb40DJ0HOEJIku+9JDjxX3Rcs+ztEOG13wbrOskt3n2DTrjshhaQ/iay+SnGg5Q=="],
+
+    "react-circle-flags": ["react-circle-flags@0.0.27", "", { "peerDependencies": { "react": "^16.0.0 || 17.x || 18.x || 19.x" } }, "sha512-34WtRgFX74DtmL4UiOZk+i+OmX5lHXevaRelF7zEUIBCrUAPyfJ1P3Oi8ebxcfysn8Z4+EZPKGvKcS9hqp5fCw=="],
 
     "react-datepicker": ["react-datepicker@7.6.0", "", { "dependencies": { "@floating-ui/react": "^0.27.0", "clsx": "^2.1.1", "date-fns": "^3.6.0" }, "peerDependencies": { "react": "^16.9.0 || ^17 || ^18 || ^19 || ^19.0.0-rc", "react-dom": "^16.9.0 || ^17 || ^18 || ^19 || ^19.0.0-rc" } }, "sha512-9cQH6Z/qa4LrGhzdc3XoHbhrxNcMi9MKjZmYgF/1MNNaJwvdSjv3Xd+jjvrEEbKEf71ZgCA3n7fQbdwd70qCRw=="],
 

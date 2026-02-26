@@ -33,9 +33,7 @@ export const Checkbox: React.FC<CheckboxField & { width: string; description?: s
             id={field.name}
             name={field.name}
             checked={field.state.value}
-            onCheckedChange={(checked) =>
-              field.handleChange(checked === 'indeterminate' ? undefined : checked)
-            }
+            onCheckedChange={(checked) => field.handleChange(!!checked)}
             aria-invalid={isInvalid}
             required={requiredFromProps}
           />

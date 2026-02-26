@@ -4,17 +4,18 @@
 
 <hr />
 <h4>
-<a href="#-features" rel="dofollow"><strong>Features</strong></a>&nbsp;·&nbsp;<a href="#-branding-your-company" rel="dofollow"><strong>Branding Your Company</strong></a>&nbsp;·&nbsp;<a href="#custom-ui-components" rel="dofollow"><strong>Custom UI Components</strong></a>&nbsp;·&nbsp;<a href="#custom-blocks" rel="dofollow"><strong>Custom Blocks</strong></a>&nbsp;·&nbsp;<a href="#screenshots" rel="dofollow"><strong>Screenshots</strong></a>
+<a href="#features" rel="dofollow"><strong>Features</strong></a>&nbsp;·&nbsp;<a href="#quick-start" rel="dofollow"><strong>Quick Start</strong></a>&nbsp;·&nbsp;<a href="#branding-your-company" rel="dofollow"><strong>Branding Your Company</strong></a>&nbsp;·&nbsp;<a href="#custom-ui-components" rel="dofollow"><strong>Custom UI Components</strong></a>&nbsp;·&nbsp;<a href="#custom-blocks" rel="dofollow"><strong>Custom Blocks</strong></a>&nbsp;·&nbsp;<a href="#form-plugin" rel="dofollow"><strong>Form Plugin</strong></a>
 </h4>
 <hr />
 
-## ✨ Features
+## Features
 
-- 🔐 **Better Auth** - Email OTP via [payload-auth](https://github.com/payload-auth/payload-auth)
-- 🎨 **Shadcn UI** - Accessible components · 📝 **Blog** - SEO-optimized · 📧 **React Email** templates
-- 🗄️ **PostgreSQL** · ☁️ **S3** · 🐳 **Docker Compose** · 🔍 **SEO Plugin** · 📱 **Responsive**
+<img width="1200" height="630" alt="Features" src="https://github.com/user-attachments/assets/14d1bf03-febc-40ef-9d4c-f1d4289ca928" />
 
-## Custom Blocks
+---
+
+<details>
+<summary id="custom-blocks">Custom Blocks </summary>
 
 | Block | Description |
 | ------------- | ------------- |
@@ -22,8 +23,10 @@
 | [Media Block](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/blocks/media-block/config.ts) | Refined version of Payload's default media block (added zoom functionality). |
 | [Gallery Block](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/blocks/gallery-block/config.ts) | A grid of zoomable images. |
 | [CopyRight Inline Block](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/blocks/copyright-inline-block/config.ts) | An inline block that adds `© Copyright ${fromYear}~${currentYear}...` so you don't have to manually change it every year. |
+</details>
 
-## Custom UI Components
+<details>
+<summary id="custom-ui-components">Custom UI Components </summary>
 
 | Component | Description |
 | ------------- | ------------- |
@@ -36,6 +39,8 @@
 | [ImageMedia](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/components/layout/elements.tsx#L200) | A reusable image media component with customizable gradients and styling. |
 | [VideoMedia](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/components/layout/elements.tsx#L250) | A reusable Vimeo video media component with configurable playback options. |
 | [FullWidthImage](https://github.com/fluid-design-io/payload-better-auth-starter/blob/main/src/components/layout/elements.tsx#L270) | A large full-width image section with a glow effect. |
+
+</details>
 
 
 <details>
@@ -107,7 +112,7 @@ export default function Page() {
 
 <img width="100%" height="auto" alt="Email UIs" src="https://github.com/user-attachments/assets/29219ab1-d76f-4792-9af7-6196f6930a76" />
 
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
 git clone fluid-design-io/payload-better-auth-starter
@@ -117,23 +122,19 @@ cp .env.example .env   # edit with your values
 bun run dev
 ```
 
-Site: `http://localhost:3000` · Admin: `http://localhost:3000/admin`
-
-## 🏢 Branding
+## Branding Your Company
 
 Replace **Acme**: logo in `src/components/icons.tsx` and `admin-icon.tsx`, favicon in `public/favicon.ico`, name in `src/lib/constants.ts` and `src/lib/email/email-template.tsx`, OG image `public/website-template-OG.png`.
 
 **Env (required):** `PAYLOAD_SECRET`, `DATABASE_URI`. **Optional:** S3 vars, `RESEND_API_KEY` for email.
 
-## 🧩 Stack
+## Stack
 
 **Collections:** Users, Blog, Media, Globals. **Plugins:** Better Auth, SEO, Import/Export, S3, optional Form Builder. **UI:** Shadcn, Motion, theme, responsive.
 
-## 🛠️ Scripts
-
-`bun run dev` \| `build` \| `start` · `services:start` \| `services:stop` \| `services:logs` · `db:reset` \| `db:connect` · `email:test`
-
 **Form plugin (optional):** 
+
+Payload form builder plugin with Tanstack form on the frontend
 
 1. Move `extra/plugins/form-plugin` to `src/plugins/`
 2. Move `extra/blocks/form` to `src/blocks/form`
@@ -143,15 +144,15 @@ Replace **Acme**: logo in `src/components/icons.tsx` and `admin-icon.tsx`, favic
 6. Uncomment form plugin in `src/plugins/index.ts`
 7. Restart development server 🥳
 
-## 📁 Structure
+## Structure
 
 `src/` → `app/`, `collections/`, `components/` (ui, layout, payload), `lib/`, `plugins/`, `blocks/`
 
-## 🚀 Deploy
+## Deploy
 
-**Vercel:** Connect repo, set env vars, deploy. **Docker:** `docker-compose -f docker-compose.prod.yml up -d`
+**Docker:** `docker-compose -f docker-compose.prod.yml up -d`
 
-## 📄 License
+## License
 
 MIT License - see [LICENSE.md](LICENSE.md) for details.
 

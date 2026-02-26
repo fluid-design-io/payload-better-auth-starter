@@ -137,12 +137,13 @@ Replace **Acme**: logo in `src/components/icons.tsx` and `admin-icon.tsx`, favic
 Payload form builder plugin with Tanstack form on the frontend
 
 1. Move `extra/plugins/form-plugin` to `src/plugins/`
-2. Move `extra/blocks/form` to `src/blocks/form`
-3. Move `extra/fields/slug` to `src/fields/slug`
-4. Install `@payloadcms/plugin-form-builder`
-5. Run `bun run payload generate:importmap`
-6. Uncomment form plugin in `src/plugins/index.ts`
-7. Restart development server 🥳
+1. Move `extra/blocks/form` to `src/blocks/form`
+1. Move `extra/components/form` to `src/components/form`
+1. Move `extra/fields/slug` to `src/fields/slug`
+1. Install `@payloadcms/plugin-form-builder`
+1. Uncomment form plugin in `src/plugins/index.ts`
+1. Run `bun run payload generate:importmap`
+1. Restart development server 🥳
 
 ## Structure
 

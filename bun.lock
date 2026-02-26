@@ -13,6 +13,7 @@
         "@payloadcms/email-resend": "^3.76.1",
         "@payloadcms/live-preview-react": "^3.76.1",
         "@payloadcms/next": "^3.76.1",
+        "@payloadcms/plugin-form-builder": "^3.77.0",
         "@payloadcms/plugin-import-export": "^3.76.1",
         "@payloadcms/plugin-seo": "^3.76.1",
         "@payloadcms/richtext-lexical": "^3.76.1",
@@ -505,6 +506,8 @@
     "@payloadcms/next": ["@payloadcms/next@3.77.0", "", { "dependencies": { "@dnd-kit/core": "6.3.1", "@dnd-kit/modifiers": "9.0.0", "@dnd-kit/sortable": "10.0.0", "@payloadcms/graphql": "3.77.0", "@payloadcms/translations": "3.77.0", "@payloadcms/ui": "3.77.0", "busboy": "^1.6.0", "dequal": "2.0.3", "file-type": "19.3.0", "graphql-http": "^1.22.0", "graphql-playground-html": "1.6.30", "http-status": "2.1.0", "path-to-regexp": "6.3.0", "qs-esm": "7.0.2", "sass": "1.77.4", "uuid": "10.0.0" }, "peerDependencies": { "graphql": "^16.8.1", "next": ">=15.2.9 <15.3.0 || >=15.3.9 <15.4.0 || >=15.4.11 <15.5.0 || >=16.2.0-canary.10 <17.0.0", "payload": "3.77.0" } }, "sha512-6MvRjNdjMTJYoulNXT2XJJbFvzMKT7m1NV7c+l8rMqRc8HeIdi2zSGXuNdFAOFp03cgG5q9U+lrrgh4tll/pjA=="],
 
     "@payloadcms/plugin-cloud-storage": ["@payloadcms/plugin-cloud-storage@3.77.0", "", { "dependencies": { "@payloadcms/ui": "3.77.0", "find-node-modules": "^2.1.3", "range-parser": "^1.2.1" }, "peerDependencies": { "payload": "3.77.0", "react": "^19.0.1 || ^19.1.2 || ^19.2.1", "react-dom": "^19.0.1 || ^19.1.2 || ^19.2.1" } }, "sha512-dAnEAS0as3C3s0l4YTPOT6tRZnxqXsagsj3RJp99898nyILHoERGqqCUTVS0QedwwVqNp7mNQM4p5zQqPLhtHw=="],
+
+    "@payloadcms/plugin-form-builder": ["@payloadcms/plugin-form-builder@3.77.0", "", { "dependencies": { "@payloadcms/ui": "3.77.0", "escape-html": "^1.0.3" }, "peerDependencies": { "payload": "3.77.0", "react": "^19.0.1 || ^19.1.2 || ^19.2.1", "react-dom": "^19.0.1 || ^19.1.2 || ^19.2.1" } }, "sha512-E/BKr6tsHUPKPsUKhQsDXaVH/4FCoo4Efwh/q562G6Savgt1nbMemv9LHXIJKSNvwES2POZ+IF1jp/Q2Wuc7yQ=="],
 
     "@payloadcms/plugin-import-export": ["@payloadcms/plugin-import-export@3.77.0", "", { "dependencies": { "@faceless-ui/modal": "3.0.0", "@payloadcms/translations": "3.77.0", "@payloadcms/ui": "3.77.0", "csv-parse": "5.6.0", "csv-stringify": "6.5.2", "qs-esm": "7.0.2" }, "peerDependencies": { "payload": "3.77.0" } }, "sha512-6E3NJkcWER10h7H7ViCja55fijmvrimzK1AG9Fc1oMpAr0mEe9MGaj7KRMa9eNLvGrS343TdFW0CkBV9JB05qw=="],
 

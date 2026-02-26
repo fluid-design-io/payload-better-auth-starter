@@ -55,6 +55,7 @@
     "@payloadcms/email-resend": "^3.76.1",
     "@payloadcms/live-preview-react": "^3.76.1",
     "@payloadcms/next": "^3.76.1",
+    "@payloadcms/plugin-form-builder": "^3.77.0",
     "@payloadcms/plugin-import-export": "^3.76.1",
     "@payloadcms/plugin-seo": "^3.76.1",
     "@payloadcms/richtext-lexical": "^3.76.1",

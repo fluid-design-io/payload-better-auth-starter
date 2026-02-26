@@ -26,6 +26,7 @@ const navigationLinks = [
   { href: '/features', label: 'Features' },
   { href: '/about', label: 'About' },
   { href: '/blog', label: 'Blog' },
+  { href: '/contact', label: 'Contact' },
 ]
 
 export default function Header() {

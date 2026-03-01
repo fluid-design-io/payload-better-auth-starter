@@ -20,6 +20,7 @@ const nextConfig = {
   },
   reactCompiler: true,
   cacheComponents: true,
+  serverExternalPackages: ['better-auth-harmony', 'validator'],
 }
 
 export default withPayload(nextConfig, { devBundleServerPackages: false })

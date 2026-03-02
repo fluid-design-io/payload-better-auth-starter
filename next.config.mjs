@@ -20,6 +20,7 @@ const nextConfig = {
   },
   reactCompiler: true,
   cacheComponents: true,
+  transpilePackages: ['better-auth-harmony'],
 }
 
 export default withPayload(nextConfig, { devBundleServerPackages: false })

@@ -67,7 +67,7 @@ export const betterAuthOptions: BetterAuthOptions = {
     sendVerificationEmail: async ({ user, url, token }) => {
       await sendVerificationEmail({ user, url, token })
     },
-    onEmailVerification: async (user) => {
+    afterEmailVerification: async (user) => {
       // update user.verified to true
       const config = await payloadConfig
       const payload = await getPayload({ config })
@@ -83,7 +83,7 @@ export const betterAuthOptions: BetterAuthOptions = {
   user: {
     changeEmail: {
       enabled: true,
-      sendChangeEmailVerification: async ({ user, newEmail, url, token }) => {
+      sendChangeEmailConfirmation: async ({ user, newEmail, url, token }) => {
         await sendChangeEmailVerification({ user, newEmail, url, token })
       },
     },

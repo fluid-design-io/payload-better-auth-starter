@@ -134,18 +134,20 @@ export const betterAuthOptions: BetterAuthOptions = {
 }
 
 export const betterAuthPluginOptions = {
+  disabled: false,
   // debug: {
   //   logTables: false,
   //   enableDebugLogs: true,
   // },
-  disableDefaultPayloadAuth: true,
   hidePluginCollections: true,
   users: {
     slug: 'users', // not required, this is the default anyways
     hidden: false,
     adminRoles: ['admin'],
     allowedFields: ['name'],
-    roles: ['admin', 'user'],
+    roles: ['admin', 'user'] as const,
+    defaultRole: 'user',
+    defaultAdminRole: 'admin',
   },
   accounts: {
     slug: 'accounts',

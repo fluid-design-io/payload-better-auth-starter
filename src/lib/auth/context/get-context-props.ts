@@ -6,7 +6,8 @@ import { getPayload } from '@/lib/payload/get-payload'
 export const getSession = async () => {
   const payload = await getPayload()
   const headers = await requestHeaders()
-  const session = await payload.betterAuth.api.getSession({ headers })
+  type Session = (typeof payload.betterAuth.$Infer)['Session']
+  const session = (await payload.betterAuth.api.getSession({ headers })) as Session
   return session
 }
 

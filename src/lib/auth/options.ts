@@ -1,5 +1,5 @@
 import { passkey } from '@better-auth/passkey'
-import { nextCookies } from 'better-auth/next-js'
+// import { nextCookies } from 'better-auth/next-js'
 import { admin, emailOTP, multiSession, phoneNumber, username } from 'better-auth/plugins'
 import { emailHarmony, phoneHarmony } from 'better-auth-harmony'
 import { getPayload } from 'payload'
@@ -43,7 +43,6 @@ export const betterAuthPlugins = [
   }),
   admin(),
   multiSession(),
-  nextCookies(), // needs to be last
 ]
 
 export type BetterAuthPlugins = typeof betterAuthPlugins

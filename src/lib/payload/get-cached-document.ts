@@ -1,4 +1,4 @@
-import { cacheTag } from 'next/cache'
+import { cacheLife, cacheTag } from 'next/cache'
 
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
@@ -16,6 +16,7 @@ type Collection = keyof Config['collections']
  */
 export async function getDocument<T extends Collection>(collection: T, slug: string, depth = 0) {
   'use cache'
+  cacheLife('hours')
   cacheTag(`${collection}-${slug}`)
 
   const payload = await getPayload({ config: configPromise })

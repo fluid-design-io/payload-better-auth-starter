@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { cacheTag } from 'next/cache'
+import { cacheLife, cacheTag } from 'next/cache'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
@@ -75,6 +75,7 @@ const BlogSection = async ({
 
 const CachedBlogSection = async ({ slug }: { slug: string }) => {
   'use cache'
+  cacheLife('hours')
   cacheTag(`blog-${slug}`)
 
   const post = await getDocument('blog', slug, 1)

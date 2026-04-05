@@ -1,5 +1,16 @@
 # acme-website
 
+## 1.6.0
+
+### Minor Changes
+
+- **Cache Components:** Set explicit `cacheLife('hours')` on `getDocument`, `getGlobal`, and the cached blog post section so cache behavior matches Next.js 16 guidance.
+- **Sitemap:** Add `src/app/sitemap.ts` with static routes plus blog URLs behind `'use cache'`, `cacheTag('blog-sitemap')`, and `cacheLife('hours')`, wired to existing post revalidation tags.
+- **Revalidation:** Align blog `afterDelete` with `afterChange` using `updateTag` for slug and sitemap tags; remove top-level `'use server'` from Payload blog hooks (they are not Server Actions).
+- **Auth / PPR:** Wrap the Better Auth provider tree in `Suspense` with placeholder session promises until `headers()` resolves, so the shell can stream instead of blocking the whole layout on auth.
+- **Errors:** Add `(frontend)/error.tsx` and `(frontend)/not-found.tsx` for branded error and 404 UI.
+- **Prerender fix:** Lazy-load `react-medium-image-zoom` on the client in `ImageZoom` so `/features` (and other zoom pages) no longer hit `ReferenceError: Element is not defined` during `next build`.
+
 ## 1.5.2
 
 ### Patch Changes

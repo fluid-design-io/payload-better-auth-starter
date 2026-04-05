@@ -138,7 +138,6 @@ export const betterAuthPluginOptions = {
   //   logTables: false,
   //   enableDebugLogs: true,
   // },
-  disableDefaultPayloadAuth: true,
   hidePluginCollections: true,
   users: {
     slug: 'users', // not required, this is the default anyways

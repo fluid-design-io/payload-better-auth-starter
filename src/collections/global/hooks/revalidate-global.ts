@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { updateTag } from 'next/cache'
+import { revalidateTag } from 'next/cache'
 
 import type { PayloadRequest, RequestContext, SanitizedGlobalConfig } from 'payload'
 
@@ -22,7 +22,7 @@ export const revalidateGlobal = (
   if (!context.disableRevalidate) {
     payload.logger.info(`✨ Revalidating ${tag}`)
 
-    updateTag(tag)
+    revalidateTag(tag, 'max')
   }
 
   return doc

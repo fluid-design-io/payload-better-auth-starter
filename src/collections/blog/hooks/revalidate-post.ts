@@ -1,4 +1,4 @@
-import { revalidatePath, updateTag } from 'next/cache'
+import { revalidatePath, revalidateTag } from 'next/cache'
 
 import type { CollectionAfterChangeHook, CollectionAfterDeleteHook } from 'payload'
 import type { Blog } from '@/payload-types'
@@ -15,8 +15,8 @@ export const revalidatePost: CollectionAfterChangeHook<Blog> = async ({
       payload.logger.info(`Revalidating post at path: ${path}`)
 
       revalidatePath(path)
-      updateTag(`blog-${doc.slug}`)
-      updateTag('blog-sitemap')
+      revalidateTag(`blog-${doc.slug}`, 'max')
+      revalidateTag('blog-sitemap', 'max')
     }
 
     // If the post was previously published, we need to revalidate the old path
@@ -26,8 +26,8 @@ export const revalidatePost: CollectionAfterChangeHook<Blog> = async ({
       payload.logger.info(`Revalidating old post at path: ${oldPath}`)
 
       revalidatePath(oldPath)
-      updateTag(`blog-${previousDoc.slug}`)
-      updateTag('blog-sitemap')
+      revalidateTag(`blog-${previousDoc.slug}`, 'max')
+      revalidateTag('blog-sitemap', 'max')
     }
   }
   return doc
@@ -41,8 +41,8 @@ export const revalidateDelete: CollectionAfterDeleteHook<Blog> = async ({
     const path = `/blog/${doc?.slug}`
 
     revalidatePath(path)
-    updateTag(`blog-${doc.slug}`)
-    updateTag('blog-sitemap')
+    revalidateTag(`blog-${doc.slug}`, 'max')
+    revalidateTag('blog-sitemap', 'max')
   }
 
   return doc

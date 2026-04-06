@@ -3,7 +3,6 @@
   "version": "1.5.2",
   "description": "A blank template to get started with Payload 3.0",
   "license": "MIT",
-  "type": "module",
   "author": {
     "name": "Oliver",
     "url": "https://oliverpan.vercel.app"

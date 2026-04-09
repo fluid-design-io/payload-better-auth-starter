@@ -115,7 +115,7 @@ export default function Page() {
 ## Quick Start
 
 ```bash
-git clone fluid-design-io/payload-better-auth-starter
+git clone https://github.com/fluid-design-io/payload-better-auth-starter.git
 cd payload-better-auth-starter
 bun install
 cp .env.example .env   # edit with your values

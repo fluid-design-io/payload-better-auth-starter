@@ -1,4 +1,4 @@
-import { getClientSideURL } from '@/lib/payload'
+import { getClientSideURL } from '@/lib/payload/get-url';
 
 /**
  * Processes media resource URL to ensure proper formatting
@@ -7,21 +7,21 @@ import { getClientSideURL } from '@/lib/payload'
  * @returns Properly formatted URL with cache tag if provided
  */
 export const getMediaUrl = (url: string | null | undefined, cacheTag?: string | null): string => {
-  if (!url) return ''
+	if (!url) return ''
 
-  if (cacheTag && cacheTag !== '') {
-    cacheTag = encodeURIComponent(cacheTag)
-  }
+	const hasProtocol = url.startsWith('http://') || url.startsWith('https://')
+	const mediaUrl = hasProtocol ? url : `${getClientSideURL()}${url}`
 
-  // Check if URL already has http/https protocol
-  if (url.startsWith('http://') || url.startsWith('https://')) {
-    return cacheTag ? `${url}?${cacheTag}` : url
-  }
+	if (!cacheTag || cacheTag === '') {
+		return mediaUrl
+	}
 
-  // Allow local paths to be used directly
-  if (url.startsWith('/')) return cacheTag ? `${url}?${cacheTag}` : url
-
-  // Otherwise prepend client-side URL
-  const baseUrl = getClientSideURL()
-  return cacheTag ? `${baseUrl}${url}?${cacheTag}` : `${baseUrl}${url}`
+	try {
+		const parsedUrl = new URL(mediaUrl)
+		parsedUrl.searchParams.set('v', cacheTag)
+		return parsedUrl.toString()
+	} catch {
+		const separator = mediaUrl.includes('?') ? '&' : '?'
+		return `${mediaUrl}${separator}v=${encodeURIComponent(cacheTag)}`
+	}
 }

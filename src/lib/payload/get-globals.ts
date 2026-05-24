@@ -1,8 +1,8 @@
 import { cacheLife, cacheTag } from 'next/cache'
 
+import type { Config } from '@/payload-types'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
-import type { Config } from 'src/payload-types'
 
 type Global = keyof Config['globals']
 

@@ -7,12 +7,6 @@
     "**/layout.tsx": "${dirname} - layout.tsx",
     "**/actions.ts": "${dirname} - actions.ts"
   },
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.organizeImports.biome": "explicit",
-    "source.removeUnusedImports": "explicit",
-    "source.fixAll.biome": "always"
-  },
   "typescript.tsdk": "node_modules/typescript/lib",
   "workbench.colorCustomizations": {
     "titleBar.activeBackground": "#2087e1",
@@ -29,5 +23,13 @@
     "collections": "Bloc",
     "fields": "Bloc",
     "payload": "Bloc"
-  }
+  },
+  "oxc.fmt.configPath": ".oxfmtrc.json",
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+    "source.format.oxc": "always",
+		"source.fixAll": "explicit",
+		"source.organizeImports": "explicit",
+	},
 }

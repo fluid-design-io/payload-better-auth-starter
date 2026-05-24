@@ -3,7 +3,7 @@
 'use client'
 import React, { type ReactNode, useId, useRef, useState } from 'react'
 
-import { motion, type UseInViewOptions, useInView, type Variants } from 'motion/react'
+import { motion, useInView, type UseInViewOptions, type Variants } from 'motion/react'
 
 export type PresetType =
   | 'fade'
@@ -155,7 +155,6 @@ function AnimatedGroup({
     >
       {React.Children.map(children, (child, index) => (
         <MotionChild
-          // biome-ignore lint/suspicious/noArrayIndexKey: <index is fine>
           key={`${id}-${index}`}
           variants={itemVariants}
           className={childrenClassName}

@@ -1,0 +1,28 @@
+{
+	"$schema": "./node_modules/oxfmt/configuration_schema.json",
+	"useTabs": true,
+	"tabWidth": 2,
+	"printWidth": 100,
+	"singleQuote": true,
+	"jsxSingleQuote": false,
+	"quoteProps": "as-needed",
+	"semi": false,
+	"bracketSameLine": false,
+	"bracketSpacing": true,
+	"ignorePatterns": [
+		"**/node_modules",
+		"**/dist",
+		"**/.next",
+		"**/expo",
+		"**/*.lock",
+		"**/drizzle",
+		".agents",
+		".claude",
+		".cursor"
+	],
+	"sortImports": {
+		"partitionByNewline": true,
+		"newlinesBetween": false
+	},
+	"sortTailwindcss": {}
+}

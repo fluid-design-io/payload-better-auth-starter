@@ -1,0 +1,49 @@
+{
+	"$schema": "./node_modules/oxlint/configuration_schema.json",
+	"plugins": ["typescript", "react", "unicorn", "nextjs"],
+	"categories": {
+		"correctness": "error",
+		"suspicious": "warn",
+		"pedantic": "off",
+		"perf": "warn",
+		"style": "off",
+		"nursery": "off",
+		"restriction": "off"
+	},
+	"rules": {
+		"react/react-in-jsx-scope": "off",
+		"react/no-children-prop": "off",
+		"react/jsx-no-constructed-context-values": "off",
+		"react/no-array-index-key": "off",
+		"react/exhaustive-deps": "off",
+		"eslint/no-unused-vars": "warn",
+		"no-shadow": "off",
+		"no-await-in-loop": "off"
+	},
+	"settings": {
+		"next": {
+			"rootDir": ["."]
+		},
+		"react": {
+			"formComponents": [],
+			"linkComponents": [],
+			"version": "19.2",
+			"componentWrapperFunctions": []
+		}
+	},
+	"env": {
+		"builtin": true
+	},
+	"globals": {},
+	"ignorePatterns": [
+		"**/node_modules",
+		"**/dist",
+		"**/.next",
+		"**/.expo",
+		"**/*.lock",
+		"**/drizzle",
+		".agents",
+		".claude",
+		".cursor"
+	]
+}

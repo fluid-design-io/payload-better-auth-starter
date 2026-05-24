@@ -7,16 +7,16 @@ import { Card, CardContent } from '@/components/ui/card'
 import { P } from '@/components/ui/typography'
 
 export const SignedOutContent = () => {
-  return (
-    <Container>
-      <AnimatedGroup preset="fade" className="flex flex-col gap-12">
-        <Card variant="mixed" className="max-w-md backdrop-blur-xs">
-          <CardContent className="flex justify-between items-center">
-            <P>Authentication</P>
-            <Button render={<Link href="/sign-in?redirectTo=/" />}>Sign in</Button>
-          </CardContent>
-        </Card>
-      </AnimatedGroup>
-    </Container>
-  )
+	return (
+		<Container>
+			<AnimatedGroup preset="fade" className="flex flex-col gap-12">
+				<Card variant="mixed" className="max-w-md backdrop-blur-xs">
+					<CardContent className="flex items-center justify-between">
+						<P>Authentication</P>
+						<Button render={<Link href="/sign-in?redirectTo=/" />}>Sign in</Button>
+					</CardContent>
+				</Card>
+			</AnimatedGroup>
+		</Container>
+	)
 }

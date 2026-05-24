@@ -1,9 +1,9 @@
 ---
 name: 📝 Issue Template
 about: Create a report to help us improve
-title: ""
-labels: ["valid-issue"]
-assignees: ""
+title: ''
+labels: ['valid-issue']
+assignees: ''
 ---
 
 ## 📝 Issue Description

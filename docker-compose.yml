@@ -3,10 +3,10 @@ services:
     image: inbucket/inbucket:latest
     container_name: acme-inbucket
     ports:
-      - "9000:9000" # Web UI
-      - "2500:2500" # SMTP
-      - "1100:1100" # POP3
-      - "1430:1430" # IMAP
+      - '9000:9000' # Web UI
+      - '2500:2500' # SMTP
+      - '1100:1100' # POP3
+      - '1430:1430' # IMAP
     environment:
       - INBUCKET_SMTP_DISABLED=false
       - INBUCKET_POP3_DISABLED=false
@@ -22,8 +22,8 @@ services:
     image: minio/minio:latest
     container_name: acme-minio
     ports:
-      - "9001:9000" # MinIO API
-      - "9002:9001" # MinIO Console
+      - '9001:9000' # MinIO API
+      - '9002:9001' # MinIO Console
     environment:
       - MINIO_ROOT_USER=${S3_ACCESS_KEY_ID}
       - MINIO_ROOT_PASSWORD=${S3_SECRET_ACCESS_KEY}
@@ -50,13 +50,13 @@ services:
         /tmp/mc policy set public minio/${S3_BUCKET} &&
         echo 'Buckets created successfully'
       "
-    restart: "no"
+    restart: 'no'
 
   postgres:
     image: postgres:17-alpine
     container_name: acme-postgres
     ports:
-      - "5432:5432"
+      - '5432:5432'
     environment:
       - POSTGRES_DB=acme-website
       - POSTGRES_USER=postgres

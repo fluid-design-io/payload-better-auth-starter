@@ -6,16 +6,16 @@ import type { Plugin } from 'payload'
 import type { Blog } from '@/payload-types'
 
 const generateTitle: GenerateTitle<Blog> = ({ doc }) => {
-  return doc?.title ? `${doc.title} | Acme` : 'Acme'
+	return doc?.title ? `${doc.title} | Acme` : 'Acme'
 }
 
 const generateURL: GenerateURL<Blog> = ({ doc }) => {
-  const url = getServerSideURL()
+	const url = getServerSideURL()
 
-  return doc?.slug ? `${url}/${doc.slug}` : url
+	return doc?.slug ? `${url}/${doc.slug}` : url
 }
 
 export const seoPlugin: Plugin = seoPluginConfig({
-  generateTitle,
-  generateURL,
+	generateTitle,
+	generateURL,
 })

@@ -1,4 +1,4 @@
-import { getClientSideURL } from '@/lib/payload/get-url';
+import { getClientSideURL } from '@/lib/payload/get-url'
 
 /**
  * Processes media resource URL to ensure proper formatting

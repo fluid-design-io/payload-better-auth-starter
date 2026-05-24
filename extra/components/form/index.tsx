@@ -12,31 +12,31 @@ const SelectField = dynamic(() => import('./components/select-field'))
 const TextareaField = dynamic(() => import('./components/textarea-field'))
 
 function SubmitButton({ label }: { label: string }) {
-  const form = useFormContext()
-  return (
-    <form.Subscribe selector={(state) => state.isSubmitting}>
-      {(isSubmitting) => (
-        <Button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? <Spinner /> : label}
-        </Button>
-      )}
-    </form.Subscribe>
-  )
+	const form = useFormContext()
+	return (
+		<form.Subscribe selector={(state) => state.isSubmitting}>
+			{(isSubmitting) => (
+				<Button type="submit" disabled={isSubmitting}>
+					{isSubmitting ? <Spinner /> : label}
+				</Button>
+			)}
+		</form.Subscribe>
+	)
 }
 
 export const { useAppForm, withForm, withFieldGroup } = createFormHook({
-  fieldComponents: {
-    TextField,
-    PasswordField,
-    PhoneField,
-    SelectField,
-    TextareaField,
-  },
-  formComponents: {
-    SubmitButton,
-  },
-  fieldContext,
-  formContext,
+	fieldComponents: {
+		TextField,
+		PasswordField,
+		PhoneField,
+		SelectField,
+		TextareaField,
+	},
+	formComponents: {
+		SubmitButton,
+	},
+	fieldContext,
+	formContext,
 })
 
 export type { CountryData } from './components/phone-field'

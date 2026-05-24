@@ -17,37 +17,37 @@ const TextareaField = dynamic(() => import('./Textarea').then((mod) => mod.Texta
 const PhoneField = dynamic(() => import('./Phone').then((mod) => mod.Phone))
 
 function SubmitButton({ label }: { label: string }) {
-  const form = useFormContext()
-  return (
-    <form.Subscribe selector={(state) => state.isSubmitting}>
-      {(isSubmitting) => (
-        <Button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? <Spinner /> : label}
-        </Button>
-      )}
-    </form.Subscribe>
-  )
+	const form = useFormContext()
+	return (
+		<form.Subscribe selector={(state) => state.isSubmitting}>
+			{(isSubmitting) => (
+				<Button type="submit" disabled={isSubmitting}>
+					{isSubmitting ? <Spinner /> : label}
+				</Button>
+			)}
+		</form.Subscribe>
+	)
 }
 
 export const {
-  useAppForm: useBlockForm,
-  withForm: withBlockForm,
-  withFieldGroup: withBlockFieldGroup,
+	useAppForm: useBlockForm,
+	withForm: withBlockForm,
+	withFieldGroup: withBlockFieldGroup,
 } = createFormHook({
-  fieldComponents: {
-    Checkbox: CheckboxField,
-    Country: CountryField,
-    Email: EmailField,
-    Number: NumberField,
-    Select: SelectField,
-    State: StateField,
-    Text: TextField,
-    Textarea: TextareaField,
-    Phone: PhoneField,
-  },
-  formComponents: {
-    SubmitButton,
-  },
-  fieldContext,
-  formContext,
+	fieldComponents: {
+		Checkbox: CheckboxField,
+		Country: CountryField,
+		Email: EmailField,
+		Number: NumberField,
+		Select: SelectField,
+		State: StateField,
+		Text: TextField,
+		Textarea: TextareaField,
+		Phone: PhoneField,
+	},
+	formComponents: {
+		SubmitButton,
+	},
+	fieldContext,
+	formContext,
 })

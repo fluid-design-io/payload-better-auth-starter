@@ -15,21 +15,21 @@ type Collection = keyof Config['collections']
  * @returns {Promise<any>} The document or undefined if not found
  */
 export async function getDocument<T extends Collection>(collection: T, slug: string, depth = 0) {
-  'use cache'
-  cacheLife('hours')
-  cacheTag(`${collection}-${slug}`)
+	'use cache'
+	cacheLife('hours')
+	cacheTag(`${collection}-${slug}`)
 
-  const payload = await getPayload({ config: configPromise })
+	const payload = await getPayload({ config: configPromise })
 
-  const page = await payload.find({
-    collection,
-    depth,
-    where: {
-      slug: {
-        equals: slug,
-      },
-    },
-  })
+	const page = await payload.find({
+		collection,
+		depth,
+		where: {
+			slug: {
+				equals: slug,
+			},
+		},
+	})
 
-  return page.docs[0]
+	return page.docs[0]
 }

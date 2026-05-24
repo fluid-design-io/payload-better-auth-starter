@@ -8,12 +8,12 @@ import { BetterAuthProvider } from '@/lib/auth/context'
 import { getContextProps } from '@/lib/auth/context/get-context-props'
 
 export function Providers({ children }: { children: ReactNode }) {
-  return (
-    <ThemeProvider>
-      <BetterAuthProvider {...getContextProps()}>
-        <BetterAuthUIProvider>{children}</BetterAuthUIProvider>
-      </BetterAuthProvider>
-      <Toaster />
-    </ThemeProvider>
-  )
+	return (
+		<ThemeProvider>
+			<BetterAuthProvider {...getContextProps()}>
+				<BetterAuthUIProvider>{children}</BetterAuthUIProvider>
+			</BetterAuthProvider>
+			<Toaster />
+		</ThemeProvider>
+	)
 }

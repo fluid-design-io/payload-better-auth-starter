@@ -5,40 +5,40 @@ import { getServerSideURL } from '.'
 import { mergeOpenGraph } from './merge-open-graph'
 
 const getImageURL = (image?: PayloadUpload | Config['db']['defaultIDType'] | null) => {
-  const serverUrl = getServerSideURL()
+	const serverUrl = getServerSideURL()
 
-  let url = `${serverUrl}/website-template-OG.png`
+	let url = `${serverUrl}/website-template-OG.png`
 
-  if (image && typeof image === 'object' && 'url' in image) {
-    const ogUrl = image.sizes?.og?.url
+	if (image && typeof image === 'object' && 'url' in image) {
+		const ogUrl = image.sizes?.og?.url
 
-    url = ogUrl ? serverUrl + ogUrl : serverUrl + image.url
-  }
+		url = ogUrl ? serverUrl + ogUrl : serverUrl + image.url
+	}
 
-  return url
+	return url
 }
 
 export const generateMeta = async (args: { doc: Partial<Blog> }): Promise<Metadata> => {
-  const { doc } = args || {}
+	const { doc } = args || {}
 
-  const ogImage = getImageURL(doc?.meta?.image)
+	const ogImage = getImageURL(doc?.meta?.image)
 
-  const title = doc?.meta?.title || 'Acme'
+	const title = doc?.meta?.title || 'Acme'
 
-  return {
-    description: doc?.meta?.description,
-    openGraph: mergeOpenGraph({
-      description: doc?.meta?.description || '',
-      images: ogImage
-        ? [
-            {
-              url: ogImage,
-            },
-          ]
-        : undefined,
-      title,
-      url: Array.isArray(doc?.slug) ? doc?.slug.join('/') : '/',
-    }),
-    title,
-  }
+	return {
+		description: doc?.meta?.description,
+		openGraph: mergeOpenGraph({
+			description: doc?.meta?.description || '',
+			images: ogImage
+				? [
+						{
+							url: ogImage,
+						},
+					]
+				: undefined,
+			title,
+			url: Array.isArray(doc?.slug) ? doc?.slug.join('/') : '/',
+		}),
+		title,
+	}
 }

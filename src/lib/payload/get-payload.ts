@@ -3,4 +3,4 @@ import { getPayloadAuth } from 'payload-auth/better-auth'
 import type { ConstructedBetterAuthPluginOptions } from '../auth/options'
 
 export const getPayload = async () =>
-  getPayloadAuth<ConstructedBetterAuthPluginOptions>(configPromise)
+	getPayloadAuth<ConstructedBetterAuthPluginOptions>(configPromise)

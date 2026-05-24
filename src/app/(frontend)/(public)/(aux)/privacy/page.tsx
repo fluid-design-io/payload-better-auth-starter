@@ -10,32 +10,32 @@ import { getGlobal } from '@/lib/payload/get-globals'
 import type { GlobalPrivacy } from '@/payload-types'
 
 export default async function TermsOfUsePage() {
-  const privacy = (await getGlobal('global-privacy', 1)) as GlobalPrivacy
+	const privacy = (await getGlobal('global-privacy', 1)) as GlobalPrivacy
 
-  if (!privacy.content) {
-    return (
-      <Main>
-        <div className="flex flex-col items-center justify-center max-w-2xl mx-auto w-full">
-          <Alert variant="destructive">
-            <AlertTitle>No privacy policy found</AlertTitle>
-            <AlertDescription>
-              <Muted>
-                Please create a privacy policy in the{' '}
-                <Link href="/admin/globals/global-privacy" className="underline">
-                  admin panel
-                </Link>
-                .
-              </Muted>
-            </AlertDescription>
-          </Alert>
-        </div>
-      </Main>
-    )
-  }
+	if (!privacy.content) {
+		return (
+			<Main>
+				<div className="mx-auto flex w-full max-w-2xl flex-col items-center justify-center">
+					<Alert variant="destructive">
+						<AlertTitle>No privacy policy found</AlertTitle>
+						<AlertDescription>
+							<Muted>
+								Please create a privacy policy in the{' '}
+								<Link href="/admin/globals/global-privacy" className="underline">
+									admin panel
+								</Link>
+								.
+							</Muted>
+						</AlertDescription>
+					</Alert>
+				</div>
+			</Main>
+		)
+	}
 
-  return (
-    <Main className="py-16">
-      <RichText data={privacy.content} />
-    </Main>
-  )
+	return (
+		<Main className="py-16">
+			<RichText data={privacy.content} />
+		</Main>
+	)
 }

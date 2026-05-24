@@ -5,18 +5,18 @@ import { Features } from '@/components/screen/home/features'
 import { ThemeColors } from '@/components/screen/home/theme-colors'
 
 export default function Home() {
-  return (
-    <Main>
-      <LayoutHeader
-        badge="Home"
-        title="Payload Starter Kit"
-        description="An opinionated starter built with PayloadCMS, PayloadAuth, and Shadcn UI."
-      />
-      <SectionSpacing>
-        <Features />
-        <DevTools />
-        <ThemeColors />
-      </SectionSpacing>
-    </Main>
-  )
+	return (
+		<Main>
+			<LayoutHeader
+				badge="Home"
+				title="Payload Starter Kit"
+				description="An opinionated starter built with PayloadCMS, PayloadAuth, and Shadcn UI."
+			/>
+			<SectionSpacing>
+				<Features />
+				<DevTools />
+				<ThemeColors />
+			</SectionSpacing>
+		</Main>
+	)
 }

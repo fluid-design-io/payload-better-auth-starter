@@ -13,234 +13,236 @@
  * via the `definition` "supportedTimezones".
  */
 export type SupportedTimezones =
-  | 'Pacific/Midway'
-  | 'Pacific/Niue'
-  | 'Pacific/Honolulu'
-  | 'Pacific/Rarotonga'
-  | 'America/Anchorage'
-  | 'Pacific/Gambier'
-  | 'America/Los_Angeles'
-  | 'America/Tijuana'
-  | 'America/Denver'
-  | 'America/Phoenix'
-  | 'America/Chicago'
-  | 'America/Guatemala'
-  | 'America/New_York'
-  | 'America/Bogota'
-  | 'America/Caracas'
-  | 'America/Santiago'
-  | 'America/Buenos_Aires'
-  | 'America/Sao_Paulo'
-  | 'Atlantic/South_Georgia'
-  | 'Atlantic/Azores'
-  | 'Atlantic/Cape_Verde'
-  | 'Europe/London'
-  | 'Europe/Berlin'
-  | 'Africa/Lagos'
-  | 'Europe/Athens'
-  | 'Africa/Cairo'
-  | 'Europe/Moscow'
-  | 'Asia/Riyadh'
-  | 'Asia/Dubai'
-  | 'Asia/Baku'
-  | 'Asia/Karachi'
-  | 'Asia/Tashkent'
-  | 'Asia/Calcutta'
-  | 'Asia/Dhaka'
-  | 'Asia/Almaty'
-  | 'Asia/Jakarta'
-  | 'Asia/Bangkok'
-  | 'Asia/Shanghai'
-  | 'Asia/Singapore'
-  | 'Asia/Tokyo'
-  | 'Asia/Seoul'
-  | 'Australia/Brisbane'
-  | 'Australia/Sydney'
-  | 'Pacific/Guam'
-  | 'Pacific/Noumea'
-  | 'Pacific/Auckland'
-  | 'Pacific/Fiji';
+	| 'Pacific/Midway'
+	| 'Pacific/Niue'
+	| 'Pacific/Honolulu'
+	| 'Pacific/Rarotonga'
+	| 'America/Anchorage'
+	| 'Pacific/Gambier'
+	| 'America/Los_Angeles'
+	| 'America/Tijuana'
+	| 'America/Denver'
+	| 'America/Phoenix'
+	| 'America/Chicago'
+	| 'America/Guatemala'
+	| 'America/New_York'
+	| 'America/Bogota'
+	| 'America/Caracas'
+	| 'America/Santiago'
+	| 'America/Buenos_Aires'
+	| 'America/Sao_Paulo'
+	| 'Atlantic/South_Georgia'
+	| 'Atlantic/Azores'
+	| 'Atlantic/Cape_Verde'
+	| 'Europe/London'
+	| 'Europe/Berlin'
+	| 'Africa/Lagos'
+	| 'Europe/Athens'
+	| 'Africa/Cairo'
+	| 'Europe/Moscow'
+	| 'Asia/Riyadh'
+	| 'Asia/Dubai'
+	| 'Asia/Baku'
+	| 'Asia/Karachi'
+	| 'Asia/Tashkent'
+	| 'Asia/Calcutta'
+	| 'Asia/Dhaka'
+	| 'Asia/Almaty'
+	| 'Asia/Jakarta'
+	| 'Asia/Bangkok'
+	| 'Asia/Shanghai'
+	| 'Asia/Singapore'
+	| 'Asia/Tokyo'
+	| 'Asia/Seoul'
+	| 'Australia/Brisbane'
+	| 'Australia/Sydney'
+	| 'Pacific/Guam'
+	| 'Pacific/Noumea'
+	| 'Pacific/Auckland'
+	| 'Pacific/Fiji'
 
 export interface Config {
-  auth: {
-    users: UserAuthOperations;
-  };
-  blocks: {};
-  collections: {
-    users: User;
-    sessions: Session;
-    accounts: Account;
-    verifications: Verification;
-    passkeys: Passkey;
-    'admin-invitations': AdminInvitation;
-    blog: Blog;
-    'payload-uploads': PayloadUpload;
-    'private-uploads': PrivateUpload;
-    'payload-kv': PayloadKv;
-    'payload-jobs': PayloadJob;
-    'payload-folders': FolderInterface;
-    'payload-locked-documents': PayloadLockedDocument;
-    'payload-preferences': PayloadPreference;
-    'payload-migrations': PayloadMigration;
-  };
-  collectionsJoins: {
-    users: {
-      account: 'accounts';
-      session: 'sessions';
-    };
-    'payload-folders': {
-      documentsAndFolders: 'payload-folders' | 'payload-uploads' | 'private-uploads';
-    };
-  };
-  collectionsSelect: {
-    users: UsersSelect<false> | UsersSelect<true>;
-    sessions: SessionsSelect<false> | SessionsSelect<true>;
-    accounts: AccountsSelect<false> | AccountsSelect<true>;
-    verifications: VerificationsSelect<false> | VerificationsSelect<true>;
-    passkeys: PasskeysSelect<false> | PasskeysSelect<true>;
-    'admin-invitations': AdminInvitationsSelect<false> | AdminInvitationsSelect<true>;
-    blog: BlogSelect<false> | BlogSelect<true>;
-    'payload-uploads': PayloadUploadsSelect<false> | PayloadUploadsSelect<true>;
-    'private-uploads': PrivateUploadsSelect<false> | PrivateUploadsSelect<true>;
-    'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
-    'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
-    'payload-folders': PayloadFoldersSelect<false> | PayloadFoldersSelect<true>;
-    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
-    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
-    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
-  };
-  db: {
-    defaultIDType: string;
-  };
-  fallbackLocale: null;
-  globals: {
-    'global-footer': GlobalFooter;
-    'global-terms': GlobalTerm;
-    'global-privacy': GlobalPrivacy;
-  };
-  globalsSelect: {
-    'global-footer': GlobalFooterSelect<false> | GlobalFooterSelect<true>;
-    'global-terms': GlobalTermsSelect<false> | GlobalTermsSelect<true>;
-    'global-privacy': GlobalPrivacySelect<false> | GlobalPrivacySelect<true>;
-  };
-  locale: null;
-  widgets: {
-    collections: CollectionsWidget;
-  };
-  user: User;
-  jobs: {
-    tasks: {
-      schedulePublish: TaskSchedulePublish;
-      inline: {
-        input: unknown;
-        output: unknown;
-      };
-    };
-    workflows: unknown;
-  };
+	auth: {
+		users: UserAuthOperations
+	}
+	blocks: {}
+	collections: {
+		users: User
+		sessions: Session
+		accounts: Account
+		verifications: Verification
+		passkeys: Passkey
+		'admin-invitations': AdminInvitation
+		blog: Blog
+		'payload-uploads': PayloadUpload
+		'private-uploads': PrivateUpload
+		'payload-kv': PayloadKv
+		'payload-jobs': PayloadJob
+		'payload-folders': FolderInterface
+		'payload-locked-documents': PayloadLockedDocument
+		'payload-preferences': PayloadPreference
+		'payload-migrations': PayloadMigration
+	}
+	collectionsJoins: {
+		users: {
+			account: 'accounts'
+			session: 'sessions'
+		}
+		'payload-folders': {
+			documentsAndFolders: 'payload-folders' | 'payload-uploads' | 'private-uploads'
+		}
+	}
+	collectionsSelect: {
+		users: UsersSelect<false> | UsersSelect<true>
+		sessions: SessionsSelect<false> | SessionsSelect<true>
+		accounts: AccountsSelect<false> | AccountsSelect<true>
+		verifications: VerificationsSelect<false> | VerificationsSelect<true>
+		passkeys: PasskeysSelect<false> | PasskeysSelect<true>
+		'admin-invitations': AdminInvitationsSelect<false> | AdminInvitationsSelect<true>
+		blog: BlogSelect<false> | BlogSelect<true>
+		'payload-uploads': PayloadUploadsSelect<false> | PayloadUploadsSelect<true>
+		'private-uploads': PrivateUploadsSelect<false> | PrivateUploadsSelect<true>
+		'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>
+		'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>
+		'payload-folders': PayloadFoldersSelect<false> | PayloadFoldersSelect<true>
+		'payload-locked-documents':
+			| PayloadLockedDocumentsSelect<false>
+			| PayloadLockedDocumentsSelect<true>
+		'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>
+		'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>
+	}
+	db: {
+		defaultIDType: string
+	}
+	fallbackLocale: null
+	globals: {
+		'global-footer': GlobalFooter
+		'global-terms': GlobalTerm
+		'global-privacy': GlobalPrivacy
+	}
+	globalsSelect: {
+		'global-footer': GlobalFooterSelect<false> | GlobalFooterSelect<true>
+		'global-terms': GlobalTermsSelect<false> | GlobalTermsSelect<true>
+		'global-privacy': GlobalPrivacySelect<false> | GlobalPrivacySelect<true>
+	}
+	locale: null
+	widgets: {
+		collections: CollectionsWidget
+	}
+	user: User
+	jobs: {
+		tasks: {
+			schedulePublish: TaskSchedulePublish
+			inline: {
+				input: unknown
+				output: unknown
+			}
+		}
+		workflows: unknown
+	}
 }
 export interface UserAuthOperations {
-  forgotPassword:
-    | {
-        email: string;
-      }
-    | {
-        username: string;
-      };
-  login:
-    | {
-        email: string;
-        password: string;
-      }
-    | {
-        password: string;
-        username: string;
-      };
-  registerFirstUser: {
-    password: string;
-    username?: string;
-    email: string;
-  };
-  unlock:
-    | {
-        email: string;
-      }
-    | {
-        username: string;
-      };
+	forgotPassword:
+		| {
+				email: string
+		  }
+		| {
+				username: string
+		  }
+	login:
+		| {
+				email: string
+				password: string
+		  }
+		| {
+				password: string
+				username: string
+		  }
+	registerFirstUser: {
+		password: string
+		username?: string
+		email: string
+	}
+	unlock:
+		| {
+				email: string
+		  }
+		| {
+				username: string
+		  }
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
-  id: string;
-  /**
-   * Users chosen display name
-   */
-  name?: string | null;
-  /**
-   * The email of the user
-   */
-  email: string;
-  /**
-   * Whether the email of the user has been verified
-   */
-  emailVerified: boolean;
-  /**
-   * The image of the user
-   */
-  image?: string | null;
-  createdAt: string;
-  updatedAt: string;
-  /**
-   * The username of the user
-   */
-  username?: string | null;
-  /**
-   * The display username of the user
-   */
-  displayUsername?: string | null;
-  /**
-   * The normalized email of the user
-   */
-  normalizedEmail?: string | null;
-  /**
-   * The phone number of the user
-   */
-  phoneNumber?: string | null;
-  /**
-   * Whether the phone number of the user has been verified
-   */
-  phoneNumberVerified?: boolean | null;
-  /**
-   * The role/ roles of the user
-   */
-  role?: ('admin' | 'user')[] | null;
-  /**
-   * Whether the user is banned from the platform
-   */
-  banned?: boolean | null;
-  /**
-   * The reason for the ban
-   */
-  banReason?: string | null;
-  /**
-   * The date and time when the ban will expire
-   */
-  banExpires?: string | null;
-  verified?: boolean | null;
-  account?: {
-    docs?: (string | Account)[];
-    hasNextPage?: boolean;
-    totalDocs?: number;
-  };
-  session?: {
-    docs?: (string | Session)[];
-    hasNextPage?: boolean;
-    totalDocs?: number;
-  };
-  collection: 'users';
+	id: string
+	/**
+	 * Users chosen display name
+	 */
+	name?: string | null
+	/**
+	 * The email of the user
+	 */
+	email: string
+	/**
+	 * Whether the email of the user has been verified
+	 */
+	emailVerified: boolean
+	/**
+	 * The image of the user
+	 */
+	image?: string | null
+	createdAt: string
+	updatedAt: string
+	/**
+	 * The username of the user
+	 */
+	username?: string | null
+	/**
+	 * The display username of the user
+	 */
+	displayUsername?: string | null
+	/**
+	 * The normalized email of the user
+	 */
+	normalizedEmail?: string | null
+	/**
+	 * The phone number of the user
+	 */
+	phoneNumber?: string | null
+	/**
+	 * Whether the phone number of the user has been verified
+	 */
+	phoneNumberVerified?: boolean | null
+	/**
+	 * The role/ roles of the user
+	 */
+	role?: ('admin' | 'user')[] | null
+	/**
+	 * Whether the user is banned from the platform
+	 */
+	banned?: boolean | null
+	/**
+	 * The reason for the ban
+	 */
+	banReason?: string | null
+	/**
+	 * The date and time when the ban will expire
+	 */
+	banExpires?: string | null
+	verified?: boolean | null
+	account?: {
+		docs?: (string | Account)[]
+		hasNextPage?: boolean
+		totalDocs?: number
+	}
+	session?: {
+		docs?: (string | Session)[]
+		hasNextPage?: boolean
+		totalDocs?: number
+	}
+	collection: 'users'
 }
 /**
  * Accounts are used to store user accounts for authentication providers
@@ -249,49 +251,49 @@ export interface User {
  * via the `definition` "accounts".
  */
 export interface Account {
-  id: string;
-  /**
-   * The id of the account as provided by the SSO or equal to userId for credential accounts
-   */
-  accountId: string;
-  /**
-   * The id of the provider as provided by the SSO
-   */
-  providerId: string;
-  /**
-   * The user that the account belongs to
-   */
-  user: string | User;
-  /**
-   * The access token of the account. Returned by the provider
-   */
-  accessToken?: string | null;
-  /**
-   * The refresh token of the account. Returned by the provider
-   */
-  refreshToken?: string | null;
-  /**
-   * The id token for the account. Returned by the provider
-   */
-  idToken?: string | null;
-  /**
-   * The date and time when the access token will expire
-   */
-  accessTokenExpiresAt?: string | null;
-  /**
-   * The date and time when the refresh token will expire
-   */
-  refreshTokenExpiresAt?: string | null;
-  /**
-   * The scope of the account. Returned by the provider
-   */
-  scope?: string | null;
-  /**
-   * The hashed password of the account. Mainly used for email and password authentication
-   */
-  password?: string | null;
-  createdAt: string;
-  updatedAt: string;
+	id: string
+	/**
+	 * The id of the account as provided by the SSO or equal to userId for credential accounts
+	 */
+	accountId: string
+	/**
+	 * The id of the provider as provided by the SSO
+	 */
+	providerId: string
+	/**
+	 * The user that the account belongs to
+	 */
+	user: string | User
+	/**
+	 * The access token of the account. Returned by the provider
+	 */
+	accessToken?: string | null
+	/**
+	 * The refresh token of the account. Returned by the provider
+	 */
+	refreshToken?: string | null
+	/**
+	 * The id token for the account. Returned by the provider
+	 */
+	idToken?: string | null
+	/**
+	 * The date and time when the access token will expire
+	 */
+	accessTokenExpiresAt?: string | null
+	/**
+	 * The date and time when the refresh token will expire
+	 */
+	refreshTokenExpiresAt?: string | null
+	/**
+	 * The scope of the account. Returned by the provider
+	 */
+	scope?: string | null
+	/**
+	 * The hashed password of the account. Mainly used for email and password authentication
+	 */
+	password?: string | null
+	createdAt: string
+	updatedAt: string
 }
 /**
  * Sessions are active sessions for users. They are used to authenticate users with a session token
@@ -300,33 +302,33 @@ export interface Account {
  * via the `definition` "sessions".
  */
 export interface Session {
-  id: string;
-  /**
-   * The date and time when the session will expire
-   */
-  expiresAt: string;
-  /**
-   * The unique session token
-   */
-  token: string;
-  createdAt: string;
-  updatedAt: string;
-  /**
-   * The IP address of the device
-   */
-  ipAddress?: string | null;
-  /**
-   * The user agent information of the device
-   */
-  userAgent?: string | null;
-  /**
-   * The user that the session belongs to
-   */
-  user: string | User;
-  /**
-   * The admin who is impersonating this session
-   */
-  impersonatedBy?: (string | null) | User;
+	id: string
+	/**
+	 * The date and time when the session will expire
+	 */
+	expiresAt: string
+	/**
+	 * The unique session token
+	 */
+	token: string
+	createdAt: string
+	updatedAt: string
+	/**
+	 * The IP address of the device
+	 */
+	ipAddress?: string | null
+	/**
+	 * The user agent information of the device
+	 */
+	userAgent?: string | null
+	/**
+	 * The user that the session belongs to
+	 */
+	user: string | User
+	/**
+	 * The admin who is impersonating this session
+	 */
+	impersonatedBy?: (string | null) | User
 }
 /**
  * Verifications are used to verify authentication requests
@@ -335,21 +337,21 @@ export interface Session {
  * via the `definition` "verifications".
  */
 export interface Verification {
-  id: string;
-  /**
-   * The identifier of the verification request
-   */
-  identifier: string;
-  /**
-   * The value to be verified
-   */
-  value: string;
-  /**
-   * The date and time when the verification request will expire
-   */
-  expiresAt: string;
-  createdAt: string;
-  updatedAt: string;
+	id: string
+	/**
+	 * The identifier of the verification request
+	 */
+	identifier: string
+	/**
+	 * The value to be verified
+	 */
+	value: string
+	/**
+	 * The date and time when the verification request will expire
+	 */
+	expiresAt: string
+	createdAt: string
+	updatedAt: string
 }
 /**
  * Passkeys are used to authenticate users
@@ -358,106 +360,106 @@ export interface Verification {
  * via the `definition` "passkeys".
  */
 export interface Passkey {
-  id: string;
-  /**
-   * The name of the passkey
-   */
-  name?: string | null;
-  /**
-   * The public key of the passkey
-   */
-  publicKey: string;
-  /**
-   * The user that the passkey belongs to
-   */
-  user: string | User;
-  /**
-   * The unique identifier of the registered credential
-   */
-  credentialId: string;
-  /**
-   * The counter of the passkey
-   */
-  counter: number;
-  /**
-   * The type of device used to register the passkey
-   */
-  deviceType: string;
-  /**
-   * Whether the passkey is backed up
-   */
-  backedUp: boolean;
-  /**
-   * The transports used to register the passkey
-   */
-  transports: string;
-  createdAt: string;
-  aaguid?: string | null;
-  updatedAt: string;
+	id: string
+	/**
+	 * The name of the passkey
+	 */
+	name?: string | null
+	/**
+	 * The public key of the passkey
+	 */
+	publicKey: string
+	/**
+	 * The user that the passkey belongs to
+	 */
+	user: string | User
+	/**
+	 * The unique identifier of the registered credential
+	 */
+	credentialId: string
+	/**
+	 * The counter of the passkey
+	 */
+	counter: number
+	/**
+	 * The type of device used to register the passkey
+	 */
+	deviceType: string
+	/**
+	 * Whether the passkey is backed up
+	 */
+	backedUp: boolean
+	/**
+	 * The transports used to register the passkey
+	 */
+	transports: string
+	createdAt: string
+	aaguid?: string | null
+	updatedAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "admin-invitations".
  */
 export interface AdminInvitation {
-  id: string;
-  role: 'admin' | 'user';
-  token: string;
-  url?: string | null;
-  updatedAt: string;
-  createdAt: string;
+	id: string
+	role: 'admin' | 'user'
+	token: string
+	url?: string | null
+	updatedAt: string
+	createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "blog".
  */
 export interface Blog {
-  id: string;
-  title: string;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  meta?: {
-    title?: string | null;
-    /**
-     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
-     */
-    image?: (string | null) | PayloadUpload;
-    description?: string | null;
-  };
-  /**
-   * Category of the blog post
-   */
-  category?: ('company' | 'marketing' | 'newsroom' | 'partners' | 'engineering' | 'press') | null;
-  publishedAt?: string | null;
-  authors?: (string | User)[] | null;
-  populatedAuthors?:
-    | {
-        id?: string | null;
-        name?: string | null;
-      }[]
-    | null;
-  /**
-   * When enabled, the slug will auto-generate from the title field on save and autosave.
-   */
-  generateSlug?: boolean | null;
-  slug: string;
-  updatedAt: string;
-  createdAt: string;
-  deletedAt?: string | null;
-  _status?: ('draft' | 'published') | null;
+	id: string
+	title: string
+	content: {
+		root: {
+			type: string
+			children: {
+				type: any
+				version: number
+				[k: string]: unknown
+			}[]
+			direction: ('ltr' | 'rtl') | null
+			format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
+			indent: number
+			version: number
+		}
+		[k: string]: unknown
+	}
+	meta?: {
+		title?: string | null
+		/**
+		 * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+		 */
+		image?: (string | null) | PayloadUpload
+		description?: string | null
+	}
+	/**
+	 * Category of the blog post
+	 */
+	category?: ('company' | 'marketing' | 'newsroom' | 'partners' | 'engineering' | 'press') | null
+	publishedAt?: string | null
+	authors?: (string | User)[] | null
+	populatedAuthors?:
+		| {
+				id?: string | null
+				name?: string | null
+		  }[]
+		| null
+	/**
+	 * When enabled, the slug will auto-generate from the title field on save and autosave.
+	 */
+	generateSlug?: boolean | null
+	slug: string
+	updatedAt: string
+	createdAt: string
+	deletedAt?: string | null
+	_status?: ('draft' | 'published') | null
 }
 /**
  * All media uploaded from Payload Admin
@@ -466,112 +468,112 @@ export interface Blog {
  * via the `definition` "payload-uploads".
  */
 export interface PayloadUpload {
-  id: string;
-  alt: string;
-  caption?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  /**
-   * Blur data URL for the image
-   */
-  blurDataURL?: string | null;
-  prefix?: string | null;
-  folder?: (string | null) | FolderInterface;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-  sizes?: {
-    thumbnail?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    small?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    medium?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    large?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-    og?: {
-      url?: string | null;
-      width?: number | null;
-      height?: number | null;
-      mimeType?: string | null;
-      filesize?: number | null;
-      filename?: string | null;
-    };
-  };
+	id: string
+	alt: string
+	caption?: {
+		root: {
+			type: string
+			children: {
+				type: any
+				version: number
+				[k: string]: unknown
+			}[]
+			direction: ('ltr' | 'rtl') | null
+			format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
+			indent: number
+			version: number
+		}
+		[k: string]: unknown
+	} | null
+	/**
+	 * Blur data URL for the image
+	 */
+	blurDataURL?: string | null
+	prefix?: string | null
+	folder?: (string | null) | FolderInterface
+	updatedAt: string
+	createdAt: string
+	url?: string | null
+	thumbnailURL?: string | null
+	filename?: string | null
+	mimeType?: string | null
+	filesize?: number | null
+	width?: number | null
+	height?: number | null
+	focalX?: number | null
+	focalY?: number | null
+	sizes?: {
+		thumbnail?: {
+			url?: string | null
+			width?: number | null
+			height?: number | null
+			mimeType?: string | null
+			filesize?: number | null
+			filename?: string | null
+		}
+		small?: {
+			url?: string | null
+			width?: number | null
+			height?: number | null
+			mimeType?: string | null
+			filesize?: number | null
+			filename?: string | null
+		}
+		medium?: {
+			url?: string | null
+			width?: number | null
+			height?: number | null
+			mimeType?: string | null
+			filesize?: number | null
+			filename?: string | null
+		}
+		large?: {
+			url?: string | null
+			width?: number | null
+			height?: number | null
+			mimeType?: string | null
+			filesize?: number | null
+			filename?: string | null
+		}
+		og?: {
+			url?: string | null
+			width?: number | null
+			height?: number | null
+			mimeType?: string | null
+			filesize?: number | null
+			filename?: string | null
+		}
+	}
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-folders".
  */
 export interface FolderInterface {
-  id: string;
-  name: string;
-  folder?: (string | null) | FolderInterface;
-  documentsAndFolders?: {
-    docs?: (
-      | {
-          relationTo?: 'payload-folders';
-          value: string | FolderInterface;
-        }
-      | {
-          relationTo?: 'payload-uploads';
-          value: string | PayloadUpload;
-        }
-      | {
-          relationTo?: 'private-uploads';
-          value: string | PrivateUpload;
-        }
-    )[];
-    hasNextPage?: boolean;
-    totalDocs?: number;
-  };
-  folderType?: ('payload-uploads' | 'private-uploads')[] | null;
-  updatedAt: string;
-  createdAt: string;
+	id: string
+	name: string
+	folder?: (string | null) | FolderInterface
+	documentsAndFolders?: {
+		docs?: (
+			| {
+					relationTo?: 'payload-folders'
+					value: string | FolderInterface
+			  }
+			| {
+					relationTo?: 'payload-uploads'
+					value: string | PayloadUpload
+			  }
+			| {
+					relationTo?: 'private-uploads'
+					value: string | PrivateUpload
+			  }
+		)[]
+		hasNextPage?: boolean
+		totalDocs?: number
+	}
+	folderType?: ('payload-uploads' | 'private-uploads')[] | null
+	updatedAt: string
+	createdAt: string
 }
 /**
  * Private uploads that require authentication to access
@@ -580,778 +582,777 @@ export interface FolderInterface {
  * via the `definition` "private-uploads".
  */
 export interface PrivateUpload {
-  id: string;
-  title: string;
-  /**
-   * Specific users who have access to this upload. If not assigned, it will respect the access level of the upload.
-   */
-  assignedTo?: (string | User)[] | null;
-  prefix?: string | null;
-  folder?: (string | null) | FolderInterface;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
+	id: string
+	title: string
+	/**
+	 * Specific users who have access to this upload. If not assigned, it will respect the access level of the upload.
+	 */
+	assignedTo?: (string | User)[] | null
+	prefix?: string | null
+	folder?: (string | null) | FolderInterface
+	updatedAt: string
+	createdAt: string
+	url?: string | null
+	thumbnailURL?: string | null
+	filename?: string | null
+	mimeType?: string | null
+	filesize?: number | null
+	width?: number | null
+	height?: number | null
+	focalX?: number | null
+	focalY?: number | null
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
-  id: string;
-  key: string;
-  data:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
+	id: string
+	key: string
+	data:
+		| {
+				[k: string]: unknown
+		  }
+		| unknown[]
+		| string
+		| number
+		| boolean
+		| null
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-jobs".
  */
 export interface PayloadJob {
-  id: string;
-  /**
-   * Input data provided to the job
-   */
-  input?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  taskStatus?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  completedAt?: string | null;
-  totalTried?: number | null;
-  /**
-   * If hasError is true this job will not be retried
-   */
-  hasError?: boolean | null;
-  /**
-   * If hasError is true, this is the error that caused it
-   */
-  error?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  /**
-   * Task execution log
-   */
-  log?:
-    | {
-        executedAt: string;
-        completedAt: string;
-        taskSlug: 'inline' | 'schedulePublish';
-        taskID: string;
-        input?:
-          | {
-              [k: string]: unknown;
-            }
-          | unknown[]
-          | string
-          | number
-          | boolean
-          | null;
-        output?:
-          | {
-              [k: string]: unknown;
-            }
-          | unknown[]
-          | string
-          | number
-          | boolean
-          | null;
-        state: 'failed' | 'succeeded';
-        error?:
-          | {
-              [k: string]: unknown;
-            }
-          | unknown[]
-          | string
-          | number
-          | boolean
-          | null;
-        id?: string | null;
-      }[]
-    | null;
-  taskSlug?: ('inline' | 'schedulePublish') | null;
-  queue?: string | null;
-  waitUntil?: string | null;
-  processing?: boolean | null;
-  updatedAt: string;
-  createdAt: string;
+	id: string
+	/**
+	 * Input data provided to the job
+	 */
+	input?:
+		| {
+				[k: string]: unknown
+		  }
+		| unknown[]
+		| string
+		| number
+		| boolean
+		| null
+	taskStatus?:
+		| {
+				[k: string]: unknown
+		  }
+		| unknown[]
+		| string
+		| number
+		| boolean
+		| null
+	completedAt?: string | null
+	totalTried?: number | null
+	/**
+	 * If hasError is true this job will not be retried
+	 */
+	hasError?: boolean | null
+	/**
+	 * If hasError is true, this is the error that caused it
+	 */
+	error?:
+		| {
+				[k: string]: unknown
+		  }
+		| unknown[]
+		| string
+		| number
+		| boolean
+		| null
+	/**
+	 * Task execution log
+	 */
+	log?:
+		| {
+				executedAt: string
+				completedAt: string
+				taskSlug: 'inline' | 'schedulePublish'
+				taskID: string
+				input?:
+					| {
+							[k: string]: unknown
+					  }
+					| unknown[]
+					| string
+					| number
+					| boolean
+					| null
+				output?:
+					| {
+							[k: string]: unknown
+					  }
+					| unknown[]
+					| string
+					| number
+					| boolean
+					| null
+				state: 'failed' | 'succeeded'
+				error?:
+					| {
+							[k: string]: unknown
+					  }
+					| unknown[]
+					| string
+					| number
+					| boolean
+					| null
+				id?: string | null
+		  }[]
+		| null
+	taskSlug?: ('inline' | 'schedulePublish') | null
+	queue?: string | null
+	waitUntil?: string | null
+	processing?: boolean | null
+	updatedAt: string
+	createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-  id: string;
-  document?:
-    | ({
-        relationTo: 'users';
-        value: string | User;
-      } | null)
-    | ({
-        relationTo: 'sessions';
-        value: string | Session;
-      } | null)
-    | ({
-        relationTo: 'accounts';
-        value: string | Account;
-      } | null)
-    | ({
-        relationTo: 'verifications';
-        value: string | Verification;
-      } | null)
-    | ({
-        relationTo: 'passkeys';
-        value: string | Passkey;
-      } | null)
-    | ({
-        relationTo: 'admin-invitations';
-        value: string | AdminInvitation;
-      } | null)
-    | ({
-        relationTo: 'blog';
-        value: string | Blog;
-      } | null)
-    | ({
-        relationTo: 'payload-uploads';
-        value: string | PayloadUpload;
-      } | null)
-    | ({
-        relationTo: 'private-uploads';
-        value: string | PrivateUpload;
-      } | null)
-    | ({
-        relationTo: 'payload-folders';
-        value: string | FolderInterface;
-      } | null);
-  globalSlug?: string | null;
-  user: {
-    relationTo: 'users';
-    value: string | User;
-  };
-  updatedAt: string;
-  createdAt: string;
+	id: string
+	document?:
+		| ({
+				relationTo: 'users'
+				value: string | User
+		  } | null)
+		| ({
+				relationTo: 'sessions'
+				value: string | Session
+		  } | null)
+		| ({
+				relationTo: 'accounts'
+				value: string | Account
+		  } | null)
+		| ({
+				relationTo: 'verifications'
+				value: string | Verification
+		  } | null)
+		| ({
+				relationTo: 'passkeys'
+				value: string | Passkey
+		  } | null)
+		| ({
+				relationTo: 'admin-invitations'
+				value: string | AdminInvitation
+		  } | null)
+		| ({
+				relationTo: 'blog'
+				value: string | Blog
+		  } | null)
+		| ({
+				relationTo: 'payload-uploads'
+				value: string | PayloadUpload
+		  } | null)
+		| ({
+				relationTo: 'private-uploads'
+				value: string | PrivateUpload
+		  } | null)
+		| ({
+				relationTo: 'payload-folders'
+				value: string | FolderInterface
+		  } | null)
+	globalSlug?: string | null
+	user: {
+		relationTo: 'users'
+		value: string | User
+	}
+	updatedAt: string
+	createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: string;
-  user: {
-    relationTo: 'users';
-    value: string | User;
-  };
-  key?: string | null;
-  value?:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  updatedAt: string;
-  createdAt: string;
+	id: string
+	user: {
+		relationTo: 'users'
+		value: string | User
+	}
+	key?: string | null
+	value?:
+		| {
+				[k: string]: unknown
+		  }
+		| unknown[]
+		| string
+		| number
+		| boolean
+		| null
+	updatedAt: string
+	createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: string;
-  name?: string | null;
-  batch?: number | null;
-  updatedAt: string;
-  createdAt: string;
+	id: string
+	name?: string | null
+	batch?: number | null
+	updatedAt: string
+	createdAt: string
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
-  name?: T;
-  email?: T;
-  emailVerified?: T;
-  image?: T;
-  createdAt?: T;
-  updatedAt?: T;
-  username?: T;
-  displayUsername?: T;
-  normalizedEmail?: T;
-  phoneNumber?: T;
-  phoneNumberVerified?: T;
-  role?: T;
-  banned?: T;
-  banReason?: T;
-  banExpires?: T;
-  verified?: T;
-  account?: T;
-  session?: T;
+	name?: T
+	email?: T
+	emailVerified?: T
+	image?: T
+	createdAt?: T
+	updatedAt?: T
+	username?: T
+	displayUsername?: T
+	normalizedEmail?: T
+	phoneNumber?: T
+	phoneNumberVerified?: T
+	role?: T
+	banned?: T
+	banReason?: T
+	banExpires?: T
+	verified?: T
+	account?: T
+	session?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "sessions_select".
  */
 export interface SessionsSelect<T extends boolean = true> {
-  expiresAt?: T;
-  token?: T;
-  createdAt?: T;
-  updatedAt?: T;
-  ipAddress?: T;
-  userAgent?: T;
-  user?: T;
-  impersonatedBy?: T;
+	expiresAt?: T
+	token?: T
+	createdAt?: T
+	updatedAt?: T
+	ipAddress?: T
+	userAgent?: T
+	user?: T
+	impersonatedBy?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "accounts_select".
  */
 export interface AccountsSelect<T extends boolean = true> {
-  accountId?: T;
-  providerId?: T;
-  user?: T;
-  accessToken?: T;
-  refreshToken?: T;
-  idToken?: T;
-  accessTokenExpiresAt?: T;
-  refreshTokenExpiresAt?: T;
-  scope?: T;
-  password?: T;
-  createdAt?: T;
-  updatedAt?: T;
+	accountId?: T
+	providerId?: T
+	user?: T
+	accessToken?: T
+	refreshToken?: T
+	idToken?: T
+	accessTokenExpiresAt?: T
+	refreshTokenExpiresAt?: T
+	scope?: T
+	password?: T
+	createdAt?: T
+	updatedAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "verifications_select".
  */
 export interface VerificationsSelect<T extends boolean = true> {
-  identifier?: T;
-  value?: T;
-  expiresAt?: T;
-  createdAt?: T;
-  updatedAt?: T;
+	identifier?: T
+	value?: T
+	expiresAt?: T
+	createdAt?: T
+	updatedAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "passkeys_select".
  */
 export interface PasskeysSelect<T extends boolean = true> {
-  name?: T;
-  publicKey?: T;
-  user?: T;
-  credentialId?: T;
-  counter?: T;
-  deviceType?: T;
-  backedUp?: T;
-  transports?: T;
-  createdAt?: T;
-  aaguid?: T;
-  updatedAt?: T;
+	name?: T
+	publicKey?: T
+	user?: T
+	credentialId?: T
+	counter?: T
+	deviceType?: T
+	backedUp?: T
+	transports?: T
+	createdAt?: T
+	aaguid?: T
+	updatedAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "admin-invitations_select".
  */
 export interface AdminInvitationsSelect<T extends boolean = true> {
-  role?: T;
-  token?: T;
-  url?: T;
-  updatedAt?: T;
-  createdAt?: T;
+	role?: T
+	token?: T
+	url?: T
+	updatedAt?: T
+	createdAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "blog_select".
  */
 export interface BlogSelect<T extends boolean = true> {
-  title?: T;
-  content?: T;
-  meta?:
-    | T
-    | {
-        title?: T;
-        image?: T;
-        description?: T;
-      };
-  category?: T;
-  publishedAt?: T;
-  authors?: T;
-  populatedAuthors?:
-    | T
-    | {
-        id?: T;
-        name?: T;
-      };
-  generateSlug?: T;
-  slug?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  deletedAt?: T;
-  _status?: T;
+	title?: T
+	content?: T
+	meta?:
+		| T
+		| {
+				title?: T
+				image?: T
+				description?: T
+		  }
+	category?: T
+	publishedAt?: T
+	authors?: T
+	populatedAuthors?:
+		| T
+		| {
+				id?: T
+				name?: T
+		  }
+	generateSlug?: T
+	slug?: T
+	updatedAt?: T
+	createdAt?: T
+	deletedAt?: T
+	_status?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-uploads_select".
  */
 export interface PayloadUploadsSelect<T extends boolean = true> {
-  alt?: T;
-  caption?: T;
-  blurDataURL?: T;
-  prefix?: T;
-  folder?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  url?: T;
-  thumbnailURL?: T;
-  filename?: T;
-  mimeType?: T;
-  filesize?: T;
-  width?: T;
-  height?: T;
-  focalX?: T;
-  focalY?: T;
-  sizes?:
-    | T
-    | {
-        thumbnail?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-        small?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-        medium?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-        large?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-        og?:
-          | T
-          | {
-              url?: T;
-              width?: T;
-              height?: T;
-              mimeType?: T;
-              filesize?: T;
-              filename?: T;
-            };
-      };
+	alt?: T
+	caption?: T
+	blurDataURL?: T
+	prefix?: T
+	folder?: T
+	updatedAt?: T
+	createdAt?: T
+	url?: T
+	thumbnailURL?: T
+	filename?: T
+	mimeType?: T
+	filesize?: T
+	width?: T
+	height?: T
+	focalX?: T
+	focalY?: T
+	sizes?:
+		| T
+		| {
+				thumbnail?:
+					| T
+					| {
+							url?: T
+							width?: T
+							height?: T
+							mimeType?: T
+							filesize?: T
+							filename?: T
+					  }
+				small?:
+					| T
+					| {
+							url?: T
+							width?: T
+							height?: T
+							mimeType?: T
+							filesize?: T
+							filename?: T
+					  }
+				medium?:
+					| T
+					| {
+							url?: T
+							width?: T
+							height?: T
+							mimeType?: T
+							filesize?: T
+							filename?: T
+					  }
+				large?:
+					| T
+					| {
+							url?: T
+							width?: T
+							height?: T
+							mimeType?: T
+							filesize?: T
+							filename?: T
+					  }
+				og?:
+					| T
+					| {
+							url?: T
+							width?: T
+							height?: T
+							mimeType?: T
+							filesize?: T
+							filename?: T
+					  }
+		  }
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "private-uploads_select".
  */
 export interface PrivateUploadsSelect<T extends boolean = true> {
-  title?: T;
-  assignedTo?: T;
-  prefix?: T;
-  folder?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  url?: T;
-  thumbnailURL?: T;
-  filename?: T;
-  mimeType?: T;
-  filesize?: T;
-  width?: T;
-  height?: T;
-  focalX?: T;
-  focalY?: T;
+	title?: T
+	assignedTo?: T
+	prefix?: T
+	folder?: T
+	updatedAt?: T
+	createdAt?: T
+	url?: T
+	thumbnailURL?: T
+	filename?: T
+	mimeType?: T
+	filesize?: T
+	width?: T
+	height?: T
+	focalX?: T
+	focalY?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
-  key?: T;
-  data?: T;
+	key?: T
+	data?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-jobs_select".
  */
 export interface PayloadJobsSelect<T extends boolean = true> {
-  input?: T;
-  taskStatus?: T;
-  completedAt?: T;
-  totalTried?: T;
-  hasError?: T;
-  error?: T;
-  log?:
-    | T
-    | {
-        executedAt?: T;
-        completedAt?: T;
-        taskSlug?: T;
-        taskID?: T;
-        input?: T;
-        output?: T;
-        state?: T;
-        error?: T;
-        id?: T;
-      };
-  taskSlug?: T;
-  queue?: T;
-  waitUntil?: T;
-  processing?: T;
-  updatedAt?: T;
-  createdAt?: T;
+	input?: T
+	taskStatus?: T
+	completedAt?: T
+	totalTried?: T
+	hasError?: T
+	error?: T
+	log?:
+		| T
+		| {
+				executedAt?: T
+				completedAt?: T
+				taskSlug?: T
+				taskID?: T
+				input?: T
+				output?: T
+				state?: T
+				error?: T
+				id?: T
+		  }
+	taskSlug?: T
+	queue?: T
+	waitUntil?: T
+	processing?: T
+	updatedAt?: T
+	createdAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-folders_select".
  */
 export interface PayloadFoldersSelect<T extends boolean = true> {
-  name?: T;
-  folder?: T;
-  documentsAndFolders?: T;
-  folderType?: T;
-  updatedAt?: T;
-  createdAt?: T;
+	name?: T
+	folder?: T
+	documentsAndFolders?: T
+	folderType?: T
+	updatedAt?: T
+	createdAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
-  document?: T;
-  globalSlug?: T;
-  user?: T;
-  updatedAt?: T;
-  createdAt?: T;
+	document?: T
+	globalSlug?: T
+	user?: T
+	updatedAt?: T
+	createdAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences_select".
  */
 export interface PayloadPreferencesSelect<T extends boolean = true> {
-  user?: T;
-  key?: T;
-  value?: T;
-  updatedAt?: T;
-  createdAt?: T;
+	user?: T
+	key?: T
+	value?: T
+	updatedAt?: T
+	createdAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-migrations_select".
  */
 export interface PayloadMigrationsSelect<T extends boolean = true> {
-  name?: T;
-  batch?: T;
-  updatedAt?: T;
-  createdAt?: T;
+	name?: T
+	batch?: T
+	updatedAt?: T
+	createdAt?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "global-footer".
  */
 export interface GlobalFooter {
-  id: string;
-  navItems?:
-    | {
-        link: {
-          type?: ('custom' | 'reference') | null;
-          newTab?: boolean | null;
-          reference?: {
-            relationTo: 'blog';
-            value: string | Blog;
-          } | null;
-          url?: string | null;
-          label: string;
-        };
-        id?: string | null;
-      }[]
-    | null;
-  /**
-   * The text that appears in the footer, such as copyright, etc.
-   */
-  footerText: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  updatedAt?: string | null;
-  createdAt?: string | null;
+	id: string
+	navItems?:
+		| {
+				link: {
+					type?: ('custom' | 'reference') | null
+					newTab?: boolean | null
+					reference?: {
+						relationTo: 'blog'
+						value: string | Blog
+					} | null
+					url?: string | null
+					label: string
+				}
+				id?: string | null
+		  }[]
+		| null
+	/**
+	 * The text that appears in the footer, such as copyright, etc.
+	 */
+	footerText: {
+		root: {
+			type: string
+			children: {
+				type: any
+				version: number
+				[k: string]: unknown
+			}[]
+			direction: ('ltr' | 'rtl') | null
+			format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
+			indent: number
+			version: number
+		}
+		[k: string]: unknown
+	}
+	updatedAt?: string | null
+	createdAt?: string | null
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "global-terms".
  */
 export interface GlobalTerm {
-  id: string;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  updatedAt?: string | null;
-  createdAt?: string | null;
+	id: string
+	content: {
+		root: {
+			type: string
+			children: {
+				type: any
+				version: number
+				[k: string]: unknown
+			}[]
+			direction: ('ltr' | 'rtl') | null
+			format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
+			indent: number
+			version: number
+		}
+		[k: string]: unknown
+	}
+	updatedAt?: string | null
+	createdAt?: string | null
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "global-privacy".
  */
 export interface GlobalPrivacy {
-  id: string;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  updatedAt?: string | null;
-  createdAt?: string | null;
+	id: string
+	content: {
+		root: {
+			type: string
+			children: {
+				type: any
+				version: number
+				[k: string]: unknown
+			}[]
+			direction: ('ltr' | 'rtl') | null
+			format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
+			indent: number
+			version: number
+		}
+		[k: string]: unknown
+	}
+	updatedAt?: string | null
+	createdAt?: string | null
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "global-footer_select".
  */
 export interface GlobalFooterSelect<T extends boolean = true> {
-  navItems?:
-    | T
-    | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-            };
-        id?: T;
-      };
-  footerText?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
+	navItems?:
+		| T
+		| {
+				link?:
+					| T
+					| {
+							type?: T
+							newTab?: T
+							reference?: T
+							url?: T
+							label?: T
+					  }
+				id?: T
+		  }
+	footerText?: T
+	updatedAt?: T
+	createdAt?: T
+	globalType?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "global-terms_select".
  */
 export interface GlobalTermsSelect<T extends boolean = true> {
-  content?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
+	content?: T
+	updatedAt?: T
+	createdAt?: T
+	globalType?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "global-privacy_select".
  */
 export interface GlobalPrivacySelect<T extends boolean = true> {
-  content?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  globalType?: T;
+	content?: T
+	updatedAt?: T
+	createdAt?: T
+	globalType?: T
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "collections_widget".
  */
 export interface CollectionsWidget {
-  data?: {
-    [k: string]: unknown;
-  };
-  width: 'full';
+	data?: {
+		[k: string]: unknown
+	}
+	width: 'full'
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "TaskSchedulePublish".
  */
 export interface TaskSchedulePublish {
-  input: {
-    type?: ('publish' | 'unpublish') | null;
-    locale?: string | null;
-    doc?: {
-      relationTo: 'blog';
-      value: string | Blog;
-    } | null;
-    global?: string | null;
-    user?: (string | null) | User;
-  };
-  output?: unknown;
+	input: {
+		type?: ('publish' | 'unpublish') | null
+		locale?: string | null
+		doc?: {
+			relationTo: 'blog'
+			value: string | Blog
+		} | null
+		global?: string | null
+		user?: (string | null) | User
+	}
+	output?: unknown
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "MediaBlock".
  */
 export interface MediaBlock {
-  media: string | PayloadUpload;
-  /**
-   * When enabled, the image will be zoomed to full screen when clicked.
-   */
-  zoom?: boolean | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'mediaBlock';
+	media: string | PayloadUpload
+	/**
+	 * When enabled, the image will be zoomed to full screen when clicked.
+	 */
+	zoom?: boolean | null
+	id?: string | null
+	blockName?: string | null
+	blockType: 'mediaBlock'
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CopyRightInlineBlock".
  */
 export interface CopyRightInlineBlock {
-  /**
-   * The year to start the copyright from. e.g. 2021
-   */
-  fromYear?: number | null;
-  /**
-   * Whether to use the current year or a fixed year
-   */
-  toYearType?: ('current' | 'fixed') | null;
-  toYearFixed?: number | null;
-  /**
-   * Text to display after the years. e.g. 'Acme. All rights reserved.'
-   */
-  text?: string | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'copyRightInlineBlock';
+	/**
+	 * The year to start the copyright from. e.g. 2021
+	 */
+	fromYear?: number | null
+	/**
+	 * Whether to use the current year or a fixed year
+	 */
+	toYearType?: ('current' | 'fixed') | null
+	toYearFixed?: number | null
+	/**
+	 * Text to display after the years. e.g. 'Acme. All rights reserved.'
+	 */
+	text?: string | null
+	id?: string | null
+	blockName?: string | null
+	blockType: 'copyRightInlineBlock'
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "GalleryBlock".
  */
 export interface GalleryBlock {
-  perRowMobile?: number | null;
-  perRowTablet?: number | null;
-  perRowDesktop?: number | null;
-  images: (string | PayloadUpload)[];
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'galleryBlock';
+	perRowMobile?: number | null
+	perRowTablet?: number | null
+	perRowDesktop?: number | null
+	images: (string | PayloadUpload)[]
+	id?: string | null
+	blockName?: string | null
+	blockType: 'galleryBlock'
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ContentBlock".
  */
 export interface ContentBlock {
-  columns?:
-    | {
-        size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
-        richText?: {
-          root: {
-            type: string;
-            children: {
-              type: any;
-              version: number;
-              [k: string]: unknown;
-            }[];
-            direction: ('ltr' | 'rtl') | null;
-            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-            indent: number;
-            version: number;
-          };
-          [k: string]: unknown;
-        } | null;
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'contentBlock';
+	columns?:
+		| {
+				size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null
+				richText?: {
+					root: {
+						type: string
+						children: {
+							type: any
+							version: number
+							[k: string]: unknown
+						}[]
+						direction: ('ltr' | 'rtl') | null
+						format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
+						indent: number
+						version: number
+					}
+					[k: string]: unknown
+				} | null
+				id?: string | null
+		  }[]
+		| null
+	id?: string | null
+	blockName?: string | null
+	blockType: 'contentBlock'
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "auth".
  */
 export interface Auth {
-  [k: string]: unknown;
+	[k: string]: unknown
 }
 
-
 declare module 'payload' {
-  export interface GeneratedTypes extends Config {}
+	export interface GeneratedTypes extends Config {}
 }

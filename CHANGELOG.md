@@ -13,11 +13,13 @@
 ## 1.5.2
 
 ### Patch Changes
+
 - Add theme styles for admin panel, thanks to [Payload Twist](https://payloadtwist.com/editors/payload-cms-theme-generator)!
 
 ## 1.5.1
 
 ### Patch Changes
+
 - Bump packages
 - Fix form plugin & added missing files
 - Fix blog page `generateStaticParams` placeholder return string instead of object

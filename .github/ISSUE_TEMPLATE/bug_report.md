@@ -1,9 +1,9 @@
 ---
 name: 🐛 Bug Report
 about: Create a report to help us improve
-title: "[BUG] "
-labels: ["bug", "valid-issue"]
-assignees: ""
+title: '[BUG] '
+labels: ['bug', 'valid-issue']
+assignees: ''
 ---
 
 ## 🐛 Bug Description

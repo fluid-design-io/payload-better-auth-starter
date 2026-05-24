@@ -2,9 +2,9 @@ import { importExportPlugin as importExportPluginConfig } from '@payloadcms/plug
 import type { Plugin } from 'payload'
 
 export const importExportPlugin: Plugin = importExportPluginConfig({
-  collections: [
-    {
-      slug: 'blog',
-    },
-  ],
+	collections: [
+		{
+			slug: 'blog',
+		},
+	],
 })

@@ -1,22 +1,22 @@
 import { cacheLife, cacheTag } from 'next/cache'
 
-import type { Config } from '@/payload-types'
 import configPromise from '@payload-config'
 import { getPayload } from 'payload'
+import type { Config } from '@/payload-types'
 
 type Global = keyof Config['globals']
 
 export async function getGlobal(slug: Global, depth = 0) {
-  'use cache'
-  cacheLife('hours')
-  cacheTag(slug)
+	'use cache'
+	cacheLife('hours')
+	cacheTag(slug)
 
-  const payload = await getPayload({ config: configPromise })
+	const payload = await getPayload({ config: configPromise })
 
-  const global = await payload.findGlobal({
-    slug,
-    depth,
-  })
+	const global = await payload.findGlobal({
+		slug,
+		depth,
+	})
 
-  return global
+	return global
 }

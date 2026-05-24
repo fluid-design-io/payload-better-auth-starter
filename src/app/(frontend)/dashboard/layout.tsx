@@ -10,38 +10,38 @@ import { mergeOpenGraph } from '@/lib/payload/merge-open-graph'
 import { RedirectToSignIn } from '@daveyplate/better-auth-ui'
 
 export const metadata: Metadata = {
-  metadataBase: new URL(getServerSideURL()),
-  openGraph: mergeOpenGraph(),
-  title: {
-    template: '%s | Acme Dashboard',
-    default: 'Dashboard',
-  },
-  description: 'Acme Dashboard',
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
+	metadataBase: new URL(getServerSideURL()),
+	openGraph: mergeOpenGraph(),
+	title: {
+		template: '%s | Acme Dashboard',
+		default: 'Dashboard',
+	},
+	description: 'Acme Dashboard',
+	robots: {
+		index: true,
+		follow: true,
+		googleBot: {
+			index: true,
+			follow: true,
+			'max-video-preview': -1,
+			'max-image-preview': 'large',
+			'max-snippet': -1,
+		},
+	},
 }
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <Suspense>
-      <Layout>{children}</Layout>
-    </Suspense>
-  )
+	return (
+		<Suspense>
+			<Layout>{children}</Layout>
+		</Suspense>
+	)
 }
 
 const Layout = async ({ children }: { children: React.ReactNode }) => {
-  const user = await currentUser()
-  if (!user) {
-    return <RedirectToSignIn />
-  }
-  return children
+	const user = await currentUser()
+	if (!user) {
+		return <RedirectToSignIn />
+	}
+	return children
 }

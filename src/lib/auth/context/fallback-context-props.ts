@@ -7,8 +7,8 @@ import type { TypedUser } from 'payload'
  * the real provider shape without calling `headers()` before the shell streams.
  */
 export const fallbackBetterAuthContextProps = {
-  sessionPromise: Promise.resolve(null) as Promise<Session | null>,
-  userAccountsPromise: Promise.resolve(null) as Promise<Account[] | null>,
-  deviceSessionsPromise: Promise.resolve(null) as Promise<DeviceSession[] | null>,
-  currentUserPromise: Promise.resolve(null) as Promise<TypedUser | null>,
+	sessionPromise: Promise.resolve(null) as Promise<Session | null>,
+	userAccountsPromise: Promise.resolve(null) as Promise<Account[] | null>,
+	deviceSessionsPromise: Promise.resolve(null) as Promise<DeviceSession[] | null>,
+	currentUserPromise: Promise.resolve(null) as Promise<TypedUser | null>,
 }

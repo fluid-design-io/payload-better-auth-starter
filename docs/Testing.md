@@ -41,12 +41,12 @@ So: put route/API tests in `requests/`, service-layer tests in `services/`, coll
 
 ## Commands
 
-| Command | What it does |
-| --- | --- |
-| `bun run test` | Run `bun test src/tests` directly (no server started). Use when the server is already up or for tests that don't need HTTP. Full E2E/auth flow requires `test:run`. |
-| `bun run test:run` | Full run: dev:services, test DB create, migrate, start dev server on 3456, run all discovered test files with `bun test`, then stop the server. Does **not** accept a path—use `test:run:single` for one file. |
-| `bun run test:run:single -- ./src/tests/auth.test.ts` | Run one test file. Pass the path after `--`; server is still started and only that file runs. |
-| `bun run test:payload-db` | Run only `payload-db.test.ts`; does **not** start the server. Use for a quick DB smoke test when services are already up. Tests that need `TEST_SERVER_URL` (auth, route tests) will fail without the full `bun run test:run`. |
+| Command                                               | What it does                                                                                                                                                                                                                   |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `bun run test`                                        | Run `bun test src/tests` directly (no server started). Use when the server is already up or for tests that don't need HTTP. Full E2E/auth flow requires `test:run`.                                                            |
+| `bun run test:run`                                    | Full run: dev:services, test DB create, migrate, start dev server on 3456, run all discovered test files with `bun test`, then stop the server. Does **not** accept a path—use `test:run:single` for one file.                 |
+| `bun run test:run:single -- ./src/tests/auth.test.ts` | Run one test file. Pass the path after `--`; server is still started and only that file runs.                                                                                                                                  |
+| `bun run test:payload-db`                             | Run only `payload-db.test.ts`; does **not** start the server. Use for a quick DB smoke test when services are already up. Tests that need `TEST_SERVER_URL` (auth, route tests) will fail without the full `bun run test:run`. |
 
 Keep port **3456** free for the test server (don’t use it for local dev).
 
@@ -67,43 +67,43 @@ Files with more than one scenario should use **describe** and multiple **test** 
 **Minimal example** (use this pattern for multi-scenario service tests):
 
 ```ts
-import { getPayload } from "../../lib/payload/get-payload";
-import { clearTestDb } from "../helper/clear-test-db";
-import { createTestLanguage, createTestFilm } from "../helper/fixtures";
-import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, test } from "bun:test";
+import { getPayload } from '../../lib/payload/get-payload'
+import { clearTestDb } from '../helper/clear-test-db'
+import { createTestLanguage, createTestFilm } from '../helper/fixtures'
+import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, test } from 'bun:test'
 
-describe("MyService", () => {
-  let payload: Awaited<ReturnType<typeof getPayload>>;
-  let filmId: string;
+describe('MyService', () => {
+	let payload: Awaited<ReturnType<typeof getPayload>>
+	let filmId: string
 
-  beforeAll(async () => {
-    payload = await getPayload();
-  });
+	beforeAll(async () => {
+		payload = await getPayload()
+	})
 
-  beforeEach(async () => {
-    const lang = await createTestLanguage(payload);
-    const film = await createTestFilm(payload, { languageId: lang.id });
-    filmId = film.id;
-  });
+	beforeEach(async () => {
+		const lang = await createTestLanguage(payload)
+		const film = await createTestFilm(payload, { languageId: lang.id })
+		filmId = film.id
+	})
 
-  afterEach(async () => {
-    await clearTestDb(payload);
-  });
+	afterEach(async () => {
+		await clearTestDb(payload)
+	})
 
-  afterAll(async () => {
-    // optional final cleanup
-  });
+	afterAll(async () => {
+		// optional final cleanup
+	})
 
-  test("scenario one: empty state", async () => {
-    // use payload, filmId, fixtures…
-    expect(payload).toBeDefined();
-  });
+	test('scenario one: empty state', async () => {
+		// use payload, filmId, fixtures…
+		expect(payload).toBeDefined()
+	})
 
-  test("scenario two: with data", async () => {
-    // optional extra fixtures here; shared ones from beforeEach
-    expect(filmId).toBeDefined();
-  });
-});
+	test('scenario two: with data', async () => {
+		// optional extra fixtures here; shared ones from beforeEach
+		expect(filmId).toBeDefined()
+	})
+})
 ```
 
 Single-test files (e.g. `auth.test.ts`, `payload-db.test.ts`) can use a single `test(...)` with `beforeAll` / `afterEach` and no describe.

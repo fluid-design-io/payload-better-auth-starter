@@ -8,9 +8,9 @@ import { Width } from '../Width'
 
 // @ts-expect-error - message is required
 export const Message: React.FC = ({ message }: { message: SerializedEditorState }) => {
-  return (
-    <Width className="my-12" width="full">
-      {message && <RichText data={message as DefaultTypedEditorState} />}
-    </Width>
-  )
+	return (
+		<Width className="my-12" width="full">
+			{message && <RichText data={message as DefaultTypedEditorState} />}
+		</Width>
+	)
 }

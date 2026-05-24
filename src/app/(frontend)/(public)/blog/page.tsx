@@ -10,39 +10,39 @@ import { BlogPosts, BlogPostsSkeleton } from './blog-posts'
 import { blogSearchParamsCache, isValidCategory } from './search-params'
 
 type PageProps = {
-  searchParams: Promise<SearchParams>
+	searchParams: Promise<SearchParams>
 }
 
 export default async function Page({ searchParams }: PageProps) {
-  return (
-    <Main className="my-24">
-      <LayoutHeader title="News, insights and more from Acme" badge="Blog" />
-      <Container className="w-full">
-        <Suspense fallback={<BlogFiltersSkeleton />}>
-          <BlogFilters />
-        </Suspense>
-        <Suspense fallback={<BlogPostsSkeleton />}>
-          <BlogPosts searchParams={searchParams} />
-        </Suspense>
-      </Container>
-    </Main>
-  )
+	return (
+		<Main className="my-24">
+			<LayoutHeader title="News, insights and more from Acme" badge="Blog" />
+			<Container className="w-full">
+				<Suspense fallback={<BlogFiltersSkeleton />}>
+					<BlogFilters />
+				</Suspense>
+				<Suspense fallback={<BlogPostsSkeleton />}>
+					<BlogPosts searchParams={searchParams} />
+				</Suspense>
+			</Container>
+		</Main>
+	)
 }
 
 export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
-  const { category, page } = await blogSearchParamsCache.parse(searchParams)
+	const { category, page } = await blogSearchParamsCache.parse(searchParams)
 
-  let title = 'Acme Blog'
+	let title = 'Acme Blog'
 
-  if (category && isValidCategory(category)) {
-    title = `Acme Blog - ${category.charAt(0).toUpperCase() + category.slice(1)}`
-  }
+	if (category && isValidCategory(category)) {
+		title = `Acme Blog - ${category.charAt(0).toUpperCase() + category.slice(1)}`
+	}
 
-  if (page > 1) {
-    title += ` - Page ${page}`
-  }
+	if (page > 1) {
+		title += ` - Page ${page}`
+	}
 
-  return {
-    title,
-  }
+	return {
+		title,
+	}
 }

@@ -1,9 +1,9 @@
 ---
 name: ❓ General Issue
 about: Ask a question or report other issues
-title: "[QUESTION] "
-labels: ["question", "valid-issue"]
-assignees: ""
+title: '[QUESTION] '
+labels: ['question', 'valid-issue']
+assignees: ''
 ---
 
 ## ❓ Issue Description

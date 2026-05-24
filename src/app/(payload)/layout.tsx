@@ -12,25 +12,25 @@ import { importMap } from './admin/importMap.js'
 import './custom.scss'
 
 type Args = {
-  children: React.ReactNode
+	children: React.ReactNode
 }
 
 const serverFunction: ServerFunctionClient = async (args) => {
-  'use server'
+	'use server'
 
-  return handleServerFunctions({
-    ...args,
-    config,
-    importMap,
-  })
+	return handleServerFunctions({
+		...args,
+		config,
+		importMap,
+	})
 }
 
 const Layout = ({ children }: Args) => (
-  <Suspense>
-    <RootLayout config={config} importMap={importMap} serverFunction={serverFunction}>
-      {children}
-    </RootLayout>
-  </Suspense>
+	<Suspense>
+		<RootLayout config={config} importMap={importMap} serverFunction={serverFunction}>
+			{children}
+		</RootLayout>
+	</Suspense>
 )
 
 export default Layout

@@ -17,60 +17,60 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
-  admin: {
-    user: Users.slug,
-    importMap: {
-      baseDir: path.resolve(dirname),
-    },
-    livePreview: {
-      breakpoints: [
-        {
-          label: 'Mobile',
-          name: 'mobile',
-          width: 375,
-          height: 667,
-        },
-        {
-          label: 'Tablet',
-          name: 'tablet',
-          width: 768,
-          height: 1024,
-        },
-        {
-          label: 'Desktop',
-          name: 'desktop',
-          width: 1440,
-          height: 900,
-        },
-      ],
-    },
-    components: {
-      graphics: {
-        Icon: {
-          path: '@/components/payload/admin-icon.tsx',
-        },
-        Logo: {
-          path: '@/components/payload/admin-logo.tsx',
-        },
-      },
-    },
-  },
-  email: getEmailAdapter(),
-  collections: [Users, Blog, PayloadUploads, PrivateUploads],
-  editor: defaultLexical,
-  secret: process.env.PAYLOAD_SECRET,
-  typescript: {
-    outputFile: path.resolve(dirname, 'payload-types.ts'),
-  },
-  db: postgresAdapter({
-    pool: {
-      connectionString: process.env.DATABASE_URI || '',
-    },
-    idType: 'uuid',
-  }),
-  cors: [getServerSideURL()].filter(Boolean),
-  sharp,
-  plugins,
-  globals: [GlobalFooter, GlobalTerms, GlobalPrivacy],
-  serverURL: getServerSideURL(),
+	admin: {
+		user: Users.slug,
+		importMap: {
+			baseDir: path.resolve(dirname),
+		},
+		livePreview: {
+			breakpoints: [
+				{
+					label: 'Mobile',
+					name: 'mobile',
+					width: 375,
+					height: 667,
+				},
+				{
+					label: 'Tablet',
+					name: 'tablet',
+					width: 768,
+					height: 1024,
+				},
+				{
+					label: 'Desktop',
+					name: 'desktop',
+					width: 1440,
+					height: 900,
+				},
+			],
+		},
+		components: {
+			graphics: {
+				Icon: {
+					path: '@/components/payload/admin-icon.tsx',
+				},
+				Logo: {
+					path: '@/components/payload/admin-logo.tsx',
+				},
+			},
+		},
+	},
+	email: getEmailAdapter(),
+	collections: [Users, Blog, PayloadUploads, PrivateUploads],
+	editor: defaultLexical,
+	secret: process.env.PAYLOAD_SECRET,
+	typescript: {
+		outputFile: path.resolve(dirname, 'payload-types.ts'),
+	},
+	db: postgresAdapter({
+		pool: {
+			connectionString: process.env.DATABASE_URI || '',
+		},
+		idType: 'uuid',
+	}),
+	cors: [getServerSideURL()].filter(Boolean),
+	sharp,
+	plugins,
+	globals: [GlobalFooter, GlobalTerms, GlobalPrivacy],
+	serverURL: getServerSideURL(),
 })

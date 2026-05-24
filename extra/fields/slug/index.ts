@@ -28,14 +28,14 @@ export const slugField: Slug = (fieldToUse = 'title', overrides = {}) => {
 		type: 'text',
 		index: true,
 		label: 'Slug',
-		...(slugOverrides || {}),
+		...slugOverrides,
 		hooks: {
 			// Kept this in for hook or API based updates
 			beforeValidate: [formatSlugHook(fieldToUse)],
 		},
 		admin: {
 			position: 'sidebar',
-			...(slugOverrides?.admin || {}),
+			...slugOverrides?.admin,
 			components: {
 				Field: {
 					path: '@/fields/slug/slug-component#SlugComponent',

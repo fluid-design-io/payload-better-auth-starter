@@ -16,9 +16,13 @@
 		"react/jsx-no-constructed-context-values": "off",
 		"react/no-array-index-key": "off",
 		"react/exhaustive-deps": "off",
+		"react/no-unstable-nested-components": "off",
+		"react/no-object-type-as-default-prop": "off",
+		"no-underscore-dangle": "off",
 		"eslint/no-unused-vars": "warn",
 		"no-shadow": "off",
-		"no-await-in-loop": "off"
+		"no-await-in-loop": "off",
+		"no-unsafe-optional-chaining": "off"
 	},
 	"settings": {
 		"next": {
@@ -28,7 +32,7 @@
 			"formComponents": [],
 			"linkComponents": [],
 			"version": "19.2",
-			"componentWrapperFunctions": []
+			"componentWrapperFunctions": [],
 		}
 	},
 	"env": {

@@ -59,7 +59,7 @@ function discoverTestFiles(): string[] {
 			}
 		}
 	}
-	return files.sort()
+	return files.toSorted()
 }
 
 const args = process.argv.slice(2).filter((a) => a !== '--')

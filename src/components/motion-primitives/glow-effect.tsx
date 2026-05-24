@@ -55,11 +55,9 @@ export function GlowEffect({
 			},
 		},
 		breathe: {
-			background: [
-				...colors.map(
+			background: colors.map(
 					(color) => `radial-gradient(circle at 50% 50%, ${color} 0%, transparent 100%)`,
 				),
-			],
 			scale: [1 * scale, 1.05 * scale, 1 * scale],
 			transition: {
 				...(transition ?? {

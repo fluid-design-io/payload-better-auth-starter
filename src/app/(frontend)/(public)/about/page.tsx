@@ -60,7 +60,7 @@ async function getPackageJson() {
 }
 
 function sortDependencies(deps: Record<string, string>) {
-	return Object.entries(deps).sort(([a], [b]) => a.localeCompare(b))
+	return Object.entries(deps).toSorted(([a], [b]) => a.localeCompare(b))
 }
 
 export default async function AboutPage() {

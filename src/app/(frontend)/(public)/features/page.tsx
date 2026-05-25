@@ -10,7 +10,7 @@ import {
 } from '@/components/layout/elements'
 import { Main } from '@/components/layout/main'
 
-import image from 'public/website-template-OG.png'
+import image from '../../../../../public/website-template-OG.png'
 
 export default function FeaturesPage() {
 	return (

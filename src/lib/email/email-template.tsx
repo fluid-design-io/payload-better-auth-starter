@@ -1,9 +1,7 @@
-// import parse from "html-react-parser";
+import type { ReactNode } from 'react';
 
-import type { ReactNode } from 'react'
-
-import type { LayoutClassNames } from './components/layout'
-import Layout from './components/layout'
+import type { LayoutClassNames } from './components/layout';
+import Layout from './components/layout';
 
 export interface AcmeTemplateProps {
 	heading: string

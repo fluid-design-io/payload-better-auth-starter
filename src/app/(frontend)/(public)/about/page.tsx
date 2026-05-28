@@ -1,29 +1,25 @@
 import {
-	Container,
-	LayoutHeader,
-	SectionHeader,
-	SectionSpacing,
-} from '@/components/layout/elements'
-import { Main } from '@/components/layout/main'
-import { InView } from '@/components/motion-primitives/in-view'
-import { Badge } from '@/components/ui/badge'
+    Container,
+    LayoutHeader,
+    SectionHeader,
+    SectionSpacing,
+} from '@/components/layout/elements';
+import { Main } from '@/components/layout/main';
+import { Badge } from '@/components/ui/badge';
 import {
-	Table,
-	TableBody,
-	TableCell,
-	TableHead,
-	TableHeader,
-	TableRow,
-} from '@/components/ui/table'
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
+} from '@/components/ui/table';
 
-import { inViewOptions } from '@/lib/animation'
-import { cn } from '@/lib/utils'
 
-import { readFileSync } from 'node:fs'
-import { join } from 'node:path'
-import parse from 'html-react-parser'
-import { remark } from 'remark'
-import html from 'remark-html'
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { remark } from 'remark';
+import html from 'remark-html';
 
 async function getChangelogContent() {
 	try {
@@ -79,20 +75,6 @@ export default async function AboutPage() {
 			/>
 
 			<SectionSpacing>
-				{/* Changelog Section */}
-				{changelogHtml && (
-					<Container render={<InView {...inViewOptions()} as="section" />}>
-						<SectionHeader
-							title="Changelog"
-							badge="History"
-							description="Version history and updates for this starter template."
-						/>
-						<div className={cn('prose md:prose-md dark:prose-invert max-w-none', 'mt-8')}>
-							{parse(changelogHtml)}
-						</div>
-					</Container>
-				)}
-
 				{/* Dependencies Section */}
 				<Container>
 					<SectionHeader

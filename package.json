@@ -43,12 +43,10 @@
 		"db:logs": "docker compose logs -f postgres",
 		"db:reset": "docker compose down -v postgres && docker compose up -d postgres",
 		"db:connect": "docker exec -it acme-postgres psql -U postgres -d acme-website",
-		"test": "bun test src/tests",
+		"test": "dotenv -e .env -- bun run src/tests/helper/run.ts",
 		"test:run": "dotenv -e .env -- bun run src/tests/helper/run.ts",
 		"test:run:single": "dotenv -e .env -- bun run src/tests/helper/run.ts --",
-		"test:db:create": "docker exec acme-postgres psql -U postgres -c 'CREATE DATABASE \"acme-website_test\";' || true",
-		"test:payload-db": "dotenv -e .env -- bun run test:payload-db:exec",
-		"test:payload-db:exec": "DATABASE_URI=postgres://postgres:postgres@localhost:5432/acme-website_test bun test ./src/tests/payload-db.test.ts"
+		"test:db:create": "docker exec acme-postgres psql -U postgres -tc \"SELECT 1 FROM pg_database WHERE datname='acme-website_test'\" | grep -q 1 || docker exec acme-postgres psql -U postgres -c 'CREATE DATABASE \"acme-website_test\";'"
 	},
 	"dependencies": {
 		"@base-ui/react": "^1.5.0",

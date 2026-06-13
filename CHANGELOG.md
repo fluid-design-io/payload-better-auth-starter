@@ -3,13 +3,13 @@
 ## 1.7.0
 
 ### Minor Changes
+
 - **Tooling:** Replace Biome with [oxlint](https://oxc.rs/docs/guide/usage/linter) and [oxfmt](https://oxc.rs/docs/guide/usage/formatter); add `.oxlintrc.json` / `.oxfmtrc.json`, update `lint` / `format` / `check` scripts, and reformat the codebase.
 - **Cache / revalidation:** Switch blog and global Payload hooks from `updateTag` to `revalidateTag(..., 'max')` for Next.js 16 cache invalidation.
 - **Media URLs:** Normalize cache-busting query parameters in `getMediaUrl` using the `URL` API (`?v=` instead of appending raw cache tags).
 - **Auth:** Simplify `Providers` by removing the `Suspense` + `AuthTreeWithContext` wrapper and resolving session context directly in the layout tree.
 - **Docker:** Fix MinIO bucket bootstrap by following redirects when downloading the `mc` client (`curl -L`).
 - **Build / runtime:** Fix `/features` static image import path; regenerate the Payload admin `importMap`; resolve oxlint/typecheck issues in blog hooks, globals fetch, and motion primitives.
-
 
 ### Minor Changes
 

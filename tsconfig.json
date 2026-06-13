@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"lib": ["DOM", "DOM.Iterable", "ES2022"],
+		"lib": ["DOM", "DOM.Iterable", "ES2023"],
 		"allowJs": true,
 		"skipLibCheck": true,
 		"strict": true,
@@ -21,7 +21,7 @@
 			"@/*": ["./src/*"],
 			"@payload-config": ["./src/payload.config.ts"]
 		},
-		"target": "ES2022",
+		"target": "ES2023",
 		"types": ["bun"]
 	},
 	"include": [

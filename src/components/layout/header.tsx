@@ -153,10 +153,10 @@ export default function Header() {
 							</motion.div>
 						)}
 						{!isLarge && isMobileMenuOpen && (
-							<MobileMenu closeMenu={() => setIsMobileMenuOpen(false)} />
+							<MobileMenu closeMenu={() => setIsMobileMenuOpen(false)} pathname={pathname} />
 						)}
 
-						<div className="mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 in-data-[state=active]:flex md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent">
+						<div className="mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent">
 							<div className="flex w-full flex-col sm:flex-row sm:gap-3 md:w-fit">
 								<SignedOut>
 									<div className="w-full">
@@ -194,7 +194,7 @@ export default function Header() {
 	)
 }
 
-const MobileMenu = ({ closeMenu }: { closeMenu: () => void }) => {
+const MobileMenu = ({ closeMenu, pathname }: { closeMenu: () => void; pathname: string }) => {
 	return (
 		<nav className="w-full [--color-border:--alpha(var(--color-foreground)/5%)] [--color-muted:--alpha(var(--color-foreground)/5%)]">
 			{navigationLinks.map((link, index) => {
@@ -209,6 +209,31 @@ const MobileMenu = ({ closeMenu }: { closeMenu: () => void }) => {
 					</Link>
 				)
 			})}
+			<SignedOut>
+				<Link
+					href={`/sign-in?redirectTo=${pathname}`}
+					onClick={closeMenu}
+					className="group relative block border-0 border-b py-4 text-lg"
+				>
+					Sign In
+				</Link>
+			</SignedOut>
+			<SignedIn>
+				<div className="border-0 border-b py-4">
+					<UserButton
+						size="default"
+						variant="ghost"
+						additionalLinks={[
+							{
+								signedIn: true,
+								icon: <AppWindowMac />,
+								label: 'Dashboard',
+								href: '/dashboard',
+							},
+						]}
+					/>
+				</div>
+			</SignedIn>
 		</nav>
 	)
 }

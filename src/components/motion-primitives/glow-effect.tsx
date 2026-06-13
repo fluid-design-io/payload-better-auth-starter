@@ -15,6 +15,24 @@ export type GlowEffectProps = {
 	duration?: number
 }
 
+function getBlurClass(blur: GlowEffectProps['blur']) {
+	if (typeof blur === 'number') {
+		return `blur-[${blur}px]`
+	}
+
+	const presets = {
+		softest: 'blur-xs',
+		soft: 'blur-sm',
+		medium: 'blur-md',
+		strong: 'blur-lg',
+		stronger: 'blur-xl',
+		strongest: 'blur-xl',
+		none: 'blur-none',
+	}
+
+	return presets[blur as keyof typeof presets]
+}
+
 export function GlowEffect({
 	className,
 	style,
@@ -56,8 +74,8 @@ export function GlowEffect({
 		},
 		breathe: {
 			background: colors.map(
-					(color) => `radial-gradient(circle at 50% 50%, ${color} 0%, transparent 100%)`,
-				),
+				(color) => `radial-gradient(circle at 50% 50%, ${color} 0%, transparent 100%)`,
+			),
 			scale: [1 * scale, 1.05 * scale, 1 * scale],
 			transition: {
 				...(transition ?? {
@@ -93,24 +111,6 @@ export function GlowEffect({
 		static: {
 			background: `linear-gradient(to right, ${colors.join(', ')})`,
 		},
-	}
-
-	const getBlurClass = (blur: GlowEffectProps['blur']) => {
-		if (typeof blur === 'number') {
-			return `blur-[${blur}px]`
-		}
-
-		const presets = {
-			softest: 'blur-xs',
-			soft: 'blur-sm',
-			medium: 'blur-md',
-			strong: 'blur-lg',
-			stronger: 'blur-xl',
-			strongest: 'blur-xl',
-			none: 'blur-none',
-		}
-
-		return presets[blur as keyof typeof presets]
 	}
 
 	return (

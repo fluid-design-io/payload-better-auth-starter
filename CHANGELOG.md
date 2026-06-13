@@ -1,15 +1,28 @@
 # acme-website
 
+## 1.8.0
+
+### Minor Changes
+
+- **Testing:** Re-implement the test suite as simple HTTP-based tests that run against a live Next.js dev server, so the test runtime never imports the Payload config in-process (avoids the `tsx` config-load and Bun `@lexical/react` issues). Schema now comes from the Postgres adapter's dev `push` on boot instead of a migration step; the runner truncates the test DB each run. Adds `helper/http.ts`, `helper/db.ts`, `smoke.test.ts`, and an `auth.test.ts` that exercises the real sign-up → verify → sign-in → session flow, and rewrites `docs/Testing.md`.
+
+### Patch Changes
+
+- **Typecheck:** Bump `tsconfig` `lib`/`target` from ES2022 to ES2023 so `Array.toSorted()` typechecks (fixes `tsc --noEmit` and the cascading implicit-`any` errors it caused).
+- **Cleanup:** Remove the unused changelog fetch (and the `remark` / `remark-html` deps) left over from the html-react-parser removal; clear lint warnings (hoist `getBlurClass`, drop unused params, `filter(...)[0]` → `find(...)`); apply `oxfmt` to drifted files so `bun run check` passes.
+- **UI:** Make the mobile menu Sign In action match the nav tab items — it now renders as a full-width row inside the menu instead of collapsing into a small right-aligned button on tablet widths.
+- **Tooling:** Make `test:db:create` idempotent so it no longer logs `database "..._test" already exists`.
+
 ## 1.7.0
 
 ### Minor Changes
+
 - **Tooling:** Replace Biome with [oxlint](https://oxc.rs/docs/guide/usage/linter) and [oxfmt](https://oxc.rs/docs/guide/usage/formatter); add `.oxlintrc.json` / `.oxfmtrc.json`, update `lint` / `format` / `check` scripts, and reformat the codebase.
 - **Cache / revalidation:** Switch blog and global Payload hooks from `updateTag` to `revalidateTag(..., 'max')` for Next.js 16 cache invalidation.
 - **Media URLs:** Normalize cache-busting query parameters in `getMediaUrl` using the `URL` API (`?v=` instead of appending raw cache tags).
 - **Auth:** Simplify `Providers` by removing the `Suspense` + `AuthTreeWithContext` wrapper and resolving session context directly in the layout tree.
 - **Docker:** Fix MinIO bucket bootstrap by following redirects when downloading the `mc` client (`curl -L`).
 - **Build / runtime:** Fix `/features` static image import path; regenerate the Payload admin `importMap`; resolve oxlint/typecheck issues in blog hooks, globals fetch, and motion primitives.
-
 
 ### Minor Changes
 

@@ -4,7 +4,6 @@ import type { PayloadUpload } from '@/payload-types'
 
 export const generateBlurDataURL: CollectionBeforeChangeHook<PayloadUpload> = async ({
 	req,
-	operation,
 	data,
 }) => {
 	if (!req.file || !req.file.data) {

@@ -81,7 +81,7 @@ export const FormBlock: React.FC<
 				value,
 			}))
 
-			const promise = new Promise((resolve, reject) => {
+			const promise = new Promise((resolve) => {
 				setTimeout(() => {
 					resolve('Form submitted')
 				}, 2500)

@@ -27,7 +27,7 @@ export const Select: React.FC<
 		placeholder?: string
 		width: string
 	}
-> = ({ label, options, width, description, placeholder }) => {
+> = ({ label, options, width, description }) => {
 	const field = useFieldContext<string>()
 
 	const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid

@@ -87,8 +87,6 @@
 		"react": "19.2.6",
 		"react-dom": "19.2.6",
 		"react-medium-image-zoom": "^5.4.7",
-		"remark": "^15.0.1",
-		"remark-html": "^16.0.1",
 		"resend": "^6.12.4",
 		"sharp": "0.34.5",
 		"sonner": "^2.0.7",

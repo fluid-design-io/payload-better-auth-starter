@@ -62,8 +62,7 @@ function discoverTestFiles(): string[] {
 	return files.toSorted()
 }
 
-const args = process.argv.slice(2).filter((a) => a !== '--')
-const pathArg = args[0]
+const pathArg = process.argv.slice(2).find((a) => a !== '--')
 const singleFileMode =
 	pathArg != null &&
 	(pathArg.endsWith('.test.ts') ||

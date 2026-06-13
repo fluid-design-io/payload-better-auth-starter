@@ -42,15 +42,7 @@ const emailStyles = {
 	},
 }
 
-export async function sendVerificationEmail({
-	user,
-	url,
-	token,
-}: {
-	user: User
-	url: string
-	token: string
-}) {
+export async function sendVerificationEmail({ user, url }: { user: User; url: string }) {
 	const config = await payloadConfig
 	const payload = await getPayload({ config })
 	const name = user.name || user.email.split('@')[0]
@@ -79,12 +71,10 @@ export async function sendChangeEmailVerification({
 	user,
 	newEmail,
 	url,
-	token,
 }: {
 	user: User
 	newEmail: string
 	url: string
-	token: string
 }) {
 	const config = await payloadConfig
 	const payload = await getPayload({ config })
@@ -175,15 +165,7 @@ export async function sendResetPasswordEmail({
 	})
 }
 
-export async function sendDeleteAccountVerification({
-	user,
-	url,
-	token,
-}: {
-	user: User
-	url: string
-	token: string
-}) {
+export async function sendDeleteAccountVerification({ user, url }: { user: User; url: string }) {
 	const config = await payloadConfig
 	const payload = await getPayload({ config })
 

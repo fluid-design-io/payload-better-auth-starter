@@ -1,40 +1,22 @@
 import {
-    Container,
-    LayoutHeader,
-    SectionHeader,
-    SectionSpacing,
-} from '@/components/layout/elements';
-import { Main } from '@/components/layout/main';
-import { Badge } from '@/components/ui/badge';
+	Container,
+	LayoutHeader,
+	SectionHeader,
+	SectionSpacing,
+} from '@/components/layout/elements'
+import { Main } from '@/components/layout/main'
+import { Badge } from '@/components/ui/badge'
 import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from '@/components/ui/table';
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow,
+} from '@/components/ui/table'
 
-
-import { readFileSync } from 'node:fs';
-import { join } from 'node:path';
-import { remark } from 'remark';
-import html from 'remark-html';
-
-async function getChangelogContent() {
-	try {
-		const changelogPath = join(process.cwd(), 'CHANGELOG.md')
-		const fileContents = readFileSync(changelogPath, 'utf8')
-
-		const processedContent = await remark().use(html).process(fileContents)
-		const contentHtml = processedContent.toString()
-
-		return contentHtml
-	} catch (error) {
-		console.error('Error reading changelog:', error)
-		return null
-	}
-}
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
 
 async function getPackageJson() {
 	try {
@@ -60,7 +42,6 @@ function sortDependencies(deps: Record<string, string>) {
 }
 
 export default async function AboutPage() {
-	const changelogHtml = await getChangelogContent()
 	const { dependencies, devDependencies } = await getPackageJson()
 
 	const sortedDependencies = sortDependencies(dependencies)

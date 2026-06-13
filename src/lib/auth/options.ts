@@ -63,8 +63,8 @@ export const betterAuthOptions: BetterAuthOptions = {
 	emailVerification: {
 		sendOnSignUp: true,
 		autoSignInAfterVerification: true,
-		sendVerificationEmail: async ({ user, url, token }) => {
-			await sendVerificationEmail({ user, url, token })
+		sendVerificationEmail: async ({ user, url }) => {
+			await sendVerificationEmail({ user, url })
 		},
 		beforeEmailVerification: async (user) => {
 			// update user.verified to true
@@ -82,14 +82,14 @@ export const betterAuthOptions: BetterAuthOptions = {
 	user: {
 		changeEmail: {
 			enabled: true,
-			sendChangeEmailConfirmation: async ({ user, newEmail, url, token }) => {
-				await sendChangeEmailVerification({ user, newEmail, url, token })
+			sendChangeEmailConfirmation: async ({ user, newEmail, url }) => {
+				await sendChangeEmailVerification({ user, newEmail, url })
 			},
 		},
 		deleteUser: {
 			enabled: true,
-			sendDeleteAccountVerification: async ({ user, url, token }) => {
-				await sendDeleteAccountVerification({ user, url, token })
+			sendDeleteAccountVerification: async ({ user, url }) => {
+				await sendDeleteAccountVerification({ user, url })
 			},
 			beforeDelete: async (_user) => {
 				// Perform actions before user deletion

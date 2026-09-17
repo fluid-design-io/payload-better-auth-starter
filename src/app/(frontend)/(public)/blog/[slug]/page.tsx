@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { cacheLife, cacheTag } from 'next/cache'
+import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { Suspense } from 'react'
 
@@ -10,7 +11,6 @@ import { Main } from '@/components/shell/main'
 import { generateMeta } from '@/lib/payload/generate-meta'
 import { getDocument } from '@/lib/payload/get-cached-document'
 import { getPayload } from '@/lib/payload/get-payload'
-
 import { BlogPostsSkeleton } from '../blog-posts'
 import { BlogContent } from './blog-content'
 import { BlogSidebar } from './blog-sidebar'
@@ -116,10 +116,40 @@ const DraftBlogSection = async ({ slug, draft }: { slug: string; draft: boolean 
 	)
 }
 
-export async function generateMetadata({ params }: PageProps<'/blog/[slug]'>): Promise<Metadata> {
-	const { slug = '' } = await params
-	const post = await getDocument('blog', slug, 1)
+export async function generateMetadata({
+	params: paramsPromise,
+}: PageProps<'/blog/[slug]'>): Promise<Metadata> {
+	const { slug = '' } = await paramsPromise
+	const post = await queryPageBySlug({ slug })
 	if (!post) return {}
 
 	return generateMeta({ doc: post })
+}
+
+const queryPageBySlug = async ({ slug }: { slug: string }) => {
+	'use cache'
+	cacheTag(`blog-${slug}`)
+
+	const { isEnabled: draft } = await draftMode()
+	const payload = await getPayload()
+
+	const result = await payload.find({
+		collection: 'blog',
+		draft,
+		limit: 1,
+		overrideAccess: draft,
+		pagination: false,
+		where: {
+			and: [
+				{
+					slug: {
+						equals: slug,
+					},
+				},
+				...(draft ? [] : [{ _status: { equals: 'published' } }]),
+			],
+		},
+	})
+
+	return result.docs?.[0] || null
 }

@@ -46,10 +46,10 @@ export default function FeaturesPage() {
 
 			<Section aria-labelledby="feature-grid-title" spacing="lg" variant="secondary">
 				<Container>
-					<Section.Header>
+					<Entrance render={<Section.Header />}>
 						<Section.Eyebrow>Designed to combine</Section.Eyebrow>
 						<Section.Title id="feature-grid-title">Use only what the page needs</Section.Title>
-					</Section.Header>
+					</Entrance>
 					<Section.Content className="mt-10">
 						<Entrance.Stagger className="grid gap-6 lg:grid-cols-2" effect="slide-up">
 							{features.map((feature) => (
@@ -76,7 +76,8 @@ export default function FeaturesPage() {
 			</Section>
 
 			<Section aria-labelledby="full-width-feature-title" spacing="lg" variant="muted">
-				<Container>
+
+				<Entrance render={<Container />}>
 					<Section.Header align="center">
 						<Section.Eyebrow>Every layer is explicit</Section.Eyebrow>
 						<Section.Title id="full-width-feature-title">
@@ -87,7 +88,8 @@ export default function FeaturesPage() {
 							inside the section.
 						</Section.Description>
 					</Section.Header>
-				</Container>
+				</Entrance>
+
 
 				<Section.Media className="mt-12">
 					<Entrance viewport={{ margin: '0px 0px -10% 0px' }}>
@@ -121,14 +123,12 @@ export default function FeaturesPage() {
 				<Container>
 					<Section.Content className="grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
 						<Entrance>
-							<div>
-								<Section.Eyebrow>Built for the next project</Section.Eyebrow>
-								<Section.Title id="feature-story-title">An API that stays readable</Section.Title>
-								<Section.Description>
-									The component tree tells the story: the section arranges the page, the frame gives
-									media structure, and animation wraps only what should move.
-								</Section.Description>
-							</div>
+							<Section.Eyebrow>Built for the next project</Section.Eyebrow>
+							<Section.Title id="feature-story-title">An API that stays readable</Section.Title>
+							<Section.Description>
+								The component tree tells the story: the section arranges the page, the frame gives
+								media structure, and animation wraps only what should move.
+							</Section.Description>
 						</Entrance>
 						<Entrance.Fade>
 							<MediaFrame className="bg-muted overflow-hidden rounded-3xl border p-3 shadow-xl">

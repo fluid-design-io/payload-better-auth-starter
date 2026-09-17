@@ -1,4 +1,5 @@
 import { Container, Section } from '@/components/layout'
+import { Entrance } from '@/components/motion-primitives'
 import { Main } from '@/components/shell/main'
 import { Badge } from '@/components/ui/badge'
 import {
@@ -46,7 +47,7 @@ export default async function AboutPage() {
 		<Main>
 			<Section spacing="sm" aria-labelledby="about-title">
 				<Container>
-					<Section.Header>
+					<Entrance render={<Section.Header />}>
 						<Section.Eyebrow>Template</Section.Eyebrow>
 						<Section.Title id="about-title" render={<h1 />}>
 							About
@@ -55,19 +56,19 @@ export default async function AboutPage() {
 							Learn about this starter template, view the changelog, and see what packages are
 							included.
 						</Section.Description>
-					</Section.Header>
+					</Entrance>
 				</Container>
 			</Section>
 
 			<Section aria-labelledby="dependencies-title">
 				<Container>
-					<Section.Header>
+					<Entrance render={<Section.Header />}>
 						<Section.Eyebrow>Packages</Section.Eyebrow>
 						<Section.Title id="dependencies-title">Dependencies</Section.Title>
 						<Section.Description>
 							Production dependencies included in this starter template.
 						</Section.Description>
-					</Section.Header>
+					</Entrance>
 					<Section.Content className="mt-8">
 						<Table>
 							<TableHeader>

@@ -35,7 +35,6 @@ export function BlogFilters() {
 								setActiveFilter(nextCategory === 'all' ? '' : (nextCategory as BlogCategory))
 							}
 						}}
-						size="sm"
 						value={[category || 'all']}
 						variant="outline"
 					>

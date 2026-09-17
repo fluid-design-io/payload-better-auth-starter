@@ -1,5 +1,21 @@
 # acme-website
 
+## 1.11.0
+
+### Minor Changes
+
+- **Dependencies:** Payload 3.85.1 to 3.89.0 across all packages, `payload-auth` 1.9.4 to 3.0.0, `better-auth` and `@better-auth/passkey` 1.6.18 to 1.7.5, Next 16.2.9 to 16.3.5, React and React DOM 19.2.6 to 19.3.0, TypeScript 6.0.3 to 7.0.2, `motion` 12 to 13, `lucide-react` 0.577 to 1.47, `sharp` 0.34.5 to 0.35.4, `@base-ui/react` 1.5 to 1.8, and `oxfmt` / `oxlint` to 0.68.0 / 1.83.0. Drop `tsx` from devDependencies; no script has referenced it since the test suite moved to HTTP-based tests in 1.8.0.
+- **Blog preview:** Add `admin.preview` to the blog collection, so the admin sidebar offers a preview link next to live preview. Both build their URL through one `previewURL` helper that returns `null` for a missing or non-string slug instead of linking to `/blog/undefined`.
+
+### Patch Changes
+
+- **Blog metadata:** `generateMetadata` read through `getDocument`, which always returned the published document, so previewing a draft showed the live post's title, description, and OG image. It now calls a cached `queryPageBySlug` that reads `draftMode()` and filters on `_status` only when draft mode is off. The `blog-${slug}` cache tag is unchanged, so the existing revalidation hooks still clear it.
+- **Tooling:** Ignore `.scratch`. Add a local `unslop` writing skill under `.agents/skills` with the usual `.claude/skills` symlink; it stays out of `skills-lock.json` because it is authored here rather than installed from a source repo.
+
+### Known Issues
+
+- `oxlint` 1.83 adds `react(set-state-in-effect)`, which now fails `bun run lint` on five untouched files: `src/hooks/use-media-query.tsx`, `src/hooks/use-mobile.ts`, `src/components/shell/theme-switch.tsx`, and two spots in `extra/components/form/components/phone-field.tsx`. `bun run typecheck` and `next build` both pass.
+
 ## 1.10.0
 
 ### Minor Changes

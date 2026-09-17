@@ -30,6 +30,11 @@ import { MediaBlock } from '@/blocks/media-block/config'
 import { populateAuthors } from './hooks/populate-authors'
 import { revalidateDelete, revalidatePost } from './hooks/revalidate-post'
 
+const previewURL = (slug: unknown) => {
+	if (typeof slug !== 'string' || !slug) return null
+	return `${getServerSideURL()}/blog/${slug}?draft=true`
+}
+
 export const Blog: CollectionConfig<'blog'> = {
 	slug: 'blog',
 	labels: {
@@ -58,10 +63,9 @@ export const Blog: CollectionConfig<'blog'> = {
 		group: 'Acme',
 		defaultColumns: ['title', 'slug', 'updatedAt'],
 		livePreview: {
-			url: ({ data }) => {
-				return `${getServerSideURL()}/blog/${data.slug}?draft=true`
-			},
+			url: ({ data }) => previewURL(data.slug),
 		},
+		preview: (data) => previewURL(data.slug),
 		useAsTitle: 'title',
 	},
 	fields: [

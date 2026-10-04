@@ -40,6 +40,7 @@ jobs:
       - name: Validate configuration and types
         run: |
           docker compose config --quiet
+          bun x next typegen
           bun run typecheck
       - name: Start clean services and application
         run: |

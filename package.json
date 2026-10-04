@@ -34,9 +34,9 @@
 		"email:stop": "docker compose stop inbucket",
 		"email:logs": "docker compose logs -f inbucket",
 		"email:test": "bun run src/scripts/test-email.ts",
-		"s3:start": "docker compose up -d minio",
-		"s3:stop": "docker compose stop minio",
-		"s3:logs": "docker compose logs -f minio",
+		"s3:start": "docker compose up -d seaweedfs",
+		"s3:stop": "docker compose stop seaweedfs",
+		"s3:logs": "docker compose logs -f seaweedfs",
 		"s3:console": "open http://localhost:9002",
 		"db:start": "docker compose up -d postgres",
 		"db:stop": "docker compose stop postgres",
@@ -46,7 +46,8 @@
 		"test": "dotenv -e .env -- bun run src/tests/helper/run.ts",
 		"test:run": "dotenv -e .env -- bun run src/tests/helper/run.ts",
 		"test:run:single": "dotenv -e .env -- bun run src/tests/helper/run.ts --",
-		"test:db:create": "docker exec acme-postgres psql -U postgres -tc \"SELECT 1 FROM pg_database WHERE datname='acme-website_test'\" | grep -q 1 || docker exec acme-postgres psql -U postgres -c 'CREATE DATABASE \"acme-website_test\";'"
+		"test:db:create": "docker exec acme-postgres psql -U postgres -tc \"SELECT 1 FROM pg_database WHERE datname='acme-website_test'\" | grep -q 1 || docker exec acme-postgres psql -U postgres -c 'CREATE DATABASE \"acme-website_test\";'",
+		"test:storage": "dotenv -e .env -- bun src/tests/seaweedfs.integration.ts"
 	},
 	"dependencies": {
 		"@base-ui/react": "^1.8.0",
@@ -90,6 +91,9 @@
 		"tailwind-merge": "^3.7.0"
 	},
 	"devDependencies": {
+		"@aws-sdk/client-s3": "3.1135.0",
+		"@aws-sdk/lib-storage": "3.1135.0",
+		"@aws-sdk/s3-request-presigner": "3.1135.0",
 		"@tailwindcss/postcss": "^4.3.3",
 		"@tailwindcss/typography": "^0.5.20",
 		"@types/bun": "1.4.2",

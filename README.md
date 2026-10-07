@@ -108,25 +108,6 @@ SeaweedFS uses a new `seaweedfs_data` volume. It cannot read the old MinIO volum
 Keep any existing MinIO volume and back it up before migrating objects through
 the S3 API. This change does not migrate existing objects or policies.
 
-To reproduce the integration test, use a disposable checkout and the dedicated
-Compose project below. The script creates and removes test objects and a test
-user, and recreates the SeaweedFS container to verify persistence.
-
-```bash
-cp .env.example .env # set the required local secrets
-bun install --frozen-lockfile
-docker compose -p payload-seaweedfs-test up -d --wait
-bun run dev:next
-# In a second terminal:
-bun run test:storage
-```
-
-Results are written to `.scratch/seaweedfs-results.json`. Coverage includes S3
-object operations, rejected anonymous access and invalid credentials, presigned
-PUT/GET, a 12 MiB multipart upload, Better Auth authentication, Payload image
-sizes and blur data, byte-range downloads, private file access, persistence,
-and deletion of stored originals and variants.
-
 ## Branding Your Company
 
 Replace **Acme**: logo in `src/components/icons.tsx` and `admin-icon.tsx`, favicon in `public/favicon.ico`, name in `src/lib/constants.ts` and `src/lib/email/email-template.tsx`, OG image `public/website-template-OG.png`.

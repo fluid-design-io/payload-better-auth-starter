@@ -46,8 +46,7 @@
 		"test": "dotenv -e .env -- bun run src/tests/helper/run.ts",
 		"test:run": "dotenv -e .env -- bun run src/tests/helper/run.ts",
 		"test:run:single": "dotenv -e .env -- bun run src/tests/helper/run.ts --",
-		"test:db:create": "docker exec acme-postgres psql -U postgres -tc \"SELECT 1 FROM pg_database WHERE datname='acme-website_test'\" | grep -q 1 || docker exec acme-postgres psql -U postgres -c 'CREATE DATABASE \"acme-website_test\";'",
-		"test:storage": "dotenv -e .env -- bun src/tests/seaweedfs.integration.ts"
+		"test:db:create": "docker exec acme-postgres psql -U postgres -tc \"SELECT 1 FROM pg_database WHERE datname='acme-website_test'\" | grep -q 1 || docker exec acme-postgres psql -U postgres -c 'CREATE DATABASE \"acme-website_test\";'"
 	},
 	"dependencies": {
 		"@base-ui/react": "^1.8.0",
@@ -91,9 +90,6 @@
 		"tailwind-merge": "^3.7.0"
 	},
 	"devDependencies": {
-		"@aws-sdk/client-s3": "3.1135.0",
-		"@aws-sdk/lib-storage": "3.1135.0",
-		"@aws-sdk/s3-request-presigner": "3.1135.0",
 		"@tailwindcss/postcss": "^4.3.3",
 		"@tailwindcss/typography": "^0.5.20",
 		"@types/bun": "1.4.2",

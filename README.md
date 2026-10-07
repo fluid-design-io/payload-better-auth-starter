@@ -94,19 +94,13 @@ bun run dev
 
 ## Local S3 storage
 
-The local Compose stack uses SeaweedFS 4.48, pinned by image digest, instead of
-the archived MinIO community distribution. The existing `S3_*` variables and
-`S3_ENDPOINT=http://localhost:9001` remain unchanged. SeaweedFS creates both
-configured buckets at startup, so no `mc` download or initialization container
-is required. Its Admin UI is available locally at `http://localhost:9002`.
+The Compose stack uses SeaweedFS with the existing `S3_*` variables: S3 at
+`http://localhost:9001` and Admin UI at `http://localhost:9002`. Both buckets
+are created at startup and remain private; Payload handles public media and
+authenticated file access.
 
-Both S3 buckets are private. Public media is served through Payload's public
-`payload-uploads` collection; private files retain Payload's authentication
-checks. Direct anonymous S3 downloads are denied for both buckets.
-
-SeaweedFS uses a new `seaweedfs_data` volume. It cannot read the old MinIO volume.
-Keep any existing MinIO volume and back it up before migrating objects through
-the S3 API. This change does not migrate existing objects or policies.
+**Migrating from MinIO:** Back up the old volume and copy objects via the S3 API;
+SeaweedFS uses a separate `seaweedfs_data` volume and does not migrate data automatically.
 
 ## Branding Your Company
 

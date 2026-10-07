@@ -92,6 +92,16 @@ cp .env.example .env   # edit with your values
 bun run dev
 ```
 
+## Local S3 storage
+
+The Compose stack uses SeaweedFS with the existing `S3_*` variables: S3 at
+`http://localhost:9001` and Admin UI at `http://localhost:9002`. Both buckets
+are created at startup and remain private; Payload handles public media and
+authenticated file access.
+
+**Migrating from MinIO:** Back up the old volume and copy objects via the S3 API;
+SeaweedFS uses a separate `seaweedfs_data` volume and does not migrate data automatically.
+
 ## Branding Your Company
 
 Replace **Acme**: logo in `src/components/icons.tsx` and `admin-icon.tsx`, favicon in `public/favicon.ico`, name in `src/lib/constants.ts` and `src/lib/email/email-template.tsx`, OG image `public/website-template-OG.png`.

@@ -18,39 +18,28 @@ services:
       - inbucket_data:/var/inbucket
     restart: unless-stopped
 
-  minio:
-    image: minio/minio:latest
-    container_name: acme-minio
+  seaweedfs:
+    image: chrislusf/seaweedfs:4.48@sha256:4e61d15fd35994cb1e43e1e553dff106794841fd9a99ade2fc8c8bfce4d7872d
+    container_name: acme-seaweedfs
     ports:
-      - '9001:9000' # MinIO API
-      - '9002:9001' # MinIO Console
+      - '127.0.0.1:9001:8333' # S3 API
+      - '127.0.0.1:9002:23646' # SeaweedFS Admin UI
     environment:
-      - MINIO_ROOT_USER=${S3_ACCESS_KEY_ID}
-      - MINIO_ROOT_PASSWORD=${S3_SECRET_ACCESS_KEY}
+      - AWS_ACCESS_KEY_ID=${S3_ACCESS_KEY_ID:?Set S3_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${S3_SECRET_ACCESS_KEY:?Set S3_SECRET_ACCESS_KEY}
     volumes:
-      - minio_data:/data
-    command: server /data --console-address ":9001"
+      - seaweedfs_data:/data
+    command:
+      - mini
+      - -dir=/data
+      - -bucket=${S3_BUCKET:?Set S3_BUCKET},${S3_PRIVATE_BUCKET:?Set S3_PRIVATE_BUCKET}
+    healthcheck:
+      test: ['CMD', 'wget', '-Y', 'off', '-q', '-O', '/dev/null', 'http://127.0.0.1:8333/healthz']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 15s
     restart: unless-stopped
-
-  createbuckets:
-    image: alpine:latest
-    container_name: acme-create-buckets
-    depends_on:
-      - minio
-    environment:
-      - MC_HOST_minio=http://${S3_ACCESS_KEY_ID}:${S3_SECRET_ACCESS_KEY}@minio:9000
-    command: >
-      sh -c "
-        apk add --no-cache curl &&
-        curl -L -o /tmp/mc https://dl.min.io/client/mc/release/linux-amd64/mc &&
-        chmod +x /tmp/mc &&
-        /tmp/mc alias set minio http://minio:9000 ${S3_ACCESS_KEY_ID} ${S3_SECRET_ACCESS_KEY} &&
-        /tmp/mc mb minio/${S3_BUCKET} || true &&
-        /tmp/mc mb minio/${S3_PRIVATE_BUCKET} || true &&
-        /tmp/mc policy set public minio/${S3_BUCKET} &&
-        echo 'Buckets created successfully'
-      "
-    restart: 'no'
 
   postgres:
     image: postgres:17-alpine
@@ -67,5 +56,5 @@ services:
 
 volumes:
   inbucket_data:
-  minio_data:
+  seaweedfs_data:
   postgres_data:
